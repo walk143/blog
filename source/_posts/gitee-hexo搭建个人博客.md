@@ -13,9 +13,9 @@ tags:
 
   配置见{% post_link git "git配置文章" %}
 
-> 已安装好上述工具及hexo-cli.
->
-> `npm install hexo-cli -g`
+```sh
+npm install hexo-cli -g #hexo安装
+```
 
 ### hexo博客模版
 
