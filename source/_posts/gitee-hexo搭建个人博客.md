@@ -142,21 +142,27 @@ tags:
 
    1. 创建一个`source`分支存放源码，并更改为默认分支
 
-      {% asset_img 1582589613298.png 1582589613298}
+      {% asset_img 1582630764261.png 设置默认分支 %}
 
       在`管理>基本设置>默认分支`中切换为新建的分支
 
-   2. 添加远程
-
+   2. 初始化仓库，添加远程
+   
       ```sh
+      git init
       git remote add origin git@gitee.com:sloera/sloera.git
       git add .
       git commit -m "博客源文章"
-      git push origin source
+      git push -f origin master:source #首次为从master创建分支，包含静态网页，需要使用-f强制覆盖
+   #master代表本地分支，source代表远程分支名
       ```
 
-      
-
-   3. 
-
-4. 
+   3. 默认跟踪远程source分支
+   
+      ```sh
+      git branch -u origin/source #指定当前分支跟踪远程source分支
+      git config --local push.default upstream #指定可以推送到远程不同名分支
+      git add .
+      git commit -m "默认分支测试"
+      git push
+      ```
