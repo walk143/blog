@@ -154,10 +154,17 @@ tags:
       git add .
       git commit -m "博客源文章"
       git push -f origin master:source #首次为从master创建分支，包含静态网页，需要使用-f强制覆盖
-   #master代表本地分支，source代表远程分支名
+      #master代表本地分支，source代表远程分支名
       ```
 
-   3. 默认跟踪远程source分支
+   3. 禁止转换回车换行符
+   
+      ```sh
+      git config core.autocrlf #查看当前配置
+      git config core.autocrlf false #将设置改为false
+      ```
+      
+   4. 默认跟踪远程source分支
    
       ```sh
       git branch -u origin/source #指定当前分支跟踪远程source分支
