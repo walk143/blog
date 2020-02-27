@@ -1,10 +1,12 @@
 ---
 title: hexo之next主题
 date: 2020-02-25 23:03:38
-tags: hexo next gitee 工具 过程
+tags: 
+    - hexo
+    - next
+    - 工具
+    - 过程
 ---
-
-
 
 # 主题安装
 

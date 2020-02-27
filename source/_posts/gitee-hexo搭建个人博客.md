@@ -1,8 +1,14 @@
 ---
 title: gitee-hexo搭建个人博客
 date: 2020-02-25 18:17:34
-tags: hexo gitee 工具 过程 
+tags: 
+   - hexo 
+   - gitee 
+   - 工具 
+   - 过程 
+toc: true
 ---
+
 参考地址：<https://blog.csdn.net/cungudafa/article/details/104260494>
 
 ### 工具
