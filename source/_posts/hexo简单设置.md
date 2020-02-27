@@ -103,3 +103,7 @@ categories:
    hexo publich hexo简单设置
    ```
    相比于新建文件，头部信息缺少`date`信息。
+
+## 默认模版
+
+默认模版位置在`scaffolds`，模版可配置`hexo new post/page/draft title`时，默认生成的文章头部都有哪些属性。默认有一些变量，如日期，通过`{{ date }}`的方式引用。
