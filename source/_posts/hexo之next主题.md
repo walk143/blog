@@ -6,6 +6,10 @@ tags:
     - next
     - 工具
     - 配置
+categories:
+   - 工具
+   - 服务
+   - hexo
 ---
 
 # 主题安装

@@ -5,6 +5,10 @@ tags:
     - git
     - 工具
     - 配置
+categories:
+   - 工具
+   - 软件
+   - git
 ---
 
 ## git安装
@@ -13,7 +17,7 @@ tags:
 
    <https://git-scm.com/download/win>
 
-   可下载portable版本。 {% asset_link PortableGit-2.23.0-64-bit.7z.exe [PortableGit-2.23.0-64-bit.7z.exe] %}
+   可下载portable版本。 {% asset_link PortableGit-2.23.0-64-bit.7z.exe PortableGit-2.23.0-64-bit.7z.exe %}
 
 2. 解压到自定义目录
 
@@ -75,6 +79,15 @@ tags:
    > gitee在 安全设置>SSH公钥 添加
 
    {% asset_img 1582558271373.png gitee公钥添加位置 %}
+   
+7. 配置全局git用户名
+
+   ```sh
+   git config --global set user.name "name"
+   git config --global set user.email "email@email.com"
+   ```
+
+   
 
 ### 部分git操作
 

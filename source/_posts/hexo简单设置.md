@@ -5,6 +5,10 @@ tags:
   - 配置
   - 工具
 date: 2020-02-27 21:40:14
+categories:
+   - 工具
+   - 服务
+   - hexo
 ---
 
 
@@ -43,6 +47,30 @@ date: 2020-02-27 21:40:14
    注：`||`后的为[fontawesome](http://fontawesome.dashgame.com/)的图标名。
 
    {% asset_img 1582809796182.png 开放菜单设置%}
+
+## 设置分类
+
+1. 文章中使用
+
+   在头部添加如下信息进行分类
+   ```yaml
+   categories:
+      - 工具
+      - 服务
+      - hexo
+   ```
+   分类与标签不同，分类有顺序之分，即工具>服务>hexo。
+
+2. 新建存储菜单
+
+   ```sh
+   hexo new page "categories"
+   ```
+   编辑生成文件夹下的`index.md`，添加`type: "categories"`
+   
+   注：`type的属性值必须小写`，猜测为和内部属性绑定。
+
+3. 配置文件夹中添加菜单链接
 
 ## 编辑草稿
 

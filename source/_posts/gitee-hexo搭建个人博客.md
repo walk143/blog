@@ -6,6 +6,10 @@ tags:
    - gitee 
    - 工具 
    - 配置 
+categories:
+   - 工具
+   - 服务
+   - hexo
 toc: true
 ---
 
