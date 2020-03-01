@@ -20,7 +20,7 @@ categories:
 $ cd hexo
 $ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
-
+<!-- more -->
 ## 修改配置
 
 修改`_config.yml`文件。

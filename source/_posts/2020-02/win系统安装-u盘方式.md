@@ -19,6 +19,8 @@ date: 2020-02-29 23:51:27
 
 win镜像可通过[微软官方](https://www.microsoft.com/zh-cn/software-download/windows10)或者[i tell you](https://msdn.itellyou.cn/)网站下载。
 
+<!-- more -->
+
 #### 微软官方。
 
 1. 点击`立即下载工具`，下载`MediaCreationTool.exe`工具。使用win系统管理员登录（如果不知道是不是，那就肯定是）运行此程序。此工具可下载镜像、制作启动u盘或者给升级本电脑系统。

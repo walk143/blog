@@ -26,7 +26,7 @@ toc: true
 ```sh
 npm install hexo-cli -g #hexo安装
 ```
-
+<!-- more -->
 ### hexo博客模版
 
 1. 新建`root`目录。存储所有markdown文件及生成的html

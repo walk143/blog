@@ -22,7 +22,7 @@ categories:
 2. 解压到自定义目录
 
    添加`自定义目录/bin`到`系统变量>Path`
-
+<!-- more -->
    {% asset_img 1582557257454.png 环境变量 %}
 
    自定义目录下，`git-bash`即为常用bash窗口。

@@ -23,6 +23,7 @@ floccus生成`.xbel`格式书签，将书签层级、链接、名称通过类似
 
 chrome应用商店无法访问。可通过百度搜索国内插件下载或{% asset_link floccus-build-v4.0.0-alpha.3.crx floccus %}。
 
+<!-- more -->
 ### chrome配置
 
 `更多工具>扩展程序`或者直接在地址栏输入`chrome://extensions/`

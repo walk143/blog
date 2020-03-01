@@ -25,6 +25,7 @@ categories:
 2. 编辑`tags`文件夹下的`index.md`文件
 
    在头部加入`type: "tags"`
+   <!-- more -->
 
    {% asset_img 1582809658520.png tags文件设置%}
 
