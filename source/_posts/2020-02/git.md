@@ -87,9 +87,40 @@ categories:
    git config --global set user.email "email@email.com"
    ```
 
-   
 
-### 部分git操作
+## 远程仓库连接
+
+前提条件：本地新建了一个仓库
+
+1. 服务器初始化一个空仓库
+
+   如`gitee.com`新建一个空仓库，复制仓库ssh链接地址。
+
+2. 本地新建仓库
+
+   ```sh
+   git init #初始当前目录为git仓库
+   git add . #添加所有文件
+   git commit -m "提交信息" #进行一次提交
+   ```
+
+3. 关联远程仓库
+
+   ```sh
+   ###本地执行
+   git remote add origin git@gitee.com:sloera/vue.git
+   #其中 origin为后面地址的别名 git@gitee.com:sloera/vue.git为上述仓库ssh地址
+   
+   git branch --set-upstream-to=origin/master master #当服务器新建为空仓库时，由于尚未生成分支，此条语句不可执行。使用以下命令将本地仓库推送到服务器
+   #其中 origin/master 代表上述添加别名仓库的master分支 最后的master代表关联到本地的master分支
+   
+   git push --set-upstream origin master
+   #关联当前分支到origin 的 master分支
+   git push 
+   #将本地修改推送到远程服务器
+   ```
+
+## 部分git操作
 
 1. 取消全局username，email
 
@@ -117,7 +148,8 @@ categories:
    ```sh
    git remote add origin git@github.com:Nickerg/Note.git
    git branch --set-upstream-to=origin/master master
+   #其中 origin/master 代表添加别名仓库的master分支 最后的master代表关联到本地的master分支
    git push --set-upstream origin master
-   ```
-
+```
+   
    
