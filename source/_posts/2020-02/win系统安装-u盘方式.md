@@ -115,3 +115,7 @@ win镜像可通过[微软官方](https://www.microsoft.com/zh-cn/software-downlo
 6. 设置
 
    新建的帐户名最好是英文。
+
+### 激活
+
+可使用{% asset_link CMWTAT_Digital_Release_2_5_0_0.exe 云萌 %}激活。
