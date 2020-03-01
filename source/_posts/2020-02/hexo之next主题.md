@@ -12,6 +12,9 @@ categories:
    - hexo
 ---
 
+包括next主题下载、常规配置文件修改
+<!-- more -->
+
 # 主题安装
 
 ## 下载主题
@@ -20,7 +23,6 @@ categories:
 $ cd hexo
 $ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
-<!-- more -->
 ## 修改配置
 
 修改`_config.yml`文件。

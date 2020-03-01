@@ -13,6 +13,9 @@ categories:
 toc: true
 ---
 
+介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。
+<!-- more -->
+
 参考地址：<https://blog.csdn.net/cungudafa/article/details/104260494>
 
 ### 工具

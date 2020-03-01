@@ -13,6 +13,8 @@ categories:
 date: 2020-02-29 11:23:03
 ---
 
+包括office安装包下载、安装/激活、及outlook配置imap邮箱（添加qq/163邮箱）。
+<!-- more -->
 
 ## 准备
 
@@ -20,7 +22,7 @@ date: 2020-02-29 11:23:03
 
 1. 在{% asset_link https://msdn.itellyou.cn/ "i tell you" %}网站下载office安装包。
 
-![1582946900532](outlook邮件设置/1582946900532.png)
+{% asset_img 1582946900532.png "i tell you 下载" %}
 
 `ed2k`链接使用迅雷工具进行下载。
 

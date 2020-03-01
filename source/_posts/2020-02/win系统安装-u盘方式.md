@@ -10,6 +10,9 @@ categories:
 date: 2020-02-29 23:51:27
 ---
 
+包括下载win系统镜像，制作u盘启动盘，win系统安装介绍，系统激活工具推荐。
+win系统安装关键是磁盘分区。
+<!-- more -->
 
 ## 准备工具
 
@@ -18,8 +21,6 @@ date: 2020-02-29 23:51:27
 ### 下载镜像
 
 win镜像可通过[微软官方](https://www.microsoft.com/zh-cn/software-download/windows10)或者[i tell you](https://msdn.itellyou.cn/)网站下载。
-
-<!-- more -->
 
 #### 微软官方。
 
