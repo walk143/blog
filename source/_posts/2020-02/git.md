@@ -123,36 +123,94 @@ categories:
    #将本地修改推送到远程服务器
    ```
 
+## 迁移git密钥
+
+将win下的密钥，同步到wsl子系统中
+
+1. 复制密钥
+
+   将win下生成的密钥复制到wsl的`root/.ssh`目录下
+
+2. 复制`config`配置文件
+
+   修改其中`IdentityFile`的路径，改为wsl自己的路径
+
 ## 部分git操作
 
-1. 取消全局username，email
+### 全局设置
 
-   ```sh
-   git config --global --unset user.name
-   git config --global --unset user.email
-   ```
+#### 取消全局username，email
 
-2. 在repo中设置用户
-
-   ```sh
-   git config user.name "name"
-   git config user.email "name@email.com"
-   ```
-
-   全局用户默认“name/name@email.com"
-
-   ```sh
-   git config --global user.name "name" 
-   git config --global user.email "name@email.com"
-   ```
-
-3. 添加远程仓库
-
-   ```sh
-   git remote add origin git@github.com:Nickerg/Note.git
-   git branch --set-upstream-to=origin/master master
-   #其中 origin/master 代表添加别名仓库的master分支 最后的master代表关联到本地的master分支
-   git push --set-upstream origin master
+```sh
+git config --global --unset user.name
+git config --global --unset user.email
 ```
-   
-   
+
+#### 在repo中设置用户
+
+```sh
+git config user.name "name"
+git config user.email "name@email.com"
+```
+
+全局用户默认“name/name@email.com"
+
+```sh
+git config --global user.name "name" 
+git config --global user.email "name@email.com"
+```
+
+#### 添加远程仓库
+
+```sh
+git remote add origin git@github.com:Nickerg/Note.git
+git branch --set-upstream-to=origin/master master
+#其中 origin/master 代表添加别名仓库的master分支 最后的master代表关联到本地的master分支
+git push --set-upstream origin master
+```
+
+#### 设置win/linux换行符转换
+
+```sh
+#后面无true或input或false时，为查看当前配置
+#提交时转换为LF，检出时转换为CRLF
+git config --global core.autocrlf true
+#提交时转换为LF，检出时不转换
+git config --global core.autocrlf input
+#提交检出均不转换
+git config --global core.autocrlf false
+```
+
+### .gitignore文件
+
+gitignore只能忽略未跟踪文件，对于已跟踪文件，需要根据`取消跟踪已commit文件`操作
+
+配置语法
+
+- 以 `/` 开头表示根目录,防止递归
+- 以 `/` 结尾表示指定目录
+- 以 `!` 开头表示不过滤（跟踪）此项配置匹配到的文件或目录
+- 以 `#` 开头表示注释，如需转义在前面加斜杠，`/#`
+
+可使用如下通配符
+
+```
+* 通配符，多字符通配
+**表示匹配任意中间目录如，a/**/z 表示可以匹配a/z、a/s/z或 a/a/s/z 等
+? 通配符，单字符通配
+[] 可以匹配任何一个在方括号中的字符, 如*.[ac] 表示匹配任何以 .a 或者 .c 结尾的文件，如果[]中有短划线 - 分割两个字符，则表示所有两个字符范围内的都可以匹配如 [0-9]
+```
+
+
+
+### 取消跟踪已commit文件
+
+对某个文件取消跟踪
+
+```sh
+git rm --cached readme1.txt    #删除readme1.txt的跟踪，并保留在本地。
+git rm --f readme1.txt    #删除readme1.txt的跟踪，并且删除本地文件。
+
+git rm -r --cached themes/landscape/* #递归目录取消跟踪目录下所有文件
+```
+
