@@ -7,7 +7,7 @@ categories:
   - 技术
   - 前端
   - nodejs
-date: 2020-03-02 22:40:49
+date: 2020-03-03 21:28:22
 ---
 
 通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的`OPTIONS`请求，返回`200`成功状态及所需头部，使得浏览器可以继续发起实际请求
@@ -74,7 +74,35 @@ Access-Control-Expose-Headers: test #可选。用于XMLHttpRequest对象的getRe
 
 #### 非简单请求
 
+非简单请求会在正式通信前，增加一次称为“预检”的`HTTP`查询请求，只有被允许，浏览器才会发出真实的请求。
 
+预检请求包括：
+
+```yaml
+Origin: 请求来自哪个源
+Access-Control-Request-Method: 实际CORS请求使用到的HTTP方法
+Access-Control-Request-Headers: 指定CORS请求额外发送的头信息字段。
+```
+
+如果服务器收到“预检”请求后验证通过，做出回应后浏览器即可发出真实请求。
+
+预检请求的回应：
+
+```yaml
+Access-Control-Allow-Origin: http://localhost:8080 #也可设置为*号，表示允许所有跨源请求
+Access-Control-Allow-Methods: GET,POST,PUT #必须，惠及服务器支持的所有跨域请求的方法
+Access-Control-Allow-Headers: #当浏览器请求包括`Access-Control-Request-Headers`时必须，表明服务器支持的所有头信息字段。为所有！不只只是浏览器请求的额外头信息。
+Access-Control-Allow-Credentials: true #可选，布尔值。是否允许发送`Cookie`
+Access-Control-Max-Age: s #指定预检请求的有效期，单位为秒。在此期间，不用发出另一条预检请求
+```
+
+如果浏览器拒绝了“预检”请求 ，则返回正常的HTTP回应，但是没有任何`CORS`相关的头信息字段。浏览器认定此跨源不被允许，由`XMLHttpRequest`的`onerror`回调函数捕获异常。
+
+#### 浏览器的正常请求和回应
+
+当服务器通过“预检”请求后，浏览器会在每次正常的`CORS`请求附加一个`Origin`头信息字段。服务器回应也都会有一个`Access-Control-Allow-origin`头信息字段。
+
+对于中间层来说，无论何种情况，都返回上述所说字段，即可解决跨域问题。
 
 ## 解决
 
@@ -150,6 +178,8 @@ node_modules/
 
 在`allowCores`中，设置了响应头，并判断如果请求类型是`OPTIONS`类型，直接返回`200`成功状态，不走后面的代理。所以下面这段，应该放到`app.js`其他代理逻辑之前。
 
+其中target,ccc为自定义头部。对于实际项目，可打开浏览器开发都模式，将所有跨源请求时的头部都复制过来。
+
 ```javascript
 var allowCores = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*'); //设置允许的来源
@@ -178,7 +208,7 @@ app.use(allowCores); //使用跨域中间件
 概况起来：
 `app.use`用作中间件，调用顺序是书写顺序。
 `app.all`用作路由处理，匹配完整路径，在`app.use`之后。
-`use`的path为路径开头，回调函数的路径为路径的声誉部分，use的路径是完整的了，回调只需要写`/`，即回调执行的`完整路径`是 `usePath+callbackPath`。
+`use`的path为路径开头，回调函数的路径为路径的剩余部分，use的路径是完整的了，回调只需要写`/`，即回调执行的`完整路径`是 `usePath+callbackPath`。
 `all`的回调函数的路径必须和`app`的路径一致。
 
 ## 参考
