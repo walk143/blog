@@ -10,11 +10,77 @@ categories:
 date: 2020-03-02 22:40:49
 ---
 
-
 通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的`OPTIONS`请求，返回`200`成功状态及所需头部，使得浏览器可以继续发起实际请求
 <!-- more -->
 
-## 中间层项目新建
+## 介绍
+
+### 同源
+
+目前，所有浏览器都实行同源政策。
+
+同源包含三个方面。以`https://sloera.gitee.io/2020/03/02/2020-03/`为例
+
+```yaml
+协议相同: https:
+域名相同: sloera.gitee.io
+端口相同: 80 #网页默认端口是80，可省略
+```
+
+说明：
+
+​	对于浏览器打开的A和B两个非同源网页。如果A的`Cookie`中包含了用户的登录信息，若没有同源政策，则B可获取A的`Cookie`，伪冒登录进行在A意愿之外的操作。所以需要同源政策来保护安全状态。
+
+### CORS
+
+由于同源政策，`AJAX`请求只能发给同源的网址。所以需要`CORS`（跨源资源分享Cross-Origin Resource Sharing）完成跨源`AJAX`请求。
+
+`CORS`通信过程，由浏览器自动完成。浏览器发现`AJAX`请求跨源时，会自动添加一些附加头信息，甚至有时会多出一次`OPTIONS`请求，整个过程都由浏览器自动实现。
+
+#### 请求分类
+
+对于浏览器来说，`CORS`请求有两类：简单请求和非简单请求。
+
+同时满足如下条件即为简单请求
+
+```yaml
+#1.请求方法为以下其一
+method: 
+	- HEAD
+	- GET
+	- POST
+#2.请求头信息在以下字段之内
+head:
+	- Accept
+	- Accept-Language
+	- Content-Language
+	- Last-Event-ID
+	- Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain #注意。`application/json`不在其中，所以如果post的请求体是json格式，必为非简单请求。
+```
+
+不属于简单请求的即为非简单请求
+
+#### 简单请求
+
+对于简单请求：浏览器在请求头信息中自动增加一个`Origin`字段，用来说明本次请求来自哪个源（协议、域名、端口），服务器根据这些信息判定是否同意请求。
+
+如果`Origin`指定的域名在许可范围内（中间层一般不加判断，都准予许可，直接设置res的头信息返回），服务器返回的响应会多出几个与`CORS`相关的头信息字段。
+
+```yaml
+Access-Control-Allow-Origin: http://localhost:8080 #必须，请求时的`Origin`或者`*`
+Access-Control-Allow-Credentials: true #可选，布尔值。是否允许发送`Cookie`
+Access-Control-Expose-Headers: test #可选。用于XMLHttpRequest对象的getResponseHeader()取值。
+```
+
+#### 非简单请求
+
+
+
+## 解决
+
+中间层解决跨域的思路：是浏览器发起的所有请求先通过中间层，中间层再代理到实际请求的地址，当需要跨域时，中间层拦截浏览器发出的options请求，直接返回（不考虑第三方接口）浏览器`200`状态，告诉浏览器这个请求是被允许的，浏览器收到200响应后，便会发起真正的请求，此时由中间层直接代理转接到实际第三方接口地址，得到响应后转送给浏览器即可。
+
+### 中间层项目新建
 
 ```sh
 mkdir middlelayer #创建项目目录
@@ -42,7 +108,7 @@ license: ISC # 应该是版权
 $ cnpm install express --save
 ```
 
-## app.js配置
+### app.js配置
 
 ```javascript
 const express = require('express') //引入express
@@ -80,11 +146,7 @@ node_modules/
 #暂时只有模版文件不需要
 ```
 
-## 跨域设置
-
-对于浏览器来说，当请求的地址与当前网页地址的 协议(protocol)、主机(host/ip)、端口号(port)其中之一如果不相同，即为非同源。而非同源的请求，如果是非简单请求，就会出现跨域错误。
-
-简单来说，对于非简单请求，浏览器会先发送一个options请求，附带当前请求的信息（如头部、参数等），如果非同源接口对此options请求验证通过，浏览器即可发起真正的get/post请求。中间层解决跨域的思路：是浏览器发起的所有请求先通过中间层，中间层再代理到实际请求的地址，当需要跨域时，中间层拦截浏览器发出的options请求，直接返回（不考虑第三方接口）浏览器`200`状态，告诉浏览器这个请求是被允许的，浏览器收到200响应后，便会发起真正的请求，此时由中间层直接代理转接到实际第三方接口地址，得到响应后转送给浏览器即可。
+### 跨域解决
 
 在`allowCores`中，设置了响应头，并判断如果请求类型是`OPTIONS`类型，直接返回`200`成功状态，不走后面的代理。所以下面这段，应该放到`app.js`其他代理逻辑之前。
 
@@ -107,30 +169,6 @@ app.use(allowCores); //使用跨域中间件
 
 ## 其他
 
-### 同源介绍
-
-#### 含义
-
-目前，所有浏览器都实行同源政策。
-
-同源包含三个方面。以`https://sloera.gitee.io/2020/03/02/2020-03/`为例
-
-```yaml
-协议相同: https:
-域名相同: sloera.gitee.io
-端口相同: 80 #网页默认端口是80，可省略
-```
-
-说明：
-
-​	对于浏览器打开的A和B两个非同源网页。如果A的`Cookie`中包含了用户的登录信息，若没有同源政策，则B可获取A的`Cookie`，伪冒登录进行在A意愿之外的操作。所以需要同源政策来保护安全状态。
-
-#### CORS
-
-由于同源政策，`AJAX`请求只能发给同源的网址。所以需要`CORS`（跨源资源分享Cross-Origin Resource Sharing）完成跨源`AJAX`请求。
-
-
-
 ### app.use与app.all
 
 `app.all(path,[callback1[,callback2]])`:可接受多个回调函数作为`路由处理器`，往往要处理`请求`和`响应`。`path`匹配`完整`路径，接受正则，匹配所有方法，执行顺序按照顺序。
@@ -142,3 +180,7 @@ app.use(allowCores); //使用跨域中间件
 `app.all`用作路由处理，匹配完整路径，在`app.use`之后。
 `use`的path为路径开头，回调函数的路径为路径的声誉部分，use的路径是完整的了，回调只需要写`/`，即回调执行的`完整路径`是 `usePath+callbackPath`。
 `all`的回调函数的路径必须和`app`的路径一致。
+
+## 参考
+
+> <http://www.ruanyifeng.com/blog/2016/04/cors.html>
