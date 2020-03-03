@@ -122,6 +122,14 @@ categories:
    git push 
    #将本地修改推送到远程服务器
    ```
+   
+4. 本地与远程分支名不同设置
+
+   ```sh
+   git config --local/global push.default upstream #指定可以推送到远程不同名分支
+   git branch -u origin/source #指定当前分支跟踪远程source分支
+   git push #即可将本地的当前分支(如master)推送到远程的source分支
+   ```
 
 ## 迁移git密钥
 
@@ -171,6 +179,8 @@ git push --set-upstream origin master
 
 #### 设置win/linux换行符转换
 
+一般禁止转换回车换行符。
+
 ```sh
 #后面无true或input或false时，为查看当前配置
 #提交时转换为LF，检出时转换为CRLF
@@ -201,8 +211,6 @@ gitignore只能忽略未跟踪文件，对于已跟踪文件，需要根据`取�
 [] 可以匹配任何一个在方括号中的字符, 如*.[ac] 表示匹配任何以 .a 或者 .c 结尾的文件，如果[]中有短划线 - 分割两个字符，则表示所有两个字符范围内的都可以匹配如 [0-9]
 ```
 
-
-
 ### 取消跟踪已commit文件
 
 对某个文件取消跟踪
@@ -212,5 +220,11 @@ git rm --cached readme1.txt    #删除readme1.txt的跟踪，并保留在本地�
 git rm --f readme1.txt    #删除readme1.txt的跟踪，并且删除本地文件。
 
 git rm -r --cached themes/landscape/* #递归目录取消跟踪目录下所有文件
+```
+
+### 修改git默认的编辑器
+
+```sh
+git config --global core.editor vi
 ```
 

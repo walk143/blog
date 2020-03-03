@@ -168,8 +168,9 @@ npm install hexo-cli -g #hexo安装
       git commit -m "博客源文章"
       git push -f origin master:source #首次为从master创建分支，包含静态网页，需要使用-f强制覆盖
       #master代表本地分支，source代表远程分支名
-      ```
-
+      #如推送失败，通过4跟踪非同名分支解决
+   ```
+   
    3. 禁止转换回车换行符
    
       ```sh
@@ -177,7 +178,7 @@ npm install hexo-cli -g #hexo安装
       git config core.autocrlf false #将设置改为false
       ```
       
-   4. 默认跟踪远程source分支
+   4. 默认跟踪远程非同名source分支
    
       ```sh
       git branch -u origin/source #指定当前分支跟踪远程source分支
