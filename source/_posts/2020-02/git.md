@@ -75,7 +75,7 @@ categories:
    复制生成的公钥
 
    ```sh
-   cat /d/path/.ssh/name
+   cat /d/path/.ssh/name.pub
    #复制输出内容到服务器。github.com/gitee.com
    ```
 
