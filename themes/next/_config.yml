@@ -62,19 +62,20 @@ footer:
     color: "#808080"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright:    # 版权声明。如为空，则取站点配置的`author`值。  
+  copyright: "sloera"   # 版权声明。如为空，则取站点配置的`author`值。  
 
   powered:      # 显示Hexo的链接（Power by Hexo）
     # Hexo link (Powered by Hexo).
     enable: true
     # Version info of Hexo after Hexo link (vX.X.X).
-    version: true
+    version: false
+    transition: false
 
   theme:      # 在footer块中显示主题信息
     # Theme & scheme info link (Theme - NexT.scheme).
-    enable: true
+    enable: false
     # Version info of NexT after scheme info (vX.X.X).
-    version: true
+    version: false
 
   # Beian ICP and gongan information for Chinese users. See: http://www.beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -135,7 +136,7 @@ menu:
 # Enable / Disable menu icons / item badges.
 menu_settings:
   icons: true
-  badges: false
+  badges: true # 菜单显示数量
 
 
 # ---------------------------------------------------------------
@@ -170,7 +171,7 @@ sidebar:
 # Sidebar Avatar
 avatar: # 侧边栏上个人头像图片。也支持是动态gif。
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/sloera.jpg
   # If true, the avatar will be dispalyed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -186,7 +187,7 @@ site_state: true
 social:
   GitHub: https://github.com/walk143 || github
   Gitee: https://gitee.com/sloera/projects || gg
-  #E-Mail: mailto:yourname@gmail.com || envelope
+  E-Mail: mailto:sloera@163.com || envelope
   #Weibo: https://weibo.com/yourname || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
@@ -198,7 +199,7 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true #社交链接只显示图片
   transition: false
 
 # Blog rolls

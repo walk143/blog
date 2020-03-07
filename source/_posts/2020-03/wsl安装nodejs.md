@@ -6,7 +6,7 @@ tags:
   - 安装
 categories:
   - 安装
-  - linux
+  - wsl
 date: 2020-03-02 23:15:46
 ---
 

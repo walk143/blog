@@ -8,8 +8,8 @@ subtitle: ''      # 网站子标题
 description: "Sloera's Blog"     # 网站的描述性
 keywords: blog      # 网站的关键字
 author: Sloera      # 网站的作者
-language: en        # 网站采用语言，要跟/theme/***/languages/**.yml下的文件名对应。
-timezone: ''        # 网站的时区
+language: zh-CN        # 网站采用语言，要跟/theme/***/languages/**.yml下的文件名对应。
+timezone: Asia/Shanghai        # 网站的时区
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
