@@ -14,7 +14,7 @@ categories:
 介绍git的安装配置过程。主要包括配置密钥，连接服务器git仓库。还包含了部分git操作介绍。
 <!-- more -->
 
-## git安装
+# git安装
 
 1. 下载git
 
@@ -90,8 +90,7 @@ categories:
    git config --global set user.email "email@email.com"
    ```
 
-
-## 远程仓库连接
+# 远程仓库连接
 
 前提条件：本地新建了一个仓库
 
@@ -131,7 +130,7 @@ categories:
    git push #即可将本地的当前分支(如master)推送到远程的source分支
    ```
 
-## 迁移git密钥
+# 迁移git密钥
 
 将win下的密钥，同步到wsl子系统中
 
@@ -143,18 +142,18 @@ categories:
 
    修改其中`IdentityFile`的路径，改为wsl自己的路径
 
-## 部分git操作
+# 部分git操作
 
-### 全局设置
+## 全局设置
 
-#### 取消全局username，email
+### 取消全局username，email
 
 ```sh
 git config --global --unset user.name
 git config --global --unset user.email
 ```
 
-#### 在repo中设置用户
+### 在repo中设置用户
 
 ```sh
 git config user.name "name"
@@ -168,7 +167,7 @@ git config --global user.name "name"
 git config --global user.email "name@email.com"
 ```
 
-#### 添加远程仓库
+### 添加远程仓库
 
 ```sh
 git remote add origin git@github.com:Nickerg/Note.git
@@ -177,7 +176,7 @@ git branch --set-upstream-to=origin/master master
 git push --set-upstream origin master
 ```
 
-#### 设置win/linux换行符转换
+### 设置win/linux换行符转换
 
 一般禁止转换回车换行符。
 
@@ -191,11 +190,17 @@ git config --global core.autocrlf input
 git config --global core.autocrlf false
 ```
 
-### .gitignore文件
+### git status中文编码混乱
+
+```sh
+git config --global core.quotepath false
+```
+
+## .gitignore文件
 
 gitignore只能忽略未跟踪文件，对于已跟踪文件，需要根据`取消跟踪已commit文件`操作
 
-配置语法
+### 配置语法
 
 - 以 `/` 开头表示根目录,防止递归
 - 以 `/` 结尾表示指定目录
@@ -211,7 +216,22 @@ gitignore只能忽略未跟踪文件，对于已跟踪文件，需要根据`取�
 [] 可以匹配任何一个在方括号中的字符, 如*.[ac] 表示匹配任何以 .a 或者 .c 结尾的文件，如果[]中有短划线 - 分割两个字符，则表示所有两个字符范围内的都可以匹配如 [0-9]
 ```
 
-### 取消跟踪已commit文件
+### 包含多层子目录下的文件
+
+```gitignore
+# !/themes/next
+##### 如果要排除多层子目录下的文件，必须一层层包含。
+themes/next/*
+!/themes/next/_config.yml
+
+!themes/next/source/
+themes/next/source/*
+!themes/next/source/images
+themes/next/source/images/*
+!/themes/next/source/images/*.jpg
+```
+
+## 取消跟踪已commit文件
 
 对某个文件取消跟踪
 
@@ -222,7 +242,7 @@ git rm --f readme1.txt    #删除readme1.txt的跟踪，并且删除本地文件
 git rm -r --cached themes/landscape/* #递归目录取消跟踪目录下所有文件
 ```
 
-### 修改git默认的编辑器
+## 修改git默认的编辑器
 
 ```sh
 git config --global core.editor vi

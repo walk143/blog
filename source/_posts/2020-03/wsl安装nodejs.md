@@ -10,11 +10,12 @@ categories:
 date: 2020-03-02 23:15:46
 ---
 
-
-介绍nodejs在wsl（win子系统）上的安装。同时安装`cnpm`替代`npm`命令
+介绍nodejs在wsl（win子系统）上的安装。同时安装`cnpm`替代`npm`命令.
 <!-- more -->
 
-## npm安装配置
+# npm安装配置
+
+## 安装npm
 
 可在[nodejs中文官网](<http://nodejs.cn/>)下载。
 
@@ -52,7 +53,7 @@ ln: 创建链接命令。相当于win的快捷方式。有硬链接及软链接�
 	-s: 创建软链接。后面跟要创建链接的对象 再跟创建链接的目录或者快捷方式名
 ```
 
-## 安装cnpm
+## 配置cnpm
 
 ```sh
 npm install cnpm -g --registry=https://registry.npm.taobao.org
@@ -63,3 +64,68 @@ npm config get registry
 以后即可使用`cnpm`代替`npm`命令
 
 使用`cnpm -v`测试是否安装成功
+
+# 命令简介
+
+## 安装特定版本
+
+### 查看历史版本
+
+```sh
+#以http-proxy-middleware为例
+#查看最新版本
+root@DESKTOP-K09C8AF:/mnt/j/data/gitee/sloera# cnpm view http-proxy-middleware version
+1.0.1
+#查看所有版本
+root@DESKTOP-K09C8AF:/mnt/j/data/gitee/sloera# cnpm view http-proxy-middleware versions
+ 
+[
+  '0.0.1',         '0.0.2',         '0.0.3',      
+  '0.0.4',         '0.0.5',         '0.1.0',      
+  '0.2.0',         '0.3.0',         '0.3.1',      
+  '0.3.2',         '0.4.0',         '0.5.0',      
+  '0.6.0',         '0.7.0',         '0.8.0',      
+  '0.8.1',         '0.8.2',         '0.9.0',      
+  '0.9.1',         '0.10.0-beta',   '0.10.0',     
+  '0.11.0',        '0.12.0',        '0.13.0',     
+  '0.14.0',        '0.15.0',        '0.15.1-beta',
+  '0.15.1',        '0.15.2',        '0.16.0',     
+  '0.17.0-beta',   '0.17.0',        '0.17.1',     
+  '0.17.2-beta',   '0.17.2',        '0.17.3',     
+  '0.17.4',        '0.18.0',        '0.19.0',
+  '0.19.1',        '0.20.0-beta.0', '0.20.0-beta.1',
+  '0.20.0-beta.2', '0.20.0',        '0.21.0-beta.1',
+  '0.21.0-beta.2', '0.21.0-beta.3', '0.21.0',
+  '0.22.0-alpha',  '1.0.0',         '1.0.1'
+]
+#查看具体信息
+root@DESKTOP-K09C8AF:/mnt/j/data/gitee/sloera# cnpm info http-proxy-middleware
+
+http-proxy-middleware@1.0.1 | MIT | deps: 5 | versions: 51
+The one-liner node.js proxy middleware for connect, express and browser-sync
+https://github.com/chimurai/http-proxy-middleware#readme
+
+dist
+.tarball: https://registry.npm.taobao.org/http-proxy-middleware/download/http-proxy-middleware-1.0.1.tgz
+.shasum: a87ee6564991faca4844ae4ab1cf4221279c28f0
+
+dependencies:
+@types/http-proxy: ^1.17.3 http-proxy: ^1.18.0        is-glob: ^4.0.1            lodash: ^4.17.15           micromatch: ^4.0.2
+
+maintainers:
+- chimurai <stevenchim@gmail.com>
+
+dist-tags:
+alpha: 0.22.0-alpha  beta: 0.21.0-beta.3  latest: 1.0.1
+
+published a week ago by chimurai <stevenchim@gmail.com>
+```
+
+### 安装指定版本
+
+包名后带`@版本号`
+
+```sh
+#全局安装http-proxy-middleware的0.21.0版本
+cnpm install  --save http-proxy-middleware@0.21.0
+```
