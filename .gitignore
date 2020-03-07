@@ -17,3 +17,6 @@ themes/next/source/*
 !themes/next/source/images
 themes/next/source/images/*
 !/themes/next/source/images/*.jpg
+
+# 临时文件
+.~*.md
