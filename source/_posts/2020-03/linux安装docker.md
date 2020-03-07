@@ -12,6 +12,9 @@ categories:
 ---
 
 介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。
+
+简单介绍对镜像容器的基本操作。
+
 <!-- more -->
 
 # Docker简介
@@ -236,8 +239,6 @@ http://f1361db2.m.daocloud.io
 https://mirror.ccs.tencentyun.com
 ```
 
-
-
 ```sh
 vi /etc/docker/daemon.json
 #####输入以下内容
@@ -253,5 +254,235 @@ vi /etc/docker/daemon.json
 #重启
 #systemctl daemon-reload
 systemctl restart docker.service
+```
+
+# 简单使用
+
+## 容器使用
+
+### 查看
+
+#### 查看docker运行容器
+
+```sh
+[root@localhost ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         2 minutes ago       Up 2 minutes                            centos
+```
+
+#### 查看所有容器
+
+```sh
+[root@localhost ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         3 minutes ago       Up 2 minutes                                       centos
+6d279c5482d8        centos              "/bin/bash"         About an hour ago   Exited (0) About an hour ago                       adoring_heyrovsky
+3f15dc78658b        hello-world         "/hello"            4 hours ago         Exited (0) 4 hours ago                             dreamy_darwin
+```
+
+### 交互运行
+
+
+#### 在公共仓库搜索centos的镜像
+
+```sh
+docker search centos
+```
+
+#### 交互模式运行centos。
+
+```sh
+#-it 代表交互模式。如果本地没有centos镜像，首次运行会从公共仓库自动下载
+[root@localhost ~]# docker run -it centos /bin/bash
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+8a29a15cefae: Pull complete 
+Digest: sha256:fe8d8242200
+Status: Downloaded newer image for centos:latest
+[root@6d279c5482d8 /]# 
+#如上，已经进入了centos命令行界面,此时，输出exit会导致容器停止
+```
+
+参数解析
+
+```yaml
+-t: 在新容器内指定一个伪终端或终端。
+-i: 允许你对容器内的标准输入 (STDIN) 进行交互。
+```
+
+### 后台运行
+
+#### 指定后台运行并命名为centos
+
+```sh
+docker run -itd --name centos centos /bin/bash 
+```
+
+#### 重新进入容器交互
+
+```sh
+docker exec -it centos /bin/bash #推荐！！注：centos为之前--name 后面的命名 此种方式进入后，输入exit不会导致容器停止。
+docker attach centos #此种方式进入后，输入exit会导致容器停止。
+```
+
+### 启停相关
+
+```sh
+docker start/stop/restart <容器ID>
+```
+
+### 删除容器
+
+```sh
+[root@localhost ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         7 minutes ago       Up 7 minutes                                       centos
+6d279c5482d8        centos              "/bin/bash"         About an hour ago   Exited (0) About an hour ago                       adoring_heyrovsky
+3f15dc78658b        hello-world         "/hello"            4 hours ago         Exited (0) 4 hours ago                             dreamy_darwin
+[root@localhost ~]# docker rm 6d2
+6d2
+[root@localhost ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                   PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         7 minutes ago       Up 7 minutes                                 centos
+3f15dc78658b        hello-world         "/hello"            4 hours ago         Exited (0) 4 hours ago                       dreamy_darwin
+```
+
+### 导出和导入容器
+
+#### 导出
+
+```sh
+docker export <容器ID> > <容器name>
+[root@localhost temp]# ls
+[root@localhost temp]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                   PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         4 hours ago         Up 4 hours                                   centos
+3f15dc78658b        hello-world         "/hello"            7 hours ago         Exited (0) 7 hours ago                       dreamy_darwin
+[root@localhost temp]# docker export 3f1 > hello.tar
+[root@localhost temp]# ls
+hello.tar
+```
+
+#### 导入
+
+```sh
+cat /path/<容器name> | docker import - test/hello:v1
+[root@localhost temp]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              latest              470671670cac        7 weeks ago         237MB
+hello-world         latest              fce289e99eb9        14 months ago       1.84kB
+[root@localhost temp]# ls
+hello.tar
+[root@localhost temp]# cat hello.tar | docker import - test/hello:v1
+sha256:3c1a49673aae7b946b37c06ac88e4576af551f3924b67cdf473a12b62f435a09
+[root@localhost temp]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test/hello          v1                  3c1a49673aae        5 seconds ago       1.85kB
+centos              latest              470671670cac        7 weeks ago         237MB
+hello-world         latest              fce289e99eb9        14 months ago       1.84kB
+```
+
+### 与宿主机复制文件
+
+使用`docker cp`命令，docker容器内路径前加`<容器name/id>:`标识。
+
+```sh
+[root@localhost temp]# ls
+hello.tar
+[root@localhost temp]# docker cp 0c:/home/aaa ./
+[root@localhost temp]# ls
+aaa  hello.tar
+```
+
+## 镜像使用
+
+### 查看
+
+```sh
+docker images
+[root@localhost temp]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test/hello          v1                  3c1a49673aae        5 seconds ago       1.85kB
+centos              latest              470671670cac        7 weeks ago         237MB
+hello-world         latest              fce289e99eb9        14 months ago       1.84kB
+```
+
+选项说明：
+
+- **REPOSITORY：**表示镜像的仓库源
+- **TAG：**镜像的标签
+- **IMAGE ID：**镜像ID
+- **CREATED：**镜像创建时间
+- **SIZE：**镜像大小
+
+### 获取新镜像
+
+如果直接使用`docker run <镜像>`，当本地不存在该镜像时，会自动从公共仓库下载。
+
+也可以使用`docker pull <镜像>`下载。
+
+### 删除镜像
+
+```sh
+docker rmi <镜像>
+[root@localhost temp]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test/hello          v1                  3c1a49673aae        5 minutes ago       1.85kB
+centos              latest              470671670cac        7 weeks ago         237MB
+hello-world         latest              fce289e99eb9        14 months ago       1.84kB
+[root@localhost temp]# docker rmi test/hello:v1 
+Untagged: test/hello:v1
+Deleted: sha256:3c1a49673aae7b946b37c06ac88e4576af551f3924b67cdf473a12b62f435a09
+Deleted: sha256:603326ea154eb574206f85ee9e947a9e1791363cb67b60d9969ce363335022c3
+```
+
+### 更新镜像
+
+更新镜像首先需要启动一个容器，运行容器后，对内容进行修改。然后可以通过commit来保存容器的修改即为更新镜像。
+
+```sh
+[root@localhost temp]# docker exec -it centos /bin/bash
+[root@016c314dde0e /]# ls
+bin  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[root@016c314dde0e /]# cd home/
+[root@016c314dde0e home]# ls
+[root@016c314dde0e home]# touch aaa
+[root@016c314dde0e home]# exit
+exit
+[root@localhost temp]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+016c314dde0e        centos              "/bin/bash"         4 hours ago         Up 4 hours                              centos
+[root@localhost temp]# docker commit -m="更新测试" -a="sloera" 016 sloera/centos:v1
+sha256:c48b282a5ea728abcadccb193eaac703d00bc394ef87197a427c3bf2cd5c9ec4
+[root@localhost temp]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+sloera/centos       v1                  c48b282a5ea7        13 seconds ago      237MB
+centos              latest              470671670cac        7 weeks ago         237MB
+hello-world         latest              fce289e99eb9        14 months ago       1.84kB
+```
+
+提交参数说明：
+
+- **-m:** 提交的描述信息
+- **-a:** 指定镜像作者
+- **016：**容器 ID，唯一标识即可
+- **sloera/centos:v1:** 指定要创建的目标镜像名
+
+启用新镜像测试
+
+```sh
+[root@localhost temp]# docker stop centos 
+centos
+[root@localhost temp]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[root@localhost temp]# docker run -tid sloera/centos:v1 /bin/bash #可用--name指定容器名称
+0c2f836fc15c6e4d3af65bc57f9695e1304d0b35dcec0a6323666a3328592d27
+[root@localhost temp]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+0c2f836fc15c        sloera/centos:v1    "/bin/bash"         16 seconds ago      Up 15 seconds                           nice_feynman
+[root@localhost temp]# docker exec -it 0c /bin/bash
+[root@0c2f836fc15c /]# ls home/
+aaa
+
 ```
 
