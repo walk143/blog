@@ -205,6 +205,70 @@ skip_render: [README.md]          # 忽略文档清单
 
 百度和Google的站点地图生成插件
 
+```sh
+cnpm install hexo-generator-baidu-sitemap --save
+cnpm install hexo-generator-sitemap --save
+```
+
+### 站点配置文件
+
+```yaml
+# 站点地图
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+```
+
+### 百度站长平台设置
+
+<https://ziyuan.baidu.com/site/index>
+
+在`用户中心/站点管理`添加一个新的网站
+
+![1583656526572](hexo之next主题/1583656526572.png)
+
+选择站点属性后进行`验证网站`
+
+下载验证文件放置到`themes\next\source`目录下
+
+```sh
+hexo clean;hexo g -d;
+#gitee上更新部署后，点击完成验证
+```
+
+### 链接主动提交
+
+1. 安装依赖
+
+   ```sh
+   npm install hexo-baidu-url-submit --save
+   ```
+
+2. 站点配置文件
+
+   ```yaml
+   #主动推送
+   baidu_url_submit:
+     count: 5 ## 提交最新的五个链接
+     host: sloera.gitee.io ## 百度站长平台中注册的域名
+     token: your_token  ## 准入秘钥
+     path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+   ```
+
+   加入新的deployer
+
+   ```yaml
+   deploy:
+   - type: git
+     repo: git@gitee.com:sloera/sloera.git
+     branch: master
+   - type: baidu_url_submitter ## 添加这里内容即可
+   ```
+
+插件会在public根目录下生成`baidu_urls.txt`文件，当执行`hexo d(hexo g -d等同)`时，会自动提交到git和百度站点。
+
 ## 图片点击放大查看
 
 1. 安装依赖
@@ -220,4 +284,8 @@ skip_render: [README.md]          # 忽略文档清单
    fancybox: true
    ```
 
-   
+# 参考链接
+
+> <https://zhuanlan.zhihu.com/p/106060640>
+>
+> <https://www.jianshu.com/p/f8ec422ebd52>

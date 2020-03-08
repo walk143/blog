@@ -118,12 +118,28 @@ search:
   field: post
   content: true
   format: html
+
+# 站点地图
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+#主动推送
+baidu_url_submit:
+  count: 5 ## 提交最新的五个链接
+  host: sloera.gitee.io ## 百度站长平台中注册的域名
+  token: Q8PhIAF87YfUxoaV ## 准入秘钥
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
 ## Themes: https://hexo.io/themes/
 theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: git@gitee.com:sloera/sloera.git
   branch: master
+- type: baidu_url_submitter ## 添加这里内容即可
