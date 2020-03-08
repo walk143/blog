@@ -13,7 +13,7 @@ timezone: Asia/Shanghai        # 网站的时区
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: sloera.gitee.io      # 网站的url，如果不在域名根目录，应包含子目录，且root要设置为`/子目录/`
+url: https://sloera.gitee.io      # 网站的url，如果不在域名根目录，应包含子目录，且root要设置为`/子目录/`
 root: /                   # 网站的根目录
 permalink: :year/:month/:day/:title/    #文章永久链接的形成模版。每一篇文章都有唯一的url。
 permalink_defaults:        #文章永久链接中，各部分的默认值。
@@ -129,7 +129,7 @@ baidusitemap:
 #主动推送
 baidu_url_submit:
   count: 5 ## 提交最新的五个链接
-  host: sloera.gitee.io ## 百度站长平台中注册的域名
+  host: https://sloera.gitee.io ## 百度站长平台中注册的域名
   token: Q8PhIAF87YfUxoaV ## 准入秘钥
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 

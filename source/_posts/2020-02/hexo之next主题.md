@@ -252,7 +252,7 @@ hexo clean;hexo g -d;
    #主动推送
    baidu_url_submit:
      count: 5 ## 提交最新的五个链接
-     host: sloera.gitee.io ## 百度站长平台中注册的域名
+     host: https://sloera.gitee.io ## 百度站长平台中注册的域名
      token: your_token  ## 准入秘钥
      path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
    ```

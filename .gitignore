@@ -29,3 +29,6 @@ themes/next/source/css/_common/components/post/*
 !themes/next/source/css/_common/components/post/post.styl
 # 临时文件
 .~*.md
+
+# 编辑器
+.idea
