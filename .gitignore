@@ -18,5 +18,14 @@ themes/next/source/*
 themes/next/source/images/*
 !/themes/next/source/images/*.jpg
 
+!themes/next/source/css
+themes/next/source/css/*
+!themes/next/source/css/_common
+themes/next/source/css/_common/*
+!themes/next/source/css/_common/components
+themes/next/source/css/_common/components/*
+!themes/next/source/css/_common/components/post
+themes/next/source/css/_common/components/post/*
+!themes/next/source/css/_common/components/post/post.styl
 # 临时文件
 .~*.md
