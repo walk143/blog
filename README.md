@@ -1,5 +1,12 @@
 # 博客源码管理
 
+## hexo环境安装
+
+```sh
+cnpm install hexo-cli -g
+cnpm install
+```
+
 ## 常用命令
 
 ```sh
