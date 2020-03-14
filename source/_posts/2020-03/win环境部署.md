@@ -88,6 +88,87 @@ Windows Registry Editor Version 5.00
 
 `GIT_PATH:D:\Softs\PortableGit`,添加系统变量`Path:path;%GIT_PATH%\bin`
 
+# chrome
+
+~~插件离线安装。
+
+新安装的chrome。在地址栏输入`chrome://extensions`，打开`开发者模式`，将下载好的crx拖入后，可能会提示`只能通过Chrome网上应用店添加此项内容`。此时可以将crx文件解压，用chrome的`加载已解压的扩展程序`来添加，可以看到扩展程序的`id`。如果不可启动，通过组策略将id添加到白名单，通过crx重新添加。~~
+
+在[极简插件](https://chrome.zzzmh.cn/index)下载[谷歌上网助手](https://chrome.zzzmh.cn/info?token=cieikaeocafmceoapfogpffaalkncpkc)，用临时邮箱注册一个账号，通过助手访问谷歌商店然后下载插件。
+
+## Quick QR Code
+
+https://chrome.google.com/webstore/detail/quick-qr-code-generator/afpbjjgbdimpioenaedcjgkaigggcdpp?utm_source=chrome-ntp-icon
+将当前网址生成二维码
+
+## Keepass Http Connector
+
+https://chrome.google.com/webstore/detail/keepasshttp-connector/dafgdjggglmmknipkhngniifhplpcldb?utm_source=chrome-ntp-icon
+连接keepass密码管理器
+
+点击进行设置。进行`Connected Databases`设置。打开keepass客户端软件，点击插件设置的`connect`会弹出连接页面.
+
+## floccus
+
+https://chrome.google.com/webstore/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg?utm_source=chrome-ntp-icon
+
+设置见{% post_link 2020-02/浏览器书签同步floccus %}。
+
+## vimium
+
+https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?utm_source=chrome-ntp-icon
+vim方式通过键盘控制浏览器行为
+
+## infinity
+
+https://chrome.google.com/webstore/detail/infinity-new-tab-pro/nnnkddnnlpamobajfibfdgfnbcnkgngh?utm_source=chrome-ntp-icon
+自定义新的标签页
+
+## OneTab
+
+https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon
+可以将标签页转换成一个列表暂存，节省内存。
+
+## 划词翻译
+
+https://chrome.google.com/webstore/detail/%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/ikhdkkncnoglghljlkmcimlnlhkeamad?utm_source=chrome-ntp-icon
+翻译
+
+## Adblock Plus
+
+https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?utm_source=chrome-ntp-icon
+广告拦截器
+
+## Tampermonkey
+
+https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=chrome-ntp-icon
+浏览器插件脚本
+
+## IE Tab
+
+https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon
+兼容ie内核
+
+## Vue.js devtools
+
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?utm_source=chrome-ntp-icon
+Vue调试插件
+
+## Extension Manager
+
+https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco?utm_source=chrome-ntp-icon
+扩展管理器
+
+## Octotree
+
+https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc?utm_source=chrome-ntp-icon
+github树形展示
+
+## JSON-handle
+
+https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?utm_source=chrome-ntp-icon
+处理json数据
+
 
 # 说明
 
