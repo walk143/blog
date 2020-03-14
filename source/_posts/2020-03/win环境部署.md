@@ -84,9 +84,70 @@ Windows Registry Editor Version 5.00
 
 # git
 
-添加`git`系统环境变量<sub>path</sub>。
+## 环境变量设置
 
-`GIT_PATH:D:\Softs\PortableGit`,添加系统变量`Path:path;%GIT_PATH%\bin`
+添加`git`系统环境变量<sub>path</sub>。`GIT_PATH:D:\Softs\PortableGit`,添加系统变量`Path:path;%GIT_PATH%\bin`
+
+## 生成密钥
+
+重新安装后需要先删除历史host。`rm ~/.ssh/known_hosts`。然后用`git-bash`执行（一定要用git-bash)，`ssh -T git@gitee.com`(或其他的地址如git@github.com)。重新生成`known_hosts`。`config`配置文件如下：
+```yaml
+Host walk143
+  User walk143
+  Hostname  github.com
+  PreferredAuthentications publickey
+  IdentityFile D:\Softs\PortableGit\.ssh\sloera_qq_rsa
+Host nickerg
+  User nickerg
+  Hostname  github.com
+  PreferredAuthentications publickey
+  IdentityFile D:\Softs\PortableGit\.ssh\nickerg_inspur_rsa
+Host gitee.com #git@gitee.com:sloera/sloera.git中的gitee.com
+  User sloera
+  Hostname  gitee.com
+  PreferredAuthentications publickey
+  IdentityFile D:\Softs\PortableGit\.ssh\gitee_163_rsa
+```
+
+详情见{% post_link 2020-02/git %}
+
+
+# wGesture
+
+http://www.yingdev.com/projects/wgestures
+鼠标手势操作
+
+# listary
+
+https://www.listary.com/
+快速查找文件。利用此特性可通过搜索可执行应用程序来启动应用。
+
+# keepass
+
+[官网](https://keepass.info/)。[下载地址](https://sourceforge.net/projects/keepass/files/KeePass%202.x/2.44/KeePass-2.44.zip/download)
+密码管理器。
+
+和浏览器连接使用需要安装`KeePassHttp.plgx`插件。
+
+# 小狼毫
+
+[官网](https://rime.im/download/)
+
+等待安装程序运行结束，运行`WeaselServer.exe`启动小狼毫算法服务。使用[gitee/weasel](https://gitee.com/sloera/weasel)的配置。
+
+# 网易云
+
+https://music.163.com/
+
+# Ditto
+
+[官网](http://ditto-cp.sourceforge.net/)。
+剪贴版复制工具。
+
+# Office
+
+见{% post_link 2020-02/outlook邮件设置 %}
+
 
 # chrome
 
@@ -168,6 +229,11 @@ github树形展示
 
 https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?utm_source=chrome-ntp-icon
 处理json数据
+
+## Proxy SwitchyOmega
+
+https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN
+管理和切换多个代理设置。
 
 
 # 说明
