@@ -164,6 +164,14 @@ Host gitee.com #git@gitee.com:sloera/sloera.git中的gitee.com
 <https://github.com/zhongyang219/TrafficMonitor>。或{% asset_link TrafficMonitor_V1.76.7z 博客下载 %}
 显示当前网速及CPU、内存占用，配置文件见[TrafficMonitor](https://gitee.com/sloera/configuration/tree/master/TrafficMonitor)
 
+# ResilioSync
+
+[官网下载](https://www.resilio.com/individuals/)。或{% asset_link Reslio_Sync_x64.exe 博客下载 %}。
+
+个人用户无法选择性同步，可使用{% asset_link Resilio_Sync_Personal.btskey Pro激活 %}升级到Pro版。
+
+安装后可在使用[同步范](https://syncfan.com/)的秘钥`BCWHZRSLANR64CGPTXRE54ENNSIUE5SMO`连接。
+
 # chrome
 
 ~~插件离线安装。~~
