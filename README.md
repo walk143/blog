@@ -3,6 +3,8 @@
 ## hexo环境安装
 
 ```sh
+npm install cnpm -g --registry=https://registry.npm.taobao.org
+npm config set registry https://registry.npm.taobao.org
 cnpm install h exo-cli -g --save
 cnpm install
 ```
