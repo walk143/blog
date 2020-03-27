@@ -176,7 +176,8 @@ Host gitee.com #git@gitee.com:sloera/sloera.git中的gitee.com
 
 [官网下载](https://mobaxterm.mobatek.net/download-home-edition.html)。
 
-用于远程桌面连接等的终端增强工具
+用于远程桌面连接等的终端增强工具.或{% asset_link MobaXterm_Portable_v20.1.zip 博客下载 %}。
+
 
 
 # chrome
