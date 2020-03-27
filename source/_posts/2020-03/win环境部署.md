@@ -172,6 +172,13 @@ Host gitee.com #git@gitee.com:sloera/sloera.git中的gitee.com
 
 安装后可在使用[同步范](https://syncfan.com/)的秘钥`BCWHZRSLANR64CGPTXRE54ENNSIUE5SMO`连接。
 
+# MobaXterm(Enhanced terminal)
+
+[官网下载](https://mobaxterm.mobatek.net/download-home-edition.html)。
+
+用于远程桌面连接等的终端增强工具
+
+
 # chrome
 
 ~~插件离线安装。~~
