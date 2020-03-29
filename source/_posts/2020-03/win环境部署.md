@@ -178,7 +178,13 @@ Host gitee.com #git@gitee.com:sloera/sloera.git中的gitee.com
 
 用于远程桌面连接等的终端增强工具.或{% asset_link MobaXterm_Portable_v20.1.zip 博客下载 %}。
 
+# xmind-zen
 
+[下载地址](https://www.xmind.cn/xmind/thank-you-for-downloading/)
+
+思维导图工具
+
+或`MindLine`。待定
 
 # chrome
 
@@ -235,6 +241,14 @@ vim方式通过键盘控制浏览器行为
 
 [官网](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=chrome-ntp-icon)
 浏览器插件脚本
+
+在`管理面板>实用工具>云`中可进行同步。
+* 类型：WebDAV
+* URL：https://dav.jianguoyun.com/dav/path/
+  注：`Tampermonkey`会自动在上述`path/`目录下，新建一个`Tampermonkey`目录存入备份。
+* 登录/密码：坚果云中的用户密码。
+
+**导出的时候，默认生成的名称具有特殊字符，会导致备份出错。自己重命名一个即可。**
 
 ## IE Tab
 

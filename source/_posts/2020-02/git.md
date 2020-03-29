@@ -248,3 +248,17 @@ git rm -r --cached themes/landscape/* #递归目录取消跟踪目录下所有�
 git config --global core.editor vi
 ```
 
+## 从历史记录中永久删除某个文件的追踪
+
+```sh
+# 删除历史
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path-to-your-remove-file' --prune-empty --tag-name-filter cat -- --all
+# 重新推送
+git push origin master --force --all
+# 回收空间
+rm -rf .git/refs/original/
+git reflog expire --expire=now --all
+git gc --prune=now
+git gc --aggressive --prune=now
+
+```
