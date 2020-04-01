@@ -19,6 +19,7 @@ hexo clean;hexo g -d;hexo s;
 # 清理内存，生成并部署文件到服务器，运行服务
 
 hexo new title -p /path/title
+#如：hexo new win-jenkins安装 -p 2020-04/win-jenkins安装
 #指定新文章生成的目录，需要写两次title。默认是pages页面
 
 hexo d; # 单独部署到服务器命令
