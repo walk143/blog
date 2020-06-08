@@ -115,6 +115,7 @@ categories:
    
    git branch --set-upstream-to=origin/master master #当服务器新建为空仓库时，由于尚未生成分支，此条语句不可执行。使用以下命令将本地仓库推送到服务器
    #其中 origin/master 代表上述添加别名仓库的master分支 最后的master代表关联到本地的master分支
+   #当本地目录已有文件，需要更新远程 先执行 `git branch -B master` 新建一个分支 
    
    git push --set-upstream origin master
    #关联当前分支到origin 的 master分支
