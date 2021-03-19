@@ -10,7 +10,7 @@ public/
 # !/themes/next
 ##### 如果要排除多层子目录下的文件，必须一层层包含。
 themes/next/*
-!/themes/next/_config.yml
+/themes/next/_config.yml
 
 !themes/next/source/
 themes/next/source/*

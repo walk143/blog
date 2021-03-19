@@ -5,8 +5,10 @@
 ```sh
 npm install cnpm -g --registry=https://registry.npm.taobao.org
 npm config set registry https://registry.npm.taobao.org
-cnpm install h exo-cli -g --save
+cnpm install hexo-cli -g --save
 cnpm install
+rm -rf themes/next/
+git clone https://hub.fastgit.org/next-theme/hexo-theme-next themes/next
 ```
 
 ## 常用命令
