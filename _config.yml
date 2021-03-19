@@ -142,4 +142,4 @@ deploy:
 - type: git
   repo: git@gitee.com:sloera/sloera.git
   branch: master
-- type: baidu_url_submitter ## 添加这里内容即可
+#- type: baidu_url_submitter ## 添加这里内容即可

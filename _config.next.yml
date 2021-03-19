@@ -36,10 +36,10 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
+# scheme: Muse
 #scheme: Mist
 #scheme: Pisces
-#scheme: Gemini
+scheme: Gemini
 
 # Dark Mode
 darkmode: false
@@ -80,11 +80,11 @@ creative_commons:
 # Value before `||` delimiter is the target link, value after `||` delimiter is the name of Font Awesome icon.
 # External url should start with http:// or https://
 menu:
-  #home: / || fa fa-home
+  home: / || fa fa-home
   #about: /about/ || fa fa-user
-  #tags: /tags/ || fa fa-tags
-  #categories: /categories/ || fa fa-th
-  #archives: /archives/ || fa fa-archive
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
@@ -92,7 +92,7 @@ menu:
 # Enable / Disable menu icons / item badges.
 menu_settings:
   icons: true
-  badges: false
+  badges: true # 菜单显示数量
 
 
 # ---------------------------------------------------------------
@@ -102,7 +102,7 @@ menu_settings:
 
 sidebar:
   # Sidebar Position.
-  position: left
+  position: right
   #position: right
 
   # Manual define the sidebar width. If commented, will be default for:
@@ -123,9 +123,10 @@ sidebar:
   offset: 12
 
 # Sidebar Avatar
+# 侧栏个人头像图片。也支持动态 gif
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/sloera.jpg
   # If true, the avatar will be dispalyed in circle.
   rounded: false
   # If true, the avatar will be rotated with the cursor.
@@ -139,8 +140,11 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  #GitHub: https://github.com/yourname || fab fa-github
-  #E-Mail: mailto:yourname@gmail.com || fa fa-envelope
+  GitHub: https://github.com/walk143 || fab fa-github
+  #GitHub: https://gitee.com/sloera/projects || fab fa-github
+  Gitee: https://gitee.com/sloera/projects || fab fa-git
+  E-Mail: mailto:sloera@163.com || fa fa-envelope
+  #RSS: /atom.xml || fas fa-rss
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -152,15 +156,15 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true # 社交链接只显示图片
   transition: false
 
 # Blog rolls
 links_settings:
-  icon: fa fa-globe
-  title: Links
+  icon: fa fa-globe # 链接图标
+  title: Links # 链接标签文字
   # Available values: block | inline
-  layout: block
+  layout: block # 链接样式
 
 links:
   #Title: https://example.com
@@ -203,14 +207,15 @@ footer:
   # Icon between year and copyright info.
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/icons
-    name: fa fa-heart
+    # name: fa fa-heart
+    name: user
     # If you want to animate the icon, set it to true.
     animated: false
     # Change the color of icon, using Hex Code.
     color: "#ff0000"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright:
+  copyright: "sloera"
 
   # Powered by Hexo & NexT
   powered: true
@@ -241,18 +246,25 @@ read_more_btn: true
 
 # Post meta display settings
 post_meta:
-  item_text: true
-  created_at: true
-  updated_at:
+  item_text: true # 是否显示发表于这几个文字
+  created_at: true # 文章创建日期
+  updated_at: # 文章修改日期
     enable: true
     another_day: true
-  categories: true
+  categories: true # 文章所属分类
 
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
+  symbols: true                # 文章字数统计
+  time: true                   # 文章阅读时长
+  total_symbols: true          # 站点总字数统计
+  total_time: true             # 站点总阅读时长
+  exclude_codeblock: false     # 排除代码字数统计
   separated_meta: true
   item_text_total: false
+  awl: 4
+  wpm: 275
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -277,6 +289,7 @@ follow_me:
   #Twitter: https://twitter.com/username || fab fa-twitter
   #Telegram: https://t.me/channel_name || fab fa-telegram
   #WeChat: /images/wechat_channel.jpg || fab fa-weixin
+  #ATOM: /atom.xml || rss
   #RSS: /atom.xml || fa fa-rss
 
 # Related popular posts
@@ -370,9 +383,9 @@ codeblock:
 back2top:
   enable: true
   # Back to top in sidebar.
-  sidebar: false
+  sidebar: true
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
@@ -479,6 +492,20 @@ yandex_site_verification:
 # Baidu Webmaster tools verification.
 # See: https://ziyuan.baidu.com/site
 baidu_site_verification:
+
+# feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
 
 
 # ---------------------------------------------------------------
