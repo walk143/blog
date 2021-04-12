@@ -29,7 +29,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
           # 注意替换为你的 GitHub 源仓库地址
-          source-repo: "git@github.com:walk143/blog.git"
+          source-repo: "https://github.com/walk143/blog.git"
           # 注意替换为你的 Gitee 目标仓库地址
           destination-repo: "git@gitee.com:sloera/sloera.git"
       - name: deploy hexo to gitee page
