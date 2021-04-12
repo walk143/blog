@@ -9,24 +9,24 @@ public/
 /themes/landscape/
 # !/themes/next
 ##### 如果要排除多层子目录下的文件，必须一层层包含。
-themes/next/*
-/themes/next/_config.yml
-
-!themes/next/source/
-themes/next/source/*
-!themes/next/source/images
-themes/next/source/images/*
-!/themes/next/source/images/*.jpg
-
-!themes/next/source/css
-themes/next/source/css/*
-!themes/next/source/css/_common
-themes/next/source/css/_common/*
-!themes/next/source/css/_common/components
-themes/next/source/css/_common/components/*
-!themes/next/source/css/_common/components/post
-themes/next/source/css/_common/components/post/*
-!themes/next/source/css/_common/components/post/post.styl
+#themes/next/*
+#/themes/next/_config.yml
+#
+#!themes/next/source/
+#themes/next/source/*
+#!themes/next/source/images
+#themes/next/source/images/*
+#!/themes/next/source/images/*.jpg
+#
+#!themes/next/source/css
+#themes/next/source/css/*
+#!themes/next/source/css/_common
+#themes/next/source/css/_common/*
+#!themes/next/source/css/_common/components
+#themes/next/source/css/_common/components/*
+#!themes/next/source/css/_common/components/post
+#themes/next/source/css/_common/components/post/*
+#!themes/next/source/css/_common/components/post/post.styl
 # 临时文件
 .~*.md
 
