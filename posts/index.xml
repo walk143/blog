@@ -14,7 +14,7 @@
       
       <guid>http://sloera.gitee.io/sloera/posts/gitee&#43;hugo/</guid>
       <description>hugo+gitee 搭建个人博客 安装hugo  https://www.gohugo.org/
- 二进制下载 # https://github.com/spf13/hugo/releases wget https://hub.fastgit.org/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-64bit.tar.gz tar zcf hugo_0.89.4_Linux-64bit.tar.gz 生成站点 # 如下会在当前路径新建 hugo(后hugo) 目录，用于存放站点 hugo new site hugo cd hugo # 创建主题 cd themes git clone https://hub.fastgit.org/g1eny0ung/hugo-theme-dream.git dream # 创建文章 hugo new posts/gitee+hugo.md 部署 # 运行 hugo hugo server # 部署 hugo --theme=dream --baseUrl=&amp;#34;http://sloera.gitee.io/sloera/&amp;#34; --buildDrafts 发布  Gitee 新建仓库 Blog 将 public 目录 push 到远端仓库 启动 Pages 服务  </description>
+ 二进制下载 # https://github.com/spf13/hugo/releases wget https://hub.fastgit.org/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-64bit.tar.gz tar zcf hugo_0.89.4_Linux-64bit.tar.gz 生成站点 # 如下会在当前路径新建 hugo(后hugo) 目录，用于存放站点 hugo new site hugo cd hugo # 创建主题 cd themes git clone https://hub.fastgit.org/g1eny0ung/hugo-theme-dream.git dream # 创建文章 hugo new posts/gitee+hugo.md 部署 # 运行 hugo hugo server --theme=dream --buildDrafts # 部署 hugo --theme=dream --baseUrl=&amp;#34;http://sloera.gitee.io/sloera/&amp;#34; --buildDrafts 发布  Gitee 新建仓库 Blog 将 public 目录 push 到远端仓库 启动 Pages 服务  cd public git init git remote add origin git@gitee.</description>
     </item>
     
   </channel>
