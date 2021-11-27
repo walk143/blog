@@ -110,9 +110,47 @@
   
   <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
     <article class="ui attached segment card dream-card">
+  <a class="image" href="http://sloera.gitee.io/sloera/posts/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/">
+    
+    <img src="/sloera/img/default2.jpg" alt="点词库转Rime" />
+    
+  </a>
+
+  <div class="content">
+    <h2 class="ui medium header">
+      <a href="/sloera/posts/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/">点词库转Rime</a>
+    </h2>
+    <div class="meta">
+      <p class="date">
+        Saturday, Nov 27, 2021
+      </p>
+    </div>
+    <div class="description">
+      点儿词库转Rime 记录将点儿词库转换为Rime格式的方法
+下载点儿词库 从群313225526的群文件：点儿词库最新版本&amp;历史版本 中下载最新版本的词库。最新为“点儿词库2021冬”
+ 或从网站 gaokuan.ys168.com 下载
+ 点儿词库的格式为编码 词条1 词条2……，分隔符为空格。同文所需格式为词条\t编码\t词频
+ ~:生僻字词 ^:用户词组 !联想词组  开始转换 先将点儿词库中的词条分开为单行。如编码 词条格式。 # 在vim中执行 # 将替换记录到宏中，有的编码，会有十几个词条，所以统一执行100次 # 一次替换一行 qr :%s/^\(\S*\)\( \S*\)\( .*\).*$/\1\2\r\1\3 q # 记录宏结束 100@r 将编码顺序修改为Rime格式 # vim 中执行 :%s/^\(\S*\) \(\S*\)$/\2\t\1\t4 处理生僻字 点儿词库中以~开头的为生僻字，统一提取到单独的文件，方便统一调频、单独挂载之类的
+# vim 中执行 # 移动~开头的到尾部，复制到新文件或调整编码 :g/^\~.*\n/normal ddGp 移动后词条数
+移动后生僻字词条数
+$符号单独处理 # vim 中执行 ## 替换 $20 为空格 :%s/\$20/ /g ## 删除其余带$的，如命令直通车之类的 # 统计带$的数量 :%s/^.*\$.*\t.*$//gn # 删除剩余的$ :%s/^.*\$.*\t.*$\n//g 至此处理结束。可将~开头的词条，移动到单独的一个文件。然后删除开头的~符
+    </div>
+  </div>
+
+  <div class="extra content">
+    <div class="author">@&nbsp;</div>
+    <div class="reading-time">
+      <i class="clock icon"></i>1 minute read</div>
+  </div>
+</article>
+
+  </div>
+  
+  <div class="sixteen wide mobile eight wide tablet eight wide computer four wide large screen four wide widescreen column dream-column">
+    <article class="ui attached segment card dream-card">
   <a class="image" href="http://sloera.gitee.io/sloera/posts/gitee&#43;hugo/">
     
-    <img src="/sloera/img/default4.jpg" alt="Gitee&#43;hugo" />
+    <img src="/sloera/img/default1.jpg" alt="Gitee&#43;hugo" />
     
   </a>
 

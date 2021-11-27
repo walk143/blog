@@ -6,7 +6,23 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Nov 2021 19:45:18 +0800</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Nov 2021 15:07:42 +0800</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>点词库转Rime</title>
+      <link>http://sloera.gitee.io/sloera/posts/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
+      <pubDate>Sat, 27 Nov 2021 15:07:42 +0800</pubDate>
+      
+      <guid>http://sloera.gitee.io/sloera/posts/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</guid>
+      <description>点儿词库转Rime 记录将点儿词库转换为Rime格式的方法
+下载点儿词库 从群313225526的群文件：点儿词库最新版本&amp;amp;历史版本 中下载最新版本的词库。最新为“点儿词库2021冬”
+ 或从网站 gaokuan.ys168.com 下载
+ 点儿词库的格式为编码 词条1 词条2……，分隔符为空格。同文所需格式为词条\t编码\t词频
+ ~:生僻字词 ^:用户词组 !联想词组  开始转换 先将点儿词库中的词条分开为单行。如编码 词条格式。 # 在vim中执行 # 将替换记录到宏中，有的编码，会有十几个词条，所以统一执行100次 # 一次替换一行 qr :%s/^\(\S*\)\( \S*\)\( .*\).*$/\1\2\r\1\3 q # 记录宏结束 100@r 将编码顺序修改为Rime格式 # vim 中执行 :%s/^\(\S*\) \(\S*\)$/\2\t\1\t4 处理生僻字 点儿词库中以~开头的为生僻字，统一提取到单独的文件，方便统一调频、单独挂载之类的
+# vim 中执行 # 移动~开头的到尾部，复制到新文件或调整编码 :g/^\~.*\n/normal ddGp 移动后词条数
+移动后生僻字词条数
+$符号单独处理 # vim 中执行 ## 替换 $20 为空格 :%s/\$20/ /g ## 删除其余带$的，如命令直通车之类的 # 统计带$的数量 :%s/^.*\$.*\t.*$//gn # 删除剩余的$ :%s/^.*\$.*\t.*$\n//g 至此处理结束。可将~开头的词条，移动到单独的一个文件。然后删除开头的~符</description>
+    </item>
+    
     <item>
       <title>Gitee&#43;hugo</title>
       <link>http://sloera.gitee.io/sloera/posts/gitee&#43;hugo/</link>
