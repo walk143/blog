@@ -6,7 +6,16 @@
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Nov 2021 15:07:42 +0800</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Dec 2021 22:23:30 +0800</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>http://sloera.gitee.io/sloera/posts/git/</link>
+      <pubDate>Wed, 08 Dec 2021 22:23:30 +0800</pubDate>
+      
+      <guid>http://sloera.gitee.io/sloera/posts/git/</guid>
+      <description>git相关操作 关联已有代码到一个已存在的远程分支 # 初始化当前目录为一个仓库 git init # 添加远程仓库地址 git remote add origin git@gitee.com:sloera/weasel.git # 拉取远程仓库 git fetch # 备份当前目录 mv -r * ../tmp # 从远程分支创建一个本地分支 git checkout -b master origin/master # 恢复之前文件 mv -r ../tmp . # 查看状态 git status # 提交或推送 git commit -am &amp;#34;temp&amp;#34; git push &amp;lt;++&amp;gt;</description>
+    </item>
+    
     <item>
       <title>点词库转Rime</title>
       <link>http://sloera.gitee.io/sloera/posts/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
@@ -21,6 +30,15 @@
 # vim 中执行 # 移动~开头的到尾部，复制到新文件或调整编码 :g/^\~.*\n/normal ddGp 移动后词条数
 移动后生僻字词条数
 $符号单独处理 # vim 中执行 ## 替换 $20 为空格 :%s/\$20/ /g ## 删除其余带$的，如命令直通车之类的 # 统计带$的数量 :%s/^.*\$.*\t.*$//gn # 删除剩余的$ :%s/^.*\$.*\t.*$\n//g 至此处理结束。可将~开头的词条，移动到单独的一个文件。然后删除开头的~符</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://sloera.gitee.io/sloera/about/</link>
+      <pubDate>Fri, 26 Nov 2021 19:52:49 +0800</pubDate>
+      
+      <guid>http://sloera.gitee.io/sloera/about/</guid>
+      <description></description>
     </item>
     
     <item>
