@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>win环境部署 - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="win环境部署" />
+<meta property="og:description" content="介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-03-13T22:56:46+00:00" />
+<meta property="article:modified_time" content="2020-03-13T22:56:46+00:00" />
+
+<meta itemprop="name" content="win环境部署">
+<meta itemprop="description" content="介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont"><meta itemprop="datePublished" content="2020-03-13T22:56:46+00:00" />
+<meta itemprop="dateModified" content="2020-03-13T22:56:46+00:00" />
+<meta itemprop="wordCount" content="2689">
+<meta itemprop="keywords" content="win,配置," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="win环境部署"/>
+<meta name="twitter:description" content="介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">win环境部署</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-13 </span>
+        <div class="post-category">
+            <a href="/categories/win/"> win </a>
+            <a href="/categories/%E9%85%8D%E7%BD%AE/"> 配置 </a>
+            </div>
+          <span class="more-meta"> 2689 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#互换ctrl-caps">互换ctrl caps</a></li>
+    <li><a href="#node">node</a></li>
+    <li><a href="#vscode">VSCode</a>
+      <ul>
+        <li><a href="#自定义设置">自定义设置</a></li>
+      </ul>
+    </li>
+    <li><a href="#右键菜单添加">右键菜单添加</a></li>
+    <li><a href="#powershell">powershell</a></li>
+    <li><a href="#git">git</a>
+      <ul>
+        <li><a href="#环境变量设置">环境变量设置</a></li>
+        <li><a href="#生成密钥">生成密钥</a></li>
+      </ul>
+    </li>
+    <li><a href="#wgesture">wGesture</a></li>
+    <li><a href="#listary">listary</a></li>
+    <li><a href="#keepass">keepass</a></li>
+    <li><a href="#小狼毫">小狼毫</a></li>
+    <li><a href="#网易云">网易云</a></li>
+    <li><a href="#ditto">Ditto</a></li>
+    <li><a href="#office">Office</a></li>
+    <li><a href="#trafficmonitor">TrafficMonitor</a></li>
+    <li><a href="#resiliosync">ResilioSync</a></li>
+    <li><a href="#mobaxtermenhanced-terminal">MobaXterm(Enhanced terminal)</a></li>
+    <li><a href="#xmind-zen">xmind-zen</a></li>
+    <li><a href="#chrome">chrome</a>
+      <ul>
+        <li><a href="#quick-qr-code">Quick QR Code</a></li>
+        <li><a href="#keepass-http-connector">Keepass Http Connector</a></li>
+        <li><a href="#floccus">floccus</a></li>
+        <li><a href="#vimium">vimium</a></li>
+        <li><a href="#infinity">infinity</a></li>
+        <li><a href="#onetab">OneTab</a></li>
+        <li><a href="#划词翻译">划词翻译</a></li>
+        <li><a href="#adblock-plus">Adblock Plus</a></li>
+        <li><a href="#tampermonkey">Tampermonkey</a></li>
+        <li><a href="#ie-tab">IE Tab</a></li>
+        <li><a href="#vuejs-devtools">Vue.js devtools</a></li>
+        <li><a href="#extension-manager">Extension Manager</a></li>
+        <li><a href="#octotree">Octotree</a></li>
+        <li><a href="#json-handle">JSON-handle</a></li>
+        <li><a href="#proxy-switchyomega">Proxy SwitchyOmega</a></li>
+      </ul>
+    </li>
+    <li><a href="#说明">说明</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>介绍win系统重装后的环境搭建。</p>
+<!-- more -->
+<h1 id="互换ctrl-caps">互换ctrl caps</h1>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_15210067/article/details/78260391">https://blog.csdn.net/qq_15210067/article/details/78260391</a></p>
+</blockquote>
+<p>修改注册表
+<code>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout</code>
+在菜单右键新建二进制项<code>Scancode Map</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> 
+</span><span class="w"></span><span class="m">03</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="l">1D 00 3A 00 </span><span class="w">
+</span><span class="w"></span><span class="l">3A 00 1D 00 00 00 00 00</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h1 id="node">node</h1>
+<p>重装系统后，环境变量会丢失。需要将<code>npm</code>路径添加到系统环境变量中。</p>
+<p>定位到<code>nodejs\npm</code>的路径，如<code>D:\Program Files\nodejs</code>,添加系统变量<sup>path</sup>。可先添加一个<code>变量名：NODE_PATH;变量值：D:\Program Files\nodejs</code>的变量，然后在<code>Path</code>中添加<code>%NODE_PATH%</code>。也可直接在<code>Path</code>中添加路径。</p>
+<p><code>npm</code>安装的全局模块默认在<code>%APPDATA%\npm</code>路径。所以还需要添加此路径到系统环境变量<code>Path</code>中。使得安装后的模块命令可直接调用。<strong>此处的<code>APPDATA</code>一定要大写，小写的<code>appdata</code>识别不出来，会导致变量出错</strong></p>
+<p>配置变量后安装<code>cnpm</code>代替<code>npm</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd">npm install cnpm -g --registry=https://registry.npm.taobao.org
+npm config set registry https://registry.npm.taobao.org
+npm config get registry
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="vscode">VSCode</h1>
+<p><a href="https://code.visualstudio.com/download">官网</a>
+轻量代码编辑器。可下载免安装装，用下述进行添加右键菜单。</p>
+<h2 id="自定义设置">自定义设置</h2>
+<ol>
+<li>添加<code>git-bash</code>为自定义终端</li>
+</ol>
+<p>修改<code>%APPDATA%\Code\User\settings.json</code>，添加<code>&quot;terminal.integrated.shell.windows&quot;: &quot;D:\\Softs\\PortableGit\\bin\\bash.exe&quot;</code>项。注意，如果在原有json末尾添加需要在上一项句末添加<code>,</code>。<strong>注意：不能为<code>D:\\Softs\\PortableGit\\usr\\bin\\bash.exe</code>，否则会导致加载的终端变量找不到<code>D:\\Softs\\PortableGit\\bin</code>，出现很多异常问题。</strong></p>
+<h1 id="右键菜单添加">右键菜单添加</h1>
+<p>修改注册表</p>
+<p>大体分为三类：</p>
+<ul>
+<li><code>HKEY_CLASSES_ROOT\*\shell</code>：对文件的菜单</li>
+<li><code>HKEY_CLASSES_ROOT\Directory\shell</code>：对目录的菜单</li>
+<li><code>HKEY_CLASSES_ROOT\Directory\Background\shell</code>：对空白处的菜单</li>
+</ul>
+<p>添加<code>VSCode</code>的示例如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-reg" data-lang="reg">Windows Registry Editor Version 5.00
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\*\shell\VSCode]</span>
+<span class="c1">;此行为注释，@为新建项的默认值 Icon为新建的一个值。在`.reg`文件中写路径需要加转义。直接修改注册表不需要转义</span>
+<span class="c1">;此项为打开文件的右键菜单</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;Edit with Code&#34;</span>
+<span class="na">&#34;Icon&#34;</span><span class="o">=</span><span class="s">&#34;D:\\Softs\\VSCode\\code.exe&#34;</span>
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\*\shell\VSCode\command]</span>
+<span class="c1">;command项说明右键执行的具体命令</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;\&#34;D:\\Softs\\VSCode\\Code.exe\&#34; \&#34;%1\&#34;&#34;</span>
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\Directory\shell\VSCode]</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;Open with Code&#34;</span>
+<span class="na">&#34;Icon&#34;</span><span class="o">=</span><span class="s">&#34;D:\\Softs\\VSCode\\Code.exe&#34;</span>
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\Directory\shell\VSCode\command]</span>
+<span class="c1">;注意目录的参数为 &#34;%V&#34;</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;\&#34;D:\\Softs\\VSCode\\Code.exe\&#34; \&#34;%V\&#34;&#34;</span>
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\Directory\Background\shell\VSCode]</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;Open with Code&#34;</span>
+<span class="na">&#34;Icon&#34;</span><span class="o">=</span><span class="s">&#34;D:\\Softs\\VSCode\\Code.exe&#34;</span>
+
+<span class="k">[</span><span class="nb">HKEY_CLASSES_ROOT</span><span class="k">\Directory\Background\shell\VSCode\command]</span>
+<span class="na">@</span><span class="o">=</span><span class="s">&#34;\&#34;D:\\Softs\\VSCode\\Code.exe\&#34; \&#34;%V\&#34;&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="powershell">powershell</h1>
+<p>禁止运行脚本。</p>
+<p>管理员权限运行<code>Power Shell</code>。输入<code>set-executionpolicy remotesigned</code>,交互输入<code>y</code></p>
+<h1 id="git">git</h1>
+<h2 id="环境变量设置">环境变量设置</h2>
+<p>添加<code>git</code>系统环境变量<sup>path</sup>。<code>GIT_PATH:D:\Softs\PortableGit</code>,添加系统变量<code>Path:path;%GIT_PATH%\bin</code></p>
+<h2 id="生成密钥">生成密钥</h2>
+<p>重新安装后需要先删除历史host。<code>rm ~/.ssh/known_hosts</code>。然后用<code>git-bash</code>执行（一定要用git-bash)，<code>ssh -T git@gitee.com</code>(或其他的地址如git@github.com)。重新生成<code>known_hosts</code>。<code>config</code>配置文件如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">Host walk143</span><span class="w">
+</span><span class="w">  </span><span class="l">User walk143</span><span class="w">
+</span><span class="w">  </span><span class="l">Hostname  github.com</span><span class="w">
+</span><span class="w">  </span><span class="l">PreferredAuthentications publickey</span><span class="w">
+</span><span class="w">  </span><span class="l">IdentityFile D:\Softs\PortableGit\.ssh\sloera_qq_rsa</span><span class="w">
+</span><span class="w"></span><span class="l">Host nickerg</span><span class="w">
+</span><span class="w">  </span><span class="l">User nickerg</span><span class="w">
+</span><span class="w">  </span><span class="l">Hostname  github.com</span><span class="w">
+</span><span class="w">  </span><span class="l">PreferredAuthentications publickey</span><span class="w">
+</span><span class="w">  </span><span class="l">IdentityFile D:\Softs\PortableGit\.ssh\nickerg_inspur_rsa</span><span class="w">
+</span><span class="w"></span><span class="l">Host gitee.com</span><span class="w"> </span><span class="c">#git@gitee.com:sloera/sloera.git中的gitee.com</span><span class="w">
+</span><span class="w">  </span><span class="l">User sloera</span><span class="w">
+</span><span class="w">  </span><span class="l">Hostname  gitee.com</span><span class="w">
+</span><span class="w">  </span><span class="l">PreferredAuthentications publickey</span><span class="w">
+</span><span class="w">  </span><span class="l">IdentityFile D:\Softs\PortableGit\.ssh\gitee_163_rsa</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>详情见{% post_link 2020-02/git %}</p>
+<h1 id="wgesture">wGesture</h1>
+<p><a href="http://www.yingdev.com/projects/wgestures">官网</a>
+鼠标手势操作</p>
+<h1 id="listary">listary</h1>
+<p><a href="https://www.listary.com/">官网</a>
+快速查找文件。利用此特性可通过搜索可执行应用程序来启动应用。</p>
+<h1 id="keepass">keepass</h1>
+<p><a href="https://keepass.info/">官网</a>。<a href="https://sourceforge.net/projects/keepass/files/KeePass%202.x/2.44/KeePass-2.44.zip/download">下载地址</a>
+密码管理器。</p>
+<p>和浏览器连接使用需要安装<code>KeePassHttp.plgx</code>插件。</p>
+<h1 id="小狼毫">小狼毫</h1>
+<p><a href="https://rime.im/download/">官网</a></p>
+<p>等待安装程序运行结束，运行<code>WeaselServer.exe</code>启动小狼毫算法服务。使用<a href="https://gitee.com/sloera/weasel">gitee/weasel</a>的配置。</p>
+<h1 id="网易云">网易云</h1>
+<p><a href="https://music.163.com/">官网</a></p>
+<h1 id="ditto">Ditto</h1>
+<p><a href="http://ditto-cp.sourceforge.net/">官网</a>。
+剪贴版复制工具。</p>
+<h1 id="office">Office</h1>
+<p>见{% post_link 2020-02/outlook邮件设置 %}</p>
+<h1 id="trafficmonitor">TrafficMonitor</h1>
+<p><a href="https://github.com/zhongyang219/TrafficMonitor">https://github.com/zhongyang219/TrafficMonitor</a>。或<a href="img/TrafficMonitor_V1.76.7z">TrafficMonitor_V1.76.7z</a>
+显示当前网速及CPU、内存占用，配置文件见<a href="https://gitee.com/sloera/configuration/tree/master/TrafficMonitor">TrafficMonitor</a></p>
+<h1 id="resiliosync">ResilioSync</h1>
+<p><a href="https://www.resilio.com/individuals/">官网下载</a>。或<a href="img/Reslio_Sync_x64.exe">Reslio_Sync_x64.exe</a></p>
+<p>个人用户无法选择性同步，可使用<a href="img/Resilio_Sync_Personal.btskey">Resilio_Sync_Personal.btskey</a></p>
+<p>安装后可在使用<a href="https://syncfan.com/">同步范</a>的秘钥<code>BCWHZRSLANR64CGPTXRE54ENNSIUE5SMO</code>连接。</p>
+<h1 id="mobaxtermenhanced-terminal">MobaXterm(Enhanced terminal)</h1>
+<p><a href="https://mobaxterm.mobatek.net/download-home-edition.html">官网下载</a>。</p>
+<p>用于远程桌面连接等的终端增强工具.或<a href="img/MobaXterm_Portable_v20.1.zip">MobaXterm_Portable_v20.1.zip</a></p>
+<h1 id="xmind-zen">xmind-zen</h1>
+<p><a href="https://www.xmind.cn/xmind/thank-you-for-downloading/">下载地址</a></p>
+<p>思维导图工具</p>
+<p>或<code>MindLine</code>。待定</p>
+<h1 id="chrome">chrome</h1>
+<p><del>插件离线安装。</del></p>
+<p><del>新安装的chrome。在地址栏输入<code>chrome://extensions</code>，打开<code>开发者模式</code>，将下载好的crx拖入后，可能会提示<code>只能通过Chrome网上应用店添加此项内容</code>。此时可以将crx文件解压，用chrome的<code>加载已解压的扩展程序</code>来添加，可以看到扩展程序的<code>id</code>。如果不可启动，通过组策略将id添加到白名单，通过crx重新添加。</del></p>
+<p>在<a href="https://chrome.zzzmh.cn/index">极简插件</a>下载<a href="https://chrome.zzzmh.cn/info?token=cieikaeocafmceoapfogpffaalkncpkc">谷歌上网助手</a>，用临时邮箱注册一个账号，通过助手访问谷歌商店然后下载插件。</p>
+<h2 id="quick-qr-code">Quick QR Code</h2>
+<p><a href="https://chrome.google.com/webstore/detail/quick-qr-code-generator/afpbjjgbdimpioenaedcjgkaigggcdpp?utm_source=chrome-ntp-icon">官网</a>
+将当前网址生成二维码</p>
+<h2 id="keepass-http-connector">Keepass Http Connector</h2>
+<p><a href="https://chrome.google.com/webstore/detail/keepasshttp-connector/dafgdjggglmmknipkhngniifhplpcldb?utm_source=chrome-ntp-icon">官网</a>
+连接keepass密码管理器</p>
+<p>点击进行设置。进行<code>Connected Databases</code>设置。打开keepass客户端软件，点击插件设置的<code>connect</code>会弹出连接页面.</p>
+<h2 id="floccus">floccus</h2>
+<p><a href="https://chrome.google.com/webstore/detail/floccus-bookmarks-sync/fnaicdffflnofjppbagibeoednhnbjhg?utm_source=chrome-ntp-icon">官网</a></p>
+<p>设置见{% post_link 2020-02/浏览器书签同步floccus %}。</p>
+<h2 id="vimium">vimium</h2>
+<p><a href="https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?utm_source=chrome-ntp-icon">官网</a>
+vim方式通过键盘控制浏览器行为</p>
+<h2 id="infinity">infinity</h2>
+<p><a href="https://chrome.google.com/webstore/detail/infinity-new-tab-pro/nnnkddnnlpamobajfibfdgfnbcnkgngh?utm_source=chrome-ntp-icon">官网</a>
+自定义新的标签页</p>
+<h2 id="onetab">OneTab</h2>
+<p><a href="https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon">官网</a>
+可以将标签页转换成一个列表暂存，节省内存。</p>
+<h2 id="划词翻译">划词翻译</h2>
+<p><a href="https://chrome.google.com/webstore/detail/%E5%88%92%E8%AF%8D%E7%BF%BB%E8%AF%91/ikhdkkncnoglghljlkmcimlnlhkeamad?utm_source=chrome-ntp-icon">官网</a>
+翻译</p>
+<h2 id="adblock-plus">Adblock Plus</h2>
+<p><a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb?utm_source=chrome-ntp-icon">官网</a>
+广告拦截器</p>
+<h2 id="tampermonkey">Tampermonkey</h2>
+<p><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?utm_source=chrome-ntp-icon">官网</a>
+浏览器插件脚本</p>
+<p>在<code>管理面板&gt;实用工具&gt;云</code>中可进行同步。</p>
+<ul>
+<li>类型：WebDAV</li>
+<li>URL：https://dav.jianguoyun.com/dav/path/
+注：<code>Tampermonkey</code>会自动在上述<code>path/</code>目录下，新建一个<code>Tampermonkey</code>目录存入备份。</li>
+<li>登录/密码：坚果云中的用户密码。</li>
+</ul>
+<p><strong>导出的时候，默认生成的名称具有特殊字符，会导致备份出错。自己重命名一个即可。</strong></p>
+<h2 id="ie-tab">IE Tab</h2>
+<p><a href="https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon">官网</a>
+兼容ie内核</p>
+<h2 id="vuejs-devtools">Vue.js devtools</h2>
+<p><a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?utm_source=chrome-ntp-icon">官网</a>
+Vue调试插件</p>
+<h2 id="extension-manager">Extension Manager</h2>
+<p><a href="https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco?utm_source=chrome-ntp-icon">官网</a>
+扩展管理器</p>
+<h2 id="octotree">Octotree</h2>
+<p><a href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc?utm_source=chrome-ntp-icon">官网</a>
+github树形展示</p>
+<h2 id="json-handle">JSON-handle</h2>
+<p><a href="https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?utm_source=chrome-ntp-icon">官网</a>
+处理json数据</p>
+<h2 id="proxy-switchyomega">Proxy SwitchyOmega</h2>
+<p><a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=zh-CN">官网</a>
+管理和切换多个代理设置。</p>
+<h1 id="说明">说明</h1>
+<p>path: 可用<code>win+Pause</code>键打开<code>控制面板\系统和安全\系统</code>，选择<code>高级系统设置</code>，修改<code>系统属性\高级\环境变量</code>，添加系统变量。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-03-13
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/win/">win</a>
+          <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">idea创建maven模板archetype</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/">
+            <span class="next-text nav-default">前端json对象升/降阶处理</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

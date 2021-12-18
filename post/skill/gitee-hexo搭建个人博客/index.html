@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>gitee-hexo搭建个人博客 - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="gitee-hexo搭建个人博客" />
+<meta property="og:description" content="介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-02-25T18:17:34+00:00" />
+<meta property="article:modified_time" content="2020-02-25T18:17:34+00:00" />
+
+<meta itemprop="name" content="gitee-hexo搭建个人博客">
+<meta itemprop="description" content="介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog."><meta itemprop="datePublished" content="2020-02-25T18:17:34+00:00" />
+<meta itemprop="dateModified" content="2020-02-25T18:17:34+00:00" />
+<meta itemprop="wordCount" content="1041">
+<meta itemprop="keywords" content="hexo,gitee,site,config," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gitee-hexo搭建个人博客"/>
+<meta name="twitter:description" content="介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">gitee-hexo搭建个人博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-25 </span>
+        <div class="post-category">
+            <a href="/categories/tool/"> tool </a>
+            <a href="/categories/service/"> service </a>
+            <a href="/categories/hexo/"> hexo </a>
+            <a href="/categories/site/"> site </a>
+            </div>
+          <span class="more-meta"> 1041 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#工具">工具</a></li>
+            <li><a href="#hexo博客模版">hexo博客模版</a></li>
+            <li><a href="#hexo相关操作">hexo相关操作</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。</p>
+<!-- more -->
+<p>参考地址：<a href="https://blog.csdn.net/cungudafa/article/details/104260494">https://blog.csdn.net/cungudafa/article/details/104260494</a></p>
+<h3 id="工具">工具</h3>
+<ul>
+<li>
+<p>node.js</p>
+</li>
+<li>
+<p>git</p>
+<p>配置见{% post_link git &ldquo;git配置文章&rdquo; %}</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">npm install hexo-cli -g <span class="c1">#hexo安装</span>
+</code></pre></td></tr></table>
+</div>
+</div><!-- more -->
+<h3 id="hexo博客模版">hexo博客模版</h3>
+<ol>
+<li>
+<p>新建<code>root</code>目录。存储所有markdown文件及生成的html</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">pwd</span>
+/j/data/gitee
+$ mkdir sloera
+$ <span class="nb">cd</span> sloera/
+$ npm -v
+6.13.4
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>安装相关依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">cnpm install -g hexo-cli
+cnpm install hexo-deployer-git --save
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo init <span class="c1">#下载主题耗时</span>
+<span class="c1">#卡到安装依赖时 Ctrl+C</span>
+cnpm install
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>启动测试</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo clean
+hexo g
+hexo s
+<span class="c1">#测试三连</span>
+hexo clean <span class="o">&amp;&amp;</span> hexo g <span class="o">&amp;&amp;</span> hexo s
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>gitee配置</p>
+<ol>
+<li>
+<p>新建一个仓库名与码云登录名一致的仓库</p>
+<p>选择开源：公开；语言：JavaScript</p>
+</li>
+</ol>
+</li>
+<li>
+<p>hexo配置</p>
+<ol>
+<li>
+<p>修改hexo配置</p>
+<p>修改<code>_config.yml</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">git</span><span class="w">
+</span><span class="w">  </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l">git@gitee.com:sloera/sloera.git</span><span class="w">
+</span><span class="w">  </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l">master</span><span class="w">
+</span><span class="w"></span><span class="c">###注意`:`后有空格</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>部署</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo g --d <span class="c1">#一键部署</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开启giteePage功能</p>
+<p><img src="img/1582550759765.png" alt="1582550759765.png"></p>
+</li>
+<li>
+<p>与typora编辑匹配图片</p>
+<ol>
+<li>
+<p>首先确认**_config.yml<strong>中有</strong>post_asset_folder:true**。</p>
+</li>
+<li>
+<p>开启后，将图片放入文件名同名目录中即可引用。</p>
+</li>
+<li>
+<p>修改typora图片复制操作，用以匹配<code>post_asset_folder</code></p>
+<p><img src="img/1582551993923.png" alt="1582551993923.png"></p>
+</li>
+<li>
+<p>安装 hexo-asset-image</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">cnpm install https://github.com/CodeFalling/hexo-asset-image --save
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>主题配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">cd</span> sloera
+git clone https://github.com/theme-next/hexo-theme-next themes/next
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="hexo相关操作">hexo相关操作</h3>
+<ol>
+<li>
+<p>相对路径引用的标签插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-md" data-lang="md">{% post_link 文章文件名（不要后缀） 文章标题（可选） %}
+{% asset_path slug %}
+![<span class="nt">slug</span>](<span class="na">img/slug</span>)
+![<span class="nt">slug</span>](<span class="na">img/slug</span>)
+<span class="gh">#如 配置见{% post_link git配置 %}
+</span></code></pre></td></tr></table>
+</div>
+</div><p>正确的引用图片方式是使用下列的标签插件而不是 markdown ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">![1582550759765.png](img/1582550759765.png)
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>引用自定义文件</p>
+<p>将文件复制到文件同名目录下。以如下方式引用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[PortableGit-2.23.0-64-bit.7z.exe](img/PortableGit-2.23.0-64-bit.7z.exe)
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>管理博客源码</p>
+<ol>
+<li>
+<p>创建一个<code>source</code>分支存放源码，并更改为默认分支</p>
+<p><img src="img/1582630764261.png" alt="1582630764261.png"></p>
+<p>在<code>管理&gt;基本设置&gt;默认分支</code>中切换为新建的分支</p>
+</li>
+<li>
+<p>初始化仓库，添加远程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git init
+git remote add origin git@gitee.com:sloera/sloera.git
+git add .
+git commit -m <span class="s2">&#34;博客源文章&#34;</span>
+git push -f origin master:source <span class="c1">#首次为从master创建分支，包含静态网页，需要使用-f强制覆盖</span>
+<span class="c1">#master代表本地分支，source代表远程分支名</span>
+<span class="c1">#如推送失败，通过4跟踪非同名分支解决</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+3. 禁止转换回车换行符
+
+   ```sh
+   git config core.autocrlf #查看当前配置
+   git config core.autocrlf false #将设置改为false
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>
+<p>默认跟踪远程非同名source分支</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git branch -u origin/source <span class="c1">#指定当前分支跟踪远程source分支</span>
+git config --local push.default upstream <span class="c1">#指定可以推送到远程不同名分支</span>
+git add .
+git commit -m <span class="s2">&#34;默认分支测试&#34;</span>
+git push
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-02-25
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hexo/">hexo</a>
+          <a href="/tags/gitee/">gitee</a>
+          <a href="/tags/site/">site</a>
+          <a href="/tags/config/">config</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">hexo之next主题</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/skill/hello-world/">
+            <span class="next-text nav-default">Hello World</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

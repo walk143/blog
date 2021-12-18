@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hexo简单设置 - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hexo简单设置" />
+<meta property="og:description" content="包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-02-27T21:40:14+00:00" />
+<meta property="article:modified_time" content="2020-02-27T21:40:14+00:00" />
+
+<meta itemprop="name" content="hexo简单设置">
+<meta itemprop="description" content="包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面"><meta itemprop="datePublished" content="2020-02-27T21:40:14+00:00" />
+<meta itemprop="dateModified" content="2020-02-27T21:40:14+00:00" />
+<meta itemprop="wordCount" content="732">
+<meta itemprop="keywords" content="hexo,配置,工具," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hexo简单设置"/>
+<meta name="twitter:description" content="包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hexo简单设置</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-27 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+            <a href="/categories/%E6%9C%8D%E5%8A%A1/"> 服务 </a>
+            <a href="/categories/hexo/"> hexo </a>
+            </div>
+          <span class="more-meta"> 732 words </span>
+          <span class="more-meta"> 2 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#设置tags">设置tags</a></li>
+        <li><a href="#设置分类">设置分类</a></li>
+        <li><a href="#编辑草稿">编辑草稿</a></li>
+        <li><a href="#默认模版">默认模版</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。
+通过此文章，可开启文章标签及分类的功能及页面。</p>
+<!-- more -->
+<h2 id="设置tags">设置tags</h2>
+<ol>
+<li>
+<p>新建tags页面</p>
+<p>在<code>source</code>路径下新建存储tags的文件夹。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo new page <span class="s2">&#34;tags&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>编辑<code>tags</code>文件夹下的<code>index.md</code>文件</p>
+<p>在头部加入<code>type: &quot;tags&quot;</code></p>
+<!-- more -->
+<p>{% asset_img 1582809658520.png tags文件设置%}</p>
+</li>
+<li>
+<p>在主题配置文件夹中，添加菜单链接</p>
+<p>编辑主题配置文件<code>themes/next/_config.yml</code>，取消默认<code>tags</code>的注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">menu</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l">/ || home  </span><span class="w"> </span><span class="c"># 主页链接及其图标</span><span class="w">
+</span><span class="w">  </span><span class="c"># about: /about/ || user   # 关于页链接及其图标</span><span class="w">
+</span><span class="w">  </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l">/tags/ || tags     </span><span class="w"> </span><span class="c"># 标签页链接及其图标</span><span class="w">
+</span><span class="w">  </span><span class="c"># categories: /categories/ || th   # 分类页链接及其图标</span><span class="w">
+</span><span class="w">  </span><span class="nt">archives</span><span class="p">:</span><span class="w"> </span><span class="l">/archives/ || archive  </span><span class="w"> </span><span class="c"># 归档页及其图标</span><span class="w">
+</span><span class="w">  </span><span class="c"># schedule: /schedule/ || calendar</span><span class="w">
+</span><span class="w">  </span><span class="c"># sitemap: /sitemap.xml || sitemap</span><span class="w">
+</span><span class="w">  </span><span class="c"># commonweal: /404/ || heartbeat</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注：<code>||</code>后的为<a href="http://fontawesome.dashgame.com/">fontawesome</a>的图标名。</p>
+<p>{% asset_img 1582809796182.png 开放菜单设置%}</p>
+</li>
+</ol>
+<h2 id="设置分类">设置分类</h2>
+<ol>
+<li>
+<p>文章中使用</p>
+<p>在头部添加如下信息进行分类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">categories</span><span class="p">:</span><span class="w">
+</span><span class="w">   </span>- <span class="l">工具</span><span class="w">
+</span><span class="w">   </span>- <span class="l">服务</span><span class="w">
+</span><span class="w">   </span>- <span class="l">hexo</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>分类与标签不同，分类有顺序之分，即工具&gt;服务&gt;hexo。</p>
+</li>
+<li>
+<p>新建存储菜单</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo new page <span class="s2">&#34;categories&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>编辑生成文件夹下的<code>index.md</code>，添加<code>type: &quot;categories&quot;</code></p>
+<p>注：<code>type的属性值必须小写</code>，猜测为和内部属性绑定。</p>
+</li>
+<li>
+<p>配置文件夹中添加菜单链接</p>
+</li>
+</ol>
+<h2 id="编辑草稿">编辑草稿</h2>
+<ol>
+<li>
+<p>新建草稿</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo new draft hexo简单设置
+</code></pre></td></tr></table>
+</div>
+</div><p>会在<code>source/_drafts</code>下生成文件。</p>
+<p>{% asset_img 1582810734984.png 草稿文件%}</p>
+<p>编辑方式同正常文件，只是发布时不会显示。</p>
+</li>
+<li>
+<p>预览草稿</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo s --draft <span class="c1">#启动服务的时候，加上draft参数即可。</span>
+<span class="c1">#######</span>
+<span class="c1">#或者也可以修改配置文件</span>
+render_drafts: <span class="nb">true</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将草稿变为正文</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">hexo publich hexo简单设置
+</code></pre></td></tr></table>
+</div>
+</div><p>相比于新建文件，头部信息缺少<code>date</code>信息。</p>
+</li>
+</ol>
+<h2 id="默认模版">默认模版</h2>
+<p>默认模版位置在<code>scaffolds</code>，模版可配置<code>hexo new post/page/draft title</code>时，默认生成的文章头部都有哪些属性。默认有一些变量，如日期，通过<code>{{ date }}</code>的方式引用。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-02-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hexo/">hexo</a>
+          <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+          <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">浏览器书签同步floccus</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/">
+            <span class="next-text nav-default">hexo之next主题</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

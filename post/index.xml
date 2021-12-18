@@ -2,54 +2,201 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blog by Sloera</title>
-    <link>http://sloera.gitee.io/sloera/post/</link>
+    <link>https://sloera.gitee.io/post/</link>
     <description>Recent content in Posts on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Dec 2021 12:16:36 +0800</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 12:16:36 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nginx</title>
-      <link>http://sloera.gitee.io/sloera/post/linux/middleware/nginx/</link>
+      <link>https://sloera.gitee.io/post/linux/middleware/nginx/</link>
       <pubDate>Sat, 18 Dec 2021 12:16:36 +0800</pubDate>
       
-      <guid>http://sloera.gitee.io/sloera/post/linux/middleware/nginx/</guid>
+      <guid>https://sloera.gitee.io/post/linux/middleware/nginx/</guid>
       <description>[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c++ libtool ./configure make &amp;amp;&amp;amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17</description>
     </item>
     
     <item>
       <title>Tools</title>
-      <link>http://sloera.gitee.io/sloera/post/tools/</link>
+      <link>https://sloera.gitee.io/post/tools/</link>
       <pubDate>Fri, 17 Dec 2021 12:47:50 +0800</pubDate>
       
-      <guid>http://sloera.gitee.io/sloera/post/tools/</guid>
+      <guid>https://sloera.gitee.io/post/tools/</guid>
       <description>工具集收集 开发 moco https://github.com/dreamhead/moco 用于mock一些rest请求 编译 1 2 3 4 5 6 7 8 git clone git@github.com:dreamhead/moco.git ./gradlew build #Build uberjar ./gradlew uberjar # Check code before commit ./gradlew check 生成后目录在./moco-runner/b</description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>http://sloera.gitee.io/sloera/post/git/</link>
+      <link>https://sloera.gitee.io/post/skill/git/</link>
       <pubDate>Wed, 08 Dec 2021 22:23:30 +0800</pubDate>
       
-      <guid>http://sloera.gitee.io/sloera/post/git/</guid>
-      <description>git相关操作 关联已有代码到一个已存在的远程分支 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 # 初始化当前目录为一个仓库 git init # 添加远程仓库地址 git remote add origin</description>
+      <guid>https://sloera.gitee.io/post/skill/git/</guid>
+      <description>git安装 下载git https://git-scm.com/download/win 可下载portable版本。 PortableGit-2.23.0-64-bit.7z.exe 解压到自定义目录 添加自定义目录/bin到系统变量&amp;gt;Path 自定义目录下，git-b</description>
     </item>
     
     <item>
       <title>点词库转Rime</title>
-      <link>http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
+      <link>https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
       <pubDate>Sat, 27 Nov 2021 15:07:42 +0800</pubDate>
       
-      <guid>http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</guid>
+      <guid>https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</guid>
       <description>点儿词库转Rime 记录将点儿词库转换为Rime格式的方法 下载点儿词库 从群313225526的群文件：点儿词库最新版本&amp;amp;历史版本 中下载</description>
     </item>
     
     <item>
       <title>Gitee&#43;hugo</title>
-      <link>http://sloera.gitee.io/sloera/post/gitee&#43;hugo/</link>
+      <link>https://sloera.gitee.io/post/gitee&#43;hugo/</link>
       <pubDate>Fri, 26 Nov 2021 19:45:18 +0800</pubDate>
       
-      <guid>http://sloera.gitee.io/sloera/post/gitee&#43;hugo/</guid>
+      <guid>https://sloera.gitee.io/post/gitee&#43;hugo/</guid>
       <description>hugo+gitee 搭建个人博客 安装hugo https://www.gohugo.org/ 二进制下载 1 2 3 # https://github.com/spf13/hugo/releases wget https://hub.fastgit.org/gohugoio/hugo/releases/download/v0.89.4/hugo_0.89.4_Linux-64bit.tar.gz tar zcf hugo_0.89.4_Linux-64bit.tar.gz 生成站点 1 2 3 4 5 6 7 8 # 如下会在当前路径新建 hugo(后hugo) 目录，用于存放</description>
+    </item>
+    
+    <item>
+      <title>arch安装教程</title>
+      <link>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Sun, 30 May 2021 21:38:11 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
+      <description>介绍arch的安装及部分配置 准备 下载镜像 download 可直接选择http://mirrors.163.com/archlinux/iso/2021.03</description>
+    </item>
+    
+    <item>
+      <title>win-jenkins安装</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Wed, 01 Apr 2020 16:59:28 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</guid>
+      <description>介绍win下jenkins下的安装 下载 官网下载win压缩包，执行msi程序进行安装 修改启动配置 修改${jenkins_home}/Jenki</description>
+    </item>
+    
+    <item>
+      <title>idea创建maven模板archetype</title>
+      <link>https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</link>
+      <pubDate>Wed, 18 Mar 2020 22:31:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</guid>
+      <description>idea用archetype创建模板时，默认从remote下载，调用repo.maven地址，会出现超时错误。本文利用idea创建一个自定义</description>
+    </item>
+    
+    <item>
+      <title>win环境部署</title>
+      <link>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Fri, 13 Mar 2020 22:56:46 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
+      <description>介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont</description>
+    </item>
+    
+    <item>
+      <title>前端json对象升/降阶处理</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 09 Mar 2020 23:29:04 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</guid>
+      <description>当前端请求是application/json时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升</description>
+    </item>
+    
+    <item>
+      <title>chrome离线安装扩展插件</title>
+      <link>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Sun, 08 Mar 2020 08:52:48 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</guid>
+      <description>介绍chrome无法联网时如何安装插件。解决“该扩展程序未列在 Chrome 网上应用店中，并可能是在您不知情的情况下添加的。”及自动停用问题。 chrom</description>
+    </item>
+    
+    <item>
+      <title>linux安装docker</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Fri, 06 Mar 2020 21:58:19 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</guid>
+      <description>介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。</description>
+    </item>
+    
+    <item>
+      <title>nodejs中间层解决cors跨域</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</link>
+      <pubDate>Tue, 03 Mar 2020 21:28:22 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</guid>
+      <description>通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的OPTIONS请求，返回200成功状态及所需头部，使得浏览器可以继续</description>
+    </item>
+    
+    <item>
+      <title>wsl安装nodejs</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</link>
+      <pubDate>Mon, 02 Mar 2020 23:15:46 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</guid>
+      <description>介绍nodejs在wsl（win子系统）上的安装。同时安装cnpm替代npm命令. npm安装配置 安装npm 可在nodejs中文官网下载。 1 2</description>
+    </item>
+    
+    <item>
+      <title>win系统安装-u盘方式</title>
+      <link>https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sat, 29 Feb 2020 23:51:27 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</guid>
+      <description>包括下载win系统镜像，制作u盘启动盘，win系统安装介绍，系统激活工具推荐。 win系统安装关键是磁盘分区。 准备工具 整个安装环境需要一台联网</description>
+    </item>
+    
+    <item>
+      <title>outlook邮件设置</title>
+      <link>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Sat, 29 Feb 2020 11:23:03 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</guid>
+      <description>包括office安装包下载、安装/激活、及outlook配置imap邮箱（添加qq/163邮箱）。 准备 office 在https://msdn.itel</description>
+    </item>
+    
+    <item>
+      <title>浏览器书签同步floccus</title>
+      <link>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</link>
+      <pubDate>Fri, 28 Feb 2020 22:18:45 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</guid>
+      <description>介绍浏览器书签同步工具floccus。通过此工具，可使chrome、firefox的书签跨浏览器、操作系统、电脑进行同步。 主要原理是将书签信</description>
+    </item>
+    
+    <item>
+      <title>hexo简单设置</title>
+      <link>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Thu, 27 Feb 2020 21:40:14 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
+      <description>包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面</description>
+    </item>
+    
+    <item>
+      <title>hexo之next主题</title>
+      <link>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Tue, 25 Feb 2020 23:03:38 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
+      <description>包括next主题下载、常规配置文件修改 主题安装 下载主题 1 2 $ cd hexo $ git clone https://github.com/theme-next/hexo-theme-next themes/next 使用next 修改站点配置文件_config.yml文件。 1 theme:next 个性化</description>
+    </item>
+    
+    <item>
+      <title>gitee-hexo搭建个人博客</title>
+      <link>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 25 Feb 2020 18:17:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog.</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://sloera.gitee.io/post/skill/hello-world/</link>
+      <pubDate>Mon, 24 Feb 2020 22:10:24 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/hello-world/</guid>
+      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start Create a new post 1  $ hexo new &amp;#34;My New Post&amp;#34;   More info: Writing
+Run server 1  $ hexo server   More info: Server
+Generate static files 1  $ hexo generate   More info: Generating</description>
     </item>
     
   </channel>

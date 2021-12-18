@@ -2,9 +2,190 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Blog by Sloera</title>
-    <link>http://sloera.gitee.io/sloera/categories/</link>
+    <link>https://sloera.gitee.io/categories/</link>
     <description>Recent content in Categories on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://sloera.gitee.io/sloera/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Wed, 08 Dec 2021 22:23:30 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>svn</title>
+      <link>https://sloera.gitee.io/categories/svn/</link>
+      <pubDate>Wed, 08 Dec 2021 22:23:30 +0800</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/svn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tool</title>
+      <link>https://sloera.gitee.io/categories/tool/</link>
+      <pubDate>Wed, 08 Dec 2021 22:23:30 +0800</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/tool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>idea</title>
+      <link>https://sloera.gitee.io/categories/idea/</link>
+      <pubDate>Wed, 18 Mar 2020 22:31:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/idea/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具</title>
+      <link>https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Wed, 18 Mar 2020 22:31:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软件</title>
+      <link>https://sloera.gitee.io/categories/%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Wed, 18 Mar 2020 22:31:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>win</title>
+      <link>https://sloera.gitee.io/categories/win/</link>
+      <pubDate>Fri, 13 Mar 2020 22:56:46 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/win/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>配置</title>
+      <link>https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 13 Mar 2020 22:56:46 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>前端</title>
+      <link>https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Mon, 09 Mar 2020 23:29:04 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技术</title>
+      <link>https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Mon, 09 Mar 2020 23:29:04 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chrome</title>
+      <link>https://sloera.gitee.io/categories/chrome/</link>
+      <pubDate>Sun, 08 Mar 2020 08:52:48 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://sloera.gitee.io/categories/linux/</link>
+      <pubDate>Fri, 06 Mar 2020 21:58:19 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>安装</title>
+      <link>https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 06 Mar 2020 21:58:19 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nodejs</title>
+      <link>https://sloera.gitee.io/categories/nodejs/</link>
+      <pubDate>Tue, 03 Mar 2020 21:28:22 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wsl</title>
+      <link>https://sloera.gitee.io/categories/wsl/</link>
+      <pubDate>Mon, 02 Mar 2020 23:15:46 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>office</title>
+      <link>https://sloera.gitee.io/categories/office/</link>
+      <pubDate>Sat, 29 Feb 2020 11:23:03 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/office/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>插件</title>
+      <link>https://sloera.gitee.io/categories/%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Fri, 28 Feb 2020 22:18:45 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E6%8F%92%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://sloera.gitee.io/categories/hexo/</link>
+      <pubDate>Thu, 27 Feb 2020 21:40:14 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>服务</title>
+      <link>https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Thu, 27 Feb 2020 21:40:14 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>service</title>
+      <link>https://sloera.gitee.io/categories/service/</link>
+      <pubDate>Tue, 25 Feb 2020 18:17:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>site</title>
+      <link>https://sloera.gitee.io/categories/site/</link>
+      <pubDate>Tue, 25 Feb 2020 18:17:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/categories/site/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

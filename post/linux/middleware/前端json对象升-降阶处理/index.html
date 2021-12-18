@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>前端json对象升/降阶处理 - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="当前端请求是application/json时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="前端json对象升/降阶处理" />
+<meta property="og:description" content="当前端请求是application/json时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-03-09T23:29:04+00:00" />
+<meta property="article:modified_time" content="2020-03-09T23:29:04+00:00" />
+
+<meta itemprop="name" content="前端json对象升/降阶处理">
+<meta itemprop="description" content="当前端请求是application/json时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升"><meta itemprop="datePublished" content="2020-03-09T23:29:04+00:00" />
+<meta itemprop="dateModified" content="2020-03-09T23:29:04+00:00" />
+<meta itemprop="wordCount" content="1839">
+<meta itemprop="keywords" content="前端,json,方法," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="前端json对象升/降阶处理"/>
+<meta name="twitter:description" content="当前端请求是application/json时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">前端json对象升/降阶处理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+            </div>
+          <span class="more-meta"> 1839 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#降阶">降阶</a>
+      <ul>
+        <li><a href="#思路">思路</a></li>
+        <li><a href="#实现">实现</a>
+          <ul>
+            <li><a href="#遍历递归">遍历递归</a></li>
+            <li><a href="#添加位置属性">添加位置属性</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#升阶">升阶</a>
+      <ul>
+        <li><a href="#思路-2">思路</a></li>
+        <li><a href="#实现-2">实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#尚存疑点">尚存疑点</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>当前端请求是<code>application/json</code>时，填写查询参数时只关心每个节点的内容,拼接参数应该由后台实现。本篇探索对一个多层json进行升/降阶处理的方法。</p>
+<!-- more -->
+<p>当一个实际请求为如下json时，填写查询参数时前端应该只关心值带&quot;value&quot;的节点，如<code>field111,field112</code>。对于field1展示出来没有必要，其对应的节点关系应该由后台负责，所以需要对json进行降阶处理。此种方法不适合json中带数组的情况，只是解决上述需求。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;field1&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;field11&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;field111&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;field112&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;field12&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field3&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="降阶">降阶</h1>
+<p>由于只是前端展示填写参数的时候无层级，实际请求的时候仍需要json多层结构，所以降阶后的json需要能够保留层级信息。思路是给原来的元素加一个<code>parent</code>属性来标识。</p>
+<p>如对于上述json，转换后应该如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;field111&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;parent&#34;</span><span class="p">:</span> <span class="s2">&#34;/path_to_parent&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field112&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;parent&#34;</span><span class="p">:</span> <span class="s2">&#34;/path_to_parent&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field12&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;parent&#34;</span><span class="p">:</span> <span class="s2">&#34;/path_to_parent&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field3&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;parent&#34;</span><span class="p">:</span> <span class="s2">&#34;/path_to_parent&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="思路">思路</h2>
+<p>实现上述需要满足三个需求</p>
+<ul>
+<li>能够遍历递归</li>
+<li>能够记录当前节点到根节点的路径</li>
+<li>删除转换后的空节点</li>
+</ul>
+<h2 id="实现">实现</h2>
+<h3 id="遍历递归">遍历递归</h3>
+<p>对于object对象，遍历可以通过for循环实现。递归通过调用本身，判断结束条件实现。</p>
+<h4 id="遍历">遍历</h4>
+<p>通过<code>let in</code>可取得json里面的<code>key</code>。即<code>field1,field3</code>之类。然后通过<code>json[childKey]</code>即可取得元素值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">childKey</span> <span class="k">in</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="递归">递归</h4>
+<p>处理逻辑：如果有子节点，就将子节点处理成一个一层json，处理完后将里面的元素依次加到当前根节点。如果没有子节点，不处理。过程如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;field11&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;field111&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;field112&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field12&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;field3&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;field111&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;field112&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;field12&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;field3&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过判断<code>child</code>的类型，如果是object，那说明还有子节点，如果是string等其他类型，默认为没有子节点。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">child</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">reduceJson</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span> <span class="c1">//解析此节点
+</span><span class="c1"></span>    <span class="c1">// 将此节点解析后的内容添加到当前根节点，删除原有节点
+</span><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">parsedKey</span> <span class="k">in</span> <span class="nx">parsed</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">json</span><span class="p">.</span><span class="nx">parsedkey</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">[</span><span class="nx">parsedKey</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">delete</span> <span class="nx">json</span><span class="p">.</span><span class="nx">childKey</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// 无需处理
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>完整代码为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">reduceJson</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">childKey</span> <span class="k">in</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">child</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">reduceJson</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span> <span class="c1">//解析此节点
+</span><span class="c1"></span>            <span class="c1">// 将此节点解析后的内容添加到当前根节点，删除原有节点
+</span><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">parsedKey</span> <span class="k">in</span> <span class="nx">parsed</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nb">eval</span><span class="p">(</span><span class="s2">&#34;json.&#34;</span><span class="o">+</span><span class="nx">parsedKey</span><span class="o">+</span><span class="s2">&#34; = parsed[parsedKey]&#34;</span><span class="p">);</span> <span class="c1">// 因为是新加属性，需要用到eval取parsedKey的值而不是其本身
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="k">delete</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// 无需处理
+</span><span class="c1"></span>        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">json</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="添加位置属性">添加位置属性</h3>
+<p>为了降阶后可以还原回原json，降阶后的json节点需要能够保留原节点位置信息。</p>
+<h4 id="思路-1">思路</h4>
+<p>保留原节点信息有两种思路：</p>
+<ol>
+<li>
+<p>添加到节点的key中。如原josn节点<code>&quot;field111&quot;: &quot;value&quot;</code>改为<code>&quot;field.field11.field111&quot;: &quot;value&quot;</code>。此种方式会改变原有key，使用时将key分割取数组最后一个元素即可。</p>
+</li>
+<li>
+<p>给节点添加一个属性表示路径。如原josn节点<code>&quot;field111&quot;: &quot;value&quot;</code>改为<code>&quot;field111&quot;: {&quot;value&quot;: &quot;value&quot;,&quot;path&quot;: &quot;field1.field11&quot;}</code>。此种方法也会对节点结构进行影响，但只要规范好属性名，对降阶后的使用更方便一点。</p>
+</li>
+</ol>
+<h4 id="实现-1">实现</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">reduceJson</span> <span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">childKey</span> <span class="k">in</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">child</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">reduceJson</span><span class="p">(</span><span class="nx">child</span><span class="p">,</span> <span class="nx">path</span><span class="o">+</span><span class="s2">&#34;.&#34;</span><span class="o">+</span><span class="nx">childKey</span><span class="p">);</span> <span class="c1">//解析此节点
+</span><span class="c1"></span>            <span class="c1">// 将此节点解析后的内容添加到当前根节点，删除原有节点
+</span><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">parsedKey</span> <span class="k">in</span> <span class="nx">parsed</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// let attribute = { //非object已经转换，此处直接添加
+</span><span class="c1"></span>                <span class="c1">//     &#34;value&#34;: parsed[parsedKey],
+</span><span class="c1"></span>                <span class="c1">//     &#34;path&#34;: path+&#34;.&#34;+parsedKey
+</span><span class="c1"></span>                <span class="c1">// }
+</span><span class="c1"></span>                <span class="nb">eval</span><span class="p">(</span><span class="s2">&#34;json.&#34;</span><span class="o">+</span><span class="nx">parsedKey</span><span class="o">+</span><span class="s2">&#34; = parsed[parsedKey]&#34;</span><span class="p">);</span> <span class="c1">//初始化节点
+</span><span class="c1"></span>            <span class="p">}</span>
+            <span class="k">delete</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">attribute</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">child</span><span class="p">,</span>
+                <span class="s2">&#34;path&#34;</span><span class="o">:</span> <span class="nx">path</span><span class="o">+</span><span class="s2">&#34;.&#34;</span><span class="o">+</span><span class="nx">childKey</span>
+            <span class="p">}</span>
+            <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">]</span> <span class="o">=</span> <span class="nx">attribute</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">json</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>转换后json如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;field3&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;root.field3&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field12&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;root.field1.field12&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field111&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;root.field1.field11.field111&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;field112&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;root.field1.field11.field112&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="升阶">升阶</h1>
+<h2 id="思路-2">思路</h2>
+<p>之前转换后的json，已经有了path属性。所以只需要遍历所有节点，将value值赋给对应path节点。赋值的时候检查对应父节点是否存在，不存在先初始化。</p>
+<h2 id="实现-2">实现</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">ascendJson</span> <span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">ascendedJson</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">childKey</span> <span class="k">in</span> <span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">json</span><span class="p">[</span><span class="nx">childKey</span><span class="p">];</span>
+        <span class="kd">let</span> <span class="nx">key</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">child</span><span class="p">.</span><span class="nx">path</span> <span class="o">!=</span> <span class="s2">&#34;undefined&#34;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nx">paths</span> <span class="o">=</span> <span class="nx">child</span><span class="p">.</span><span class="nx">path</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34;.&#34;</span><span class="p">);</span>
+            <span class="nx">paths</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span> <span class="c1">//移除第一个root
+</span><span class="c1"></span>            <span class="nx">paths</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">path</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="nx">key</span><span class="o">+=</span> <span class="s2">&#34;.&#34;</span><span class="o">+</span><span class="nx">path</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="s2">&#34;typeof ascendedJson&#34;</span><span class="o">+</span><span class="nx">key</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&#34;undefined&#34;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nb">eval</span><span class="p">(</span><span class="s2">&#34;ascendedJson&#34;</span><span class="o">+</span><span class="nx">key</span><span class="o">+</span><span class="s2">&#34;= {}&#34;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+            <span class="nb">eval</span><span class="p">(</span><span class="s2">&#34;ascendedJson&#34;</span><span class="o">+</span><span class="nx">key</span><span class="o">+</span><span class="s2">&#34;= child.value&#34;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">ascendedJson</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="总结">总结</h1>
+<p>总体上实现了对json的升/降阶的处理。上述程序只能实现对无数组的处理，且处理的最小单位为<code>string</code>，无法实现处理后<code>value</code>内容是<code>object</code>的需求。不过只是提供一个升降阶的思路，对于其他形式也可类似处理。</p>
+<h1 id="尚存疑点">尚存疑点</h1>
+<ul>
+<li>降阶时，给处理的json添加内容后，for(let in)为何没有重复处理</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-03-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+          <a href="/tags/json/">json</a>
+          <a href="/tags/%E6%96%B9%E6%B3%95/">方法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">win环境部署</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/">
+            <span class="next-text nav-default">chrome离线安装扩展插件</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>office on Blog by Sloera</title>
+    <link>https://sloera.gitee.io/tags/office/</link>
+    <description>Recent content in office on Blog by Sloera</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 29 Feb 2020 11:23:03 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/tags/office/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>outlook邮件设置</title>
+      <link>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Sat, 29 Feb 2020 11:23:03 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</guid>
+      <description>包括office安装包下载、安装/激活、及outlook配置imap邮箱（添加qq/163邮箱）。 准备 office 在https://msdn.itel</description>
+    </item>
+    
+  </channel>
+</rss>

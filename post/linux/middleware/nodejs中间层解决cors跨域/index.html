@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>nodejs中间层解决cors跨域 - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的OPTIONS请求，返回200成功状态及所需头部，使得浏览器可以继续" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="nodejs中间层解决cors跨域" />
+<meta property="og:description" content="通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的OPTIONS请求，返回200成功状态及所需头部，使得浏览器可以继续" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-03-03T21:28:22+00:00" />
+<meta property="article:modified_time" content="2020-03-03T21:28:22+00:00" />
+
+<meta itemprop="name" content="nodejs中间层解决cors跨域">
+<meta itemprop="description" content="通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的OPTIONS请求，返回200成功状态及所需头部，使得浏览器可以继续"><meta itemprop="datePublished" content="2020-03-03T21:28:22+00:00" />
+<meta itemprop="dateModified" content="2020-03-03T21:28:22+00:00" />
+<meta itemprop="wordCount" content="3221">
+<meta itemprop="keywords" content="nodejs,中间层,方法," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="nodejs中间层解决cors跨域"/>
+<meta name="twitter:description" content="通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的OPTIONS请求，返回200成功状态及所需头部，使得浏览器可以继续"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">nodejs中间层解决cors跨域</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-03 </span>
+        <div class="post-category">
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            <a href="/categories/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+            <a href="/categories/nodejs/"> nodejs </a>
+            </div>
+          <span class="more-meta"> 3221 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#介绍">介绍</a>
+          <ul>
+            <li><a href="#同源">同源</a></li>
+            <li><a href="#cors">CORS</a></li>
+          </ul>
+        </li>
+        <li><a href="#解决">解决</a>
+          <ul>
+            <li><a href="#中间层项目新建">中间层项目新建</a></li>
+            <li><a href="#appjs配置">app.js配置</a></li>
+            <li><a href="#使用config配置文件">使用config配置文件</a></li>
+            <li><a href="#配置git">配置git</a></li>
+            <li><a href="#跨域解决">跨域解决</a></li>
+          </ul>
+        </li>
+        <li><a href="#其他">其他</a>
+          <ul>
+            <li><a href="#appuse与appall">app.use与app.all</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>通过nodejs中间层解决浏览器的跨域问题。大体思路为中间层拦截浏览器的<code>OPTIONS</code>请求，返回<code>200</code>成功状态及所需头部，使得浏览器可以继续发起实际请求</p>
+<!-- more -->
+<h2 id="介绍">介绍</h2>
+<h3 id="同源">同源</h3>
+<p>目前，所有浏览器都实行同源政策。</p>
+<p>同源包含三个方面。以<code>https://sloera.gitee.io/2020/03/02/2020-03/</code>为例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">协议相同</span><span class="p">:</span><span class="w"> </span><span class="nt">https</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">域名相同</span><span class="p">:</span><span class="w"> </span><span class="l">sloera.gitee.io</span><span class="w">
+</span><span class="w"></span><span class="nt">端口相同</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="c">#网页默认端口是80，可省略</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>说明：</p>
+<p>​	对于浏览器打开的A和B两个非同源网页。如果A的<code>Cookie</code>中包含了用户的登录信息，若没有同源政策，则B可获取A的<code>Cookie</code>，伪冒登录进行在A意愿之外的操作。所以需要同源政策来保护安全状态。</p>
+<h3 id="cors">CORS</h3>
+<p>由于同源政策，<code>AJAX</code>请求只能发给同源的网址。所以需要<code>CORS</code>（跨源资源分享Cross-Origin Resource Sharing）完成跨源<code>AJAX</code>请求。</p>
+<p><code>CORS</code>通信过程，由浏览器自动完成。浏览器发现<code>AJAX</code>请求跨源时，会自动添加一些附加头信息，甚至有时会多出一次<code>OPTIONS</code>请求，整个过程都由浏览器自动实现。</p>
+<h4 id="请求分类">请求分类</h4>
+<p>对于浏览器来说，<code>CORS</code>请求有两类：简单请求和非简单请求。</p>
+<p>同时满足如下条件即为简单请求</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c">#1.请求方法为以下其一</span><span class="w">
+</span><span class="w"></span><span class="nt">method</span><span class="p">:</span><span class="w"> 
+</span><span class="w">	</span>- <span class="l">HEAD</span><span class="w">
+</span><span class="w">	</span>- <span class="l">GET</span><span class="w">
+</span><span class="w">	</span>- <span class="l">POST</span><span class="w">
+</span><span class="w"></span><span class="c">#2.请求头信息在以下字段之内</span><span class="w">
+</span><span class="w"></span><span class="nt">head</span><span class="p">:</span><span class="w">
+</span><span class="w">	</span>- <span class="l">Accept</span><span class="w">
+</span><span class="w">	</span>- <span class="l">Accept-Language</span><span class="w">
+</span><span class="w">	</span>- <span class="l">Content-Language</span><span class="w">
+</span><span class="w">	</span>- <span class="l">Last-Event-ID</span><span class="w">
+</span><span class="w">	</span>- <span class="l">Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</span><span class="w"> </span><span class="c">#注意。`application/json`不在其中，所以如果post的请求体是json格式，必为非简单请求。</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>不属于简单请求的即为非简单请求</p>
+<h4 id="简单请求">简单请求</h4>
+<p>对于简单请求：浏览器在请求头信息中自动增加一个<code>Origin</code>字段，用来说明本次请求来自哪个源（协议、域名、端口），服务器根据这些信息判定是否同意请求。</p>
+<p>如果<code>Origin</code>指定的域名在许可范围内（中间层一般不加判断，都准予许可，直接设置res的头信息返回），服务器返回的响应会多出几个与<code>CORS</code>相关的头信息字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Access-Control-Allow-Origin</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080</span><span class="w"> </span><span class="c">#必须，请求时的`Origin`或者`*`</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Allow-Credentials</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c">#可选，布尔值。是否允许发送`Cookie`</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Expose-Headers</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w"> </span><span class="c">#可选。用于XMLHttpRequest对象的getResponseHeader()取值。</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="非简单请求">非简单请求</h4>
+<p>非简单请求会在正式通信前，增加一次称为“预检”的<code>HTTP</code>查询请求，只有被允许，浏览器才会发出真实的请求。</p>
+<p>预检请求包括：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Origin</span><span class="p">:</span><span class="w"> </span><span class="l">请求来自哪个源</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Request-Method</span><span class="p">:</span><span class="w"> </span><span class="l">实际CORS请求使用到的HTTP方法</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Request-Headers</span><span class="p">:</span><span class="w"> </span><span class="l">指定CORS请求额外发送的头信息字段。</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>如果服务器收到“预检”请求后验证通过，做出回应后浏览器即可发出真实请求。</p>
+<p>预检请求的回应：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">Access-Control-Allow-Origin</span><span class="p">:</span><span class="w"> </span><span class="l">http://localhost:8080</span><span class="w"> </span><span class="c">#也可设置为*号，表示允许所有跨源请求</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Allow-Methods</span><span class="p">:</span><span class="w"> </span><span class="l">GET,POST,PUT</span><span class="w"> </span><span class="c">#必须，惠及服务器支持的所有跨域请求的方法</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Allow-Headers</span><span class="p">:</span><span class="w"> </span><span class="c">#当浏览器请求包括`Access-Control-Request-Headers`时必须，表明服务器支持的所有头信息字段。为所有！不只只是浏览器请求的额外头信息。</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Allow-Credentials</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c">#可选，布尔值。是否允许发送`Cookie`</span><span class="w">
+</span><span class="w"></span><span class="nt">Access-Control-Max-Age</span><span class="p">:</span><span class="w"> </span><span class="l">s</span><span class="w"> </span><span class="c">#指定预检请求的有效期，单位为秒。在此期间，不用发出另一条预检请求</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>如果浏览器拒绝了“预检”请求 ，则返回正常的HTTP回应，但是没有任何<code>CORS</code>相关的头信息字段。浏览器认定此跨源不被允许，由<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获异常。</p>
+<h4 id="浏览器的正常请求和回应">浏览器的正常请求和回应</h4>
+<p>当服务器通过“预检”请求后，浏览器会在每次正常的<code>CORS</code>请求附加一个<code>Origin</code>头信息字段。服务器回应也都会有一个<code>Access-Control-Allow-origin</code>头信息字段。</p>
+<p>对于中间层来说，无论何种情况，都返回上述所说字段，即可解决跨域问题。</p>
+<h2 id="解决">解决</h2>
+<p>中间层解决跨域的思路：是浏览器发起的所有请求先通过中间层，中间层再代理到实际请求的地址，当需要跨域时，中间层拦截浏览器发出的options请求，直接返回（不考虑第三方接口）浏览器<code>200</code>状态，告诉浏览器这个请求是被允许的，浏览器收到200响应后，便会发起真正的请求，此时由中间层直接代理转接到实际第三方接口地址，得到响应后转送给浏览器即可。</p>
+<h3 id="中间层项目新建">中间层项目新建</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">mkdir middlelayer <span class="c1">#创建项目目录</span>
+<span class="nb">cd</span> middlelayer <span class="c1">#进入项目目录</span>
+cnpm init <span class="c1">#项目初始化</span>
+<span class="c1">####接下来会进入交互，可以自定义项目。只有当出现`	entry point: (index.js)`的时候，输入`app.js`再回车</span>
+package name: <span class="o">(</span>middlelayer<span class="o">)</span><span class="c1">#项目名称</span>
+version: <span class="o">(</span>1.0.0<span class="o">)</span> <span class="c1">#版本</span>
+description: 中间层跨域解决测试项目 <span class="c1">#描述</span>
+entry point: <span class="o">(</span>index.js<span class="o">)</span> app.js <span class="c1">#项目入口</span>
+<span class="nb">test</span> command: <span class="c1">#测试命令 未知，暂时空白</span>
+git repository: <span class="c1">#git仓库，配置后不知道如何生效，暂时空白</span>
+keywords: cors#关键词
+author: sloera <span class="c1">#作者</span>
+license: ISC <span class="c1"># 应该是版权</span>
+<span class="c1">#####项目新建结束</span>
+<span class="c1">#默认只有一个package.json文件</span>
+<span class="c1">#用vsc打开目录作为项目工作空间</span>
+<span class="c1">#新建app.js文件</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>安装 Express 并将其保存到依赖列表中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ cnpm install express --save
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="appjs配置">app.js配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span> <span class="c1">//引入express
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span> <span class="c1">//使用express
+</span><span class="c1"></span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span> <span class="c1">//监听3000端口
+</span><span class="c1"></span>
+<span class="c1">//配置完毕，
+</span><span class="c1"></span><span class="nx">node</span> <span class="nx">app</span><span class="p">.</span><span class="nx">js</span> <span class="c1">//启动此工程
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用config配置文件">使用config配置文件</h3>
+<p>根目录新建<code>config</code>目录，再创建<code>config.json</code>文件</p>
+<p>配置文件内容为json格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="mi">3000</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./config/config.json&#39;</span><span class="p">)</span> <span class="c1">//使用相对路径引用
+</span><span class="c1">//当作常规json对象取值。如`config.port`
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置git">配置git</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">touch .gitignore <span class="c1">#创建gitignore文件，通过此文件，git确定哪些文件不会进行跟踪</span>
+<span class="c1">#####内容开始</span>
+node_modules/
+<span class="c1">#####内容结束</span>
+<span class="c1">#暂时只有模版文件不需要</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="跨域解决">跨域解决</h3>
+<p>在<code>allowCores</code>中，设置了响应头，并判断如果请求类型是<code>OPTIONS</code>类型，直接返回<code>200</code>成功状态，不走后面的代理。所以下面这段，应该放到<code>app.js</code>其他代理逻辑之前。</p>
+<p>其中target,ccc为自定义头部。对于实际项目，可打开浏览器开发都模式，将所有跨源请求时的头部都复制过来。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">allowCores</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">);</span> <span class="c1">//设置允许的来源
+</span><span class="c1"></span>    <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Methods&#39;</span><span class="p">,</span> <span class="s1">&#39;GET,PUT,POST,DELETE,OPTIONS&#39;</span><span class="p">);</span><span class="c1">// 允许的请求方法
+</span><span class="c1"></span>    <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Headers&#39;</span><span class="p">,</span> <span class="s1">&#39;Content-Type,target,ccc,DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X_Requested_With,If-Modified-Since,Cache-Control, Accept-Language, Origin, Accept-Encoding&#39;</span><span class="p">);</span> <span class="c1">//允许的头部
+</span><span class="c1"></span>    <span class="nx">res</span><span class="p">.</span><span class="nx">header</span><span class="p">(</span><span class="s1">&#39;Access-Control-Allow-Credentials&#39;</span><span class="p">,</span><span class="s1">&#39;true&#39;</span><span class="p">);</span> <span class="c1">//
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span> <span class="o">==</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//如果是options方法，直接返回200.解决跨域响应问题
+</span><span class="c1"></span>        <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">next</span><span class="p">()</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">allowCores</span><span class="p">);</span> <span class="c1">//使用跨域中间件
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="其他">其他</h2>
+<h3 id="appuse与appall">app.use与app.all</h3>
+<p><code>app.all(path,[callback1[,callback2]])</code>:可接受多个回调函数作为<code>路由处理器</code>，往往要处理<code>请求</code>和<code>响应</code>。<code>path</code>匹配<code>完整</code>路径，接受正则，匹配所有方法，执行顺序按照顺序。
+<code>app.all(path,callback1,callback2)</code>等同于
+<code>app.all(path,callback1)</code> 和 <code>app.all(path,callback2)</code>，2在后面。</p>
+<p>概况起来：
+<code>app.use</code>用作中间件，调用顺序是书写顺序。
+<code>app.all</code>用作路由处理，匹配完整路径，在<code>app.use</code>之后。
+<code>use</code>的path为路径开头，回调函数的路径为路径的剩余部分，use的路径是完整的了，回调只需要写<code>/</code>，即回调执行的<code>完整路径</code>是 <code>usePath+callbackPath</code>。
+<code>all</code>的回调函数的路径必须和<code>app</code>的路径一致。</p>
+<h2 id="参考">参考</h2>
+<blockquote>
+<p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">http://www.ruanyifeng.com/blog/2016/04/cors.html</a></p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-03-03
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/nodejs/">nodejs</a>
+          <a href="/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/">中间层</a>
+          <a href="/tags/%E6%96%B9%E6%B3%95/">方法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">linux安装docker</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/">
+            <span class="next-text nav-default">wsl安装nodejs</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

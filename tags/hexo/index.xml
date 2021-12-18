@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on Blog by Sloera</title>
+    <link>https://sloera.gitee.io/tags/hexo/</link>
+    <description>Recent content in hexo on Blog by Sloera</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Feb 2020 21:40:14 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hexo简单设置</title>
+      <link>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Thu, 27 Feb 2020 21:40:14 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
+      <description>包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面</description>
+    </item>
+    
+    <item>
+      <title>hexo之next主题</title>
+      <link>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Tue, 25 Feb 2020 23:03:38 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
+      <description>包括next主题下载、常规配置文件修改 主题安装 下载主题 1 2 $ cd hexo $ git clone https://github.com/theme-next/hexo-theme-next themes/next 使用next 修改站点配置文件_config.yml文件。 1 theme:next 个性化</description>
+    </item>
+    
+    <item>
+      <title>gitee-hexo搭建个人博客</title>
+      <link>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 25 Feb 2020 18:17:34 +0000</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>介绍hexo及gitee的pages服务搭建个人博客过程。含如何引入图片、git新建分支保存md源文章。 参考地址：https://blog.</description>
+    </item>
+    
+  </channel>
+</rss>
