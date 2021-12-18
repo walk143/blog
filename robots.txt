@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://sloera.gitee.io/sloera/sitemap.xml

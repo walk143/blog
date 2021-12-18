@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Nginx - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;amp;&amp;amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.89.4 with theme even" />
+
+
+<link rel="canonical" href="http://sloera.gitee.io/sloera/post/linux/middleware/nginx/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/sloera/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/sloera/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/sloera/favicon-16x16.png">
+<link rel="manifest" href="/sloera/manifest.json">
+<link rel="mask-icon" href="/sloera/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sloera/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Nginx" />
+<meta property="og:description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;&amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://sloera.gitee.io/sloera/post/linux/middleware/nginx/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-18T12:16:36+08:00" />
+<meta property="article:modified_time" content="2021-12-18T12:16:36+08:00" />
+
+<meta itemprop="name" content="Nginx">
+<meta itemprop="description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;&amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17"><meta itemprop="datePublished" content="2021-12-18T12:16:36+08:00" />
+<meta itemprop="dateModified" content="2021-12-18T12:16:36+08:00" />
+<meta itemprop="wordCount" content="1166">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx"/>
+<meta name="twitter:description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;&amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/sloera/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/sloera/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/sloera/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/sloera/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/sloera/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/sloera/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/sloera/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/sloera/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/sloera/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/sloera/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Nginx</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-12-18 </span>
+        
+          <span class="more-meta"> 1166 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基础安装">基础安装</a></li>
+    <li><a href="#使用">使用</a>
+      <ul>
+        <li><a href="#配置说明">配置说明</a>
+          <ul>
+            <li><a href="#location规则">location规则</a></li>
+            <li><a href="#nginx解决跨域问题">nginx解决跨域问题</a></li>
+            <li><a href="#防盗链">防盗链</a></li>
+          </ul>
+        </li>
+        <li><a href="#代理静态页面">代理静态页面</a>
+          <ul>
+            <li><a href="#请求cssjs返回状态码200但内容为空">请求css/js返回状态码200但内容为空。</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>[[toc]]</p>
+<h1 id="基础安装">基础安装</h1>
+<ol>
+<li>
+<p><a href="http://nginx.org/">官网</a>下载</p>
+<ol>
+<li><a href="http://nginx.org/download/nginx-1.18.0.tar.gz">http://nginx.org/download/nginx-1.18.0.tar.gz</a></li>
+</ol>
+</li>
+<li>
+<p>执行安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">tar -xf nginx-1.18.0.tar.gz -C ../nginx/
+<span class="nb">cd</span> ../nginx/
+ln -s nginx-1.18.0/ nginx
+<span class="nb">cd</span> nginx
+yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c++ libtool
+./configure
+make <span class="o">&amp;&amp;</span> make install
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Configuration summary
+  + using system PCRE library
+  + OpenSSL library is not used
+  + using system zlib library
+
+  nginx path prefix: &#34;/usr/local/nginx&#34;
+  nginx binary file: &#34;/usr/local/nginx/sbin/nginx&#34;
+  nginx modules path: &#34;/usr/local/nginx/modules&#34;
+  nginx configuration prefix: &#34;/usr/local/nginx/conf&#34;
+  nginx configuration file: &#34;/usr/local/nginx/conf/nginx.conf&#34;
+  nginx pid file: &#34;/usr/local/nginx/logs/nginx.pid&#34;
+  nginx error log file: &#34;/usr/local/nginx/logs/error.log&#34;
+  nginx http access log file: &#34;/usr/local/nginx/logs/access.log&#34;
+  nginx http client request body temporary files: &#34;client_body_temp&#34;
+  nginx http proxy temporary files: &#34;proxy_temp&#34;
+  nginx http fastcgi temporary files: &#34;fastcgi_temp&#34;
+  nginx http uwsgi temporary files: &#34;uwsgi_temp&#34;
+  nginx http scgi temporary files: &#34;scgi_temp&#34;
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>防火墙</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">firewall-cmd --list-all
+firewall-cmd --add-service<span class="o">=</span>http --permanent
+sudo firewall-cmd --add-port<span class="o">=</span>80/tcp --permanent
+firewall-cmd --reload
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>常用命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> <span class="o">[</span>root@localhost sbin<span class="o">]</span><span class="c1"># pwd</span>
+ /usr/local/nginx/sbin
+ <span class="o">[</span>root@localhost sbin<span class="o">]</span><span class="c1"># ./nginx -v</span>
+ nginx version: nginx/1.18.0
+ <span class="o">[</span>root@localhost sbin<span class="o">]</span><span class="c1"># ./nginx -s stop</span>
+ <span class="o">[</span>root@localhost sbin<span class="o">]</span><span class="c1"># ./nginx</span>
+ <span class="o">[</span>root@localhost sbin<span class="o">]</span><span class="c1"># ./nginx -s reload</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置文件</p>
+<ol>
+<li>组成
+<ol>
+<li>全局块。影响nginx服务器整体运行的配置指令。</li>
+<li>events块。影响nginx服务器与用户的网络连接</li>
+<li>http块
+<ol>
+<li>http:全局块。包括文件引入、MIME-TYPE定义、日志自定义、连接超时时间、单链接请求数上限等</li>
+<li>service</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>配置实例-反向代理
+1.</li>
+<li></li>
+</ol>
+</li>
+<li>
+<p>自定义配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">./configure --prefix<span class="o">=</span>/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_v2_module --add-module<span class="o">=</span>/home/local/nginx/ngx_http_proxy_connect_module
+
+Configuration summary
+  + using system PCRE library
+  + using system OpenSSL library
+  + using system zlib library
+
+  nginx path prefix: <span class="s2">&#34;/usr/local/nginx&#34;</span>
+  nginx binary file: <span class="s2">&#34;/usr/local/nginx/sbin/nginx&#34;</span>
+  nginx modules path: <span class="s2">&#34;/usr/local/nginx/modules&#34;</span>
+  nginx configuration prefix: <span class="s2">&#34;/usr/local/nginx/conf&#34;</span>
+  nginx configuration file: <span class="s2">&#34;/usr/local/nginx/conf/nginx.conf&#34;</span>
+  nginx pid file: <span class="s2">&#34;/usr/local/nginx/logs/nginx.pid&#34;</span>
+  nginx error log file: <span class="s2">&#34;/usr/local/nginx/logs/error.log&#34;</span>
+  nginx http access log file: <span class="s2">&#34;/usr/local/nginx/logs/access.log&#34;</span>
+  nginx http client request body temporary files: <span class="s2">&#34;client_body_temp&#34;</span>
+  nginx http proxy temporary files: <span class="s2">&#34;proxy_temp&#34;</span>
+  nginx http fastcgi temporary files: <span class="s2">&#34;fastcgi_temp&#34;</span>
+  nginx http uwsgi temporary files: <span class="s2">&#34;uwsgi_temp&#34;</span>
+  nginx http scgi temporary files: <span class="s2">&#34;scgi_temp&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>报错。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">./configure: error: SSL modules require the OpenSSL library.
+You can either <span class="k">do</span> not <span class="nb">enable</span> the modules, or install the OpenSSL library
+into the system, or build the OpenSSL library statically from the <span class="nb">source</span>
+with nginx by using --with-openssl<span class="o">=</span>&lt;path&gt; option.
+
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">./configure: error: the HTTP rewrite module requires the PCRE library.
+You can either disable the module by using --without-http_rewrite_module
+option, or install the PCRE library into the system, or build the PCRE library
+statically from the <span class="nb">source</span> with nginx by using --with-pcre<span class="o">=</span>&lt;path&gt; option.
+
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">  yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c++ libtool
+
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h1 id="使用">使用</h1>
+<h2 id="配置说明">配置说明</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 是否有缓存
+# tcp_nopush on;
+# 单位秒
+keepalive_timeout 65;
+# gzip on;
+server {
+   listen 88;
+   # 监听的域名
+   server_name  localhost;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="location规则">location规则</h3>
+<ul>
+<li><code>空格</code>：默认匹配，普通匹配
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">location / {
+   # 最终路径`/home/*`
+   root /home;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>=</code>：精确匹配。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">location /immoc/img/face1.png {
+   # 最终路径`/home/immoc/img/face1.png`
+   root /home;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>~*</code>:正则表达式，不区分大小写
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">location ~* \.(GIF|PNG|bmp|jpg|jpeg) {
+   # 最终路径`/home/*`
+   root /home;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>~</code>:正则表达式，区分大小写
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">location ~ \.(GIF|PNG|bmp|jpg|jpeg) {
+   # 最终路径`/home/*`
+   root /home;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li><code>^~</code>:以某个字符路径开头请求
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 会将 /immoc/img 拼接到 /home 后面
+location ^~ /immoc/img {
+   root /home;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="nginx解决跨域问题">nginx解决跨域问题</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
+   # 允许跨域请求的域，*代表所有
+   add_header &#39;Access-Control-Allow-Origin&#39; *;
+   # 是否发送Cookie信息
+   add_header &#39;Access-Control-Allow-Credentials&#39; &#39;true&#39;;
+   # 允许请求的方法 GET/POST/PUT/DELETE
+   add_header &#39;Access-Control-Allow-Methods&#39; *;
+   # 允许请求的header
+   add_header &#39;Access-Control-Allow-Headers&#39; *;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="防盗链">防盗链</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">server {
+   # 对源站点验证
+   # none : 允许没有http_refer的请求访问资源；
+   # blocked : 允许不是http://开头的，不带协议的请求访问资源；
+   # *.immoc.com : 只允许immoc.com域名访问资源；
+   # valid_referers none blocked *.immoc.com;
+   # valid_referers  ~/google\./;;
+   valid_referers *.immoc.com;
+   # 非法引入分支
+   if ($valid_referers) {
+      return 404;
+   }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="代理静态页面">代理静态页面</h2>
+<h3 id="请求cssjs返回状态码200但内容为空">请求css/js返回状态码200但内容为空。</h3>
+<p>conf配置文件中无<code>mime.types</code>和<code>default_type</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">http <span class="o">{</span>
+<span class="c1"># 无以下两行导致访问css/js返回为空</span>
+    include       mime.types<span class="p">;</span>
+    default_type  application/octet-stream<span class="p">;</span>
+    server <span class="o">{</span>
+        listen       80<span class="p">;</span>
+        server_name  10.110.5.26<span class="p">;</span>
+
+        location /group1/M00/<span class="o">{</span>
+                <span class="c1">#root /home/FastDFS/fdfs_storage/data;</span>
+                ngx_fastdfs_module<span class="p">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    server <span class="o">{</span>
+        listen 8888<span class="p">;</span>
+    server_name 10.110.5.26<span class="p">;</span>
+        location / <span class="o">{</span>
+            root   html<span class="p">;</span>
+            index  index.html index.htm<span class="p">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    include /data/dgov/nginx/conf/*.conf<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2021-12-18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/sloera/post/tools/">
+            <span class="next-text nav-default">Tools</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="http://sloera.gitee.io/sloera/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/sloera/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
