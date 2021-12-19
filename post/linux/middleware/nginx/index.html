@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Nginx">
 <meta itemprop="description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;&amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17"><meta itemprop="datePublished" content="2021-12-18T12:16:36+08:00" />
 <meta itemprop="dateModified" content="2021-12-19T12:35:44+08:00" />
-<meta itemprop="wordCount" content="1166">
+<meta itemprop="wordCount" content="1265">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nginx"/>
 <meta name="twitter:description" content="[[toc]] 基础安装 官网下载 http://nginx.org/download/nginx-1.18.0.tar.gz 执行安装 1 2 3 4 5 6 7 tar -xf nginx-1.18.0.tar.gz -C ../nginx/ cd ../nginx/ ln -s nginx-1.18.0/ nginx cd nginx yum -y install openssl openssl-devel pcre pcre-devel make zlib zlib-devel gcc-c&#43;&#43; libtool ./configure make &amp;&amp; make install 配置 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17"/>
@@ -130,7 +130,7 @@
       <div class="post-meta">
         <span class="post-time"> 2021-12-18 </span>
         
-          <span class="more-meta"> 1166 words </span>
+          <span class="more-meta"> 1265 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -149,6 +149,7 @@
             <li><a href="#location规则">location规则</a></li>
             <li><a href="#nginx解决跨域问题">nginx解决跨域问题</a></li>
             <li><a href="#防盗链">防盗链</a></li>
+            <li><a href="#配置上游服务器">配置上游服务器</a></li>
           </ul>
         </li>
         <li><a href="#代理静态页面">代理静态页面</a>
@@ -572,7 +573,62 @@ location ^~ /immoc/img {
 }
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="代理静态页面">代理静态页面</h2>
+</div><h3 id="配置上游服务器">配置上游服务器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">upstream www.tomcats {
+   # 注意，结尾有分号
+   server 192.168.1.173:8080;
+   server 192.168.1.174:8080;
+   server 192.168.1.175:8080;
+}
+server {
+   listen 80;
+   server_name www.tomcats.com;
+   location / {
+      # 代理传递
+      proxy_pass http://www.tomcats;
+   }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="加权轮询">加权轮询</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">upstream www.tomcats {
+   # weight数值越小，权重越低
+   server 192.168.1.173:8080 weight=1 max_conns=2;
+   server 192.168.1.174:8080 weight=3;
+   server 192.168.1.175:8080 weight=5;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>&lt;++&gt;</p>
+<h2 id="代理静态页面">代理静态页面</h2>
 <h3 id="请求cssjs返回状态码200但内容为空">请求css/js返回状态码200但内容为空。</h3>
 <p>conf配置文件中无<code>mime.types</code>和<code>default_type</code></p>
 <div class="highlight"><div class="chroma">
@@ -639,7 +695,7 @@ location ^~ /immoc/img {
     <span class="item-title">LastMod</span>
     <span class="item-content">
         2021-12-19
-        <a href="https://gitee.com/sloera/Note/commit/0969517eed74f330a9d8be9cc9587abfddc51e58" title="hugo: add jmeter">(0969517)</a>
+        <a href="https://gitee.com/sloera/Note/commit/8c481ee50b9beceeea83db55778adb5a7012a992" title="hugo: add jmeter">(8c481ee)</a>
     </span>
   </p>
   
