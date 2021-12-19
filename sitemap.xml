@@ -3,21 +3,28 @@
   
   <url>
     <loc>https://sloera.gitee.io/</loc>
-    <lastmod>2021-12-18T14:19:42+08:00</lastmod>
+    <lastmod>2021-12-19T12:35:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://sloera.gitee.io/post/linux/middleware/nginx/</loc>
-    <lastmod>2021-12-18T12:24:08+08:00</lastmod>
+    <loc>https://sloera.gitee.io/post/linux/middleware/jmeter/</loc>
+    <lastmod>2021-12-19T12:35:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://sloera.gitee.io/post/</loc>
-    <lastmod>2021-12-18T14:19:42+08:00</lastmod>
+    <lastmod>2021-12-19T12:35:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://sloera.gitee.io/post/linux/middleware/nginx/</loc>
+    <lastmod>2021-12-19T12:35:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Dec 2021 12:16:36 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Dec 2021 12:04:42 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jmeter</title>
+      <link>https://sloera.gitee.io/post/linux/middleware/jmeter/</link>
+      <pubDate>Sun, 19 Dec 2021 12:04:42 +0800</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/linux/middleware/jmeter/</guid>
+      <description>[[toc]] Designed to load test functional behavior and measure performance 基础安装 官网 下载地址 1 2 wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.2.tgz tar zxf apache-jmeter-5.4.2.tgz 运行 1 ./bin/jmeter 使用 新建 新建一个配置，保存 Test Plan&amp;gt;Add&amp;gt;Threads(Users)&amp;gt;Thread Group 线程数：代表用户数 Ramp-up period：请求间隔时间</description>
+    </item>
+    
     <item>
       <title>Nginx</title>
       <link>https://sloera.gitee.io/post/linux/middleware/nginx/</link>
