@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 19 Dec 2021 12:04:42 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jan 2022 21:46:36 +0800</lastBuildDate><atom:link href="https://sloera.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Regex</title>
+      <link>https://sloera.gitee.io/post/dev/regex/</link>
+      <pubDate>Mon, 10 Jan 2022 21:46:36 +0800</pubDate>
+      
+      <guid>https://sloera.gitee.io/post/dev/regex/</guid>
+      <description>本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto</description>
+    </item>
+    
     <item>
       <title>Jmeter</title>
       <link>https://sloera.gitee.io/post/linux/middleware/jmeter/</link>

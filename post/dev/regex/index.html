@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Regex - Blog by Sloera</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Sloera" /><meta name="description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.90.0 with theme even" />
+
+
+<link rel="canonical" href="https://sloera.gitee.io/post/dev/regex/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Regex" />
+<meta property="og:description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://sloera.gitee.io/post/dev/regex/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-10T21:46:36+08:00" />
+<meta property="article:modified_time" content="2022-01-11T00:26:09+08:00" />
+
+<meta itemprop="name" content="Regex">
+<meta itemprop="description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto"><meta itemprop="datePublished" content="2022-01-10T21:46:36+08:00" />
+<meta itemprop="dateModified" content="2022-01-11T00:26:09+08:00" />
+<meta itemprop="wordCount" content="2972">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Regex"/>
+<meta name="twitter:description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Even</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Even</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Regex</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-01-10 </span>
+        
+          <span class="more-meta"> 2972 words </span>
+          <span class="more-meta"> 6 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nfa引擎匹配原理">NFA引擎匹配原理</a>
+      <ul>
+        <li><a href="#正则表达式引擎">正则表达式引擎</a></li>
+        <li><a href="#预备知识">预备知识</a>
+          <ul>
+            <li><a href="#字符串组成">字符串组成</a></li>
+            <li><a href="#占用字符和零宽度">占用字符和零宽度</a></li>
+            <li><a href="#控制权和传动">控制权和传动</a></li>
+          </ul>
+        </li>
+        <li><a href="#正则表达式简单匹配过程">正则表达式简单匹配过程</a>
+          <ul>
+            <li><a href="#含有匹配优先量词的匹配过程匹配成功">含有匹配优先量词的匹配过程——匹配成功</a></li>
+            <li><a href="#含有忽略优先量词的匹配过程匹配成功">含有忽略优先量词的匹配过程——匹配成功</a></li>
+            <li><a href="#零宽度匹配过程">零宽度匹配过程</a></li>
+          </ul>
+        </li>
+        <li><a href="#环视lookaround">环视(Lookaround)</a>
+          <ul>
+            <li><a href="#逆序环视">逆序环视</a></li>
+            <li><a href="#环视应用">环视应用</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>本文学习自: <a href="https://blog.csdn.net/lxcnn/article/details/4304651">https://blog.csdn.net/lxcnn/article/details/4304651</a></p>
+</blockquote>
+<h1 id="nfa引擎匹配原理">NFA引擎匹配原理</h1>
+<h2 id="正则表达式引擎">正则表达式引擎</h2>
+<p>正则引擎大体上可分为：<code>DFA</code>和<code>NFA</code>，而<code>NFA</code>又可分为<code>传统型NFA</code>和<code>POSIX NFA</code></p>
+<ul>
+<li>DFA: Deterministic finite automaton。确定型有穷自动机
+不需要回溯，匹配快速，不支持捕获组，不支持反向引用和$number引用。目前使用<code>DFA</code>引擎的语言和工具主要有<code>awk</code>，<code>egrep</code>和<code>lex</code>。</li>
+<li>NFA: Non-deterministic finite automaton。非确定型有穷自动机
+<ul>
+<li>Traditional NFA</li>
+<li>POSIX NFA
+主要指符合<code>POSIX</code>标准的<code>NFA</code>引擎。它的主要特别是提供<code>longest-leftmost</code>匹配，也就是在找到最左侧最长匹配之前，它将继续回溯。同<code>DFA</code>一样，非贪婪模式或忽略优先量词对<code>POSIX NFA</code>无意义。</li>
+</ul>
+</li>
+</ul>
+<p>最常用的为<code>传统型NFA</code></p>
+<ol>
+<li>捕获组、反向引用和$number引用</li>
+<li>环视(Lookaround, (?&lt;=&hellip;), (?&lt;!&hellip;), (?=&hellip;), (?!&hellip;))，别称<code>预搜索</code></li>
+<li>忽略优化量词(??, *?, +?, {m,n}?, {m,}?)，别称<code>非贪婪模式</code></li>
+<li>占有优先量词(?+, *+, ++, {m, n}+, {m,}+, 目前仅Java和PCRE支持)，固化分组(?&gt;&hellip;)</li>
+</ol>
+<h2 id="预备知识">预备知识</h2>
+<h3 id="字符串组成">字符串组成</h3>
+<p><img src="img/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%84%E6%88%90.png" alt="å­符串组成"></p>
+<p>对于字符串<code>abc</code>，包括三个字符和四个位置。</p>
+<h3 id="占用字符和零宽度">占用字符和零宽度</h3>
+<ul>
+<li>如果子表达式匹配到的是字符内容，并被保存到最终的匹配结果中，那么这个子表达式是<code>占用字符</code>的。一个字符，同一时间只能由一个子表达式匹配</li>
+<li>如果子表达式匹配的仅仅是位置(\b边界)，或者匹配的内容并不保存到匹配结果中(断言)，那么这个子表达式是<code>零宽度</code>的。即不占用位置。一个位置，可以同时由多个零宽度的子表达式匹配</li>
+</ul>
+<p>占用字符是互斥的，零宽度是非互斥的</p>
+<h3 id="控制权和传动">控制权和传动</h3>
+<ul>
+<li>控制权。正则的匹配过程，通常由一个子表达式(普通字符、元字符、元字符序列)取得控制权，从字符串的某一位置开始尝试匹配，匹配成功后将<code>控制权</code>交给下一子表达式。子表达式开始尝试匹配的位置，是从前一子表达式匹配成功的结束位置开始的</li>
+<li>传动。对于整个表达式来说，通常是由字符串位置0开始尝试匹配的。如果在位置0开始的尝试，匹配到字符串某一位置时整个表达式匹配失败，引擎会使正则向前<code>传动</code>，整个表达式从位置1开始重新尝试匹配。直到报告匹配成功或尝试到最后一个位置后报告匹配失败</li>
+</ul>
+<h2 id="正则表达式简单匹配过程">正则表达式简单匹配过程</h2>
+<h3 id="含有匹配优先量词的匹配过程匹配成功">含有匹配优先量词的匹配过程——匹配成功</h3>
+<p><img src="img/%E4%BC%98%E5%85%88%E9%87%8F%E8%AF%8D%E5%8C%B9%E9%85%8D-%E6%88%90%E5%8A%9F1.png" alt="ä¼先量词匹配-成功1"></p>
+<p><img src="img/%E4%BC%98%E5%85%88%E9%87%8F%E8%AF%8D%E5%8C%B9%E9%85%8D-%E6%88%90%E5%8A%9F2.png" alt="ä¼先量词匹配-成功2"></p>
+<p>优先量词。在可匹配或不匹配时，会先选择尝试匹配(同时记录一个备选状态)。在匹配失败后，回到备选状态重新进行匹配</p>
+<h3 id="含有忽略优先量词的匹配过程匹配成功">含有忽略优先量词的匹配过程——匹配成功</h3>
+<p><img src="img/%E5%BF%BD%E7%95%A5%E4%BC%98%E5%85%88%E9%87%8F%E8%AF%8D-%E6%88%90%E5%8A%9F.png" alt="å¿½略优先量词-成功"></p>
+<p>忽略量词。在可匹配或不匹配时，先选择不匹配(同时记录一个备选状态)，在匹配失败后，回到备选状态重新进行匹配</p>
+<h3 id="零宽度匹配过程">零宽度匹配过程</h3>
+<p><img src="img/%E9%9B%B6%E5%AE%BD%E5%BA%A6%E5%8C%B9%E9%85%8D.png" alt="é¶宽度匹配"></p>
+<p>正则表达式：<code>^(?=[a-z])[a-z0-9]+$</code></p>
+<p>元字符<code>^</code>和<code>$</code>匹配的只是位置，顺序环视<code>(?=[a-z])</code>只进行匹配，并不占有字符，也不将匹配的内容保存到最终的匹配结果，所以都是零宽度的。</p>
+<p>这个正则的意义就是匹配由字母或数字组成的，第一个字符是字母的字符串。</p>
+<h2 id="环视lookaround">环视(Lookaround)</h2>
+<p>环视只进行子表达式的匹配，不占有字符。为零宽度的。</p>
+<p>环视按照方向分为<code>顺序</code>和<code>逆序</code>，按照是否匹配分为<code>肯定</code>和<code>否定</code>。组合起来有四种。</p>
+<p>表达式</p>
+<p>说明</p>
+<p>(?&lt;=Expression)</p>
+<p>逆序肯定环视，表示所在位置左侧能够匹配Expression</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(?&lt;=Expression)</td>
+<td>逆序肯定环视，表示所在位置左侧能够匹配Expression</td>
+</tr>
+<tr>
+<td>(?&lt;!=Expression)</td>
+<td>逆序否定环视，表示所在位置左侧不能匹配Expression</td>
+</tr>
+<tr>
+<td>(?=Expression)</td>
+<td>顺序肯定环视，表示所在位置右侧能够匹配Expression</td>
+</tr>
+<tr>
+<td>(?!Expression)</td>
+<td>顺序否定环视，表示所在位置右侧还能匹配Expression</td>
+</tr>
+</tbody>
+</table>
+<h3 id="逆序环视">逆序环视</h3>
+<ul>
+<li>
+<p>逆序肯定环视(?&lt;=Expression)。当子表达式<code>Expression</code>匹配成功时，<code>(?&lt;=Expression)</code>匹配成功，并报告<code>(?&lt;=Expression)</code>匹配当前位置成功</p>
+</li>
+<li>
+<p>逆序否定环视<code>(?&lt;!Expression)</code>。当子表达式<code>Expression</code>匹配成功时，<code>(?&lt;!Expression)</code>匹配失败，当子表达式<code>Expression</code>匹配失败时，<code>(?&lt;!Expression)</code>匹配成功，并报告<code>(?&lt;!Expression)</code>匹配当前位置成功</p>
+</li>
+<li>
+<p>顺序环视：相当于在当前位置右侧添加一个附加条件，匹配尝试从当前位置开始，向右尝试匹配</p>
+</li>
+<li>
+<p>逆序环视：相当于在当前位置左侧附加一个条件，从当前位置左侧某一位置开始，匹配到当前位置为止</p>
+</li>
+</ul>
+<blockquote>
+<p>JavaScript中只支持顺序环视，不支持逆序环视。</p>
+<p>Java中虽然顺序环视和逆序环视都支持，但是逆序环视只支持长度确定的表达式，逆序环视中量词只支持“?”，不支持其它长度不定的量词</p>
+<p>目前只有.NET中支持不确定长度的逆序环视。</p>
+</blockquote>
+<p><img src="img/%E9%80%86%E5%BA%8F%E7%8E%AF%E8%A7%86%E5%8C%B9%E9%85%8D.png" alt="é<t_??>º环视匹配"></p>
+<h4 id="量词">量词<code>?</code></h4>
+<p>源字符串：<code>cba</code></p>
+<p>正则表达式：<code>(?&lt;=(c?b))a</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">vim regexReverse.java
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$CLASSPATH</span><span class="s2">:.&#34;</span>
+javac regexReverse.java
+java regexReverse
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * class com.sloera.regext
+</span><span class="cm"> * user sloera
+</span><span class="cm"> * date 2022/1/11
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">regexReverse</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;cba&#34;</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">reg</span> <span class="o">=</span> <span class="s">&#34;(?&lt;=(c?b))a&#34;</span><span class="o">;</span>
+    <span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">reg</span><span class="o">).</span><span class="na">matcher</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+      <span class="c1">// group 指全部的匹配内容
+</span><span class="c1"></span>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">());</span>
+      <span class="c1">// group(1) 指第一个匹配组
+</span><span class="c1"></span>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">1</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">a
+b
+</code></pre></td></tr></table>
+</div>
+</div><p><code>c?</code>并没有参与到匹配中。<code>?</code>不具备贪婪模式的作用，只提供了一个分支的作用。</p>
+<ul>
+<li>分支1：从当前位置(b和a之间)向前查找一个字符。优先尝试较少字符的分支</li>
+<li>分支2：从当前位置向前查找两个字符。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * class com.sloera.regext
+</span><span class="cm"> * user sloera
+</span><span class="cm"> * date 2022/1/11
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">regexReverse</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">test</span> <span class="o">=</span> <span class="s">&#34;dcba&#34;</span><span class="o">;</span>
+    <span class="c1">// 整个组匹配，就必须包含b，则c必须有
+</span><span class="c1"></span>    <span class="n">String</span> <span class="n">reg</span> <span class="o">=</span> <span class="s">&#34;(?&lt;=(dc?b))a&#34;</span><span class="o">;</span>
+    <span class="n">Matcher</span> <span class="n">m</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">reg</span><span class="o">).</span><span class="na">matcher</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+      <span class="c1">// group 指全部的匹配内容
+</span><span class="c1"></span>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">());</span>
+      <span class="c1">// group(1) 指第一个匹配组
+</span><span class="c1"></span>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="n">1</span><span class="o">));</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">a
+dcb
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>不要轻易在逆序环视中使用不定长度的量词，除非确实需要；</li>
+<li>在任何场景下，不只是逆序环视中，不要轻易使用量词修饰匹配范围非常大的子表达式，小数点“.”和“[\s\S]”之类的，使用时尤其要注意。</li>
+</ol>
+<h3 id="环视应用">环视应用</h3>
+<p>需求：数字格式化成用“,”的货币格式。</p>
+<p>正则表达式：<code>(?n)(?&lt;=\d)(?&lt;!\.\d*)(?=(\d{3})+(\.|$))</code></p>
+<blockquote>
+<p>这里<code>?n</code>不知道是做什么的。在<a href="https://tool.oschina.net/regex">https://tool.oschina.net/regex</a>里，使用<code>(\B)(?&lt;=\d)(?&lt;!\.\d*)(?=(\d{3})+(\.|$))</code>是可以正常替换的</p>
+</blockquote>
+<p>测试代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">double[] data = new double[] { 0, 12, 123, 1234, 12345, 123456, 1234567, 123456789, 1234567890, 12.345, 123.456, 1234.56, 12345.6789, 123456.789, 1234567.89, 12345678.9 };
+
+foreach (double d in data)
+
+{
+    richTextBox2.Text += &#34;源字符串：&#34; + d.ToString().PadRight(15) + &#34;格式化：&#34; + Regex.Replace(d.ToString(), @&#34;(?n)(?&lt;=\d)(?&lt;!\.\d*)(?=(\d{3})+(\.|$))&#34;, &#34;,&#34;) + &#34;\n&#34;;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>输出结果：</p>
+<p>源字符串：0              格式化：0</p>
+<p>源字符串：12             格式化：12</p>
+<p>源字符串：123            格式化：123</p>
+<p>源字符串：1234           格式化：1,234</p>
+<p>源字符串：12345          格式化：12,345</p>
+<p>源字符串：123456         格式化：123,456</p>
+<p>源字符串：1234567        格式化：1,234,567</p>
+<p>源字符串：123456789      格式化：123,456,789</p>
+<p>源字符串：1234567890     格式化：1,234,567,890</p>
+<p>源字符串：12.345         格式化：12.345</p>
+<p>源字符串：123.456        格式化：123.456</p>
+<p>源字符串：1234.56        格式化：1,234.56</p>
+<p>源字符串：12345.6789     格式化：12,345.6789</p>
+<p>源字符串：123456.789     格式化：123,456.789</p>
+<p>源字符串：1234567.89     格式化：1,234,567.89</p>
+<p>源字符串：12345678.9     格式化：12,345,678.9</p>
+<ol>
+<li>这个位置的左侧必须为数字</li>
+<li>这个位置右侧到出现“.”或结尾为止，必须是数字，且数字的个数必须为3的倍数</li>
+<li>这个位置左侧相隔任意个数字不能出现“.”</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Sloera</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2022-01-11
+        <a href="https://gitee.com/sloera/Note/commit/7405b143537e2d1f317ae67713d38ba1e4e580b7" title="hugo: add regex.md">(7405b14)</a>
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/linux/middleware/jmeter/">
+            <span class="next-text nav-default">Jmeter</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
+  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2021 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

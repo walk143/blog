@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.89.4 with theme even" />
+<meta name="generator" content="Hugo 0.90.0 with theme even" />
 
 
 <link rel="canonical" href="https://sloera.gitee.io/post/linux/middleware/jmeter/" />
@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sloera.gitee.io/post/linux/middleware/jmeter/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-12-19T12:04:42+08:00" />
-<meta property="article:modified_time" content="2021-12-19T12:35:44+08:00" />
+<meta property="article:modified_time" content="2021-12-25T17:34:50+08:00" />
 
 <meta itemprop="name" content="Jmeter">
 <meta itemprop="description" content="[[toc]] Designed to load test functional behavior and measure performance 基础安装 官网 下载地址 1 2 wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.2.tgz tar zxf apache-jmeter-5.4.2.tgz 运行 1 ./bin/jmeter 使用 新建 新建一个配置，保存 Test Plan&gt;Add&gt;Threads(Users)&gt;Thread Group 线程数：代表用户数 Ramp-up period：请求间隔时间"><meta itemprop="datePublished" content="2021-12-19T12:04:42+08:00" />
-<meta itemprop="dateModified" content="2021-12-19T12:35:44+08:00" />
-<meta itemprop="wordCount" content="107">
+<meta itemprop="dateModified" content="2021-12-25T17:34:50+08:00" />
+<meta itemprop="wordCount" content="1169">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jmeter"/>
 <meta name="twitter:description" content="[[toc]] Designed to load test functional behavior and measure performance 基础安装 官网 下载地址 1 2 wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.2.tgz tar zxf apache-jmeter-5.4.2.tgz 运行 1 ./bin/jmeter 使用 新建 新建一个配置，保存 Test Plan&gt;Add&gt;Threads(Users)&gt;Thread Group 线程数：代表用户数 Ramp-up period：请求间隔时间"/>
@@ -130,8 +130,8 @@
       <div class="post-meta">
         <span class="post-time"> 2021-12-19 </span>
         
-          <span class="more-meta"> 107 words </span>
-          <span class="more-meta"> 1 min read </span>
+          <span class="more-meta"> 1169 words </span>
+          <span class="more-meta"> 3 mins read </span>
         
       </div>
     </header>
@@ -145,6 +145,13 @@
     <li><a href="#使用">使用</a>
       <ul>
         <li><a href="#新建">新建</a></li>
+        <li><a href="#调用dubbo接口">调用dubbo接口</a>
+          <ul>
+            <li><a href="#返回为null">返回为<code>null</code></a></li>
+            <li><a href="#parameter-comparison-table">Parameter Comparison Table</a></li>
+            <li><a href="#误选配置组后无法清除">误选配置组后，无法清除</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -199,6 +206,270 @@ tar zxf apache-jmeter-5.4.2.tgz
 </ol>
 </li>
 </ol>
+<h2 id="调用dubbo接口">调用dubbo接口</h2>
+<blockquote>
+<p><a href="https://github.com/thubbo/jmeter-plugins-for-apache-dubbo/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97">https://github.com/thubbo/jmeter-plugins-for-apache-dubbo/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97</a></p>
+</blockquote>
+<p>当使用zk，address填入zk地址（集群地址使用&quot;,&ldquo;分隔）,使用dubbo直连，address填写直连地址和服务端口
+timeout：服务方法调用超时时间(毫秒)
+version：服务版本，与服务提供者的版本一致
+retries：远程服务调用重试次数，不包括第一次调用，不需要重试请设为0
+cluster：集群方式，可选：failover/failfast/failsafe/failback/forking
+group: 服务分组，当一个接口有多个实现，可以用分组区分，必需和服务提供方一致
+接口需要填写类型完全名称，含包名
+参数支持任何类型，包装类直接使用java.lang下的包装类，小类型使用：int、float、shot、double、long、byte、boolean、char，自定义类使用类完全名称。
+参数值，基础包装类和基础小类型直接使用值，例如：int为1，boolean为true等，自定义类与List或者Map等使用json格式数据。
+更多dubbo参数查看官方文档：http://dubbo.apache.org/books/dubbo-user-book/references/xml/dubbo-reference.html</p>
+<p><img src="img/jmeter-dubbo.png" alt="jmeter-dubbo"></p>
+<h3 id="返回为null">返回为<code>null</code></h3>
+<p>超过最大线程。</p>
+<p>在jmeter.properties文件中修改配置
+jmeter.save.saveservice.response_data=true
+jmeter.save.saveservice.samplerData=true</p>
+<p>在user.properties文件中追加配置
+jmeter.save.saveservice.output_format=xml
+jmeter.save.saveservice.response_data=true
+jmeter.save.saveservice.samplerData=true
+jmeter.save.saveservice.requestHeaders=true
+jmeter.save.saveservice.url=true
+jmeter.save.saveservice.responseHeaders=true</p>
+<h3 id="parameter-comparison-table">Parameter Comparison Table</h3>
+<table>
+<thead>
+<tr>
+<th>Java类型</th>
+<th>paramType</th>
+<th>paramValue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>int</td>
+<td>1</td>
+</tr>
+<tr>
+<td>int[]</td>
+<td>int[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>double</td>
+<td>double</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>double[]</td>
+<td>double[]</td>
+<td>[1.2, 1.3]</td>
+</tr>
+<tr>
+<td>short</td>
+<td>short</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short[]</td>
+<td>short[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>float</td>
+<td>float</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>float[]</td>
+<td>float[]</td>
+<td>[1.2, 1.3]</td>
+</tr>
+<tr>
+<td>long</td>
+<td>long</td>
+<td>1</td>
+</tr>
+<tr>
+<td>long[]</td>
+<td>long[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>byte</td>
+<td>字节</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>byte[]</td>
+<td>字节</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>boolean</td>
+<td>true false</td>
+</tr>
+<tr>
+<td>boolean[]</td>
+<td>boolean[]</td>
+<td>[true, false]</td>
+</tr>
+<tr>
+<td>char</td>
+<td>char</td>
+<td>A，如果字符过长取值为：&ldquo;STR&rdquo;.charAt(0)</td>
+</tr>
+<tr>
+<td>char[]</td>
+<td>char[]</td>
+<td>[A, B]</td>
+</tr>
+<tr>
+<td>java.lang.String</td>
+<td>java.lang.String String string</td>
+<td>&ldquo;foo&rdquo; foo</td>
+</tr>
+<tr>
+<td>java.lang.String[]</td>
+<td>java.lang.String[] String[] string[]</td>
+<td>[&ldquo;foo1&rdquo;, &ldquo;foo2&rdquo;]</td>
+</tr>
+<tr>
+<td>java.lang.Integer</td>
+<td>java.lang.Integer Integer integer</td>
+<td>1</td>
+</tr>
+<tr>
+<td>java.lang.Integer[]</td>
+<td>java.lang.Integer[] Integer[] integer[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>java.lang.Double</td>
+<td>java.lang.Double Double</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>java.lang.Double[]</td>
+<td>java.lang.Double[] Double[]</td>
+<td>[1.2, 1.3]</td>
+</tr>
+<tr>
+<td>java.lang.Short</td>
+<td>java.lang.Short Short</td>
+<td>1</td>
+</tr>
+<tr>
+<td>java.lang.Short[]</td>
+<td>java.lang.Short[] Short[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>java.lang.Long</td>
+<td>java.lang.Long Long</td>
+<td>1</td>
+</tr>
+<tr>
+<td>java.lang.Long[]</td>
+<td>java.lang.Long[] Long[]</td>
+<td>[1, 2]</td>
+</tr>
+<tr>
+<td>java.lang.Float</td>
+<td>java.lang.Float Float</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>java.lang.Float[]</td>
+<td>java.lang.Float[] Float[]</td>
+<td>[1.2, 1.3]</td>
+</tr>
+<tr>
+<td>java.lang.Byte</td>
+<td>java.lang.Byte Byte</td>
+<td>字节</td>
+</tr>
+<tr>
+<td>java.lang.Byte[]</td>
+<td>java.lang.Byte[]</td>
+<td>Byte[]</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>java.lang.Boolean Boolean</td>
+<td>true false</td>
+</tr>
+<tr>
+<td>java.lang.Boolean[]</td>
+<td>java.lang.Boolean[] Boolean[]</td>
+<td>[true, false]</td>
+</tr>
+<tr>
+<td>JavaBean</td>
+<td>com.your.package.BeanName</td>
+<td>{&ldquo;att1&rdquo;:&ldquo;foo&rdquo;,&ldquo;att2&rdquo;:&ldquo;foo2&rdquo;}</td>
+</tr>
+<tr>
+<td>JavaBean[]</td>
+<td>com.your.package.BeanName</td>
+<td>[{&ldquo;att1&rdquo;:&ldquo;foo&rdquo;}, {&ldquo;att1&rdquo;:&ldquo;foo2&rdquo;}]</td>
+</tr>
+<tr>
+<td>java.util.Map以及子类</td>
+<td>java.util.Map以及子类</td>
+<td>{&ldquo;att1&rdquo;:&ldquo;foo&rdquo;,&ldquo;att2&rdquo;:&ldquo;foo2&rdquo;}</td>
+</tr>
+<tr>
+<td>java.util.Map&lt;String,JavaBean&gt;</td>
+<td>java.util.Map</td>
+<td>{&ldquo;keyName&rdquo;:{&ldquo;att1&rdquo;:&ldquo;foo&rdquo;}}</td>
+</tr>
+<tr>
+<td>java.util.HashMap&lt;Object,Object&gt;</td>
+<td>java.util.HashMap</td>
+<td>{&ldquo;keyName&rdquo;:{&ldquo;att1&rdquo;:&ldquo;foo&rdquo;}}</td>
+</tr>
+<tr>
+<td>java.util.Collection以及子类</td>
+<td>java.util.Collection以及子类</td>
+<td>[&ldquo;a&rdquo;,&ldquo;b&rdquo;]</td>
+</tr>
+<tr>
+<td>java.util.List<String></td>
+<td>java.util.List</td>
+<td>[&ldquo;a&rdquo;, &ldquo;b&rdquo;]</td>
+</tr>
+<tr>
+<td>java.util.List<JavaBean></td>
+<td>java.util.List</td>
+<td>[{&ldquo;att1&rdquo;:&ldquo;foo1&rdquo;}, {&ldquo;att1&rdquo;:&ldquo;foo2&rdquo;}]</td>
+</tr>
+<tr>
+<td>java.util.List&lt;Map&lt;Object, JavaBean&raquo;</td>
+<td>java.util.List</td>
+<td>[{&ldquo;keyName1&rdquo;:{&ldquo;att1&rdquo;:&ldquo;foo1&rdquo;}}, {&ldquo;keyName2&rdquo;:{&ldquo;att1&rdquo;:&ldquo;foo1&rdquo;}}]</td>
+</tr>
+<tr>
+<td>java.util.List<Long></td>
+<td>java.util.List</td>
+<td>[1, 2, 3]</td>
+</tr>
+<tr>
+<td>java.util.ArrayList<Object></td>
+<td>java.util.ArrayList</td>
+<td>[&ldquo;foo&rdquo; , 1, true]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="误选配置组后无法清除">误选配置组后，无法清除</h3>
+<blockquote>
+<p><a href="https://hub.fastgit.org/thubbo/jmeter-plugins-for-apache-dubbo/issues/142">https://hub.fastgit.org/thubbo/jmeter-plugins-for-apache-dubbo/issues/142</a></p>
+</blockquote>
+<p>在取样器 Dubbo Sample 的配置界面中的 Config Center / Protocol 下来选择框中如果选择了任意一项，则此项无法被清除，在后面的执行测试计划时，会由于我没有正确填写 Config Center 的 Address 项而发生报错，报错信息：</p>
+<pre><code>Response code:MISS_ADDRESS
+Response message:Address is empty!
+</code></pre>
+<p>此Bug的关键不是为何会报错，而是在 Dubbo Sample / Config Center / Protocol 下拉选择框中，应当增加一个“无”选项。</p>
+<p>我所使用的版本是 jmeter-plugins-dubbo-2.7.8-jar-with-dependencies.jar</p>
 
     </div>
 
@@ -210,8 +481,8 @@ tar zxf apache-jmeter-5.4.2.tgz
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2021-12-19
-        <a href="https://gitee.com/sloera/Note/commit/8c481ee50b9beceeea83db55778adb5a7012a992" title="hugo: add jmeter">(8c481ee)</a>
+        2021-12-25
+        <a href="https://gitee.com/sloera/Note/commit/28317ea2c453751fee2e80169df390a2c630f677" title="2021-12-25： dubbo">(28317ea)</a>
     </span>
   </p>
   
@@ -220,7 +491,11 @@ tar zxf apache-jmeter-5.4.2.tgz
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/dev/regex/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Regex</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/linux/middleware/nginx/">
             <span class="next-text nav-default">Nginx</span>
             <span class="next-text nav-mobile">Next</span>
@@ -260,7 +535,8 @@ tar zxf apache-jmeter-5.4.2.tgz
 
   <span class="copyright-year">
     &copy; 
-    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
+    2021 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
   </span>
 </div>
 
