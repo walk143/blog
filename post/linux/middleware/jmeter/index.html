@@ -49,7 +49,7 @@
 <meta itemprop="name" content="Jmeter">
 <meta itemprop="description" content="[[toc]] Designed to load test functional behavior and measure performance 基础安装 官网 下载地址 1 2 wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.2.tgz tar zxf apache-jmeter-5.4.2.tgz 运行 1 ./bin/jmeter 使用 新建 新建一个配置，保存 Test Plan&gt;Add&gt;Threads(Users)&gt;Thread Group 线程数：代表用户数 Ramp-up period：请求间隔时间"><meta itemprop="datePublished" content="2021-12-19T12:04:42+08:00" />
 <meta itemprop="dateModified" content="2021-12-25T17:34:50+08:00" />
-<meta itemprop="wordCount" content="1169">
+<meta itemprop="wordCount" content="1179">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jmeter"/>
 <meta name="twitter:description" content="[[toc]] Designed to load test functional behavior and measure performance 基础安装 官网 下载地址 1 2 wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.2.tgz tar zxf apache-jmeter-5.4.2.tgz 运行 1 ./bin/jmeter 使用 新建 新建一个配置，保存 Test Plan&gt;Add&gt;Threads(Users)&gt;Thread Group 线程数：代表用户数 Ramp-up period：请求间隔时间"/>
@@ -130,7 +130,7 @@
       <div class="post-meta">
         <span class="post-time"> 2021-12-19 </span>
         
-          <span class="more-meta"> 1169 words </span>
+          <span class="more-meta"> 1179 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -210,30 +210,52 @@ tar zxf apache-jmeter-5.4.2.tgz
 <blockquote>
 <p><a href="https://github.com/thubbo/jmeter-plugins-for-apache-dubbo/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97">https://github.com/thubbo/jmeter-plugins-for-apache-dubbo/wiki/%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97</a></p>
 </blockquote>
-<p>当使用zk，address填入zk地址（集群地址使用&quot;,&ldquo;分隔）,使用dubbo直连，address填写直连地址和服务端口
-timeout：服务方法调用超时时间(毫秒)
-version：服务版本，与服务提供者的版本一致
-retries：远程服务调用重试次数，不包括第一次调用，不需要重试请设为0
-cluster：集群方式，可选：failover/failfast/failsafe/failback/forking
-group: 服务分组，当一个接口有多个实现，可以用分组区分，必需和服务提供方一致
-接口需要填写类型完全名称，含包名
-参数支持任何类型，包装类直接使用java.lang下的包装类，小类型使用：int、float、shot、double、long、byte、boolean、char，自定义类使用类完全名称。
-参数值，基础包装类和基础小类型直接使用值，例如：int为1，boolean为true等，自定义类与List或者Map等使用json格式数据。
-更多dubbo参数查看官方文档：http://dubbo.apache.org/books/dubbo-user-book/references/xml/dubbo-reference.html</p>
+<p>当使用zk，address填入zk地址（集群地址使用&quot;,&ldquo;分隔）,使用dubbo直连，address填写直连地址和服务端口</p>
+<ul>
+<li>timeout：服务方法调用超时时间(毫秒)</li>
+<li>version：服务版本，与服务提供者的版本一致</li>
+<li>retries：远程服务调用重试次数，不包括第一次调用，不需要重试请设为0</li>
+<li>cluster：集群方式，可选：failover/failfast/failsafe/failback/forking</li>
+<li>group: 服务分组，当一个接口有多个实现，可以用分组区分，必需和服务提供方一致</li>
+<li>接口需要填写类型完全名称，含包名</li>
+<li>参数支持任何类型，包装类直接使用java.lang下的包装类，小类型使用：int、float、shot、double、long、byte、boolean、char，自定义类使用类完全名称。</li>
+<li>参数值，基础包装类和基础小类型直接使用值，例如：int为1，boolean为true等，自定义类与List或者Map等使用json格式数据。</li>
+</ul>
+<p>更多dubbo参数查看官方文档：http://dubbo.apache.org/books/dubbo-user-book/references/xml/dubbo-reference.html</p>
 <p><img src="img/jmeter-dubbo.png" alt="jmeter-dubbo"></p>
 <h3 id="返回为null">返回为<code>null</code></h3>
 <p>超过最大线程。</p>
-<p>在jmeter.properties文件中修改配置
-jmeter.save.saveservice.response_data=true
-jmeter.save.saveservice.samplerData=true</p>
-<p>在user.properties文件中追加配置
-jmeter.save.saveservice.output_format=xml
+<p>在jmeter.properties文件中修改配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">jmeter.save.saveservice.response_data=true
+jmeter.save.saveservice.samplerData=true
+</code></pre></td></tr></table>
+</div>
+</div><p>在user.properties文件中追加配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">jmeter.save.saveservice.output_format=xml
 jmeter.save.saveservice.response_data=true
 jmeter.save.saveservice.samplerData=true
 jmeter.save.saveservice.requestHeaders=true
 jmeter.save.saveservice.url=true
-jmeter.save.saveservice.responseHeaders=true</p>
-<h3 id="parameter-comparison-table">Parameter Comparison Table</h3>
+jmeter.save.saveservice.responseHeaders=true
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="parameter-comparison-table">Parameter Comparison Table</h3>
 <table>
 <thead>
 <tr>
@@ -465,10 +487,17 @@ jmeter.save.saveservice.responseHeaders=true</p>
 <p><a href="https://hub.fastgit.org/thubbo/jmeter-plugins-for-apache-dubbo/issues/142">https://hub.fastgit.org/thubbo/jmeter-plugins-for-apache-dubbo/issues/142</a></p>
 </blockquote>
 <p>在取样器 Dubbo Sample 的配置界面中的 Config Center / Protocol 下来选择框中如果选择了任意一项，则此项无法被清除，在后面的执行测试计划时，会由于我没有正确填写 Config Center 的 Address 项而发生报错，报错信息：</p>
-<pre><code>Response code:MISS_ADDRESS
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">Response code:MISS_ADDRESS
 Response message:Address is empty!
-</code></pre>
-<p>此Bug的关键不是为何会报错，而是在 Dubbo Sample / Config Center / Protocol 下拉选择框中，应当增加一个“无”选项。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>此Bug的关键不是为何会报错，而是在 Dubbo Sample / Config Center / Protocol 下拉选择框中，应当增加一个“无”选项。</p>
 <p>我所使用的版本是 jmeter-plugins-dubbo-2.7.8-jar-with-dependencies.jar</p>
 
     </div>
