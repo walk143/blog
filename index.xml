@@ -13,7 +13,7 @@
       <pubDate>Mon, 10 Jan 2022 21:46:36 +0800</pubDate>
       
       <guid>https://sloera.gitee.io/post/dev/regex/</guid>
-      <description>本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto</description>
+      <description>[[toc]] 本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite aut</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
       <pubDate>Sun, 30 May 2021 21:38:11 +0000</pubDate>
       
       <guid>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
-      <description>介绍arch的安装及部分配置 准备 下载镜像 download 可直接选择http://mirrors.163.com/archlinux/iso/2021.03</description>
+      <description>[[toc]] 介绍arch的安装及部分配置 准备 下载镜像 download 可直接选择http://mirrors.163.com/archlinux/iso/2021.0</description>
     </item>
     
     <item>

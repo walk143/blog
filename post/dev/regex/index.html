@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Sloera" /><meta name="description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="Sloera" /><meta name="description" content="[[toc]] 本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite aut" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -40,19 +40,19 @@
 
 
 <meta property="og:title" content="Regex" />
-<meta property="og:description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto" />
+<meta property="og:description" content="[[toc]] 本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite aut" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://sloera.gitee.io/post/dev/regex/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-01-10T21:46:36+08:00" />
-<meta property="article:modified_time" content="2022-01-11T00:26:09+08:00" />
+<meta property="article:modified_time" content="2022-01-11T23:29:19+08:00" />
 
 <meta itemprop="name" content="Regex">
-<meta itemprop="description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto"><meta itemprop="datePublished" content="2022-01-10T21:46:36+08:00" />
-<meta itemprop="dateModified" content="2022-01-11T00:26:09+08:00" />
-<meta itemprop="wordCount" content="2972">
+<meta itemprop="description" content="[[toc]] 本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite aut"><meta itemprop="datePublished" content="2022-01-10T21:46:36+08:00" />
+<meta itemprop="dateModified" content="2022-01-11T23:29:19+08:00" />
+<meta itemprop="wordCount" content="4749">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Regex"/>
-<meta name="twitter:description" content="本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite auto"/>
+<meta name="twitter:description" content="[[toc]] 本文学习自: https://blog.csdn.net/lxcnn/article/details/4304651 NFA引擎匹配原理 正则表达式引擎 正则引擎大体上可分为：DFA和NFA，而NFA又可分为传统型NFA和POSIX NFA DFA: Deterministic finite aut"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,8 +130,8 @@
       <div class="post-meta">
         <span class="post-time"> 2022-01-10 </span>
         
-          <span class="more-meta"> 2972 words </span>
-          <span class="more-meta"> 6 mins read </span>
+          <span class="more-meta"> 4749 words </span>
+          <span class="more-meta"> 10 mins read </span>
         
       </div>
     </header>
@@ -166,12 +166,25 @@
         </li>
       </ul>
     </li>
+    <li><a href="#基础入门">基础入门</a>
+      <ul>
+        <li><a href="#重复">重复</a></li>
+        <li><a href="#反义">反义</a></li>
+        <li><a href="#后向引用">后向引用</a></li>
+        <li><a href="#处理选项">处理选项</a></li>
+        <li><a href="#平衡组递归匹配">平衡组,递归匹配</a></li>
+        <li><a href="#语法参考">语法参考</a></li>
+      </ul>
+    </li>
+    <li><a href="#示例">示例</a></li>
+    <li><a href="#文献">文献</a></li>
   </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
-      <blockquote>
+      <p>[[toc]]</p>
+<blockquote>
 <p>本文学习自: <a href="https://blog.csdn.net/lxcnn/article/details/4304651">https://blog.csdn.net/lxcnn/article/details/4304651</a></p>
 </blockquote>
 <h1 id="nfa引擎匹配原理">NFA引擎匹配原理</h1>
@@ -470,6 +483,323 @@ foreach (double d in data)
 <li>这个位置右侧到出现“.”或结尾为止，必须是数字，且数字的个数必须为3的倍数</li>
 <li>这个位置左侧相隔任意个数字不能出现“.”</li>
 </ol>
+<h1 id="基础入门">基础入门</h1>
+<h2 id="重复">重复</h2>
+<table>
+<thead>
+<tr>
+<th>代码/语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>重复零次或更多次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>重复一次或更多次</td>
+</tr>
+<tr>
+<td>?</td>
+<td>重复零次或一次</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>重复n次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>重复n次或更多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>重复n到m次</td>
+</tr>
+</tbody>
+</table>
+<h2 id="反义">反义</h2>
+<table>
+<thead>
+<tr>
+<th>代码/语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\W</td>
+<td>匹配任意不是字母，数字，下划线，汉字的字符</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意不是空白符的字符</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配不是单词开头或结束的位置</td>
+</tr>
+<tr>
+<td>[^x]</td>
+<td>匹配除了x以外的任意字符</td>
+</tr>
+<tr>
+<td>[^aeiou]</td>
+<td>匹配除了aeiou这几个字母以外的任意字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="后向引用">后向引用</h2>
+<ul>
+<li>组号分配过程是要从左向右扫描两遍的：第一遍只给未命名组分配，第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号</li>
+<li>可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．</li>
+</ul>
+<p>指定一个子表达式的组名，请使用这样的语法：<code>(?&lt;Word&gt;\w+)</code>(或者把尖括号换成&rsquo;也行：<code>(?'Word'\w+))</code>,这样就把<code>\w+</code>的组名指定为<code>Word</code>了。要反向引用这个分组捕获的内容，你可以使用<code>\k&lt;Word&gt;</code>,所以上一个例子也可以写成这样：<code>\b(?&lt;Word&gt;\w+)\b\s+\k&lt;Word&gt;\b</code>。</p>
+<table>
+<thead>
+<tr>
+<th>分类 	代码/语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>捕获 	<code>(exp)</code></td>
+<td>匹配exp,并捕获文本到自动命名的组里</td>
+</tr>
+<tr>
+<td>捕获 	<code>(?&lt;name&gt;exp)</code></td>
+<td>匹配exp,并捕获文本到名称为name的组里，也可以写成<code>(?'name'exp)</code></td>
+</tr>
+<tr>
+<td>捕获 	<code>(?:exp)</code></td>
+<td>匹配exp,不捕获匹配的文本，也不给此分组分配组号</td>
+</tr>
+<tr>
+<td>零宽断言 	<code>(?=exp)</code></td>
+<td>匹配<code>exp</code>前面的位置。即当前位置后面要满足<code>exp</code></td>
+</tr>
+<tr>
+<td>零宽断言 	<code>(?&lt;=exp)</code></td>
+<td>匹配exp后面的位置</td>
+</tr>
+<tr>
+<td>零宽断言 	<code>(?!exp)</code></td>
+<td>匹配后面跟的不是exp的位置</td>
+</tr>
+<tr>
+<td>零宽断言 	<code>(?&lt;!exp)</code></td>
+<td>匹配前面不是exp的位置</td>
+</tr>
+<tr>
+<td>注释 	<code>(?#comment)</code></td>
+<td>这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读。比如`2[0-4]\d(?#200-249)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="处理选项">处理选项</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IgnoreCase(忽略大小写)</td>
+<td>匹配时不区分大小写。</td>
+</tr>
+<tr>
+<td>Multiline(多行模式)</td>
+<td>更改^和$的含义，使它们分别在任意一行的行首和行尾匹配，而不仅仅在整个字符串的开头和结尾匹配。(在此模式下,$的精确含意是:匹配\n之前的位置以及字符串结束前的位置.)</td>
+</tr>
+<tr>
+<td>Singleline(单行模式)</td>
+<td>更改.的含义，使它与每一个字符匹配（包括换行符\n）。</td>
+</tr>
+<tr>
+<td>IgnorePatternWhitespace(忽略空白)</td>
+<td>忽略表达式中的非转义空白并启用由#标记的注释。</td>
+</tr>
+<tr>
+<td>ExplicitCapture(显式捕获)</td>
+<td>仅捕获已被显式命名的组。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="平衡组递归匹配">平衡组,递归匹配</h2>
+<ul>
+<li>(?&lsquo;group&rsquo;) 把捕获的内容命名为group,并压入堆栈(Stack)</li>
+<li>(?'-group') 从堆栈上弹出最后压入堆栈的名为group的捕获内容，如果堆栈本来为空，则本分组的匹配失败</li>
+<li>(?(group)yes|no) 如果堆栈上存在以名为group的捕获内容的话，继续匹配yes部分的表达式，否则继续匹配no部分</li>
+<li>(?!) 零宽负向先行断言，由于没有后缀表达式，试图匹配总是失败</li>
+</ul>
+<p>字符串: <code>xx &lt;aa &lt;bbb&gt; &lt;bbb&gt; aa&gt; yy</code>
+正则:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;                         #最外层的左括号
+  [^&lt;&gt;]*                #最外层的左括号后面的不是括号的内容
+  (
+      (
+          (?&#39;Open&#39;&lt;)    #碰到了左括号，在黑板上写一个&#34;Open&#34;
+          [^&lt;&gt;]*        #匹配左括号后面的不是括号的内容
+      )+
+      (
+          (?&#39;-Open&#39;&gt;)   #碰到了右括号，擦掉一个&#34;Open&#34;
+          [^&lt;&gt;]*        #匹配右括号后面不是括号的内容
+      )+
+  )*
+  (?(Open)(?!))         #在遇到最外层的右括号前面，判断黑板上还有没有没擦掉的&#34;Open&#34;；如果还有，则匹配失败
+&gt;                         #最外层的右括号
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="语法参考">语法参考</h2>
+<table>
+<thead>
+<tr>
+<th>代码/语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>报警字符(打印它的效果是电脑嘀一声)</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>通常是单词分界位置，但如果在字符类里使用代表退格</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符，Tab</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>竖向制表符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>Escape</td>
+</tr>
+<tr>
+<td>\0nn</td>
+<td>ASCII代码中八进制代码为nn的字符</td>
+</tr>
+<tr>
+<td>\xnn</td>
+<td>ASCII代码中十六进制代码为nn的字符</td>
+</tr>
+<tr>
+<td>\unnnn</td>
+<td>Unicode代码中十六进制代码为nnnn的字符</td>
+</tr>
+<tr>
+<td>\cN</td>
+<td>ASCII控制字符。比如\cC代表Ctrl+C</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>字符串开头(类似^，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>字符串结尾或行尾(不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>字符串结尾(类似$，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>当前搜索的开头</td>
+</tr>
+<tr>
+<td>\p{name}</td>
+<td>Unicode中命名为name的字符类，例如\p{IsGreek}</td>
+</tr>
+<tr>
+<td>(?&gt;exp)</td>
+<td>贪婪子表达式</td>
+</tr>
+<tr>
+<td>(?<x>-<y>exp)</td>
+<td>平衡组</td>
+</tr>
+<tr>
+<td>(?im-nsx:exp)</td>
+<td>在子表达式exp中改变处理选项</td>
+</tr>
+<tr>
+<td>(?im-nsx)</td>
+<td>为表达式后面的部分改变处理选项</td>
+</tr>
+<tr>
+<td>(?(exp)yes</td>
+<td>no)</td>
+</tr>
+<tr>
+<td>(?(exp)yes)</td>
+<td>同上，只是使用空表达式作为no</td>
+</tr>
+<tr>
+<td>(?(name)yes</td>
+<td>no)</td>
+</tr>
+<tr>
+<td>(?(name)yes)</td>
+<td>同上，只是使用空表达式作为no</td>
+</tr>
+</tbody>
+</table>
+<h1 id="示例">示例</h1>
+<ul>
+<li>匹配ipv4: <code>((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)</code>
+<blockquote>
+<p>IP地址中每个数字都不能大于255. 经常有人问我, 01.02.03.04 这样前面带有0的数字, 是不是正确的IP地址呢? 答案是: 是的, IP 地址里的数字可以包含有前导 0 (leading zeroes).</p>
+</blockquote>
+</li>
+<li>嵌套的<div>标签: <code>&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?'Open'&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?'-Open'&lt;/div&gt;)[^&lt;&gt;]*)+)*(?(Open)(?!))&lt;/div&gt;</code></li>
+</ul>
+<h1 id="文献">文献</h1>
+<blockquote>
+<p><a href="https://www.regular-expressions.info/">https://www.regular-expressions.info/</a></p>
+</blockquote>
 
     </div>
 
@@ -482,7 +812,7 @@ foreach (double d in data)
     <span class="item-title">LastMod</span>
     <span class="item-content">
         2022-01-11
-        <a href="https://gitee.com/sloera/Note/commit/7405b143537e2d1f317ae67713d38ba1e4e580b7" title="hugo: add regex.md">(7405b14)</a>
+        <a href="https://gitee.com/sloera/Note/commit/083b1d07f16cb744a9ab40f05c596dc5eea1d710" title="hugo: update regex &amp; jmeter">(083b1d0)</a>
     </span>
   </p>
   
