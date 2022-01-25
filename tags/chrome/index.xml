@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chrome on Blog by Sloera</title>
-    <link>https://sloera.gitee.io/tags/chrome/</link>
+    <link>http://sloera.gitee.io/sloera/tags/chrome/</link>
     <description>Recent content in chrome on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Mar 2020 08:52:48 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Mar 2020 08:52:48 +0000</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>chrome离线安装扩展插件</title>
-      <link>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</link>
+      <link>http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</link>
       <pubDate>Sun, 08 Mar 2020 08:52:48 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</guid>
       <description>介绍chrome无法联网时如何安装插件。解决“该扩展程序未列在 Chrome 网上应用店中，并可能是在您不知情的情况下添加的。”及自动停用问题。 chrom</description>
     </item>
     
     <item>
       <title>浏览器书签同步floccus</title>
-      <link>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</link>
+      <link>http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</link>
       <pubDate>Fri, 28 Feb 2020 22:18:45 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</guid>
       <description>介绍浏览器书签同步工具floccus。通过此工具，可使chrome、firefox的书签跨浏览器、操作系统、电脑进行同步。 主要原理是将书签信</description>
     </item>
     

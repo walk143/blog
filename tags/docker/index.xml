@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>docker on Blog by Sloera</title>
-    <link>https://sloera.gitee.io/tags/docker/</link>
+    <link>http://sloera.gitee.io/sloera/tags/docker/</link>
     <description>Recent content in docker on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 06 Mar 2020 21:58:19 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Mar 2020 21:58:19 +0000</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux安装docker</title>
-      <link>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</link>
+      <link>http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Fri, 06 Mar 2020 21:58:19 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</guid>
       <description>介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。</description>
     </item>
     

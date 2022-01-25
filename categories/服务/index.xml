@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>服务 on Blog by Sloera</title>
-    <link>https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/</link>
+    <link>http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/</link>
     <description>Recent content in 服务 on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Feb 2020 21:40:14 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Feb 2020 21:40:14 +0000</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hexo简单设置</title>
-      <link>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
+      <link>http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
       <pubDate>Thu, 27 Feb 2020 21:40:14 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
       <description>包括设置hexo的标签页面，文章分类页面，草稿编辑及模版编辑说明。 通过此文章，可开启文章标签及分类的功能及页面。 设置tags 新建tags页面</description>
     </item>
     
     <item>
       <title>hexo之next主题</title>
-      <link>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
+      <link>http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
       <pubDate>Tue, 25 Feb 2020 23:03:38 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
       <description>包括next主题下载、常规配置文件修改 主题安装 下载主题 1 2 $ cd hexo $ git clone https://github.com/theme-next/hexo-theme-next themes/next 使用next 修改站点配置文件_config.yml文件。 1 theme:next 个性化</description>
     </item>
     

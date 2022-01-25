@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>配置 on Blog by Sloera</title>
-    <link>https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/</link>
+    <link>http://sloera.gitee.io/sloera/categories/%E9%85%8D%E7%BD%AE/</link>
     <description>Recent content in 配置 on Blog by Sloera</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Mar 2020 22:56:46 +0000</lastBuildDate><atom:link href="https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Mar 2020 22:56:46 +0000</lastBuildDate><atom:link href="http://sloera.gitee.io/sloera/categories/%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>win环境部署</title>
-      <link>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
+      <link>http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Fri, 13 Mar 2020 22:56:46 +0000</pubDate>
       
-      <guid>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
+      <guid>http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
       <description>介绍win系统重装后的环境搭建。 互换ctrl caps https://blog.csdn.net/qq_15210067/article/details/78260391 修改注册表 计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentCont</description>
     </item>
     

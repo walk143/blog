@@ -1,148 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>linux安装docker - Blog by Sloera</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>linux安装docker | Blog by Sloera</title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
-
-
-<meta name="author" content="Sloera" /><meta name="description" content="介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。" /><meta name="keywords" content="Hugo, theme, even" />
+    
 
 
 
+<meta name="author" content="" />
+<meta name="description" content="Hugo theme even site." />
 
 
 
-<meta name="generator" content="Hugo 0.90.0 with theme even" />
+<meta name="generator" content="Hugo 0.89.4" />
 
-
-<link rel="canonical" href="https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-
-
-
-<link href="/sass/main.min.e1c08638985b20c3b8dce913e5c503ed4c4feb2139c76397281b5771ef2d3a23.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+<link rel="canonical" href="http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" />
 
 
 <meta property="og:title" content="linux安装docker" />
 <meta property="og:description" content="介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2020-03-06T21:58:19+00:00" />
 <meta property="article:modified_time" content="2020-03-06T21:58:19+00:00" />
 
-<meta itemprop="name" content="linux安装docker">
-<meta itemprop="description" content="介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。"><meta itemprop="datePublished" content="2020-03-06T21:58:19+00:00" />
-<meta itemprop="dateModified" content="2020-03-06T21:58:19+00:00" />
-<meta itemprop="wordCount" content="3360">
-<meta itemprop="keywords" content="linux,安装,docker,centos8," /><meta name="twitter:card" content="summary"/>
+
+
+
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="linux安装docker"/>
 <meta name="twitter:description" content="介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。 简单介绍对镜像容器的基本操作。"/>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link rel="stylesheet" href="/sloera/css/icomoon.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="/sloera/css/site.css" />
 
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Even</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
-  </ul>
+<style>
+  .ui.header a:not(.item, .ui.button):hover {
+    text-decoration: underline;
+  }
 
   
 
+  
 
-</nav>
+  
 
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Even</a>
-</div>
+  
+</style>
 
 
-
-
-
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
-      </li>
-  </ul>
-</nav>
-
-    </header>
-
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
     
-    <header class="post-header">
-      <h1 class="post-title">linux安装docker</h1>
 
-      <div class="post-meta">
-        <span class="post-time"> 2020-03-06 </span>
-        <div class="post-category">
-            <a href="/categories/%E5%AE%89%E8%A3%85/"> 安装 </a>
-            <a href="/categories/linux/"> linux </a>
-            </div>
-          <span class="more-meta"> 3360 words </span>
-          <span class="more-meta"> 7 mins read </span>
-        
-      </div>
-    </header>
 
-    <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Contents</h2>
-  <div class="post-toc-content">
-    <nav id="TableOfContents">
+
+
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
+
+
+
+    
+  </head>
+
+  <body class="default">
+    
+<nav class="ui secondary menu dream-menu dream-nav">
+
+  <a class="item dream-flip-toggle" title="Flip it!">
+    <i class="large link bullseye icon"></i>
+  </a>
+  <a class="item" href="http://sloera.gitee.io/sloera/" title="Home">
+    <i class="large link home icon"></i>
+  </a>
+  
+  
+</nav>
+
+    <div class="flip-container">
+      <div class="flipper">
+        <section class="front">
+          <div class="dream-max-width">
+            
+<div class="ui relaxed centered grid dream-grid dream-grid-single">
+  
+  
+  
+  
+
+  
+  <aside class="sixteen wide mobile sixteen wide tablet three wide computer column dream-single-aside">
+    
+    <div class="ui segment toc">
+      <nav id="TableOfContents">
   <ul>
     <li><a href="#docker简介">Docker简介</a></li>
     <li><a href="#docker安装">Docker安装</a>
@@ -187,10 +143,62 @@
     </li>
   </ul>
 </nav>
-  </div>
-</div>
-    <div class="post-content">
-      <p>介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。</p>
+    </div>
+    
+
+    
+  </aside>
+  
+  <div class="sixteen wide mobile sixteen wide tablet ten wide computer column markdown-body dream-single" id="dream-save-post-as-img">
+    <section class="ui top attached segment">
+      <header>
+        <h1 class="ui large header">linux安装docker<span class="sub header">
+            <span class="left">
+              @
+              
+                
+              
+
+              | 
+                  
+                    Friday, Mar 6, 2020
+                  
+                
+
+              | 7 minutes read
+
+              
+              | Update at
+                
+                  
+                    Friday, Mar 6, 2020
+                  
+                
+              
+            </span>
+
+            
+            <span class="dream-share">
+  <a href="#" class="save-as-image" title="Save as image" onclick="savePostAsImg()">
+    <i class="save icon"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=linux%e5%ae%89%e8%a3%85docker&url=http%3a%2f%2fsloera.gitee.io%2fsloera%2fpost%2flinux%2fmiddleware%2flinux%25E5%25AE%2589%25E8%25A3%2585docker%2f" title="Twitter">
+    <i class="twitter icon"></i>
+  </a>
+  <a href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2fsloera.gitee.io%2fsloera%2fpost%2flinux%2fmiddleware%2flinux%25E5%25AE%2589%25E8%25A3%2585docker%2f" title="Facebook">
+    <i class="facebook icon"></i>
+  </a>
+</span>
+
+            
+          </span>
+        </h1>
+      </header>
+
+      <article class="main">
+        
+
+        <p>介绍在linux上安装docker。配置ubuntu/centos使用清华镜像源。配置docker走国内代理。</p>
 <p>简单介绍对镜像容器的基本操作。</p>
 <!-- more -->
 <h1 id="docker简介">Docker简介</h1>
@@ -957,101 +965,395 @@ aaa
 </code></pre></td></tr></table>
 </div>
 </div>
-    </div>
+      </article>
+    </section>
 
-    <div class="post-copyright">
-  <p class="copyright-item">
-    <span class="item-title">Author</span>
-    <span class="item-content">Sloera</span>
-  </p>
-  <p class="copyright-item">
-    <span class="item-title">LastMod</span>
-    <span class="item-content">
-        2020-03-06
-        
-    </span>
-  </p>
-  
-  
-</div>
-<footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/linux/">linux</a>
-          <a href="/tags/%E5%AE%89%E8%A3%85/">安装</a>
-          <a href="/tags/docker/">docker</a>
-          <a href="/tags/centos8/">centos8</a>
-          </div>
-      <nav class="post-nav">
-        <a class="prev" href="/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">chrome离线安装扩展插件</span>
-            <span class="prev-text nav-mobile">Prev</span>
-          </a>
-        <a class="next" href="/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/">
-            <span class="next-text nav-default">nodejs中间层解决cors跨域</span>
-            <span class="next-text nav-mobile">Next</span>
-            <i class="iconfont icon-right"></i>
-          </a>
-      </nav>
-    </footer>
-  </article>
-        </div>
-        
+    
 
-  
+    
 
-  
+    
+    <article class="ui segment" data-html2canvas-ignore>
+      <div id="vcomments"></div>
+    </article>
 
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:sloera@163.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://gitee.com/sloera" class="iconfont icon-github" title="github"></a>
-  <a href="https://sloera.gitee.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
-  <span class="power-by">
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-  <span class="division">|</span>
-  <span class="theme-info">
-    Theme - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
-  </span>
-
-  
-
-  <span class="copyright-year">
-    &copy; 
-    2021 - 
-    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>Sloera</span>
-  </span>
-</div>
-
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
-    </div>
+    <script>
+      new Valine({
+        el: '#vcomments',
+        appId:  null ,
+        appKey:  null ,
+        lang:  null 
+      })
+    </script>
+    
   </div>
+</div>
+
+
+            <footer class="ui basic center aligned segment" style="background-color: transparent;">
+              
+              <p>© 2022 Blog by Sloera</p>
+              
+
+              <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/g1eny0ung/hugo-theme-dream" target="_blank">Dream</a>.</p>
+
+              
+            </footer>
+          </div>
+        </section>
+        <section class="back">
+          <div class="dream-max-width">
+            <header class="ui basic very padded segment dream-header">
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+  <div class="content">
+    <h1 class="ui medium header">Set headerTitle in the config to display<span class="sub header"></span>
+    </h1>
+
+    <article class="ui horizontal list">
+      
+      <a class="item" href="/sloera/categories">
+        <i class="th list icon" title="All Categories"></i>
+      </a>
+      <a class="item" href="/sloera/tags">
+        <i class="tags icon" title="All Tags"></i>
+      </a>
+    </article>
+
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+
+    
+
+    
+    
+    
+          <div class="dream-tags">
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/centos8/" title="centos8">
+              centos8
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/chrome/" title="chrome">
+              chrome
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/config/" title="config">
+              config
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/docker/" title="docker">
+              docker
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/gitee/" title="gitee">
+              gitee
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/hexo/" title="hexo">
+              hexo
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/idea/" title="idea">
+              idea
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/json/" title="json">
+              json
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/linux/" title="linux">
+              linux
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/maven/" title="maven">
+              maven
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/next/" title="next">
+              next
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/nodejs/" title="nodejs">
+              nodejs
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/office/" title="office">
+              office
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/site/" title="site">
+              site
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/svn/" title="svn">
+              svn
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/tool/" title="tool">
+              tool
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/win/" title="win">
+              win
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/wsl/" title="wsl">
+              wsl
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/" title="中间层">
+              中间层
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E5%89%8D%E7%AB%AF/" title="前端">
+              前端
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E5%AE%89%E8%A3%85/" title="安装">
+              安装
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E5%B7%A5%E5%85%B7/" title="工具">
+              工具
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E6%8F%92%E4%BB%B6/" title="插件">
+              插件
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E6%96%B9%E6%B3%95/" title="方法">
+              方法
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E7%B3%BB%E7%BB%9F/" title="系统">
+              系统
+            </a>
+          
+          
+          
+            <a class="ui label" href="/sloera/tags/%E9%85%8D%E7%BD%AE/" title="配置">
+              配置
+            </a>
+          
+          </div>
+    
+
+    
+  </div>
+</header>
+
+
+<div class="ui relaxed grid dream-grid dream-back">
+  
+  
+  
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    <article class="ui segment">
+      <div class="ui medium header">Social Links</div>
+      <nav class="ui secondary menu dream-menu dream-socials">
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</nav>
+
+    </article>
+  </div>
+
+  <div class="sixteen wide mobile eight wide tablet four wide computer column dream-column">
+    
+  </div>
+
+  
+</div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    
+
+    
+
+    <script>
+  window.background =  null 
+  window.defaultDark =  null 
+  window.backgroundDark =  null 
+  window.backgroundImageDark =  null 
+  window.darkNav =  null 
+  window.maxTags =  null 
+  window.hasTwitterEmbed =  null 
+  window.fixedNav =  null 
+
+  if (window.hasTwitterEmbed) {
+    
+    window.twttr = (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {}
+      if (d.getElementById(id)) return t
+      js = d.createElement(s)
+      js.id = id
+      js.src = 'https://platform.twitter.com/widgets.js'
+      fjs.parentNode.insertBefore(js, fjs)
+
+      t._e = []
+      t.ready = function (f) {
+        t._e.push(f)
+      }
+
+      return t
+    })(document, 'script', 'twitter-wjs')
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@1.13.1/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/sloera/js/header.js"></script>
+<script src="/sloera/js/main.js"></script>
+<script src="/sloera/js/theme.js"></script>
+
+    
 
 
 
-<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+<script src="/sloera/js/scrollToTop.js"></script>
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1"></script>
+<script src="/sloera/js/post.js" defer></script>
 
 
+    
 
-
-
-</body>
+    
+  </body>
 </html>
