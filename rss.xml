@@ -10,7 +10,7 @@
         <title>Hugo 主题 MemE</title>
         <link>https://sloera.gitee.io/</link>
         <description>blog by sloera</description>
-        <generator>Hugo 0.92.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.90.0 https://gohugo.io/</generator>
         
             <language>zh-CN</language>
         
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 28 Jan 2022 08:42:01 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 08 Feb 2022 23:45:26 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
         
@@ -325,6 +325,153 @@ awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{ print NR, $0}&amp;#39;&lt;/span&gt
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在&lt;code&gt;print&lt;/code&gt;语句中，被双引号包围的文本会和字段，以及运算结果一起输出。&lt;/p&gt;
 &lt;h3 id=&#34;更精美的输出&#34;&gt;更精美的输出&lt;/h3&gt;
+&lt;h4 id=&#34;字段排列&#34;&gt;字段排列&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;printf(format, value_1, value_2, ... ,value_n)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;format 是一个字符串，它包含按字面打印的文本及格式说明符。格式说明符用于说明如何打印值。一个格式说明符是一个&lt;code&gt;%&lt;/code&gt;，这些字符控制一个&lt;code&gt;value&lt;/code&gt;的输出格式。格式说服符的数量应该和被打印的&lt;code&gt;value&lt;/code&gt;一样多。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每位雇员的报酬：&lt;code&gt;{printf(&amp;quot;total py for %s is $%.2f\n&amp;quot;, $1, $2 * $3)}&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;使用&lt;code&gt;printf&lt;/code&gt;不会自动产生空格符或换作符，用户必须自己创建它们。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;选择&#34;&gt;选择&lt;/h3&gt;
+&lt;h4 id=&#34;通过比较进行选择&#34;&gt;通过比较进行选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 &amp;gt;= 5&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;通过计算进行选择&#34;&gt;通过计算进行选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 * $3 &amp;gt; 50 { printf(&amp;quot;$%.2f for %s\n&amp;quot;, $2 * $3, $1)}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;通过文本内容选择&#34;&gt;通过文本内容选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$1 == &amp;quot;Susie&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;操作符&lt;code&gt;==&lt;/code&gt;测试相等性，也可以使用&lt;strong&gt;正则表达式&lt;/strong&gt; (&lt;code&gt;regular expressions&lt;/code&gt;)的模式来完成。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/Susie/&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;模式的组合&#34;&gt;模式的组合&lt;/h4&gt;
+&lt;p&gt;模式可以使用括号和逻辑运算符进行组合，逻辑运算符包括&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;, &lt;code&gt;||&lt;/code&gt;, 和&lt;code&gt;!&lt;/code&gt;，分别表示AND, OR和NOT&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt; &amp;gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;lt; &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt; &amp;lt; 20&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;数据验证&#34;&gt;数据验证&lt;/h4&gt;
+&lt;p&gt;检查数据是否具有合理的值，格式是否正确&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;NF !&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; print &lt;span class=&#34;nv&#34;&gt;$0&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;number of bields is not equal to 3&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;begin-与-end&#34;&gt;BEGIN 与 END&lt;/h4&gt;
+&lt;p&gt;特殊的模式&lt;code&gt;BEGIN&lt;/code&gt;在第一个输入文件的第一行之前被匹配，&lt;code&gt;END&lt;/code&gt;在最后一个输入文件的最后一行被处理之后匹配。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;BEGIN  { print &amp;quot;NAME RATE HOURS&amp;quot;; print &amp;quot;&amp;quot;} {print}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以在同一行放置多个语句，语句之间用分号分开。&lt;/p&gt;
+&lt;h3 id=&#34;用awk计算&#34;&gt;用AWK计算&lt;/h3&gt;
+&lt;p&gt;一个动作就是一个语句&lt;strong&gt;序列&lt;/strong&gt; ，序列中的语句用分号或换行符分开。&lt;/p&gt;
+&lt;h4 id=&#34;计数&#34;&gt;计数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$3 &amp;gt; 15 { emp = emp + 1} END {print emp, &amp;quot;employees worked more than 15 hours}&lt;/code&gt;，用一个变量&lt;code&gt;emp&lt;/code&gt;计算工作时长超过15个小时的员工人数&lt;/p&gt;
+&lt;p&gt;当awk的变量作为数据使用时，默认初值为0，所以没必要初始化&lt;code&gt;emp&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;计算总和与平均数&#34;&gt;计算总和与平均数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{pay = pay + $2 * $3} END { print NR, &amp;quot;employees&amp;quot; ; print &amp;quot;total pay is&amp;quot;, pay; print &amp;quot;average pay is&amp;quot;, pay / NR}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;NR 可能为0&lt;/p&gt;
+&lt;h4 id=&#34;操作文本&#34;&gt;操作文本&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 &amp;gt; maxrate { maxrate = $2; maxemp = $1} END { print &amp;quot;highest hourly rate:&amp;quot;, maxrate, &amp;quot;for&amp;quot;, maxemp}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;字符串拼接&#34;&gt;字符串拼接&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{names = names $1 &amp;quot; &amp;quot; } END { print names}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在一个 awk  程序中，字符串的拼接操作通过陆续写出字符串来完成&lt;/p&gt;
+&lt;h4 id=&#34;打印最后一行&#34;&gt;打印最后一行&lt;/h4&gt;
+&lt;p&gt;在 END 动作里，NR的值被保留了下来，但是&lt;code&gt;$0&lt;/code&gt;不会。&lt;code&gt;{last = $0} END {print last}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;行单词与字符的计数&#34;&gt;行，单词与字符的计数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{nc = nc + length($0) + 1; nw = nw + NF} END { print NR, &amp;quot;lines,&amp;quot;, nw, &amp;quot;words,&amp;quot;, nc, &amp;quot;characters&amp;quot;}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;流程控制语句&#34;&gt;流程控制语句&lt;/h3&gt;
+&lt;p&gt;Awk 提供了用于决策的&lt;code&gt;if-else&lt;/code&gt;语句，以及循环语句，所有的这些都来源于&lt;code&gt;C&lt;/code&gt;语言，它们只能用在动作(Action)里。&lt;/p&gt;
+&lt;h4 id=&#34;if-else-语句&#34;&gt;If-Else 语句&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;gt; &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; n + 1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pay&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; pay + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; * &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;n &amp;gt; 0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; print n, &lt;span class=&#34;s2&#34;&gt;&amp;#34;employees, total pay is&amp;#34;&lt;/span&gt;, pay, &lt;span class=&#34;s2&#34;&gt;&amp;#34;average pay is&amp;#34;&lt;/span&gt;, pay/n
+   &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; print &lt;span class=&#34;s2&#34;&gt;&amp;#34;no employees are paid more than &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$6&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/hour&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;计算每小时工资多于&lt;code&gt;$6.00&lt;/code&gt;的雇员的总报酬与平均报酬。在计算平均数时，用&lt;code&gt;if&lt;/code&gt;语句，避免用0作除数&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;if&lt;/code&gt;后面的条件被求值，如果条件为真，第一个&lt;code&gt;print&lt;/code&gt;语句执行，否则是第二个语句被执行。&lt;/p&gt;
+&lt;h4 id=&#34;while-语句&#34;&gt;While 语句&lt;/h4&gt;
+&lt;p&gt;[
+value = amount(1+rate)^years
+]&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# compute compound interest&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   input: amount rate years&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   output: compounded value at the end of each year&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;i &amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      printf&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\t%.2f\n&amp;#34;&lt;/span&gt;, &lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt; * &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ^ i&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; i + &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+   &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;计算不同的本金，利率和时间会产生怎样的结果&lt;/p&gt;
+&lt;h4 id=&#34;for-语句&#34;&gt;For 语句&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# interest2 - compute compound interest&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   input: amount rate years&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   output: compounded value at the end of each year&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i&amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;i+1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; printf&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\t%.2f\n&amp;#34;&lt;/span&gt;, &lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt; * &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ^ i&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;只有一条语句的循环体可以不需要花括号&lt;/p&gt;
+&lt;h3 id=&#34;数组&#34;&gt;数组&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# reverse - print input in reverse order by line&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;line&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;NR&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# remember each input line&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; NR &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; i &amp;gt; 0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;print line&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; i - 1&lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# END {for(i = NR; i &amp;gt; 0; i = i -1 ) print line[i]}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;实用单行脚本&#34;&gt;实用单行脚本&lt;/h3&gt;
 &lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;
 &lt;p&gt;批量替换子路径的git地址&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

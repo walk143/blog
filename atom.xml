@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-01-28T08:42:01&#43;08:00</updated>
+    <updated>2022-02-08T23:45:26&#43;08:00</updated>
     <id>https://sloera.gitee.io/</id>
     <link rel="alternate" type="text/html" href="https://sloera.gitee.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://sloera.gitee.io/atom.xml" />
@@ -15,7 +15,7 @@
                 <email>sloera@163.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.92.0">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.90.0">Hugo</generator>
         <entry>
             <title type="text">OnJava8</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/java/onjava8/" />
@@ -131,7 +131,7 @@
             <title type="text">Shell</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/linux/shell/" />
             <id>https://sloera.gitee.io/post/learn/linux/shell/</id>
-            <updated>2022-01-25T00:14:38&#43;08:00</updated>
+            <updated>2022-02-08T20:08:13&#43;08:00</updated>
             <published>2022-01-20T22:17:45&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -319,6 +319,153 @@ awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{ print NR, $0}&amp;#39;&lt;/span&gt
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;在&lt;code&gt;print&lt;/code&gt;语句中，被双引号包围的文本会和字段，以及运算结果一起输出。&lt;/p&gt;
 &lt;h3 id=&#34;更精美的输出&#34;&gt;更精美的输出&lt;/h3&gt;
+&lt;h4 id=&#34;字段排列&#34;&gt;字段排列&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;printf(format, value_1, value_2, ... ,value_n)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;format 是一个字符串，它包含按字面打印的文本及格式说明符。格式说明符用于说明如何打印值。一个格式说明符是一个&lt;code&gt;%&lt;/code&gt;，这些字符控制一个&lt;code&gt;value&lt;/code&gt;的输出格式。格式说服符的数量应该和被打印的&lt;code&gt;value&lt;/code&gt;一样多。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;每位雇员的报酬：&lt;code&gt;{printf(&amp;quot;total py for %s is $%.2f\n&amp;quot;, $1, $2 * $3)}&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;使用&lt;code&gt;printf&lt;/code&gt;不会自动产生空格符或换作符，用户必须自己创建它们。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;选择&#34;&gt;选择&lt;/h3&gt;
+&lt;h4 id=&#34;通过比较进行选择&#34;&gt;通过比较进行选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 &amp;gt;= 5&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;通过计算进行选择&#34;&gt;通过计算进行选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 * $3 &amp;gt; 50 { printf(&amp;quot;$%.2f for %s\n&amp;quot;, $2 * $3, $1)}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;通过文本内容选择&#34;&gt;通过文本内容选择&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$1 == &amp;quot;Susie&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;操作符&lt;code&gt;==&lt;/code&gt;测试相等性，也可以使用&lt;strong&gt;正则表达式&lt;/strong&gt; (&lt;code&gt;regular expressions&lt;/code&gt;)的模式来完成。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/Susie/&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;模式的组合&#34;&gt;模式的组合&lt;/h4&gt;
+&lt;p&gt;模式可以使用括号和逻辑运算符进行组合，逻辑运算符包括&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;, &lt;code&gt;||&lt;/code&gt;, 和&lt;code&gt;!&lt;/code&gt;，分别表示AND, OR和NOT&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt; &amp;gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+!&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;lt; &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt; &amp;lt; 20&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;数据验证&#34;&gt;数据验证&lt;/h4&gt;
+&lt;p&gt;检查数据是否具有合理的值，格式是否正确&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;NF !&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; print &lt;span class=&#34;nv&#34;&gt;$0&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;number of bields is not equal to 3&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;begin-与-end&#34;&gt;BEGIN 与 END&lt;/h4&gt;
+&lt;p&gt;特殊的模式&lt;code&gt;BEGIN&lt;/code&gt;在第一个输入文件的第一行之前被匹配，&lt;code&gt;END&lt;/code&gt;在最后一个输入文件的最后一行被处理之后匹配。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;BEGIN  { print &amp;quot;NAME RATE HOURS&amp;quot;; print &amp;quot;&amp;quot;} {print}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以在同一行放置多个语句，语句之间用分号分开。&lt;/p&gt;
+&lt;h3 id=&#34;用awk计算&#34;&gt;用AWK计算&lt;/h3&gt;
+&lt;p&gt;一个动作就是一个语句&lt;strong&gt;序列&lt;/strong&gt; ，序列中的语句用分号或换行符分开。&lt;/p&gt;
+&lt;h4 id=&#34;计数&#34;&gt;计数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$3 &amp;gt; 15 { emp = emp + 1} END {print emp, &amp;quot;employees worked more than 15 hours}&lt;/code&gt;，用一个变量&lt;code&gt;emp&lt;/code&gt;计算工作时长超过15个小时的员工人数&lt;/p&gt;
+&lt;p&gt;当awk的变量作为数据使用时，默认初值为0，所以没必要初始化&lt;code&gt;emp&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;计算总和与平均数&#34;&gt;计算总和与平均数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{pay = pay + $2 * $3} END { print NR, &amp;quot;employees&amp;quot; ; print &amp;quot;total pay is&amp;quot;, pay; print &amp;quot;average pay is&amp;quot;, pay / NR}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;NR 可能为0&lt;/p&gt;
+&lt;h4 id=&#34;操作文本&#34;&gt;操作文本&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;$2 &amp;gt; maxrate { maxrate = $2; maxemp = $1} END { print &amp;quot;highest hourly rate:&amp;quot;, maxrate, &amp;quot;for&amp;quot;, maxemp}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;字符串拼接&#34;&gt;字符串拼接&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{names = names $1 &amp;quot; &amp;quot; } END { print names}&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在一个 awk  程序中，字符串的拼接操作通过陆续写出字符串来完成&lt;/p&gt;
+&lt;h4 id=&#34;打印最后一行&#34;&gt;打印最后一行&lt;/h4&gt;
+&lt;p&gt;在 END 动作里，NR的值被保留了下来，但是&lt;code&gt;$0&lt;/code&gt;不会。&lt;code&gt;{last = $0} END {print last}&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;行单词与字符的计数&#34;&gt;行，单词与字符的计数&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;{nc = nc + length($0) + 1; nw = nw + NF} END { print NR, &amp;quot;lines,&amp;quot;, nw, &amp;quot;words,&amp;quot;, nc, &amp;quot;characters&amp;quot;}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;流程控制语句&#34;&gt;流程控制语句&lt;/h3&gt;
+&lt;p&gt;Awk 提供了用于决策的&lt;code&gt;if-else&lt;/code&gt;语句，以及循环语句，所有的这些都来源于&lt;code&gt;C&lt;/code&gt;语言，它们只能用在动作(Action)里。&lt;/p&gt;
+&lt;h4 id=&#34;if-else-语句&#34;&gt;If-Else 语句&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; &amp;gt; &lt;span class=&#34;m&#34;&gt;6&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; n + 1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;pay&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; pay + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt; * &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;n &amp;gt; 0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; print n, &lt;span class=&#34;s2&#34;&gt;&amp;#34;employees, total pay is&amp;#34;&lt;/span&gt;, pay, &lt;span class=&#34;s2&#34;&gt;&amp;#34;average pay is&amp;#34;&lt;/span&gt;, pay/n
+   &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; print &lt;span class=&#34;s2&#34;&gt;&amp;#34;no employees are paid more than &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$6&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/hour&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;计算每小时工资多于&lt;code&gt;$6.00&lt;/code&gt;的雇员的总报酬与平均报酬。在计算平均数时，用&lt;code&gt;if&lt;/code&gt;语句，避免用0作除数&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;if&lt;/code&gt;后面的条件被求值，如果条件为真，第一个&lt;code&gt;print&lt;/code&gt;语句执行，否则是第二个语句被执行。&lt;/p&gt;
+&lt;h4 id=&#34;while-语句&#34;&gt;While 语句&lt;/h4&gt;
+&lt;p&gt;[
+value = amount(1+rate)^years
+]&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# compute compound interest&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   input: amount rate years&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   output: compounded value at the end of each year&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;i &amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      printf&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\t%.2f\n&amp;#34;&lt;/span&gt;, &lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt; * &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ^ i&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; i + &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+   &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;计算不同的本金，利率和时间会产生怎样的结果&lt;/p&gt;
+&lt;h4 id=&#34;for-语句&#34;&gt;For 语句&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# interest2 - compute compound interest&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   input: amount rate years&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;#   output: compounded value at the end of each year&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i&amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;i+1&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; printf&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;\t%.2f\n&amp;#34;&lt;/span&gt;, &lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt; * &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; + &lt;span class=&#34;nv&#34;&gt;$2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ^ i&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;只有一条语句的循环体可以不需要花括号&lt;/p&gt;
+&lt;h3 id=&#34;数组&#34;&gt;数组&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# reverse - print input in reverse order by line&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;line&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;NR&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# remember each input line&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; NR &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt; i &amp;gt; 0&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;print line&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;i&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; i - 1&lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# END {for(i = NR; i &amp;gt; 0; i = i -1 ) print line[i]}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;实用单行脚本&#34;&gt;实用单行脚本&lt;/h3&gt;
 &lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;
 &lt;p&gt;批量替换子路径的git地址&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -347,7 +494,7 @@ awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{ print NR, $0}&amp;#39;&lt;/span&gt
             <title type="text">Html打印样式错误</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/" />
             <id>https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</id>
-            <updated>2022-01-19T13:02:17&#43;08:00</updated>
+            <updated>2022-01-20T22:11:35&#43;08:00</updated>
             <published>2022-01-19T12:48:51&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -2362,7 +2509,7 @@ git config --global https.proxy &lt;span class=&#34;s1&#34;&gt;&amp;#39;socks5:/
             <title type="text">点词库转Rime</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/" />
             <id>https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-09T21:57:44&#43;08:00</updated>
             <published>2021-11-27T15:07:42&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -2635,7 +2782,7 @@ git push
             <title type="text">arch安装教程</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" />
             <id>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
-            <updated>2022-01-14T11:48:35&#43;08:00</updated>
+            <updated>2022-01-15T10:50:27&#43;08:00</updated>
             <published>2021-05-30T21:38:11&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -4277,7 +4424,7 @@ store-ssl-client-cert-pp-plaintext = yes
             <title type="text">win-jenkins安装</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/" />
             <id>https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-04-01T16:59:28&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -4402,7 +4549,7 @@ Environment variables
             <title type="text">idea创建maven模板archetype</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/" />
             <id>https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:13:33&#43;08:00</updated>
             <published>2020-03-18T22:31:34&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -4674,7 +4821,7 @@ archetypeVersion	RELEASE
             <title type="text">win环境部署</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" />
             <id>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:11:38&#43;08:00</updated>
             <published>2020-03-13T22:56:46&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -4981,7 +5128,7 @@ github树形展示&lt;/p&gt;
             <title type="text">前端json对象升/降阶处理</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/" />
             <id>https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-03-09T23:29:04&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -5412,7 +5559,7 @@ github树形展示&lt;/p&gt;
             <title type="text">chrome离线安装扩展插件</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/" />
             <id>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:10:21&#43;08:00</updated>
             <published>2020-03-08T08:52:48&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -5500,7 +5647,7 @@ github树形展示&lt;/p&gt;
             <title type="text">linux安装docker</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" />
             <id>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-03-06T21:58:19&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6322,7 +6469,7 @@ aaa
             <title type="text">nodejs中间层解决cors跨域</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/" />
             <id>https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-03-03T21:28:22&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6658,7 +6805,7 @@ node_modules/
             <title type="text">wsl安装nodejs</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/" />
             <id>https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-03-02T23:15:46&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6919,7 +7066,7 @@ cnpm install  --save http-proxy-middleware@0.21.0
             <title type="text">win系统安装-u盘方式</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/" />
             <id>https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:06:48&#43;08:00</updated>
             <published>2020-02-29T23:51:27&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7067,7 +7214,7 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
             <title type="text">outlook邮件设置</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/" />
             <id>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:07:47&#43;08:00</updated>
             <published>2020-02-29T11:23:03&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7222,7 +7369,7 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
             <title type="text">浏览器书签同步floccus</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/" />
             <id>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:05:42&#43;08:00</updated>
             <published>2020-02-28T22:18:45&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7331,7 +7478,7 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
             <title type="text">hexo简单设置</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/" />
             <id>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-02-27T21:40:14&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7538,7 +7685,7 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
             <title type="text">hexo之next主题</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/" />
             <id>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T13:35:06&#43;08:00</updated>
             <published>2020-02-25T23:03:38&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8051,7 +8198,7 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
             <title type="text">gitee-hexo搭建个人博客</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
             <id>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
-            <updated>2022-01-06T19:42:12&#43;08:00</updated>
+            <updated>2021-12-18T14:03:09&#43;08:00</updated>
             <published>2020-02-25T18:17:34&#43;00:00</published>
             <author>
                     <name>sloera</name>
