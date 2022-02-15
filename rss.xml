@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 08 Feb 2022 23:45:26 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 15 Feb 2022 23:13:10 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
         
@@ -146,7 +146,8 @@
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description>&lt;p&gt;linux三剑客&lt;/p&gt;
+                    <description>&lt;p&gt;[toc]&lt;/p&gt;
+&lt;p&gt;linux三剑客&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1Kg411g7bC&#34;&gt;https://www.bilibili.com/video/BV1Kg411g7bC&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -441,6 +442,16 @@ value = amount(1+rate)^years
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;variable in array&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+   statements
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
@@ -471,15 +482,152 @@ END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;
 &lt;span class=&#34;c1&#34;&gt;# END {for(i = NR; i &amp;gt; 0; i = i -1 ) print line[i]}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;实用单行脚本&#34;&gt;实用单行脚本&lt;/h3&gt;
-&lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;
-&lt;p&gt;批量替换子路径的git地址&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;Awk的数组元素的下标是字符串。Awk的数组称为&lt;strong&gt;关联数组(associative arrays)&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## 将Asia与Europe的人口数量累加到数组pop中&lt;/span&gt;
+/Asia/ &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;pop&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Asia&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; +&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+/Europe/ &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;pop&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Europe&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; +&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;print &lt;span class=&#34;s2&#34;&gt;&amp;#34;Asian population is&amp;#34;&lt;/span&gt;, pop&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Asia&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;million.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; print &lt;span class=&#34;s2&#34;&gt;&amp;#34;Europe population is&amp;#34;&lt;/span&gt;, pop&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Europe&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;, &lt;span class=&#34;s2&#34;&gt;&amp;#34;million.&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;pop[&amp;quot;Asia&amp;quot;] 与 pop[Asia] 不同。后者使用变量 Asia 的值作为下标&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;delete&#34;&gt;delete&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 删除数组元素&lt;/span&gt;
+delete array&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;subscript&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;split&#34;&gt;split&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 将字符串 str 切割成一个个字段，并存储到数组arr中，字段的个数作为函数的返回值返回。第3个参数fs作为字段的分割符(省略时使用FS)&lt;/span&gt;
+split&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;str, arr, fs&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;多维数组multidimensional-arrays&#34;&gt;多维数组(Multidimensional Arrays)&lt;/h4&gt;
+&lt;p&gt;Awk不直接支持多维数组。Awk存储时，将数组的下标通过&lt;code&gt;SUBSEP&lt;/code&gt;变量拼接起来。内建变量&lt;code&gt;SUBSEP&lt;/code&gt;默认值为&lt;code&gt;\034&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 创建了一个100元素的数组。下标形式为`1 SUBSEP 1`, `1 SUBSEP 2`&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i &amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 10&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i++&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; j &amp;lt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 10&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; j++&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+      arr&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;i, j&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;测试多维下标是否是某个数组的成员&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;i, j&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; in arr&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;遍历数组&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;k in arr&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果需要单独地访问下标的某个成分，可以使用&lt;code&gt;split(k, x, SUBSEP)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;数组的元素不能再是数组&lt;/p&gt;
+&lt;h3 id=&#34;实用单行脚本&#34;&gt;实用单行脚本&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;输入行的总行数
+&lt;code&gt;END {print NR}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印第10行
+&lt;code&gt;NR == 10&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印每一行的最后一个字段
+&lt;code&gt;print $NF&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印最后一行的最后一个字段
+&lt;code&gt;{field = $NF}; END {print field}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印字段数多于4个的输入行
+&lt;code&gt;NF &amp;gt; 4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印最后一个字段值大于4 的输入行
+&lt;code&gt;$NF &amp;gt; 4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印所有输入行的字段数的总和
+&lt;code&gt;{nf = nf + NF}; END {print nf}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印包含Beth的行的数量
+&lt;code&gt;/Beth/ {nlines = nlines + 1}; END {print nlines}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印具有最大值的第一个字段，以及包含它的行
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt; &amp;gt; max &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;max&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;maxline&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; print max, maxline &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;打印至少包含一个字段的行
+&lt;code&gt;NF &amp;gt; 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印长度超过80个字符的行
+&lt;code&gt;length($0) &amp;gt; 80&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在每一行的前面加上它的字段数
+&lt;code&gt;{print NF, $0}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印每一行的第1与第2个字段
+&lt;code&gt;{print $2, $1}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;交换每一行的第1与第2个字段，并打印该行
+{temp = $1; $1 = $2; $2 = temp; print}&lt;/li&gt;
+&lt;li&gt;将每一行的第一个字段用行号代替
+&lt;code&gt;{$1 = NR; print}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印删除了第2个字段后的行
+&lt;code&gt;{$2 = &amp;quot;&amp;quot;; print}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将每一行的字段按逆序打印
+&lt;code&gt;{for (i = NF; i &amp;gt; 0; i = i - 1) printf(&amp;quot;$s &amp;quot;, $i); printf(&amp;quot;\n)}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;打印每一行的所有字段值之和
+&lt;code&gt;{sum = 0; for(i = 1; i &amp;lt;= NF; i = i + 1) sum = sum + $i; print sum}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将所有行的所有字段值累加起来
+&lt;code&gt;{for(i = 1; i &amp;lt;= NF; i = i + 1) sum = sum + $i}; END {print sum}&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将每一行的每一个字段用它的绝对值替换
+&lt;code&gt;{for (i = 1; i &amp;lt;= NF; i = i + 1) if ($i &amp;lt; 0) $i = -$i; print}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;awk语言&#34;&gt;Awk语言&lt;/h2&gt;
+&lt;h3 id=&#34;程序格式&#34;&gt;程序格式&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;动作&lt;/code&gt;的左花括号必须与它的模式在同一行；而剩下的部分，包括右花括号，则可以出现在下面几行。&lt;/p&gt;
+&lt;p&gt;注释可以出现在任意一行的末尾。一个注释以&lt;code&gt;井号(#)&lt;/code&gt;开始，以换行符结束&lt;/p&gt;
+&lt;p&gt;一条长语句可以分散成多行，只要在断行处插入一个反斜杠即可。语句可以在逗号之后断点里&lt;/p&gt;
+&lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;
+&lt;p&gt;批量替换子路径的git地址&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sed -i &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/hub.fastgit.org/github.com/&amp;#34;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;ls -a **/.git/config&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# 查看数字超过2位&lt;/span&gt;
+sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;#39;&lt;/span&gt; method.log_2022-02-14.log&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
@@ -2451,6 +2599,85 @@ git push
 git config --global https.proxy &lt;span class=&#34;s1&#34;&gt;&amp;#39;socks5://127.0.0.1:3456&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;git-svn&#34;&gt;git-svn&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;分别克隆两个仓库
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git svn clone svn://10.110.1.23/svn/dzzw/New-JEcgap/Inspur.Ecgap.ServicePlatform/products/Inspur.Dzzw.WebApproval approvalOld
+git svn clone svn://10.110.1.23/svn/dzzw/New-JEcgap/Inspur.Ecgap.ServicePlatform/products/maven/Inspur.Dzzw.WebApproval approvalNew
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;在新仓库中，将旧仓库克隆为一个新分支
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git remote add other ../DZJC_NEW_GIT/
+git fetch other
+git checkout -b newbench other/master
+git checkrry-pick a..b
+git commit --allow-empty
+git cherry-pick --continue
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;删除历史大文件&#34;&gt;删除历史大文件&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; .
+&lt;span class=&#34;c1&#34;&gt;# 查询大文件占用&lt;/span&gt;
+git verify-pack -v .git/objects/pack/pack-*.idx &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sort -k &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; -g &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tail -5
+git rev-list --objects --all &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep 3467bb41ce22fa0c2c1799b34682fb4032c7d986
+
+&lt;span class=&#34;c1&#34;&gt;# &amp;#39;&amp;#39;中的为删除的文件或目录&lt;/span&gt;
+git filter-branch --force --index-filter &lt;span class=&#34;s1&#34;&gt;&amp;#39;git rm -r --cached --ignore-unmatch out&amp;#39;&lt;/span&gt; --prune-empty --tag-name-filter cat -- --all
+
+&lt;span class=&#34;c1&#34;&gt;# gc&lt;/span&gt;
+git &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;-each-ref --format&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;delete %(refname)&amp;#39;&lt;/span&gt; refs/original &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; git update-ref --stdin
+&lt;span class=&#34;c1&#34;&gt;# 等同于 rm -rf .git/refs/original/&lt;/span&gt;
+git reflog expire --expire&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;now --all
+git gc --prune&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;now
+du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; .
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;打包差异文件&#34;&gt;打包差异文件&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git diff 1f9d43308 9b3e8cb93  --name-only
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
 &lt;/div&gt;</description>
                 
                 
@@ -2517,7 +2744,16 @@ git config --global https.proxy &lt;span class=&#34;s1&#34;&gt;&amp;#39;socks5:/
 &lt;li&gt;^:用户词组&lt;/li&gt;
 &lt;li&gt;!联想词组&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;开始转换&#34;&gt;开始转换&lt;/h2&gt;
+&lt;h2 id=&#34;使用awk处理&#34;&gt;使用awk处理&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{a=1010;for(i=2;i&amp;lt;=NF;i=i+1) printf(&amp;#34;%s\t%s\t%d\n&amp;#34;,$i,$1,a-i*5)}&amp;#39;&lt;/span&gt; source.txt &amp;gt; target.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;开始转换&#34;&gt;&lt;del&gt;开始转换&lt;/del&gt;&lt;/h2&gt;
 &lt;h3 id=&#34;先将点儿词库中的词条分开为单行如编码-词条格式&#34;&gt;先将&lt;code&gt;点儿词库&lt;/code&gt;中的词条分开为单行。如&lt;code&gt;编码 词条&lt;/code&gt;格式。&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4220,7 +4456,64 @@ sudo sh -c &lt;span class=&#34;s1&#34;&gt;&amp;#39;echo &amp;#34;/usr/bin/xhost 
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/keatonlao/p/12702571.html&#34;&gt;https://www.cnblogs.com/keatonlao/p/12702571.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id=&#34;cup&#34;&gt;cup&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;yay -S goldendict-git
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+&lt;h3 id=&#34;termux&#34;&gt;termux&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.ruanyifeng.com/blog/2019/10/tmux.html&#34;&gt;https://www.ruanyifeng.com/blog/2019/10/tmux.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo pacman -S tmux
+tmux new -s work
+tmux ls
+&lt;span class=&#34;c1&#34;&gt;# ctrl+b c 新建一个会话&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# ctrl+b d 隐藏当前&lt;/span&gt;
+tmux a -t work
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;使用thunar&#34;&gt;使用thunar&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;xdg-mime query filetype /home/
+xdg-mime query default inode/directory
+ls /usr/share/applications &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep thun
+xdg-mime default thunar.desktop inode/directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;fzf&#34;&gt;fzf&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;sudo pacman -S fzf
+yay -S the_silver_searcher
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;cup&#34;&gt;cup&lt;/h3&gt;
 &lt;p&gt;cups打印&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
