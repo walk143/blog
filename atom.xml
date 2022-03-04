@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-04T08:36:40&#43;08:00</updated>
+    <updated>2022-03-04T11:53:33&#43;08:00</updated>
     <id>http://sloera.gitee.io/sloera/</id>
     <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/" />
     <link rel="self" type="application/atom&#43;xml" href="http://sloera.gitee.io/sloera/atom.xml" />
@@ -1374,6 +1374,70 @@ after method send
 &lt;ul&gt;
 &lt;li&gt;JDK 动态代理只能代理实现了接口的类或者直接代理接口，而 CGLIB 可以代理未实现任何接口的类。 另外， CGLIB 动态代理是通过生成一个被代理类的子类来拦截被代理类的方法调用，因此不能代理声明为 final 类型的类和方法。&lt;/li&gt;
 &lt;li&gt;就二者的效率来说，大部分情况都是 JDK 动态代理更优秀，随着 JDK 版本的升级，这个优势更加明显。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;jvm&#34;&gt;JVM&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;img/jvm-basic.png&#34; alt=&#34;jvm-basic&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/jvm-model-1.png&#34; alt=&#34;jvm-model-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/jvm-model-2.png&#34; alt=&#34;jvm-model-2&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;类加载子系统&#34;&gt;类加载子系统&lt;/h3&gt;
+&lt;p&gt;负责从文件系统或者网络中加载class信息。加载在类信息，存放于&lt;strong&gt;方法区&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;方法区&#34;&gt;方法区&lt;/h3&gt;
+&lt;p&gt;存放类信息。还会存放运行时常量信息，包括：&lt;strong&gt;字符串字面量&lt;/strong&gt;和&lt;strong&gt;数字常量&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;java堆&#34;&gt;Java堆&lt;/h3&gt;
+&lt;p&gt;在虚拟机启动的时候建立。&lt;strong&gt;几乎所有&lt;/strong&gt;的Java对象实例都存放在Java堆中。堆空间是所有线程共享的&lt;/p&gt;
+&lt;h3 id=&#34;program-counter-register程序计数器&#34;&gt;Program Counter Register(程序计数器)：&lt;/h3&gt;
+&lt;p&gt;Register 的命名源于CPU的寄存器，CPU只有把数据装载到寄存器才能够运行&lt;/p&gt;
+&lt;p&gt;cpu执行线程的指令，是持续在中断和恢复切换的。每个线程创建后，都有自己的&lt;strong&gt;程序计数器&lt;/strong&gt;和&lt;strong&gt;栈&lt;/strong&gt;。线程执行或恢复都依赖&lt;strong&gt;程序计数器&lt;/strong&gt;。程序计数器在各个线程之间互不影响，此区域也不会发生内存溢出异常。&lt;/p&gt;
+&lt;h4 id=&#34;定义&#34;&gt;定义&lt;/h4&gt;
+&lt;p&gt;程序计数器是一块较小的内存空间，可看作当前线程正在执行的字节码的行号指示器&lt;/p&gt;
+&lt;p&gt;如果当前线程正在执行的是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java方法
+计数器记录的就是当前线程正在执行的字节码指令的地址&lt;/li&gt;
+&lt;li&gt;本地方法
+那么程序计数器值为undefined&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;作用&#34;&gt;作用&lt;/h4&gt;
+&lt;p&gt;程序计数器有两个作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;字节码解释器通过改变程序计数器来依次读取指令，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理&lt;/li&gt;
+&lt;li&gt;在多线程的情况下，程序计数器用于记录当前线程执行的位置，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;特点&#34;&gt;特点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;一块较小的内存空间&lt;/li&gt;
+&lt;li&gt;线程私有。每条线程都有一个独立的程序计数器。&lt;/li&gt;
+&lt;li&gt;是唯一一个不会出现OOM的内存区域。&lt;/li&gt;
+&lt;li&gt;生命周期随着线程的创建而创建，随着线程的结束而死亡。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jvm-stackjava虚拟机栈&#34;&gt;JVM Stack(Java虚拟机栈)&lt;/h3&gt;
+&lt;h4 id=&#34;定义-1&#34;&gt;定义&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;相对于基于寄存器的运行环境来说，JVM是基于栈结构的运行环境&lt;/li&gt;
+&lt;li&gt;栈结构移植性更好，可控性更强&lt;/li&gt;
+&lt;li&gt;JVM中的虚拟机栈是描述Java方法执行的内存区域，它是线程私有的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在执行引擎运行时，所有指令都只能针对当前栈帧进行操作&lt;/p&gt;
+&lt;p&gt;StackOverflowError表示请求的栈溢出，导致内存耗尽，通常出现在递归方法中&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/jvm-stack.png&#34; alt=&#34;jvm-stack&#34;&gt;&lt;/p&gt;
+&lt;p&gt;栈帧在整个JVM体系中的地位颇高,包括局部变量表、操作栈、动态连接、方法返回地址等&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;局部变量表
+&lt;ul&gt;
+&lt;li&gt;存放方法参数和局部变量&lt;/li&gt;
+&lt;li&gt;局部变量没有准备阶段，必须显式初始化。类属性变量有准备阶段和初始化阶段&lt;/li&gt;
+&lt;li&gt;非静态方法，在&lt;code&gt;index[0]&lt;/code&gt;位置上存储方法所属对象的实例引用。随后存储参数和局部变量&lt;/li&gt;
+&lt;li&gt;字节码指令中的STORE指令就是将操作栈中计算完成的局部变量写回局部变量表的存储空间内&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;操作栈
+&lt;ul&gt;
+&lt;li&gt;一个初始状态为空的桶式结构栈&lt;/li&gt;
+&lt;li&gt;方法执行过程中，会有各种指令往栈中写入和提取信息&lt;/li&gt;
+&lt;li&gt;JVM的执行引擎是基于栈的执行引擎，其中的栈指的就是操作栈&lt;/li&gt;
+&lt;li&gt;字节码指令集的定义都是基于栈类型的,栈的深度在方法元信息的stack属性中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;spring&#34;&gt;spring&lt;/h1&gt;
 &lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
