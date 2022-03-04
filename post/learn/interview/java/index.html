@@ -63,7 +63,7 @@
         "description": "[toc] java知识点总结 说一下ArrayList和LinkdedList ArrayList: 底层为数组加链……",
         "inLanguage" : "zh-CN",
         "articleSection": "post",
-        "wordCount":  14159 ,
+        "wordCount":  14485 ,
         "image": ["http://sloera.gitee.io/sloera/img/exception-1.png","http://sloera.gitee.io/sloera/img/exception-2.png","http://sloera.gitee.io/sloera/img/io.png","http://sloera.gitee.io/sloera/img/io-2.png","http://sloera.gitee.io/sloera/img/value/reference.png","http://sloera.gitee.io/sloera/img/jvm-basic.png","http://sloera.gitee.io/sloera/img/jvm-model-1.png","http://sloera.gitee.io/sloera/img/jvm-model-2.png","http://sloera.gitee.io/sloera/img/jvm-stack.png","http://sloera.gitee.io/sloera/img/rocketmq-img.png","https://www.runoob.com/wp-content/uploads/2013/11/2012072810301161.png","https://www.runoob.com/wp-content/uploads/2013/11/httpmessage.jpg"],
         "author": {
             "@type": "Person",
@@ -229,7 +229,7 @@
     
     
         
-        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;14159</span>
+        <span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;14485</span>
     
     
         
@@ -311,6 +311,7 @@
             <li><a id="contents:jvm-stackjava虚拟机栈" href="#jvm-stackjava虚拟机栈">JVM Stack(Java虚拟机栈)</a>
               <ol>
                 <li><a id="contents:定义-1" href="#定义-1">定义</a></li>
+                <li><a id="contents:示例" href="#示例">示例</a></li>
               </ol>
             </li>
           </ol>
@@ -1573,7 +1574,8 @@ after method send
 <p><img src="img/jvm-stack.png" alt="jvm-stack"></p>
 <p>栈帧在整个JVM体系中的地位颇高,包括局部变量表、操作栈、动态连接、方法返回地址等</p>
 <ul>
-<li>局部变量表
+<li>
+<p>局部变量表</p>
 <ul>
 <li>存放方法参数和局部变量</li>
 <li>局部变量没有准备阶段，必须显式初始化。类属性变量有准备阶段和初始化阶段</li>
@@ -1581,7 +1583,8 @@ after method send
 <li>字节码指令中的STORE指令就是将操作栈中计算完成的局部变量写回局部变量表的存储空间内</li>
 </ul>
 </li>
-<li>操作栈
+<li>
+<p>操作栈</p>
 <ul>
 <li>一个初始状态为空的桶式结构栈</li>
 <li>方法执行过程中，会有各种指令往栈中写入和提取信息</li>
@@ -1589,7 +1592,104 @@ after method send
 <li>字节码指令集的定义都是基于栈类型的,栈的深度在方法元信息的stack属性中</li>
 </ul>
 </li>
+<li>
+<p>动态链接</p>
+</li>
+<li></li>
 </ul>
+<h4 id="示例"><a href="#示例" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:示例" class="headings">示例</a></h4>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">simpleMethod</span><span class="o">()</span> <span class="o">{</span>
+ <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">13</span><span class="o">;</span>
+ <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">25</span><span class="o">;</span>
+ <span class="kt">int</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
+ <span class="k">return</span> <span class="n">z</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// access flags 0x1
+</span><span class="c1"></span><span class="kd">public</span> <span class="nf">simpleMethod</span><span class="o">()</span><span class="n">I</span>
+<span class="n">L0</span>
+ <span class="n">LINENUMBER</span> <span class="n">13</span> <span class="n">L0</span>
+ <span class="n">BIPUSH</span> <span class="n">13</span> <span class="c1">// 常量13压入操作栈
+</span><span class="c1"></span> <span class="n">ISTORE</span> <span class="n">1</span> <span class="c1">// 保存到局部变量表的slot_1中
+</span><span class="c1"></span><span class="n">L1</span>
+ <span class="n">LINENUMBER</span> <span class="n">14</span> <span class="n">L1</span>
+ <span class="n">BIPUSH</span> <span class="n">25</span> <span class="c1">// 常量25压入操作栈
+</span><span class="c1"></span> <span class="n">ISTORE</span> <span class="n">2</span> <span class="c1">// 保存到局部变量表的slot_2中
+</span><span class="c1"></span><span class="n">L2</span>
+ <span class="n">LINENUMBER</span> <span class="n">15</span> <span class="n">L2</span>
+ <span class="n">ILOAD</span> <span class="n">1</span> <span class="c1">// 把局部变量表的slot_1元素(13)压入操作栈
+</span><span class="c1"></span> <span class="n">ILOAD</span> <span class="n">2</span> <span class="c1">// 把局部变量表的slot_2元素(25)压入操作栈
+</span><span class="c1"></span> <span class="n">IADD</span> <span class="c1">// 将上方的两个数取出来，在cpu里相加，并将结果压回操作栈的栈顶
+</span><span class="c1"></span> <span class="n">ISTORE</span> <span class="n">3</span> <span class="c1">// 将栈顶(38)存储到局部变量表的slog_3中
+</span><span class="c1"></span><span class="n">L3</span>
+ <span class="n">LINENUMBER</span> <span class="n">16</span> <span class="n">L3</span>
+ <span class="n">ILOAD</span> <span class="n">3</span> <span class="c1">// 把局部变量表的slot_3元素(38)压入操作栈
+</span><span class="c1"></span> <span class="n">IRETURN</span> <span class="c1">// 返回栈顶元素值
+</span></code></pre></td></tr></table></div>
+</div>
+</div><p><code>++i</code>同<code>i++</code></p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">L3</span>
+ <span class="n">LINENUMBER</span> <span class="n">16</span> <span class="n">L3</span>
+ <span class="n">ILOAD</span> <span class="n">1</span>
+ <span class="n">IINC</span> <span class="n">1</span> <span class="n">1</span>
+ <span class="n">ISTORE</span> <span class="n">4</span>
+<span class="n">L4</span>
+ <span class="n">LINENUMBER</span> <span class="n">17</span> <span class="n">L4</span>
+ <span class="n">IINC</span> <span class="n">1</span> <span class="n">1</span>
+ <span class="n">ILOAD</span> <span class="n">1</span>
+ <span class="n">ISTORE</span> <span class="n">5</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>&lt;++&gt;</p>
 <h1 id="spring"><a href="#spring" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:spring" class="headings">spring</a></h1>
 <h2 id="事务"><a href="#事务" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:事务" class="headings">事务</a></h2>
 <p>service有<code>@Transactional( rollbackFor={Exception.class,RuntimeException.class})</code>注解时，只有在整个service方法执行完后，都会提交事务。</p>

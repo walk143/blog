@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-04T11:53:33&#43;08:00</updated>
+    <updated>2022-03-04T18:56:10&#43;08:00</updated>
     <id>http://sloera.gitee.io/sloera/</id>
     <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/" />
     <link rel="self" type="application/atom&#43;xml" href="http://sloera.gitee.io/sloera/atom.xml" />
@@ -1422,7 +1422,8 @@ after method send
 &lt;p&gt;&lt;img src=&#34;img/jvm-stack.png&#34; alt=&#34;jvm-stack&#34;&gt;&lt;/p&gt;
 &lt;p&gt;栈帧在整个JVM体系中的地位颇高,包括局部变量表、操作栈、动态连接、方法返回地址等&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;局部变量表
+&lt;li&gt;
+&lt;p&gt;局部变量表&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存放方法参数和局部变量&lt;/li&gt;
 &lt;li&gt;局部变量没有准备阶段，必须显式初始化。类属性变量有准备阶段和初始化阶段&lt;/li&gt;
@@ -1430,7 +1431,8 @@ after method send
 &lt;li&gt;字节码指令中的STORE指令就是将操作栈中计算完成的局部变量写回局部变量表的存储空间内&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;操作栈
+&lt;li&gt;
+&lt;p&gt;操作栈&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;一个初始状态为空的桶式结构栈&lt;/li&gt;
 &lt;li&gt;方法执行过程中，会有各种指令往栈中写入和提取信息&lt;/li&gt;
@@ -1438,7 +1440,104 @@ after method send
 &lt;li&gt;字节码指令集的定义都是基于栈类型的,栈的深度在方法元信息的stack属性中&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态链接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;simpleMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+ &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+ &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+ &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+ &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// access flags 0x1
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;simpleMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;L0&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;13&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L0&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;BIPUSH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;13&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 常量13压入操作栈
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 保存到局部变量表的slot_1中
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;14&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;BIPUSH&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;25&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 常量25压入操作栈
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 保存到局部变量表的slot_2中
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L2&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;15&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L2&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ILOAD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 把局部变量表的slot_1元素(13)压入操作栈
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ILOAD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 把局部变量表的slot_2元素(25)压入操作栈
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IADD&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 将上方的两个数取出来，在cpu里相加，并将结果压回操作栈的栈顶
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 将栈顶(38)存储到局部变量表的slog_3中
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;L3&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;16&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L3&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ILOAD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 把局部变量表的slot_3元素(38)压入操作栈
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IRETURN&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 返回栈顶元素值
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;++i&lt;/code&gt;同&lt;code&gt;i++&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;L3&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;16&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L3&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ILOAD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;IINC&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;4&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;L4&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;LINENUMBER&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;17&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;L4&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;IINC&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ILOAD&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;
+ &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
 &lt;h1 id=&#34;spring&#34;&gt;spring&lt;/h1&gt;
 &lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
 &lt;p&gt;service有&lt;code&gt;@Transactional( rollbackFor={Exception.class,RuntimeException.class})&lt;/code&gt;注解时，只有在整个service方法执行完后，都会提交事务。&lt;/p&gt;
