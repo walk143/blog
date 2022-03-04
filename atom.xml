@@ -4,32 +4,213 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-01T23:50:40&#43;08:00</updated>
-    <id>https://sloera.gitee.io/</id>
-    <link rel="alternate" type="text/html" href="https://sloera.gitee.io/" />
-    <link rel="self" type="application/atom&#43;xml" href="https://sloera.gitee.io/atom.xml" />
+    <updated>2022-03-04T08:36:40&#43;08:00</updated>
+    <id>http://sloera.gitee.io/sloera/</id>
+    <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/" />
+    <link rel="self" type="application/atom&#43;xml" href="http://sloera.gitee.io/sloera/atom.xml" />
     <author>
             <name>sloera</name>
-            <uri>https://sloera.gitee.io/</uri>
+            <uri>http://sloera.gitee.io/</uri>
             
                 <email>sloera@163.com</email>
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    <generator uri="https://gohugo.io/" version="0.90.0">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="0.92.0">Hugo</generator>
+        <entry>
+            <title type="text">mysql</title>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/learn/interview/mysql/" />
+            <id>http://sloera.gitee.io/sloera/post/learn/interview/mysql/</id>
+            <updated>2022-03-03T18:33:21&#43;08:00</updated>
+            <published>2022-03-03T14:42:57&#43;08:00</published>
+            <author>
+                    <name>sloera</name>
+                    <uri>https://sloera.gitee.io/</uri>
+                    <email>sloera@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">[toc] 常见知识 数据库字段 TIMESTAMP和DATETIME 相同点 1&amp;gt; 两者都可用来表示YY……</summary>
+            
+                <content type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&#34;常见知识&#34;&gt;常见知识&lt;/h1&gt;
+&lt;h2 id=&#34;数据库字段&#34;&gt;数据库字段&lt;/h2&gt;
+&lt;h3 id=&#34;timestamp和datetime&#34;&gt;TIMESTAMP和DATETIME&lt;/h3&gt;
+&lt;h4 id=&#34;相同点&#34;&gt;相同点&lt;/h4&gt;
+&lt;p&gt;1&amp;gt; 两者都可用来表示YYYY-MM-DD HH:MM:SS[.fraction]类型的日期。&lt;/p&gt;
+&lt;h4 id=&#34;不同点&#34;&gt;不同点&lt;/h4&gt;
+&lt;p&gt;1&amp;gt; 两者的存储方式不一样&lt;/p&gt;
+&lt;p&gt;对于TIMESTAMP，它把客户端插入的时间从当前时区转化为UTC（世界标准时间）进行存储。查询时，将其又转化为客户端当前时区进行返回。&lt;/p&gt;
+&lt;p&gt;而对于DATETIME，不做任何改变，基本上是原样输入和输出。&lt;/p&gt;
+&lt;p&gt;2&amp;gt; 两者所能存储的时间范围不一样&lt;/p&gt;
+&lt;p&gt;timestamp所能存储的时间范围为：&#39;1970-01-01 00:00:01.000000&#39; 到 &#39;2038-01-19 03:14:07.999999&#39;。&lt;/p&gt;
+&lt;p&gt;datetime所能存储的时间范围为：&#39;1000-01-01 00:00:00.000000&#39; 到 &#39;9999-12-31 23:59:59.999999&#39;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;总结：TIMESTAMP和DATETIME除了存储范围和存储方式不一样，没有太大区别。当然，对于跨时区的业务，TIMESTAMP更为合适。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tbl_user&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;auto_increment&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;		&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;primary&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;varchar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;logic_flag&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_time&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;datetime&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;CURRENT_TIMESTAMP&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;not&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;mysql时区问题&#34;&gt;mysql时区问题&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/154109590&#34;&gt;https://zhuanlan.zhihu.com/p/154109590&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;log_timestamps&#34;&gt;log_timestamps&lt;/h3&gt;
+&lt;p&gt;log_timestamps参数并不影响时区，只是设置不同会影响某些日志记录的时间。该参数主要是控制 error log、slow log、genera log 日志文件中的显示时间，但不会影响 general log 和 slow log 写到表 (mysql.general_log, mysql.slow_log) 中的显示时间。&lt;/p&gt;
+&lt;p&gt;log_timestamps 是全局参数，可动态修改，默认使用 UTC 时区，这样会使得日志中记录的时间比北京时间慢 8 个小时，导致查看日志不方便。可以修改为 SYSTEM 变成使用系统时区。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- 查看参数值
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;global&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variables&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;like&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;log_timestamps&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;time_zone&#34;&gt;time_zone&lt;/h3&gt;
+&lt;p&gt;time_zone参数用来设置每个连接会话的时区，该参数分为全局和会话级别，可以动态修改。默认值为 SYSTEM，此时使用的是全局参数 system_time_zone 的值，而 system_time_zone 默认继承自当前系统的时区，即默认情况下 MySQL 时区和系统时区相同。&lt;/p&gt;
+&lt;p&gt;时区设置主要影响时区敏感的时间值的显示和存储。包括一些函数(如 now()、curtime())显示的值，以及存储在 TIMESTAMP 类型中的值，但不影响 DATE、TIME 和 DATETIME 列中的值，因为这些数据类型在存取时未进行时区转换，而 TIMESTAMP 类型存入数据库的实际是 UTC 的时间，查询显示时会根据具体的时区来显示不同的时间。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;global&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variables&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;like&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;%time_zone%&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;global&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time_zone&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;+8:00&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;常见问题&#34;&gt;常见问题&lt;/h3&gt;
+&lt;h4 id=&#34;java-程序存取的时间与数据库中的时间相差-8-小时&#34;&gt;Java 程序存取的时间与数据库中的时间相差 8 小时&lt;/h4&gt;
+&lt;p&gt;出现此问题的原因大概率是程序时区与数据库时区不一致导致的。我们可以检查下两边的时区，如果想统一采用北京时间，则可以在 jdbc 连接串中增加 serverTimezone=Asia/Shanghai，并且 MySQL 方面也可以将 time_zone 改为&#39;+8:00&#39;。&lt;/p&gt;
+&lt;h4 id=&#34;程序时间与数据库时间相差-13-小时或-14-小时&#34;&gt;程序时间与数据库时间相差 13 小时或 14 小时&lt;/h4&gt;
+&lt;p&gt;出现这个问题的原因是 JDBC 与 MySQL 对 “CST” 时区协商不一致。因为 CST 时区是一个很混乱的时区，有四种含义：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;美国中部时间 Central Standard Time (USA) UTC-05:00 或 UTC-06:00&lt;/li&gt;
+&lt;li&gt;澳大利亚中部时间 Central Standard Time (Australia) UTC+09:30&lt;/li&gt;
+&lt;li&gt;中国标准时 China Standard Time UTC+08:00&lt;/li&gt;
+&lt;li&gt;古巴标准时 Cuba Standard Time UTC-04:00&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MySQL 中，如果 time_zone 为默认的 SYSTEM 值，则时区会继承为系统时区 CST，MySQL 内部将其认为是 UTC+08:00。而 jdbc 会将 CST 认为是美国中部时间，这就导致会相差 13 小时，如果处在冬令时还会相差 14 个小时。&lt;/p&gt;
+&lt;p&gt;解决此问题的方法也很简单，我们可以明确指定 MySQL 数据库的时区，不使用引发误解的 CST，可以将 time_zone 改为&#39;+8:00&#39;，同时 jdbc 连接串中也可以增加 serverTimezone=Asia/Shanghai。&lt;/p&gt;
+&lt;h4 id=&#34;如何避免出现时区问题&#34;&gt;如何避免出现时区问题&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;首先保证系统时区准确&lt;/li&gt;
+&lt;li&gt;jdbc 连接串中指定时区，并与数据库时区一致&lt;/li&gt;
+&lt;li&gt;time_zone 参数建议设置为&#39;+8:00&#39;，不使用容易误解的 CST&lt;/li&gt;
+&lt;li&gt;各环境数据库实例时区参数保持相同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可能有的同学说了，我们数据库中 time_zone 参数选择的是默认的 SYSTEM 值，也没有发生程序时间和数据库时间不一致的问题。此时是否需要将 time_zone 改为&#39;+8:00&#39;？在这种情况下还是建议将 time_zone 改为&#39;+8:00&#39;，特别是经常查询 TIMESTAMP 字段，因为当 time_zone=system 的时候，查询 timestamp 字段会调用系统的时区做时区转换，有全局锁__libc_lock_lock 的保护，可能导致线程并发环境下系统性能受限。而改为&#39;+8:00&#39;则不会触发系统时区转换，使用 MySQL 自身转换，大大提高了性能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;索引&#34;&gt;索引&lt;/h2&gt;
+&lt;h3 id=&#34;b树性质&#34;&gt;b+树性质&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;我们知道IO次数取决于b+数的高度h，假设当前数据表的数据为N，每个磁盘块的数据项的数量是m，则有h=㏒(m+1)N，当数据量N一定的情况下，m越大，h越小；而m = 磁盘块的大小 / 数据项的大小，磁盘块的大小也就是一个数据页的大小，是固定的，如果数据项占的空间越小，数据项的数量越多，树的高度越低。这就是为什么每个数据项，即索引字段要尽量的小，比如int占4字节，要比bigint8字节少一半。这也是为什么b+树要求把真实的数据放到叶子节点而不是内层节点，一旦放到内层节点，磁盘块的数据项会大幅度下降，导致树增高。当数据项等于1时将会退化成线性表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当b+树的数据项是复合的数据结构，比如(name,age,sex)的时候，b+数是按照从左到右的顺序来建立搜索树的，比如当(张三,20,F)这样的数据来检索的时候，b+树会优先比较name来确定下一步的所搜方向，如果name相同再依次比较age和sex，最后得到检索的数据；但当(20,F)这样的没有name的数据来的时候，b+树就不知道下一步该查哪个节点，因为建立搜索树的时候name就是第一个比较因子，必须要先根据name来搜索才能知道下一步去哪里查询。比如当(张三,F)这样的数据来检索时，b+树可以用name来指定搜索方向，但下一个字段age的缺失，所以只能把名字等于张三的数据都找到，然后再匹配性别是F的数据了， 这个是非常重要的性质，即索引的最左匹配特性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数据项越多越好，即索引字段要尽可能的小
+索引具有&lt;code&gt;最左匹配特性&lt;/code&gt;。即使用联合索引时，第一个字段必须在查询条件中出现。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;建索引的几大原则&#34;&gt;建索引的几大原则&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&amp;gt;、&amp;lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &amp;gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尽量选择区分度高的列作为索引，区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;主键索引和非主键索引&#34;&gt;主键索引和非主键索引&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/RemJcqPIvLArmfWIhoaZ1g&#34;&gt;https://mp.weixin.qq.com/s/RemJcqPIvLArmfWIhoaZ1g&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;img/%E7%B4%A2%E5%BC%95%E7%A4%BA%E6%84%8F%E5%9B%BE.png&#34; alt=&#34;索引示意图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;非主键索引的叶子节点存放的是主键的值，而主键索引的叶子节点存放的是整行数据，其中非主键索引也被称为二级索引，而主键索引也被称为聚簇索引。&lt;/p&gt;
+&lt;p&gt;根据这两种结构我们来进行下查询，看看他们在查询上有什么区别。&lt;/p&gt;
+&lt;p&gt;1、如果查询语句是 select * from table where ID = 100,即主键查询的方式，则只需要搜索 ID 这棵 B+树。&lt;/p&gt;
+&lt;p&gt;2、如果查询语句是 select * from table where k = 1，即非主键的查询方式，则先搜索k索引树，得到ID=100,再到ID索引树搜索一次，这个过程也被称为回表。&lt;/p&gt;
+&lt;h2 id=&#34;事务隔离级别&#34;&gt;事务隔离级别&lt;/h2&gt;
+&lt;p&gt;MySQL 事务都是指在 InnoDB 引擎下，MyISAM 引擎是不支持事务的。&lt;/p&gt;
+&lt;p&gt;可重复读是默认的隔离级别。&lt;/p&gt;
+&lt;p&gt;ACID: 事务具有原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）四个特性&lt;/p&gt;
+&lt;h3 id=&#34;概念说明&#34;&gt;概念说明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;脏读 脏读指的是读到了其他事务未提交的数据，未提交意味着这些数据可能会回滚，也就是可能最终不会存到数据库中，也就是不存在的数据。读到了不一定最终存在的数据，这就是脏读。&lt;/li&gt;
+&lt;li&gt;可重复读 可重复读指的是在一个事务内，最开始读到的数据和事务结束前的任意时刻读到的同一批数据都是一致的。通常针对数据更新（UPDATE）操作。&lt;/li&gt;
+&lt;li&gt;不可重复读 对比可重复读，不可重复读指的是在同一事务内，不同的时刻读到的同一批数据可能是不一样的，可能会受到其他事务的影响，比如其他事务改了这批数据并提交了。通常针对数据更新（UPDATE）操作。&lt;/li&gt;
+&lt;li&gt;幻读 幻读是针对数据插入（INSERT）操作来说的。假设事务A对某些行的内容作了更改，但是还未提交，此时事务B插入了与事务A更改前的记录相同的记录行，并且在事务A提交之前先提交了，而这时，在事务A中查询，会发现好像刚刚的更改对于某些数据未起作用，但其实是事务B刚插入进来的，让用户感觉很魔幻，感觉出现了幻觉，这就叫幻读。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;隔离级别&#34;&gt;隔离级别&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;读未提交（READ UNCOMMITTED）&lt;/li&gt;
+&lt;li&gt;读提交 （READ COMMITTED）。修改和新增都可见。存在不可重复读、幻读问题。但是不可能脏读&lt;/li&gt;
+&lt;li&gt;可重复读 （REPEATABLE READ）。修改不可见。新增可见。存在幻读问题。&lt;/li&gt;
+&lt;li&gt;串行化 （SERIALIZABLE）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/isolation-level.png&#34; alt=&#34;isolation-level&#34;&gt;&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">java</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/interview/java/" />
-            <id>https://sloera.gitee.io/post/learn/interview/java/</id>
-            <updated>2022-03-01T23:49:37&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/learn/interview/java/" />
+            <id>http://sloera.gitee.io/sloera/post/learn/interview/java/</id>
+            <updated>2022-03-03T18:33:21&#43;08:00</updated>
             <published>2022-03-01T23:49:33&#43;08:00</published>
             <author>
                     <name>sloera</name>
                     <uri>https://sloera.gitee.io/</uri>
                     <email>sloera@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">java知识点总结 说一下ArrayList和LinkdedList ArrayList: 底层为数组加链表……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">[toc] java知识点总结 说一下ArrayList和LinkdedList ArrayList: 底层为数组加链……</summary>
             
-                <content type="html">&lt;h1 id=&#34;java知识点总结&#34;&gt;java知识点总结&lt;/h1&gt;
+                <content type="html">&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&#34;java知识点总结&#34;&gt;java知识点总结&lt;/h1&gt;
 &lt;h2 id=&#34;说一下arraylist和linkdedlist&#34;&gt;说一下ArrayList和LinkdedList&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;ArrayList: 底层为数组加链表的形式。因此随机访问快，但是新增(扩容/在指定位置)和删除慢&lt;/li&gt;
@@ -622,12 +803,1015 @@
 &lt;p&gt;list.add(new Fruit())不能添加，正是因为第1点解释的，容器内存放的是Apple的所有父类，注意 所有 这个词，正是因为能存放所有，Apple的父类可能有Fruit1， Fruit2， Fruit3 ， 所以编译器根本不能识别你要存放哪个Apple的父类，因为这不能保证类型安全的原则。这从最后的Object apple = list.get(0)可以看出。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;pecs原则&#34;&gt;PECS原则&lt;/h3&gt;
-&lt;p&gt;如果要从集合中读取类型T的数据，并且不能写入，可以使用 ? extends 通配符；(Producer Extends)
-如果要从集合中写入类型T的数据，并且不需要读取，可以使用 ? super 通配符；(Consumer Super)
-如果既要存又要取，那么就不要使用任何通配符。&lt;/p&gt;
+&lt;p&gt;生产者：要从集合中读取类型T的数据，并且不能写入，可以使用 ? extends 通配符；(Producer Extends)
+消费者：要向集合中写入类型T的数据，并且不需要读取，可以使用 ? super 通配符；(Consumer Super)&lt;/p&gt;
+&lt;p&gt;如果既要存又要取，那么就不要使用任何通配符。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;指定上限情况下，只能从容器中取对象，不能添加对象，因为没办法确定你添加的是那种类型的对象，但是可以确定的是你取出来的对象是上限类及其子类，指定下限就是只能往容器里添加对象，因为没办法确定你要获取的对象是那种类型的，但是可以确定你放入的对象必定是下界的类或者超类，所以编译ok,jvm虚拟机对于不可确定的类型会报targetException&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;以下来自&lt;code&gt;java.util.Collections#copy&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* Copies all of the elements from one list into another.  After the
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* operation, the index of each copied element in the destination list
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* will be identical to its index in the source list.  The destination
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* list must be at least as long as the source list.  If it is longer, the
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* remaining elements in the destination list are unaffected. &amp;lt;p&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* This method runs in linear time.
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* @param  &amp;lt;T&amp;gt; the class of the objects in the lists
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* @param  dest The destination list.
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* @param  src The source list.
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* @throws IndexOutOfBoundsException if the destination list is too small
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*         to contain the entire source List.
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;* @throws UnsupportedOperationException if the destination list&amp;#39;s
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*         list-iterator does not support the &amp;lt;tt&amp;gt;set&amp;lt;/tt&amp;gt; operation.
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;copy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;super&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;srcSize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;srcSize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IndexOutOfBoundsException&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Source does not fit in dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;srcSize&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;COPY_THRESHOLD&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;
+      &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;src&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;instanceof&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RandomAccess&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dest&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;instanceof&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;RandomAccess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;srcSize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++)&lt;/span&gt;
+          &lt;span class=&#34;n&#34;&gt;dest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;));&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;ListIterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;super&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;di&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;listIterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;ListIterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;si&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;listIterator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;srcSize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+          &lt;span class=&#34;n&#34;&gt;di&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+          &lt;span class=&#34;n&#34;&gt;di&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;set&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;si&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+      &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;对volatile的理解&#34;&gt;对volatile的理解&lt;/h2&gt;
+&lt;h3 id=&#34;volatile是java虚拟机提供的轻量级的同步机制&#34;&gt;volatile是Java虚拟机提供的轻量级的同步机制&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;保证可见性&lt;/li&gt;
+&lt;li&gt;不保证原子性
+一个线程修改主内存值后，其它线程立即可见&lt;/li&gt;
+&lt;li&gt;禁止指令重排&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jmmjava内存模型&#34;&gt;JMM(Java内存模型)&lt;/h3&gt;
+&lt;p&gt;Java Memory Model，是一种抽象概念，本身并不存在。它描述的是一组规则或规范，通过这组规范定义了程序中各个变量(包括实例字段，静态字段和构成数组对象的元素)的访问方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;关于同步的规定
+&lt;ul&gt;
+&lt;li&gt;线程解锁前，必须把共享变量的值刷新回主内存&lt;/li&gt;
+&lt;li&gt;线程加锁前，必须读取主内存的最新值到自己的工作内存&lt;/li&gt;
+&lt;li&gt;加锁解锁是同一把锁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;具体说明
+由于JVM&lt;/li&gt;
+&lt;li&gt;特性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;java异常类&#34;&gt;Java异常类&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;img/exception-1.png&#34; alt=&#34;exception-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/exception-2.png&#34; alt=&#34;exception-2&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Exception :程序本身可以处理的异常，可以通过 catch 来进行捕获。Exception 又可以分为 Checked Exception (受检查异常，必须处理) 和 Unchecked Exception (不受检查异常，可以不处理)。&lt;/li&gt;
+&lt;li&gt;Error ：Error 属于程序无法处理的错误 ，我们没办法通过 catch 来进行捕获 。例如Java 虚拟机运行错误（Virtual MachineError）、虚拟机内存不够错误(OutOfMemoryError)、类定义错误（NoClassDefFoundError）等 。这些异常发生时，Java 虚拟机（JVM）一般会选择线程终止。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;序列化和反序列化&#34;&gt;序列化和反序列化&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;序列化： 将数据结构或对象转换成二进制字节流的过程&lt;/li&gt;
+&lt;li&gt;反序列化：将在序列化过程中所生成的二进制字节流转换成数据结构或者对象的过程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;序列化的主要目的是通过网络传输对象或者说是将对象存储到文件系统、数据库、内存中。&lt;/p&gt;
+&lt;h2 id=&#34;io-流分为几种&#34;&gt;IO 流分为几种&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;img/io.png&#34; alt=&#34;io&#34;&gt;&lt;/p&gt;
+&lt;p&gt;按操作对象分类结构图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/io-2.png&#34; alt=&#34;io-2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;字符流是由 Java 虚拟机将字节转换得到的，问题就出在这个过程还算是非常耗时，并且，如果我们不知道编码类型就很容易出现乱码问题。所以， I/O 流就干脆提供了一个直接操作字符的接口，方便我们平时对字符进行流操作。如果音频文件、图片等媒体文件用字节流比较好，如果涉及到字符的话使用字符流比较好。&lt;/p&gt;
+&lt;h2 id=&#34;值传递引用传递&#34;&gt;值传递&amp;amp;引用传递&lt;/h2&gt;
+&lt;p&gt;很多程序设计语言（比如 C++、 Pascal )提供了两种参数传递的方式，不过，在 Java 中只有值传递。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个方法不能修改一个基本数据类型的参数&lt;/li&gt;
+&lt;li&gt;对象引用作为参数。传递的还是值，不过，这个值是实参的地址。
+如果方法中修改了引用指向新的地址，则原调用者值不变。如果是直接修改引用对应的对象内容，则调用者值会变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/value/reference.png&#34; alt=&#34;value/reference&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;死锁的条件&#34;&gt;死锁的条件&lt;/h2&gt;
+&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+&lt;h2 id=&#34;concurrenthashmap的扩容机制&#34;&gt;ConcurrentHashMap的扩容机制&lt;/h2&gt;
+&lt;p&gt;1.7版本&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;基于segment分段实现&lt;/li&gt;
+&lt;li&gt;每个segment相当于一个小型的hashmap&lt;/li&gt;
+&lt;li&gt;每个segment内部会进行扩容，和Hashmap的扩容逻辑类型&lt;/li&gt;
+&lt;li&gt;先生成新的数组，然后转移元素到新数组中&lt;/li&gt;
+&lt;li&gt;扩容的判断是每个segment内部单独判断的，判断是否超过阈值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;1.8版本&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;当某个线程进行put时，如果发现ConcurrentHashMap正在进行扩容，那么该线程一起进行扩容&lt;/li&gt;
+&lt;li&gt;如果某个线程put时，发现没有正在进行扩容，则将key-value添加到ConcurrentHashMap中，然后判断是否超过阈值，超过了则进行扩容&lt;/li&gt;
+&lt;li&gt;支持多个线程同时扩容&lt;/li&gt;
+&lt;li&gt;扩容之前也先生成一个数组&lt;/li&gt;
+&lt;li&gt;在转换元素时，先将原数组分组，将每组分给不同的线程来进行元素的转移，每个线程负责一组或多组的元素转移工作&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;concurrenthashmap特性&#34;&gt;ConcurrentHashMap特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;使用bin列表的第一个node作为锁。同时，任何更新操作得首先判断first node是不是仍然是first
+&lt;ul&gt;
+&lt;li&gt;We do not want to waste the space required to associate a distinct lock object with each bin, so instead use the first node of a bin list itself as a lock。&lt;/li&gt;
+&lt;li&gt;Using the first node of a list as a lock does not by itself suffice though: When a node is locked, any update must first validate that it is still the first node after locking it, and retry if not. Because new nodes are always appended to lists, once a node is first in a bin, it remains first until deleted or the bin becomes invalidated (upon resizing).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;bin列表的第一个node，是通过cas写入的，无锁
+Insertion (via put or its variants) of the first node in an empty bin is performed by just CASing it to the bin.&lt;/li&gt;
+&lt;li&gt;扩容因子为0.75。是因为此时的Hash冲突后导致的链表数据，遵循参数是0.5的泊松分布，超过8个后重复的概率很小
+the frequency of nodes in bins follows a Poisson distribution (&lt;a href=&#34;http://en.wikipedia.org/wiki/Poisson_distribution&#34;&gt;http://en.wikipedia.org/wiki/Poisson_distribution&lt;/a&gt;) with a parameter of about 0.5 on average, given the resizing threshold of 0.75, although with a large variance because of resizing granularity.&lt;/li&gt;
+&lt;li&gt;最大容量&lt;code&gt;1&amp;lt;&amp;lt;30&lt;/code&gt;，超过后会导致Hash冲突，然后存入链表中。理论能存储的上限是无限的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;反射&#34;&gt;反射&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;  &lt;span class=&#34;n&#34;&gt;AbstractJavaPlugin&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;javaPlugin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ReflectUtil&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;newInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;packagePath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;execute&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;javaPlugin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;executor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;payload&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;stepEntity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;apiEntity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;通过类加载器获取 Class 对象不会进行初始化，意味着不进行包括初始化等一系列步骤，静态代码块和静态对象不会得到执行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;知道具体类的情况下可以使用：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alunbarClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TargetObject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;但是我们一般是不知道具体类的，基本都是通过遍历包下面的类来获取 Class 对象，通过此方式获取 Class 对象不会进行初始化&lt;/li&gt;
+&lt;li&gt;通过 Class.forName()传入类的全路径获取：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alunbarClass1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;forName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cn.javaguide.TargetObject&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;通过对象实例instance.getClass()获取：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;TargetObject&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;TargetObject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alunbarClass2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;通过类加载器xxxClassLoader.loadClass()传入类路径获取:
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clazz&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ClassLoader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;loadClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;cn.javaguide.TargetObject&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;动态代理&#34;&gt;动态代理&lt;/h2&gt;
+&lt;p&gt;使用代理对象来代替对真实对象(real object)的访问，这样就可以在不修改原目标对象的前提下，提供额外的功能操作，扩展目标对象的功能。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;静态代理在编译时就将接口、实现类、代理类这些都变成了一个个实际的 class 文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态代理是在运行时动态生成类字节码，并加载到 JVM 中的&lt;/p&gt;
+&lt;p&gt;就 Java 来说，动态代理的实现方式有很多种，比如 JDK 动态代理、CGLIB 动态代理等等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jdk-动态代理类使用步骤&#34;&gt;JDK 动态代理类使用步骤&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;定义一个接口及其实现类；&lt;/li&gt;
+&lt;li&gt;自定义 InvocationHandler 并重写invoke方法，在 invoke 方法中我们会调用原生方法（被代理类的方法）并自定义一些处理逻辑；&lt;/li&gt;
+&lt;li&gt;通过 Proxy.newProxyInstance(ClassLoader loader,Class&amp;lt;?&amp;gt;[] interfaces,InvocationHandler h) 方法创建代理对象；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1.定义发送短信的接口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;interface&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SmsService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;2.实现发送短信的接口&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;SmsServiceImpl&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SmsService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;send message:&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;3.定义一个 JDK 动态代理类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.lang.reflect.InvocationHandler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.lang.reflect.InvocationTargetException&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.lang.reflect.Method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * @author shuang.kou
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * @createTime 2020年05月11日 11:23:00
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DebugInvocationHandler&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;InvocationHandler&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * 代理类中的真实对象
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     */&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;DebugInvocationHandler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;target&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;invoke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;throws&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;InvocationTargetException&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IllegalAccessException&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;//调用方法之前，我们可以添加自己的操作
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;before method &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;invoke&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;//调用方法之后，我们同样可以添加自己的操作
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;after method &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;invoke() 方法: 当我们的动态代理对象调用原生方法的时候，最终实际上调用到的是 invoke() 方法，然后 invoke() 方法代替我们去调用了被代理对象的原生方法。&lt;/p&gt;
+&lt;p&gt;4.获取代理对象的工厂类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;JdkProxyFactory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Proxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;newProxyInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClassLoader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 目标类的类加载
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInterfaces&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 代理需要实现的接口，可指定多个
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DebugInvocationHandler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// 代理对象对应的自定义 InvocationHandler
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;getProxy() ：主要通过Proxy.newProxyInstance（）方法获取某个类的代理对象&lt;/p&gt;
+&lt;p&gt;5.实际使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;SmsService&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;smsService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SmsService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JdkProxyFactory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SmsServiceImpl&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;smsService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;java&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;运行上述代码之后，控制台打印出：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;before&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;send&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;send&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;java&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;after&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;send&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;JDK 动态代理有一个最致命的问题是其只能代理实现了接口的类。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;cglib-动态代理机制&#34;&gt;CGLIB 动态代理机制&lt;/h3&gt;
+&lt;p&gt;CGLIB (opens new window)(Code Generation Library)是一个基于ASM (opens new window)的字节码生成库，它允许我们在运行时对字节码进行修改和动态生成。CGLIB 通过继承方式实现代理。很多知名的开源框架都使用到了CGLIB (opens new window)， 例如 Spring 中的 AOP 模块中：如果目标对象实现了接口，则默认采用 JDK 动态代理，否则采用 CGLIB 动态代理。&lt;/p&gt;
+&lt;p&gt;在 CGLIB 动态代理机制中 MethodInterceptor 接口和 Enhancer 类是核心。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义一个类；&lt;/li&gt;
+&lt;li&gt;自定义 MethodInterceptor 并重写 intercept 方法，intercept 用于拦截增强被代理类的方法，和 JDK 动态代理中的 invoke 方法类似；&lt;/li&gt;
+&lt;li&gt;通过 Enhancer 类的 create()创建代理类；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;依赖引入&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dependency&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;groupId&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cglib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;groupId&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;artifactId&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cglib&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;artifactId&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dependency&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;实现类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;github.javaguide.dynamicProxy.cglibDynamicProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;AliSmsService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;send message:&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;自定义方法拦截器&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;net.sf.cglib.proxy.MethodInterceptor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;net.sf.cglib.proxy.MethodProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.lang.reflect.Method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * 自定义MethodInterceptor
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;DebugMethodInterceptor&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;implements&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MethodInterceptor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+
+    &lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param o           代理对象（增强的对象）
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param method      被拦截的方法（需要增强的方法）
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param args        方法入参
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param methodProxy 用于调用原始方法
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     */&lt;/span&gt;
+    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;intercept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Method&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MethodProxy&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;methodProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;throws&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Throwable&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;//调用方法之前，我们可以添加自己的操作
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;before method &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;methodProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;invokeSuper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;args&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;//调用方法之后，我们同样可以添加自己的操作
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;after method &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;method&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;获取代理类&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;net.sf.cglib.proxy.Enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;CglibProxyFactory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;clazz&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 创建动态代理增强类
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Enhancer&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enhancer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 设置类加载器
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setClassLoader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clazz&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getClassLoader&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 设置被代理类
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setSuperclass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;clazz&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 设置方法拦截器
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setCallback&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DebugMethodInterceptor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+        &lt;span class=&#34;c1&#34;&gt;// 创建代理类
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;enhancer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;实际使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;AliSmsService&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aliSmsService&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AliSmsService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;CglibProxyFactory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getProxy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AliSmsService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;aliSmsService&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;send&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;java&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;输出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;before method send
+send message:java
+after method send
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;jdk-动态代理和-cglib-动态代理对比&#34;&gt;JDK 动态代理和 CGLIB 动态代理对比&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;JDK 动态代理只能代理实现了接口的类或者直接代理接口，而 CGLIB 可以代理未实现任何接口的类。 另外， CGLIB 动态代理是通过生成一个被代理类的子类来拦截被代理类的方法调用，因此不能代理声明为 final 类型的类和方法。&lt;/li&gt;
+&lt;li&gt;就二者的效率来说，大部分情况都是 JDK 动态代理更优秀，随着 JDK 版本的升级，这个优势更加明显。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;spring&#34;&gt;spring&lt;/h1&gt;
+&lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
+&lt;p&gt;service有&lt;code&gt;@Transactional( rollbackFor={Exception.class,RuntimeException.class})&lt;/code&gt;注解时，只有在整个service方法执行完后，都会提交事务。&lt;/p&gt;
+&lt;p&gt;自动提交事务：每条单独的语句都是一个事务。每个语句后都隐含一个commit。 （默认）&lt;/p&gt;
+&lt;p&gt;显式事务：以begin transaction显示开始，以commit或rollback结束。&lt;/p&gt;
+&lt;p&gt;隐式事务：当连接以隐式事务模式进行操作时，sql server数据库引擎实例将在提交或回滚当前事务后自动启动新事务。无须描述事物的开始，只需提交或回滚每个事务。但每个事务仍以commit或rollback显式结束。连接将隐性事务模式设置为打开之后，当数据库引擎实例首次执行下列任何语句时，都会自动启动一个隐式事务：alter table，insert，create，open ，delete，revoke ，drop，select， fetch ，truncate table，grant，update在发出commit或rollback语句之前，该事务将一直保持有效。在第一个事务被提交或回滚之后，下次当连接执行以上任何语句时，数据库引擎实例都将自动启动一个新事务。该实例将不断地生成隐性事务链，直到隐性事务模式关闭为止。&lt;/p&gt;
+&lt;h3 id=&#34;事务传播&#34;&gt;事务传播&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;传播行为&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_REQUIRED&lt;/td&gt;
+&lt;td&gt;如果当前没有事务，就新建一个事务，如果已经存在一个事务，则加入到这个事务中。这是最常见的选择。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_SUPPORTS&lt;/td&gt;
+&lt;td&gt;支持当前事务，如果当前没有事务，就以非事务方式执行。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_MANDATORY&lt;/td&gt;
+&lt;td&gt;表示该方法必须在事务中运行，如果当前事务不存在，则会抛出一个异常&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_REQUIRED_NEW&lt;/td&gt;
+&lt;td&gt;表示当前方法必须运行在它自己的事务中。一个新的事务将被启动。如果存在当前事务，在该方法执行期间，当前事务会被挂起。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_NOT_SUPPORTED&lt;/td&gt;
+&lt;td&gt;表示该方法不应该运行在事务中。如果当前存在事务，就把当前事务挂起。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_NEVER&lt;/td&gt;
+&lt;td&gt;表示当前方法不应该运行在事务上下文中。如果当前正有一个事务在运行，则会抛出异常&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TransactionDefinition.PROPAGATION_NESTED&lt;/td&gt;
+&lt;td&gt;如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;transactional注解&#34;&gt;@Transactional注解&lt;/h3&gt;
+&lt;p&gt;可以作用于接口、接口方法、类以及类方法上。当作用于类上时，该类的所有 public 方法将都具有该类型的事务属性，同时，我们也可以在方法级别使用该标注来覆盖类级别的定义。&lt;/p&gt;
+&lt;p&gt;虽然@Transactional 注解可以作用于接口、接口方法、类以及类方法上，但是 Spring 建议不要在接口或者接口方法上使用该注解，因为这只有在使用基于接口的代理时它才会生效。另外， @Transactional注解应该只被应用到 public 方法上，这是由Spring AOP的本质决定的。如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，这将被忽略，也不会抛出任何异常。&lt;/p&gt;
+&lt;p&gt;默认情况下，只有来自外部的方法调用才会被AOP代理捕获，也就是，类内部方法调用本类内部的其他方法并不会引起事务行为，即使被调用方法使用@Transactional注解进行修饰。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;只有public和外部的方法调用，才能使用aop拦截到&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为了对使用查询接口的缓存
+&lt;code&gt;(ElasticQueryService) AopContext.currentProxy()&lt;/code&gt; 可获取到当前的代理对象&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;组件&#34;&gt;组件&lt;/h1&gt;
+&lt;h2 id=&#34;rocketmq&#34;&gt;rocketmq&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yinjihuan/p/13672474.html&#34;&gt;https://www.cnblogs.com/yinjihuan/p/13672474.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;消息队列 RocketMQ 可为分布式应用系统提供异步解耦和削峰填谷的能力，同时也具备互联网应用所需的海量消息堆积、高吞吐、可靠重试等特性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Topic：消息主题，用于将一类的消息进行归类，比如订单主题，就是所有订单相关的消息都可以由这个主题去承载，生产者向这个主题发送消息。&lt;/li&gt;
+&lt;li&gt;生产者：负责生产消息并发送消息到 Topic 的角色。&lt;/li&gt;
+&lt;li&gt;消费者：负责从 Topic 接收并消费消息 的角色。&lt;/li&gt;
+&lt;li&gt;消息：生产者向 Topic 发送的内容，会被消费者消费。&lt;/li&gt;
+&lt;li&gt;消息属性：生产者发送的时候可以为消息自定义一些业务相关的属性，比如 Message Key 和 Tag 等。&lt;/li&gt;
+&lt;li&gt;Group：一类生产者或消费者，这类生产者或消费者通常生产或消费同一类消息，且消息发布或订阅的逻辑一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;审批批量导入数据&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/rocketmq-img.png&#34; alt=&#34;rocketmq-img&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name Server：是一个几乎无状态节点，可集群部署，在消息队列 RocketMQ 版中提供命名服务，更新和发现 Broker 服务。就是一个注册中心。&lt;/li&gt;
+&lt;li&gt;Broker：消息中转角色，负责存储消息，转发消息。分为 Master Broker 和 Slave Broker，一个 Master Broker 可以对应多个 Slave Broker，但是一个 Slave Broker 只能对应一个 Master Broker。Broker 启动后需要完成一次将自己注册至 Name Server 的操作；随后每隔 30s 定期向 Name Server 上报 Topic 路由信息。&lt;/li&gt;
+&lt;li&gt;生产者：与 Name Server 集群中的其中一个节点（随机）建立长链接（Keep-alive），定期从 Name Server 读取 Topic 路由信息，并向提供 Topic 服务的 Master Broker 建立长链接，且定时向 Master Broker 发送心跳。&lt;/li&gt;
+&lt;li&gt;消费者：与 Name Server 集群中的其中一个节点（随机）建立长连接，定期从 Name Server 拉取 Topic 路由信息，并向提供 Topic 服务的 Master Broker、Slave Broker 建立长连接，且定时向 Master Broker、Slave Broker 发送心跳。Consumer 既可以从 Master Broker 订阅消息，也可以从 Slave Broker 订阅消息，订阅规则由 Broker 配置决定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;一个JVM只能绑定一个nameserver&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;幂等性：消息体每次都为完整的内容，写入的时候，使用mp.saveOrUpdate。&lt;/p&gt;
+&lt;p&gt;es的一致性，通过&lt;code&gt;update&lt;/code&gt;实现&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;bulkRequest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;add&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UpdateRequest&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ServiceConstant&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;ES_TYPE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;docId&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;docAsUpsert&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;upsert&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;XContentType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;doc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;XContentType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;JSON&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;retryOnConflict&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;sharding&#34;&gt;sharding&lt;/h2&gt;
+&lt;p&gt;进行分表&lt;/p&gt;
+&lt;p&gt;重写saveOrUpdate：为了避免所有分表的查询，先使用分表主键&lt;code&gt;project_no&lt;/code&gt;查询出所有结果，然后去匹配id，如果有就更新，没有就写入&lt;/p&gt;
+&lt;h2 id=&#34;http&#34;&gt;http&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;HTTP三点注意事项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP是无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。&lt;/li&gt;
+&lt;li&gt;HTTP是媒体独立的：这意味着，只要客户端和服务器知道如何处理的数据内容，任何类型的数据都可以通过HTTP发送。客户端以及服务器指定使用适合的MIME-type内容类型。&lt;/li&gt;
+&lt;li&gt;HTTP是无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;CGI(Common Gateway Interface) 是 HTTP 服务器与你的或其它机器上的程序进行“交谈”的一种工具，其程序须运行在网络服务器上。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;客户端发送一个HTTP请求到服务器的请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成，下图给出了请求报文的一般格式。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.runoob.com/wp-content/uploads/2013/11/2012072810301161.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;p&gt;HTTP响应也由四个部分组成，分别是：状态行、消息报头、空行和响应正文。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.runoob.com/wp-content/uploads/2013/11/httpmessage.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;序号&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;方法&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;GET&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;请求指定的页面信息，并返回实体主体。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HEAD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;POST&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PUT&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;从客户端向服务器传送的数据取代指定的文档的内容。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;DELETE&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;请求服务器删除指定的页面。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;CONNECT&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;OPTIONS&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;允许客户端查看服务器的性能。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;8&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;TRACE&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;回显服务器收到的请求，主要用于测试或诊断。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;9&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;PATCH&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;是对 PUT 方法的补充，用来对已知资源进行局部更新 。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;200 - 请求成功&lt;/li&gt;
+&lt;li&gt;301 - 资源（网页等）被永久转移到其它URL&lt;/li&gt;
+&lt;li&gt;404 - 请求的资源（网页等）不存在&lt;/li&gt;
+&lt;li&gt;500 - 内部服务器错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;分类&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;分类描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;1**&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;信息，服务器收到请求，需要请求者继续执行操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;2**&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;成功，操作被成功接收并处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;3**&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;重定向，需要进一步的操作以完成请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;4**&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;客户端错误，请求包含语法错误或无法完成请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;5**&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;服务器错误，服务器在处理请求的过程中发生了错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;100&lt;/th&gt;
+&lt;th&gt;Continue&lt;/th&gt;
+&lt;th&gt;继续。&lt;a href=&#34;http://www.dreamdu.com/webbuild/client_vs_server/&#34;&gt;客户端&lt;/a&gt;应继续其请求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;101&lt;/td&gt;
+&lt;td&gt;Switching Protocols&lt;/td&gt;
+&lt;td&gt;切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;200&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;请求成功。一般用于GET与POST请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;201&lt;/td&gt;
+&lt;td&gt;Created&lt;/td&gt;
+&lt;td&gt;已创建。成功请求并创建了新的资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;202&lt;/td&gt;
+&lt;td&gt;Accepted&lt;/td&gt;
+&lt;td&gt;已接受。已经接受请求，但未处理完成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;203&lt;/td&gt;
+&lt;td&gt;Non-Authoritative Information&lt;/td&gt;
+&lt;td&gt;非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;204&lt;/td&gt;
+&lt;td&gt;No Content&lt;/td&gt;
+&lt;td&gt;无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;205&lt;/td&gt;
+&lt;td&gt;Reset Content&lt;/td&gt;
+&lt;td&gt;重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;206&lt;/td&gt;
+&lt;td&gt;Partial Content&lt;/td&gt;
+&lt;td&gt;部分内容。服务器成功处理了部分GET请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;300&lt;/td&gt;
+&lt;td&gt;Multiple Choices&lt;/td&gt;
+&lt;td&gt;多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;301&lt;/td&gt;
+&lt;td&gt;Moved Permanently&lt;/td&gt;
+&lt;td&gt;永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;302&lt;/td&gt;
+&lt;td&gt;Found&lt;/td&gt;
+&lt;td&gt;临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;303&lt;/td&gt;
+&lt;td&gt;See Other&lt;/td&gt;
+&lt;td&gt;查看其它地址。与301类似。使用GET和POST请求查看&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;304&lt;/td&gt;
+&lt;td&gt;Not Modified&lt;/td&gt;
+&lt;td&gt;未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;305&lt;/td&gt;
+&lt;td&gt;Use Proxy&lt;/td&gt;
+&lt;td&gt;使用代理。所请求的资源必须通过代理访问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;306&lt;/td&gt;
+&lt;td&gt;Unused&lt;/td&gt;
+&lt;td&gt;已经被废弃的HTTP状态码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;307&lt;/td&gt;
+&lt;td&gt;Temporary Redirect&lt;/td&gt;
+&lt;td&gt;临时重定向。与302类似。使用GET请求重定向&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;400&lt;/td&gt;
+&lt;td&gt;Bad Request&lt;/td&gt;
+&lt;td&gt;客户端请求的语法错误，服务器无法理解&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;401&lt;/td&gt;
+&lt;td&gt;Unauthorized&lt;/td&gt;
+&lt;td&gt;请求要求用户的身份认证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;402&lt;/td&gt;
+&lt;td&gt;Payment Required&lt;/td&gt;
+&lt;td&gt;保留，将来使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;403&lt;/td&gt;
+&lt;td&gt;Forbidden&lt;/td&gt;
+&lt;td&gt;服务器理解请求客户端的请求，但是拒绝执行此请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;404&lt;/td&gt;
+&lt;td&gt;Not Found&lt;/td&gt;
+&lt;td&gt;服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置&amp;quot;您所请求的资源无法找到&amp;quot;的个性页面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;405&lt;/td&gt;
+&lt;td&gt;Method Not Allowed&lt;/td&gt;
+&lt;td&gt;客户端请求中的方法被禁止&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;406&lt;/td&gt;
+&lt;td&gt;Not Acceptable&lt;/td&gt;
+&lt;td&gt;服务器无法根据客户端请求的内容特性完成请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;407&lt;/td&gt;
+&lt;td&gt;Proxy Authentication Required&lt;/td&gt;
+&lt;td&gt;请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;408&lt;/td&gt;
+&lt;td&gt;Request Time-out&lt;/td&gt;
+&lt;td&gt;服务器等待客户端发送的请求时间过长，超时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;409&lt;/td&gt;
+&lt;td&gt;Conflict&lt;/td&gt;
+&lt;td&gt;服务器完成客户端的 PUT 请求时可能返回此代码，服务器处理请求时发生了冲突&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;410&lt;/td&gt;
+&lt;td&gt;Gone&lt;/td&gt;
+&lt;td&gt;客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;411&lt;/td&gt;
+&lt;td&gt;Length Required&lt;/td&gt;
+&lt;td&gt;服务器无法处理客户端发送的不带Content-Length的请求信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;412&lt;/td&gt;
+&lt;td&gt;Precondition Failed&lt;/td&gt;
+&lt;td&gt;客户端请求信息的先决条件错误&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;413&lt;/td&gt;
+&lt;td&gt;Request Entity Too Large&lt;/td&gt;
+&lt;td&gt;由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;414&lt;/td&gt;
+&lt;td&gt;Request-URI Too Large&lt;/td&gt;
+&lt;td&gt;请求的URI过长（URI通常为网址），服务器无法处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;415&lt;/td&gt;
+&lt;td&gt;Unsupported Media Type&lt;/td&gt;
+&lt;td&gt;服务器无法处理请求附带的媒体格式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;416&lt;/td&gt;
+&lt;td&gt;Requested range not satisfiable&lt;/td&gt;
+&lt;td&gt;客户端请求的范围无效&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;417&lt;/td&gt;
+&lt;td&gt;Expectation Failed&lt;/td&gt;
+&lt;td&gt;服务器无法满足Expect的请求头信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;500&lt;/td&gt;
+&lt;td&gt;Internal Server Error&lt;/td&gt;
+&lt;td&gt;服务器内部错误，无法完成请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;501&lt;/td&gt;
+&lt;td&gt;Not Implemented&lt;/td&gt;
+&lt;td&gt;服务器不支持请求的功能，无法完成请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;502&lt;/td&gt;
+&lt;td&gt;Bad Gateway&lt;/td&gt;
+&lt;td&gt;作为网关或者代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;503&lt;/td&gt;
+&lt;td&gt;Service Unavailable&lt;/td&gt;
+&lt;td&gt;由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;504&lt;/td&gt;
+&lt;td&gt;Gateway Time-out&lt;/td&gt;
+&lt;td&gt;充当网关或代理的服务器，未及时从远端服务器获取请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;505&lt;/td&gt;
+&lt;td&gt;HTTP Version not supported&lt;/td&gt;
+&lt;td&gt;服务器不支持请求的HTTP协议的版本，无法完成处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h1 id=&#34;问题&#34;&gt;问题&lt;/h1&gt;
 &lt;h2 id=&#34;es&#34;&gt;es&lt;/h2&gt;
 &lt;h3 id=&#34;数据库同步es&#34;&gt;数据库同步es&lt;/h3&gt;
@@ -636,6 +1820,73 @@
 &lt;p&gt;现象：推送过程中存在&lt;code&gt;num&lt;/code&gt;和索引变动的情况：数据入库时，存入了索引1，分片数是&lt;code&gt;num1&lt;/code&gt;，后来又改动了配置的索引名为&lt;code&gt;索引2&lt;/code&gt;，分片数量为&lt;code&gt;num2&lt;/code&gt;。导致现在的路由信息在数据库中对应分表中找不到。&lt;/p&gt;
 &lt;p&gt;解决：重新从数据库中读取id，计算路由信息后，修改索引中内容。&lt;/p&gt;
 &lt;p&gt;将数据库中分表的id，查询出来后写入到一个文件。使用es的&lt;code&gt;_bulk&lt;/code&gt;接口进行批量写入数据&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;es多分片导致&lt;/li&gt;
+&lt;li&gt;es 7.14 size设置为max_value溢出&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;项目&#34;&gt;项目&lt;/h1&gt;
+&lt;h2 id=&#34;approval&#34;&gt;approval&lt;/h2&gt;
+&lt;h3 id=&#34;wkhtmltopdf&#34;&gt;wkhtmltopdf&lt;/h3&gt;
+&lt;p&gt;转换&lt;code&gt;html&lt;/code&gt;到&lt;code&gt;pdf&lt;/code&gt;，做为打印模板&lt;/p&gt;
+&lt;h3 id=&#34;反射-1&#34;&gt;反射&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;aop拦截所有post请求，对其中相同参数的值进行缓存，然后反射执行&lt;/li&gt;
+&lt;li&gt;es里面的数据返回到前端时，需要把小驼峰转换成下划线。通过在实体类上定义的&lt;code&gt;@TableField&lt;/code&gt;注解，取得对应的列名。正好复用&lt;code&gt;MP&lt;/code&gt;的定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;supervise&#34;&gt;supervise&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;消费mq消息增加并发模式。接收历史消息时，通过导入到临时表生成mq消息，此时只有insert，对顺序不重要，可使用并发模式消费。消费完历史数据后，通过配置项修改顺序消费&lt;/li&gt;
+&lt;li&gt;消费失败逻辑处理。对消费失败的消息，记录失败时的sql及原因，写入到sql.log文件中。对重试两次后还失败的，发送mq消息体到es索引中，方便查询。对应的es索引名为`supervise-nested-error {spring.elasticsearch.index}-2021&amp;quot;，{spring.elasticsearch.index} 为配置文件中的值。
+&lt;ul&gt;
+&lt;li&gt;p6spy,自定义modulelist，对报错的sql进行拦截，写入到单独的文件中
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ErrorLoggingEventListener&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;LoggingEventListener&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+
+  &lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Logger&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;LoggerFactory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getLogger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;EXCHANGE&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+
+  &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+  &lt;span class=&#34;kd&#34;&gt;protected&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;logElapsed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;Loggable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;loggable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;timeElapsedNanos&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Category&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;category&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SQLException&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;loggable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSqlWithValues&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;logger&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sql [{}] 执行失败。原因：{} &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sql&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replaceAll&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;[\\s]+&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getMessage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+      &lt;span class=&#34;c1&#34;&gt;// super.logElapsed(loggable, timeElapsedNanos, category, e);
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;修改rangeIo格式：年份+hash(projectNo)+分表。在生成路由规则由就确认对应的分表。扩展表时只影响后续办件的路由规则。&lt;/li&gt;
+&lt;li&gt;另，对于材料和过程、主键非projectNo的，由原来根据id查询所有表修改为通过projectNo查询出所有数据然后筛选。避免分表过多时速度下降&lt;/li&gt;
+&lt;li&gt;对于已分表的查询，查询单条数据时通过rowGuid主键会查询所有的分表。修改为通过projectNo查询出所有的数据，然后根据rowGuid筛选对应的数据&lt;/li&gt;
+&lt;li&gt;elastic消费速率问题：增加并发消费，通过配置文件配置顺序或并发&lt;/li&gt;
+&lt;li&gt;mq消费顺序问题：对同一个projectNo的消息，发送到mq的同一个队列&lt;/li&gt;
+&lt;li&gt;elastic消费数据丢失问题：基本表办件表同时推送时，同时更新es数据导致被覆盖。修改为调用update接口，使用乐观锁控制&lt;/li&gt;
+&lt;li&gt;将es的索引，按年划分，每年一个es索引，查询时使用别名进行查询（使用模板自动创建索引，写入时指定具体索引名，查询时使用别名查询）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;子级区划问题&#34;&gt;子级区划问题&lt;/h3&gt;
+&lt;p&gt;区划统计的时候，需要递归查询子区划的数据。因此使用了&lt;code&gt;like &#39;regionCode%&#39;&lt;/code&gt;进行模糊匹配，查询出结果后，再通过前缀匹配进行关联。注意，查询的时候使用模糊匹配，结果格式化的时候，需要用foreach而不能用findFirst&lt;/p&gt;
 </content>
             
             
@@ -652,8 +1903,8 @@
     
         <entry>
             <title type="text">OnJava8</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/java/onjava8/" />
-            <id>https://sloera.gitee.io/post/learn/java/onjava8/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/learn/java/onjava8/" />
+            <id>http://sloera.gitee.io/sloera/post/learn/java/onjava8/</id>
             <updated>2022-01-21T19:07:43&#43;08:00</updated>
             <published>2022-01-20T22:41:47&#43;08:00</published>
             <author>
@@ -763,8 +2014,8 @@
     
         <entry>
             <title type="text">Shell</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/linux/shell/" />
-            <id>https://sloera.gitee.io/post/learn/linux/shell/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/learn/linux/shell/" />
+            <id>http://sloera.gitee.io/sloera/post/learn/linux/shell/</id>
             <updated>2022-02-15T18:24:02&#43;08:00</updated>
             <published>2022-01-20T22:17:45&#43;08:00</published>
             <author>
@@ -1274,9 +2525,9 @@ sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;
     
         <entry>
             <title type="text">Html打印样式错误</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/" />
-            <id>https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</id>
-            <updated>2022-01-20T22:11:35&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</id>
+            <updated>2022-01-19T13:02:17&#43;08:00</updated>
             <published>2022-01-19T12:48:51&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -1312,8 +2563,8 @@ sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;
     
         <entry>
             <title type="text">Regex</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/dev/regex/" />
-            <id>https://sloera.gitee.io/post/dev/regex/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/dev/regex/" />
+            <id>http://sloera.gitee.io/sloera/post/dev/regex/</id>
             <updated>2022-01-12T23:42:00&#43;08:00</updated>
             <published>2022-01-10T21:46:36&#43;08:00</published>
             <author>
@@ -1908,8 +3159,8 @@ foreach (double d in data)
     
         <entry>
             <title type="text">Jmeter</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/jmeter/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/jmeter/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/jmeter/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/jmeter/</id>
             <updated>2022-01-11T23:29:19&#43;08:00</updated>
             <published>2021-12-19T12:04:42&#43;08:00</published>
             <author>
@@ -2255,8 +3506,8 @@ Response message:Address is empty!
     
         <entry>
             <title type="text">Nginx</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/nginx/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/nginx/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/nginx/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/nginx/</id>
             <updated>2021-12-19T18:02:35&#43;08:00</updated>
             <published>2021-12-18T12:16:36&#43;08:00</published>
             <author>
@@ -2643,8 +3894,8 @@ server {
     
         <entry>
             <title type="text">Tools</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/tools/" />
-            <id>https://sloera.gitee.io/post/tools/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/tools/" />
+            <id>http://sloera.gitee.io/sloera/post/tools/</id>
             <updated>2021-12-18T11:32:50&#43;08:00</updated>
             <published>2021-12-17T12:47:50&#43;08:00</published>
             <author>
@@ -2826,8 +4077,8 @@ nohup java -jar moco-runner.jar http -p &lt;span class=&#34;m&#34;&gt;12307&lt;/
     
         <entry>
             <title type="text">Git</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/git/" />
-            <id>https://sloera.gitee.io/post/skill/git/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/git/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/git/</id>
             <updated>2022-02-21T18:49:40&#43;08:00</updated>
             <published>2021-12-08T22:23:30&#43;08:00</published>
             <author>
@@ -3349,13 +4600,13 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/tool/" term="tool" label="tool" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/svn/" term="svn" label="svn" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/svn/" term="svn" label="svn" />
                             
                         
                     
@@ -3365,13 +4616,13 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/tool/" term="tool" label="tool" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/svn/" term="svn" label="svn" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/svn/" term="svn" label="svn" />
                             
                         
                     
@@ -3381,9 +4632,9 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
     
         <entry>
             <title type="text">点词库转Rime</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/" />
-            <id>https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</id>
-            <updated>2022-02-15T22:34:35&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/" />
+            <id>http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</id>
+            <updated>2022-02-16T08:47:34&#43;08:00</updated>
             <published>2021-11-27T15:07:42&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -3556,8 +4807,8 @@ function! s:add_frequency_to_dict(line_sep=&amp;quot; &amp;quot;, val_sep=&#39;\
     
         <entry>
             <title type="text">Gitee&#43;hugo</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/gitee&#43;hugo/" />
-            <id>https://sloera.gitee.io/post/gitee&#43;hugo/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/gitee&#43;hugo/" />
+            <id>http://sloera.gitee.io/sloera/post/gitee&#43;hugo/</id>
             <updated>2021-12-18T11:32:50&#43;08:00</updated>
             <published>2021-11-26T19:45:18&#43;08:00</published>
             <author>
@@ -3663,9 +4914,9 @@ git push
     
         <entry>
             <title type="text">arch安装教程</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" />
-            <id>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
-            <updated>2022-02-26T13:11:36&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</id>
+            <updated>2022-02-25T08:36:11&#43;08:00</updated>
             <published>2021-05-30T21:38:11&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -5403,9 +6654,9 @@ store-ssl-client-cert-pp-plaintext = yes
     
         <entry>
             <title type="text">win-jenkins安装</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-04-01T16:59:28&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -5528,9 +6779,9 @@ Environment variables
     
         <entry>
             <title type="text">idea创建maven模板archetype</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/" />
-            <id>https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</id>
-            <updated>2021-12-18T14:13:33&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/" />
+            <id>http://sloera.gitee.io/sloera/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-18T22:31:34&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -5756,19 +7007,19 @@ archetypeVersion	RELEASE
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E8%BD%AF%E4%BB%B6/" term="软件" label="软件" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/idea/" term="idea" label="idea" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/idea/" term="idea" label="idea" />
                             
                         
                     
@@ -5778,19 +7029,19 @@ archetypeVersion	RELEASE
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/idea/" term="idea" label="idea" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/idea/" term="idea" label="idea" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/maven/" term="maven" label="maven" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/maven/" term="maven" label="maven" />
                             
                         
                     
@@ -5800,9 +7051,9 @@ archetypeVersion	RELEASE
     
         <entry>
             <title type="text">win环境部署</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" />
-            <id>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</id>
-            <updated>2021-12-18T14:11:38&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-13T22:56:46&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6075,13 +7326,13 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                     
@@ -6091,13 +7342,13 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                     
@@ -6107,9 +7358,9 @@ github树形展示&lt;/p&gt;
     
         <entry>
             <title type="text">前端json对象升/降阶处理</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-09T23:29:04&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6500,13 +7751,13 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                     
@@ -6516,19 +7767,19 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/json/" term="json" label="json" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/json/" term="json" label="json" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E6%96%B9%E6%B3%95/" term="方法" label="方法" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E6%96%B9%E6%B3%95/" term="方法" label="方法" />
                             
                         
                     
@@ -6538,9 +7789,9 @@ github树形展示&lt;/p&gt;
     
         <entry>
             <title type="text">chrome离线安装扩展插件</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/" />
-            <id>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</id>
-            <updated>2021-12-18T14:10:21&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-08T08:52:48&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -6582,19 +7833,19 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/chrome/" term="chrome" label="chrome" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/chrome/" term="chrome" label="chrome" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/tool/" term="tool" label="tool" />
                             
                         
                     
@@ -6604,19 +7855,19 @@ github树形展示&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/chrome/" term="chrome" label="chrome" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/chrome/" term="chrome" label="chrome" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/tool/" term="tool" label="tool" />
                             
                         
                     
@@ -6626,9 +7877,9 @@ github树形展示&lt;/p&gt;
     
         <entry>
             <title type="text">linux安装docker</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-06T21:58:19&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7404,13 +8655,13 @@ aaa
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/linux/" term="linux" label="linux" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/linux/" term="linux" label="linux" />
                             
                         
                     
@@ -7420,25 +8671,25 @@ aaa
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/linux/" term="linux" label="linux" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/linux/" term="linux" label="linux" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/docker/" term="docker" label="docker" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/docker/" term="docker" label="docker" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/centos8/" term="centos8" label="centos8" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/centos8/" term="centos8" label="centos8" />
                             
                         
                     
@@ -7448,9 +8699,9 @@ aaa
     
         <entry>
             <title type="text">nodejs中间层解决cors跨域</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-03T21:28:22&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -7740,19 +8991,19 @@ node_modules/
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/nodejs/" term="nodejs" label="nodejs" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/nodejs/" term="nodejs" label="nodejs" />
                             
                         
                     
@@ -7762,19 +9013,19 @@ node_modules/
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/nodejs/" term="nodejs" label="nodejs" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/nodejs/" term="nodejs" label="nodejs" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/" term="中间层" label="中间层" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/" term="中间层" label="中间层" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E6%96%B9%E6%B3%95/" term="方法" label="方法" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E6%96%B9%E6%B3%95/" term="方法" label="方法" />
                             
                         
                     
@@ -7784,9 +9035,9 @@ node_modules/
     
         <entry>
             <title type="text">wsl安装nodejs</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/" />
-            <id>https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/" />
+            <id>http://sloera.gitee.io/sloera/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-03-02T23:15:46&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8007,13 +9258,13 @@ cnpm install  --save http-proxy-middleware@0.21.0
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/wsl/" term="wsl" label="wsl" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/wsl/" term="wsl" label="wsl" />
                             
                         
                     
@@ -8023,19 +9274,19 @@ cnpm install  --save http-proxy-middleware@0.21.0
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/wsl/" term="wsl" label="wsl" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/wsl/" term="wsl" label="wsl" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/nodejs/" term="nodejs" label="nodejs" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/nodejs/" term="nodejs" label="nodejs" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                     
@@ -8045,9 +9296,9 @@ cnpm install  --save http-proxy-middleware@0.21.0
     
         <entry>
             <title type="text">win系统安装-u盘方式</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/" />
-            <id>https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</id>
-            <updated>2021-12-18T14:06:48&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-29T23:51:27&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8155,13 +9406,13 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/win/" term="win" label="win" />
                             
                         
                     
@@ -8171,19 +9422,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E7%B3%BB%E7%BB%9F/" term="系统" label="系统" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E7%B3%BB%E7%BB%9F/" term="系统" label="系统" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/" term="安装" label="安装" />
                             
                         
                     
@@ -8193,9 +9444,9 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
     
         <entry>
             <title type="text">outlook邮件设置</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/" />
-            <id>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</id>
-            <updated>2021-12-18T14:07:47&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-29T11:23:03&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8292,25 +9543,25 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/tool/" term="tool" label="tool" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/office/" term="office" label="office" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/office/" term="office" label="office" />
                             
                         
                     
@@ -8320,25 +9571,25 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/tool/" term="tool" label="tool" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/win/" term="win" label="win" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/win/" term="win" label="win" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/office/" term="office" label="office" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/office/" term="office" label="office" />
                             
                         
                     
@@ -8348,9 +9599,9 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
     
         <entry>
             <title type="text">浏览器书签同步floccus</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/" />
-            <id>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</id>
-            <updated>2021-12-18T14:05:42&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-28T22:18:45&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8413,19 +9664,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/chrome/" term="chrome" label="chrome" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/chrome/" term="chrome" label="chrome" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/tool/" term="tool" label="tool" />
                             
                         
                     
@@ -8435,19 +9686,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/chrome/" term="chrome" label="chrome" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/chrome/" term="chrome" label="chrome" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E6%8F%92%E4%BB%B6/" term="插件" label="插件" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/tool/" term="tool" label="tool" />
                             
                         
                     
@@ -8457,9 +9708,9 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
     
         <entry>
             <title type="text">hexo简单设置</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/" />
-            <id>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-27T21:40:14&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -8620,19 +9871,19 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/" term="服务" label="服务" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/" term="服务" label="服务" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/hexo/" term="hexo" label="hexo" />
                             
                         
                     
@@ -8642,19 +9893,19 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/hexo/" term="hexo" label="hexo" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                     
@@ -8664,9 +9915,9 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
     
         <entry>
             <title type="text">hexo之next主题</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/" />
-            <id>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</id>
-            <updated>2021-12-18T13:35:06&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-25T23:03:38&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -9127,19 +10378,19 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/" term="服务" label="服务" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/" term="服务" label="服务" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/hexo/" term="hexo" label="hexo" />
                             
                         
                     
@@ -9149,25 +10400,25 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/hexo/" term="hexo" label="hexo" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/next/" term="next" label="next" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/next/" term="next" label="next" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/" term="配置" label="配置" />
                             
                         
                     
@@ -9177,9 +10428,9 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
     
         <entry>
             <title type="text">gitee-hexo搭建个人博客</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
-            <id>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
-            <updated>2021-12-18T14:03:09&#43;08:00</updated>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+            <updated>2022-01-06T19:42:12&#43;08:00</updated>
             <published>2020-02-25T18:17:34&#43;00:00</published>
             <author>
                     <name>sloera</name>
@@ -9470,25 +10721,25 @@ git push
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/tool/" term="tool" label="tool" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/tool/" term="tool" label="tool" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/service/" term="service" label="service" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/service/" term="service" label="service" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/hexo/" term="hexo" label="hexo" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/categories/site/" term="site" label="site" />
+                                <category scheme="http://sloera.gitee.io/sloera/categories/site/" term="site" label="site" />
                             
                         
                     
@@ -9498,25 +10749,25 @@ git push
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/hexo/" term="hexo" label="hexo" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/hexo/" term="hexo" label="hexo" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/gitee/" term="gitee" label="gitee" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/gitee/" term="gitee" label="gitee" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/site/" term="site" label="site" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/site/" term="site" label="site" />
                             
                         
                             
                             
                             
-                                <category scheme="https://sloera.gitee.io/tags/config/" term="config" label="config" />
+                                <category scheme="http://sloera.gitee.io/sloera/tags/config/" term="config" label="config" />
                             
                         
                     
@@ -9526,8 +10777,8 @@ git push
     
         <entry>
             <title type="text">Hello World</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/skill/hello-world/" />
-            <id>https://sloera.gitee.io/post/skill/hello-world/</id>
+            <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/skill/hello-world/" />
+            <id>http://sloera.gitee.io/sloera/post/skill/hello-world/</id>
             <updated>2021-12-18T14:19:42&#43;08:00</updated>
             <published>2020-02-24T22:10:24&#43;00:00</published>
             <author>
