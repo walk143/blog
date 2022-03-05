@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-04T18:56:10&#43;08:00</updated>
+    <updated>2022-03-05T16:43:27&#43;08:00</updated>
     <id>http://sloera.gitee.io/sloera/</id>
     <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/" />
     <link rel="self" type="application/atom&#43;xml" href="http://sloera.gitee.io/sloera/atom.xml" />
@@ -200,7 +200,7 @@
             <title type="text">java</title>
             <link rel="alternate" type="text/html" href="http://sloera.gitee.io/sloera/post/learn/interview/java/" />
             <id>http://sloera.gitee.io/sloera/post/learn/interview/java/</id>
-            <updated>2022-03-03T18:33:21&#43;08:00</updated>
+            <updated>2022-03-04T18:56:46&#43;08:00</updated>
             <published>2022-03-01T23:49:33&#43;08:00</published>
             <author>
                     <name>sloera</name>
@@ -1385,6 +1385,18 @@ after method send
 &lt;p&gt;存放类信息。还会存放运行时常量信息，包括：&lt;strong&gt;字符串字面量&lt;/strong&gt;和&lt;strong&gt;数字常量&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;java堆&#34;&gt;Java堆&lt;/h3&gt;
 &lt;p&gt;在虚拟机启动的时候建立。&lt;strong&gt;几乎所有&lt;/strong&gt;的Java对象实例都存放在Java堆中。堆空间是所有线程共享的&lt;/p&gt;
+&lt;p&gt;Heap是&lt;strong&gt;OOM&lt;/strong&gt;故障最主要的发源地。堆由垃圾收集器自动回收，堆区由各子线程共享使用&lt;/p&gt;
+&lt;p&gt;设定初始值和最大值。为了避免堆空间不断地扩容与回缩，一般将&lt;code&gt;Xms&lt;/code&gt;和&lt;code&gt;Xmx&lt;/code&gt;设置成一样大小&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-Xms256m -Xmx1g&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;-X: 表示是JVM运行参数&lt;/li&gt;
+&lt;li&gt;ms: memory start&lt;/li&gt;
+&lt;li&gt;mx: memory max&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;堆分成两大块：&lt;strong&gt;新生代&lt;/strong&gt;和&lt;strong&gt;老年代&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对象产生之初在&lt;strong&gt;新生代&lt;/strong&gt;，步入暮年进入&lt;strong&gt;老年代&lt;/strong&gt;。&lt;strong&gt;老年代&lt;/strong&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
 &lt;h3 id=&#34;program-counter-register程序计数器&#34;&gt;Program Counter Register(程序计数器)：&lt;/h3&gt;
 &lt;p&gt;Register 的命名源于CPU的寄存器，CPU只有把数据装载到寄存器才能够运行&lt;/p&gt;
 &lt;p&gt;cpu执行线程的指令，是持续在中断和恢复切换的。每个线程创建后，都有自己的&lt;strong&gt;程序计数器&lt;/strong&gt;和&lt;strong&gt;栈&lt;/strong&gt;。线程执行或恢复都依赖&lt;strong&gt;程序计数器&lt;/strong&gt;。程序计数器在各个线程之间互不影响，此区域也不会发生内存溢出异常。&lt;/p&gt;
@@ -1418,6 +1430,7 @@ after method send
 &lt;li&gt;JVM中的虚拟机栈是描述Java方法执行的内存区域，它是线程私有的&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在执行引擎运行时，所有指令都只能针对当前栈帧进行操作&lt;/p&gt;
+&lt;p&gt;每一个方法从被调用到执行完成的过程，都对应着一个个栈帧在JVM栈中的入栈和出栈过程&lt;/p&gt;
 &lt;p&gt;StackOverflowError表示请求的栈溢出，导致内存耗尽，通常出现在递归方法中&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;img/jvm-stack.png&#34; alt=&#34;jvm-stack&#34;&gt;&lt;/p&gt;
 &lt;p&gt;栈帧在整个JVM体系中的地位颇高,包括局部变量表、操作栈、动态连接、方法返回地址等&lt;/p&gt;
@@ -1441,10 +1454,32 @@ after method send
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;动态链接&lt;/p&gt;
+&lt;p&gt;动态链接
+每个栈帧中包含一个在常量池中对当前方法的引用，目的是支持方法调用过程的动态连接&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方法返回地址&lt;/p&gt;
+&lt;p&gt;方法返回时有两种退出情况&lt;/p&gt;
+&lt;p&gt;方法退出的过程，相当于弹出当前栈帧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正常退出
+正常执行到任何方法的返回字节码指令，如RETURN/ IRETURN/ ARETURN等&lt;/li&gt;
+&lt;li&gt;异常退出&lt;/li&gt;
+&lt;li&gt;退出可能有三种方式:
+&lt;ul&gt;
+&lt;li&gt;返回值压入，上层调用栈帧&lt;/li&gt;
+&lt;li&gt;异常信息抛给能够处理的栈帧&lt;/li&gt;
+&lt;li&gt;PC计数器指向方法调用后的下一条指令&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：人们常说，Java的内存空间分为“栈”和“堆”，栈中存放局部变量，堆中存放对象。
+这句话不完全正确！这里的“堆”可以这么理解，但这里的“栈”就是现在讲的虚拟机栈,或者说Java虚拟机栈中的局部变量表部分.
+真正的Java虚拟机栈是由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法出口信息.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -1537,7 +1572,22 @@ after method send
  &lt;span class=&#34;n&#34;&gt;ISTORE&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;5&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+&lt;/div&gt;&lt;h4 id=&#34;特点-1&#34;&gt;特点&lt;/h4&gt;
+&lt;p&gt;局部变量表的创建是在方法被执行的时候，随着栈帧的创建而创建的。但是大小在编译期就确定，在创建的时候只需分配事先规定好的大小即可。在方法运行过程中，表的大小不会改变&lt;/p&gt;
+&lt;p&gt;Java虚拟机栈会出现两种异常&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;StackOverflowError&lt;/strong&gt;
+若Java虚拟机栈的内存大小不允许动态扩展，那么当线程请求的栈深度大于虚拟机的最大深度时，就抛出此异常&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OutOfMemoryError&lt;/strong&gt;
+若Java虚拟机栈的内存大小允许动态扩展，且当线程请求栈时内存用完了，无法再动态扩展了，此时抛出OutOfMemoryError异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Java虚拟机栈是线程私有的，随着线程的创建而创建，随着线程的死亡而死亡&lt;/p&gt;
+&lt;h3 id=&#34;native-method-stack本地方法栈&#34;&gt;Native Method Stack(本地方法栈)&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;本地方法栈&lt;/strong&gt;和Java&lt;strong&gt;虚拟机栈&lt;/strong&gt;实现的功能与抛出异常几乎相同&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚拟机栈&lt;/strong&gt;是为虚拟机执行Java方法(字节码)服务，&lt;strong&gt;本地方法区&lt;/strong&gt;则为虚拟机使用到的&lt;code&gt;Native&lt;/code&gt;方法服务&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本地方法&lt;/strong&gt;可以通过**JNI(Java Native Interface)**访问虚拟机运行时的数据区，甚至可以调用寄存器，具有和JVM相同的能力和权限&lt;/p&gt;
+&lt;p&gt;内存不足时，&lt;strong&gt;本地方法栈&lt;/strong&gt;会抛出&lt;code&gt;native heap OutOfMemory&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;最著名的本地方法应该是&lt;code&gt;System.currenttTimeMillis()&lt;/code&gt;，JNI使Java深度使用OS的特性功能，利用非Java代码&lt;/p&gt;
 &lt;h1 id=&#34;spring&#34;&gt;spring&lt;/h1&gt;
 &lt;h2 id=&#34;事务&#34;&gt;事务&lt;/h2&gt;
 &lt;p&gt;service有&lt;code&gt;@Transactional( rollbackFor={Exception.class,RuntimeException.class})&lt;/code&gt;注解时，只有在整个service方法执行完后，都会提交事务。&lt;/p&gt;
