@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-08T23:19:36&#43;08:00</updated>
+    <updated>2022-03-09T23:01:09&#43;08:00</updated>
     <id>https://sloera.gitee.io/</id>
     <link rel="alternate" type="text/html" href="https://sloera.gitee.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://sloera.gitee.io/atom.xml" />
@@ -17,19 +17,152 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.90.0">Hugo</generator>
         <entry>
+            <title type="text">Java基础</title>
+            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/interview/basic/" />
+            <id>https://sloera.gitee.io/post/learn/interview/basic/</id>
+            <updated>2022-03-09T20:06:42&#43;08:00</updated>
+            <published>2022-03-09T10:09:04&#43;08:00</published>
+            <author>
+                    <name>sloera</name>
+                    <uri>https://sloera.gitee.io/</uri>
+                    <email>sloera@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"></summary>
+            
+                <content type="html"></content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">Tuling</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/interview/tuling/" />
             <id>https://sloera.gitee.io/post/learn/interview/tuling/</id>
-            <updated>2022-03-08T23:19:28&#43;08:00</updated>
+            <updated>2022-03-09T20:06:42&#43;08:00</updated>
             <published>2022-03-08T21:29:16&#43;08:00</published>
             <author>
                     <name>sloera</name>
                     <uri>https://sloera.gitee.io/</uri>
                     <email>sloera@163.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">并发 ReentrantLock中tryLock()和lock()的区别 lock() 阻塞加锁。直……</summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">基础 https://moyu-zc.gitee.io/2021/06/23/%E5%85%AB%E8%82%A1%E6%96%87%20---%20Java%E5%9F%BA%E7%A1%80/ Java的8种基本类型 byte, char, short, int, long, double, float, boolean 装箱和拆箱 自动装箱是Java编译器在基本……</summary>
             
-                <content type="html">&lt;h1 id=&#34;并发&#34;&gt;并发&lt;/h1&gt;
+                <content type="html">&lt;h1 id=&#34;基础&#34;&gt;基础&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://moyu-zc.gitee.io/2021/06/23/%E5%85%AB%E8%82%A1%E6%96%87%20---%20Java%E5%9F%BA%E7%A1%80/&#34;&gt;https://moyu-zc.gitee.io/2021/06/23/%E5%85%AB%E8%82%A1%E6%96%87%20---%20Java%E5%9F%BA%E7%A1%80/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;java的8种基本类型&#34;&gt;Java的8种基本类型&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;byte&lt;/code&gt;, &lt;code&gt;char&lt;/code&gt;, &lt;code&gt;short&lt;/code&gt;, &lt;code&gt;int&lt;/code&gt;, &lt;code&gt;long&lt;/code&gt;, &lt;code&gt;double&lt;/code&gt;, &lt;code&gt;float&lt;/code&gt;, &lt;code&gt;boolean&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;装箱和拆箱&#34;&gt;装箱和拆箱&lt;/h2&gt;
+&lt;p&gt;自动装箱是Java编译器在&lt;strong&gt;基本数据类型&lt;/strong&gt;和对应的&lt;strong&gt;对象包装类型&lt;/strong&gt;之间做的一个转化&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;基本数据类型&lt;/th&gt;
+&lt;th&gt;包装类型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;td&gt;Boolean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;char&lt;/td&gt;
+&lt;td&gt;Character&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;byte&lt;/td&gt;
+&lt;td&gt;Byte&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;short&lt;/td&gt;
+&lt;td&gt;Short&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;Integer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long&lt;/td&gt;
+&lt;td&gt;Long&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td&gt;Float&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;double&lt;/td&gt;
+&lt;td&gt;Double&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;string类型可变吗&#34;&gt;String类型可变吗&lt;/h2&gt;
+&lt;p&gt;不可变&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;String&lt;/code&gt;类声明为&lt;code&gt;final&lt;/code&gt;类，，不可继承，同时内部也未提供修改的方法，所以不可变&lt;/p&gt;
+&lt;h2 id=&#34;string-stringbuffer-stringbuilder的区别&#34;&gt;String, StringBuffer, StringBuilder的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;String&lt;/code&gt; 字符串常量&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;StringBuffer&lt;/code&gt; 字符串变量(线程安全)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;StringBuilder&lt;/code&gt; 字符串变量(非线程安全)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;和的区别&#34;&gt;&amp;amp;和&amp;amp;&amp;amp;的区别&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;amp; 按位与和逻辑与。即使左边的表达式的值是&lt;code&gt;false&lt;/code&gt;，右边还是会继续运算&lt;/li&gt;
+&lt;li&gt;&amp;amp;&amp;amp; 短路与运算。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;java的基本特性&#34;&gt;Java的基本特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;封装 把对象的属性和行为(数据)结合为一个独立的整体，并尽可能隐藏对象的内部实现细节。&lt;/li&gt;
+&lt;li&gt;继承 子类继承败类的数据属性和行为，并能根据自己的需求扩展出新的行为，提高了代码的复用性&lt;/li&gt;
+&lt;li&gt;多态 允许不同的对象对同一消息做出响应。&lt;strong&gt;里氏代换原则&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;抽象 为了继承而存在&lt;/del&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;interface与abstract的区别&#34;&gt;interface与abstract的区别&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;关键字不同&lt;/li&gt;
+&lt;li&gt;只能单继承，可以多实现&lt;/li&gt;
+&lt;li&gt;构造方法：abstract类可以有，但不能有abstract的构造方法，interface不能有&lt;/li&gt;
+&lt;li&gt;变量：非static的，interface不能有。static的，abstract类中不能被abstract修饰&lt;/li&gt;
+&lt;li&gt;变量：abstract类可以有普通成员变量，interface没有普通成员变量(只能static)&lt;/li&gt;
+&lt;li&gt;方法：static的，abstract类中不能被abstract修饰&lt;/li&gt;
+&lt;li&gt;方法：abstract中方法访问类型可以是&lt;code&gt;public&lt;/code&gt;, &lt;code&gt;protected&lt;/code&gt;。接口中只能是&lt;code&gt;public&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;重载和重写&#34;&gt;重载和重写&lt;/h2&gt;
+&lt;h3 id=&#34;override-重写&#34;&gt;override 重写&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;方法名、参数、返回值相同&lt;/li&gt;
+&lt;li&gt;子类方法不能缩小父类方法的访问权限。(需要可以通过父类调用到子类)&lt;/li&gt;
+&lt;li&gt;子类方法不能抛出比父类方法更多的异常。(为了通过父类引用调用时，不抛出异常)&lt;/li&gt;
+&lt;li&gt;存在于父类和子类之间&lt;/li&gt;
+&lt;li&gt;方法被定义为private/final不能被重写
+&lt;ol&gt;
+&lt;li&gt;private 只能被自身类访问，子类不能访问，&lt;/li&gt;
+&lt;li&gt;static 与类绑定，与任何实例都无关。&lt;code&gt;static&lt;/code&gt;是编译时静态绑定的，&lt;code&gt;override&lt;/code&gt;是运行时动态绑定的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;overload-重载&#34;&gt;overload 重载&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;参数类型、个数、顺序至少有一个不相同。&lt;strong&gt;签名不同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;存在于父类和子类、同类中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;final-finally-finalize&#34;&gt;final, finally, finalize&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;final 用于声明属性、方法、类。分别表示属性不可变，方法不可覆盖，类不可继承&lt;/li&gt;
+&lt;li&gt;finally 异常处理语句结构的一部分，表示问题执行&lt;/li&gt;
+&lt;li&gt;finalize 是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;并发&#34;&gt;并发&lt;/h1&gt;
 &lt;h2 id=&#34;reentrantlock中trylock和lock的区别&#34;&gt;ReentrantLock中tryLock()和lock()的区别&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;lock() 阻塞加锁。直到获取到锁。可重入(计数加1)&lt;/li&gt;
@@ -106,6 +239,63 @@
 &lt;li&gt;synchronized是非公平锁，ReentrantLock可以选择公平锁或非公平锁&lt;/li&gt;
 &lt;li&gt;synchronized锁的是对象，锁信息保存在对象头中。ReentrantLock通过代码中int类型的state标识来标识锁的状态&lt;/li&gt;
 &lt;li&gt;synchronized底层有一个锁升级的过程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;threadlocal的底层原理&#34;&gt;ThreadLocal的底层原理&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ThreadLocal&lt;/code&gt;是&lt;code&gt;Java&lt;/code&gt;中所提供的线程本地存储机制。可以将数据缓存在某个线程内部，该线程可以在任意时刻、任意方法中获取缓存的数据&lt;/li&gt;
+&lt;li&gt;煤层是通过&lt;code&gt;ThreadLocalMap&lt;/code&gt;来实现的，每个&lt;code&gt;Thread&lt;/code&gt;对象(不是&lt;code&gt;ThreadLocal&lt;/code&gt;)中都存在一个&lt;code&gt;ThreadLocalMap&lt;/code&gt;，&lt;code&gt;Map&lt;/code&gt;的&lt;code&gt;key&lt;/code&gt;为&lt;code&gt;ThreadLocal&lt;/code&gt;对象，&lt;code&gt;Map&lt;/code&gt;的&lt;code&gt;value&lt;/code&gt;为需要缓存的值&lt;/li&gt;
+&lt;li&gt;如果在线程池中使用&lt;code&gt;ThreadLocal&lt;/code&gt;会造成&lt;strong&gt;内存泄漏&lt;/strong&gt;。因为当&lt;code&gt;ThreadLocal&lt;/code&gt;对象使用完之后，应该要把设置的&lt;code&gt;key&lt;/code&gt;, &lt;code&gt;value&lt;/code&gt;，即&lt;code&gt;Entry&lt;/code&gt;对象进行回收，但线程池中的线程不会回收，而线程对象是通过&lt;strong&gt;强引用&lt;/strong&gt;指向&lt;code&gt;ThreadLocalMap&lt;/code&gt;，&lt;code&gt;ThreadLocalMap&lt;/code&gt;也通过&lt;strong&gt;强引用&lt;/strong&gt;指向&lt;code&gt;Entry&lt;/code&gt;对象。解决方法是：在使用了&lt;code&gt;ThreadLocal&lt;/code&gt;对象之后，手动调用&lt;code&gt;ThreadLocal.remove()&lt;/code&gt;清除&lt;code&gt;Entry&lt;/code&gt;对象&lt;/li&gt;
+&lt;li&gt;经典的应用场景就是&lt;strong&gt;连接管理&lt;/strong&gt;(一个线程持有一个连接，该连接对象可以在不同的方法之间进行传递，线程之间不共享同一个连接)
+数据库租户的id&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;Thread&lt;/code&gt;对象含有&lt;code&gt;ThreadLocal.ThreadLocalMap threadLocals = null;&lt;/code&gt;，由一个个的&lt;code&gt;Entry&lt;/code&gt;组成：&lt;code&gt;key&lt;/code&gt;为&lt;code&gt;ThreadLocal&lt;/code&gt;，&lt;code&gt;value&lt;/code&gt;为对应的值&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/threadlocal.png&#34; alt=&#34;threadlocal&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;强引用&lt;/strong&gt; 使用最普遍的引用(new)，一个对象具有强引用，不会被垃圾回收器回收。当内存空间不足，Java虚拟机宁愿抛出OutOfMemory错误，使程序异常终止，也不回收这种对象&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;弱引用&lt;/strong&gt; JVM进行垃圾回收时，无论内存是否充足，都会回收被弱引用关联的对象。用&lt;code&gt;java.lang.ref.WeakReference&lt;/code&gt;。可以在缓存中使用弱引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;正确使用方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每次使用完&lt;code&gt;threadlocal&lt;/code&gt;都调用它的&lt;code&gt;remove()&lt;/code&gt;方法清除数据&lt;/li&gt;
+&lt;li&gt;将&lt;code&gt;threadlocal&lt;/code&gt;变量定义为&lt;code&gt;private static&lt;/code&gt;，则任何时候都能通过&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;如何查看线程死锁&#34;&gt;如何查看线程死锁&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;可以通过&lt;code&gt;jstack&lt;/code&gt;命令来查看&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;导出线程和堆栈信息&lt;/li&gt;
+&lt;li&gt;搜索业务代码&lt;code&gt;com.***&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;发现有数据库&lt;code&gt;queryList&lt;/code&gt;操作&lt;/li&gt;
+&lt;li&gt;查看代码是否有全表扫描的风险&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果是操作数据库的死锁，可以查询数据库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;c1&#34;&gt;-- 查询是否锁表
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;open&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kp&#34;&gt;tables&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;where&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;in_use&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 查询进程
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;processlist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 查看正在锁的事务
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;information_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;innodb_locks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;-- 查看等待锁的事务
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;information_schema&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;innodb_lock_waits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 </content>
             
