@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 09 Mar 2022 23:01:09 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 11 Mar 2022 00:42:49 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
         
@@ -168,6 +168,49 @@
 &lt;li&gt;finally 异常处理语句结构的一部分，表示问题执行&lt;/li&gt;
 &lt;li&gt;finalize 是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;object中有哪些方法&#34;&gt;Object中有哪些方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;getClass()&lt;/code&gt; 获得运行时类型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hashCode()&lt;/code&gt; 用于哈希查找。重写equals的方法一般都要重写hashCode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;euqals()&lt;/code&gt; 判断相等&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;toString()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;clone()&lt;/code&gt; 实现对象的浅复制，只有实现了&lt;code&gt;Cloneable&lt;/code&gt;接口才可以调用该方法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wait()&lt;/code&gt; 使当前线程等待该对象的锁。当前线程必须是该对象的拥有者，也就是具有该对象的锁。会释放当前对象的锁&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;notify()&lt;/code&gt; 随机唤醒在该对象上等待的某个线程。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;notifyAll()&lt;/code&gt; 唤醒在该对象上等待的所有线程。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;finalize()&lt;/code&gt; 无法确定该方法什么时候被调用，很少使用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;img/method-of-object.png&#34; alt=&#34;method-of-object&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;怎么实现一个对象的深度克隆&#34;&gt;怎么实现一个对象的(深度)克隆&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;clone&lt;/code&gt;是浅拷贝，只克隆了自身对象和对象内实例变量的地址引用。&lt;/li&gt;
+&lt;li&gt;使用&lt;code&gt;ObjectStream&lt;/code&gt;进行&lt;strong&gt;深度克隆&lt;/strong&gt;。先将对象&lt;strong&gt;序列化&lt;/strong&gt;，然后再&lt;strong&gt;反序列化&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;return和finally同时出现&#34;&gt;return和finally同时出现&lt;/h2&gt;
+&lt;p&gt;Return先将待返回的数，放到一个空间，然后执行&lt;code&gt;finally&lt;/code&gt;中的方法，执行结束后再返回方法(弹出当前栈帧)。&lt;/p&gt;
+&lt;p&gt;如果&lt;code&gt;finally&lt;/code&gt;里面有&lt;code&gt;return&lt;/code&gt;，那么会重新将数放到空间里面(覆盖之前的数据)&lt;/p&gt;
+&lt;h2 id=&#34;error和exception的区别是什么&#34;&gt;Error和Exception的区别是什么&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Error 通常为虚拟机相关错误。如系统崩溃，内存不足，堆栈溢出等。编译器不会对这类错误检测，也不应对这类错误进行捕获，一旦这类错误发生，通常仅靠应用程序本身无法恢复，应终止应用程序&lt;/li&gt;
+&lt;li&gt;Exception 可以在应用程序中进行捕获并处理的，应对其进行处理，使应用程序可以继续正常运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;throw和throws的区别是什么&#34;&gt;throw和throws的区别是什么&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;throw 用在方法内部，只能用于抛出一种异常。&lt;strong&gt;受查异常&lt;/strong&gt;和&lt;strong&gt;非受查异常&lt;/strong&gt;都可以被抛出&lt;/li&gt;
+&lt;li&gt;throws 用在方法声明上，可以抛出多个异常，用来标识该方法可能抛出的异常列表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;java常见异常&#34;&gt;Java常见异常&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ArrayIndexOutOfBoundsException 数组索引越界。&lt;code&gt;list.get(-1)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;StringIndexOutOfBoundsException 索引越界。&lt;code&gt;&amp;quot;aaa&amp;quot;.indexOf(-1)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;NullPointerException 空指针异常。&lt;code&gt;null.get(0)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ClassNotFoundException 遍历classpath找不到对应名称的类文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;序列化&#34;&gt;序列化&lt;/h2&gt;
+&lt;p&gt;将那些实现了&lt;code&gt;Seralizable&lt;/code&gt;接口的对象转换成一个字节序列，并能够在之后将这个字节序列完全恢复为原来的对象。&lt;/p&gt;
+&lt;h2 id=&#34;comparable接口和comparator接口&#34;&gt;comparable接口和comparator接口&lt;/h2&gt;
+&lt;p&gt;Java提供了只包含一个&lt;code&gt;compareTo()&lt;/code&gt;方法的&lt;code&gt;Comparable&lt;/code&gt;接口。返回负数，0，正数来表明输入对象小于，等于，大于已经存在的对象&lt;/p&gt;
+&lt;p&gt;Java提供了包含&lt;code&gt;compare()&lt;/code&gt;和&lt;code&gt;equals()&lt;/code&gt;两个方法的&lt;code&gt;Comparator&lt;/code&gt;接口。&lt;/p&gt;
 &lt;h1 id=&#34;并发&#34;&gt;并发&lt;/h1&gt;
 &lt;h2 id=&#34;reentrantlock中trylock和lock的区别&#34;&gt;ReentrantLock中tryLock()和lock()的区别&lt;/h2&gt;
 &lt;ul&gt;
