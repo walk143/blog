@@ -8,9 +8,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Hugo 主题 MemE</title>
-        <link>https://sloera.gitee.io/</link>
+        <link>http://sloera.gitee.io/sloera/</link>
         <description>blog by sloera</description>
-        <generator>Hugo 0.90.0 https://gohugo.io/</generator>
+        <generator>Hugo 0.92.0 https://gohugo.io/</generator>
         
             <language>zh-CN</language>
         
@@ -23,39 +23,15 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 13 Mar 2022 23:11:42 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 18 Mar 2022 13:00:59 &#43;0800</lastBuildDate>
         
-            <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
+            <atom:link rel="self" type="application/rss&#43;xml" href="http://sloera.gitee.io/sloera/rss.xml" />
         
-        
-            <item>
-                <title>Java基础</title>
-                <link>https://sloera.gitee.io/post/learn/interview/basic/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/interview/basic/</guid>
-                <pubDate>Wed, 09 Mar 2022 10:09:04 &#43;0800</pubDate>
-                
-                    <author>sloera@163.com (sloera)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description></description>
-                
-                
-                
-                
-                
-                    
-                        
-                    
-                        
-                    
-                
-            </item>
         
             <item>
                 <title>Tuling</title>
-                <link>https://sloera.gitee.io/post/learn/interview/tuling/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/interview/tuling/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/interview/tuling/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/interview/tuling/</guid>
                 <pubDate>Tue, 08 Mar 2022 21:29:16 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -129,7 +105,7 @@
 &lt;h2 id=&#34;java的基本特性&#34;&gt;Java的基本特性&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;封装 把对象的属性和行为(数据)结合为一个独立的整体，并尽可能隐藏对象的内部实现细节。&lt;/li&gt;
-&lt;li&gt;继承 子类继承败类的数据属性和行为，并能根据自己的需求扩展出新的行为，提高了代码的复用性&lt;/li&gt;
+&lt;li&gt;继承 子类继承父类的数据属性和行为，并能根据自己的需求扩展出新的行为，提高了代码的复用性&lt;/li&gt;
 &lt;li&gt;多态 允许不同的对象对同一消息做出响应。&lt;strong&gt;里氏代换原则&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;del&gt;抽象 为了继承而存在&lt;/del&gt;&lt;/li&gt;
 &lt;/ol&gt;
@@ -364,8 +340,8 @@
         
             <item>
                 <title>DesignPattern</title>
-                <link>https://sloera.gitee.io/post/learn/interview/designpattern/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/interview/designpattern/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/interview/designpattern/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/interview/designpattern/</guid>
                 <pubDate>Tue, 08 Mar 2022 08:39:24 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -430,7 +406,7 @@
 &lt;h2 id=&#34;里氏代换原则&#34;&gt;里氏代换原则&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;如果对每一个类型为S(子类)的对象o1，都有类型为T(父类)的对象o2，使得以T定义的所有程序P在所有的对象o1代换o2时，程序P的行为没有变化，那么类型S是类型T的子类型。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;在软件中，将一个基类对象替换成它的子类对象，程序将不会产生任何错误和异常，反过来则不成立。&lt;/p&gt;
-&lt;p&gt;**是实现开闭原则的重要方式之一。**在程序中，尽量使用基类类型来对对象进行定义，而在运行时确定其子类型&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;是实现开闭原则的重要方式之一。&lt;/strong&gt; 在程序中，尽量使用基类类型来对对象进行定义，而在运行时确定其子类型&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;子类的所有方法必须在父类中声明
 &lt;ol&gt;
@@ -839,12 +815,12 @@
 &lt;p&gt;&lt;img src=&#34;img/abstract-factory-detial2.png&#34; alt=&#34;abstract-factory-detial2&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;角色-1&#34;&gt;角色&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;产品等级结构 即产品的继承结构，如一个抽象类是电视机，其子类有海尔电视机、海信电视机、TCL电视机&lt;/li&gt;
-&lt;li&gt;产品族 由同一个董存瑞生产的，位于不同产品等级结构中的一组产品，如果海尔电器工厂生产的海尔电视机、海尔电冰箱&lt;/li&gt;
-&lt;li&gt;AbstractFactory 抽象工厂：声明了一组用于创建一族产品的方法，每一个方法对应一种产品&lt;/li&gt;
-&lt;li&gt;ConcreteFactory 具体工厂：实现了在抽象工厂中声明的创建产品的方法，生成一组具体产品，这些产品构成了一个产品族，每一个产品都位于某个产品等级结构中&lt;/li&gt;
-&lt;li&gt;AbstractProduct 抽象产品：它为每种产品声明接口，在抽象产品中声明了产品所具有的业务方法&lt;/li&gt;
-&lt;li&gt;ConcreteProduct 具体产品：定义具体工厂生产的具体产品对象，实现抽象产品接口中声明的业务方法&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;产品等级结构&lt;/strong&gt; 即产品的继承结构，如一个抽象类是电视机，其子类有海尔电视机、海信电视机、TCL电视机&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;产品族&lt;/strong&gt; 由同一个董存瑞生产的，位于不同产品等级结构中的一组产品，如果海尔电器工厂生产的海尔电视机、海尔电冰箱&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AbstractFactory&lt;/strong&gt; 抽象工厂：声明了一组用于创建一族产品的方法，每一个方法对应一种产品&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ConcreteFactory&lt;/strong&gt; 具体工厂：实现了在抽象工厂中声明的创建产品的方法，生成一组具体产品，这些产品构成了一个产品族，每一个产品都位于某个产品等级结构中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AbstractProduct&lt;/strong&gt; 抽象产品：它为每种产品声明接口，在抽象产品中声明了产品所具有的业务方法&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ConcreteProduct&lt;/strong&gt; 具体产品：定义具体工厂生产的具体产品对象，实现抽象产品接口中声明的业务方法&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;img/abstract-factory-role.png&#34; alt=&#34;abstract-factory-role&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;img/abstract-factory-role2.png&#34; alt=&#34;abstract-factory-role2&#34;&gt;&lt;/p&gt;
@@ -1555,8 +1531,8 @@
         
             <item>
                 <title>mysql</title>
-                <link>https://sloera.gitee.io/post/learn/interview/mysql/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/interview/mysql/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/interview/mysql/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/interview/mysql/</guid>
                 <pubDate>Thu, 03 Mar 2022 14:42:57 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -1732,8 +1708,8 @@
         
             <item>
                 <title>java</title>
-                <link>https://sloera.gitee.io/post/learn/interview/java/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/interview/java/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/interview/java/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/interview/java/</guid>
                 <pubDate>Tue, 01 Mar 2022 23:49:33 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -3828,8 +3804,8 @@ after method send
         
             <item>
                 <title>OnJava8</title>
-                <link>https://sloera.gitee.io/post/learn/java/onjava8/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/java/onjava8/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/java/onjava8/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/java/onjava8/</guid>
                 <pubDate>Thu, 20 Jan 2022 22:41:47 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -3936,8 +3912,8 @@ after method send
         
             <item>
                 <title>Shell</title>
-                <link>https://sloera.gitee.io/post/learn/linux/shell/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/learn/linux/shell/</guid>
+                <link>http://sloera.gitee.io/sloera/post/learn/linux/shell/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/learn/linux/shell/</guid>
                 <pubDate>Thu, 20 Jan 2022 22:17:45 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -4428,7 +4404,21 @@ END &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt; print max, maxline &lt;span cla
 sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;#39;&lt;/span&gt; method.log_2022-02-14.log&lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; wc -l
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h1 id=&#34;find&#34;&gt;find&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对比两个目录文件不同&lt;/span&gt;
+find lib -printf &lt;span class=&#34;s2&#34;&gt;&amp;#34;%P\n&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sort  &amp;gt; lib1.txt
+find lib -printf &lt;span class=&#34;s2&#34;&gt;&amp;#34;%P\n&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sort &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; diff lib1.txt -
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+</description>
                 
                 
                 
@@ -4444,8 +4434,8 @@ sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;
         
             <item>
                 <title>Html打印样式错误</title>
-                <link>https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/html%E6%89%93%E5%8D%B0%E6%A0%B7%E5%BC%8F%E9%94%99%E8%AF%AF/</guid>
                 <pubDate>Wed, 19 Jan 2022 12:48:51 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -4479,8 +4469,8 @@ sed -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;/elapsed:[[:digit:]]\{3,\}/p&amp;
         
             <item>
                 <title>Regex</title>
-                <link>https://sloera.gitee.io/post/dev/regex/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/dev/regex/</guid>
+                <link>http://sloera.gitee.io/sloera/post/dev/regex/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/dev/regex/</guid>
                 <pubDate>Mon, 10 Jan 2022 21:46:36 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -5072,8 +5062,8 @@ foreach (double d in data)
         
             <item>
                 <title>Jmeter</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/jmeter/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/jmeter/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/jmeter/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/jmeter/</guid>
                 <pubDate>Sun, 19 Dec 2021 12:04:42 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -5416,8 +5406,8 @@ Response message:Address is empty!
         
             <item>
                 <title>Nginx</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/nginx/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/nginx/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/nginx/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/nginx/</guid>
                 <pubDate>Sat, 18 Dec 2021 12:16:36 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -5801,8 +5791,8 @@ server {
         
             <item>
                 <title>Tools</title>
-                <link>https://sloera.gitee.io/post/tools/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/tools/</guid>
+                <link>http://sloera.gitee.io/sloera/post/tools/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/tools/</guid>
                 <pubDate>Fri, 17 Dec 2021 12:47:50 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -5981,8 +5971,8 @@ nohup java -jar moco-runner.jar http -p &lt;span class=&#34;m&#34;&gt;12307&lt;/
         
             <item>
                 <title>Git</title>
-                <link>https://sloera.gitee.io/post/skill/git/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/git/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/git/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/git/</guid>
                 <pubDate>Wed, 08 Dec 2021 22:23:30 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -6489,7 +6479,48 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git diff 1f9d43308 9b3e8cb93  --name-only
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h2 id=&#34;显示提交信息&#34;&gt;显示提交信息&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git config --global alias.lm  &lt;span class=&#34;s2&#34;&gt;&amp;#34;log --no-merges --color --date=format:&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39; --author=&amp;#39;你的名字！自己修改！&amp;#39; --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit&amp;#34;&lt;/span&gt;
+
+git config --global alias.lms  &lt;span class=&#34;s2&#34;&gt;&amp;#34;log --no-merges --color --stat --date=format:&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39; --author=&amp;#39;你的名字！自己修改！&amp;#39; --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit&amp;#34;&lt;/span&gt;
+
+git config --global alias.ls &lt;span class=&#34;s2&#34;&gt;&amp;#34;log --no-merges --color --graph --date=format:&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39; --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit&amp;#34;&lt;/span&gt;
+
+git config --global alias.lss &lt;span class=&#34;s2&#34;&gt;&amp;#34;log --no-merges --color --stat --graph --date=format:&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39; --pretty=format:&amp;#39;%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)&amp;lt;%an&amp;gt;%Creset&amp;#39; --abbrev-commit&amp;#34;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git shortlog 8245909d..HEAD  --pretty&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;format:&lt;span class=&#34;s2&#34;&gt;&amp;#34;%cn %s&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;推送其它分支&#34;&gt;推送其它分支&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;git push origin refs/heads/master:master
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&amp;lt;++&amp;gt;&lt;/p&gt;
+</description>
                 
                 
                 
@@ -6501,13 +6532,13 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/tool/">tool</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/svn/">svn</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/svn/">svn</category>
                                 
                             
                         
@@ -6517,13 +6548,13 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/tool/">tool</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/svn/">svn</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/svn/">svn</category>
                                 
                             
                         
@@ -6533,8 +6564,8 @@ du -h --max-depth&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34
         
             <item>
                 <title>点词库转Rime</title>
-                <link>https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</guid>
+                <link>http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/%E7%82%B9%E8%AF%8D%E5%BA%93%E8%BD%ACrime/</guid>
                 <pubDate>Sat, 27 Nov 2021 15:07:42 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -6705,8 +6736,8 @@ function! s:add_frequency_to_dict(line_sep=&amp;quot; &amp;quot;, val_sep=&#39;\
         
             <item>
                 <title>Gitee&#43;hugo</title>
-                <link>https://sloera.gitee.io/post/gitee&#43;hugo/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/gitee&#43;hugo/</guid>
+                <link>http://sloera.gitee.io/sloera/post/gitee&#43;hugo/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/gitee&#43;hugo/</guid>
                 <pubDate>Fri, 26 Nov 2021 19:45:18 &#43;0800</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -6809,8 +6840,8 @@ git push
         
             <item>
                 <title>arch安装教程</title>
-                <link>https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/arch/arch%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
                 <pubDate>Sun, 30 May 2021 21:38:11 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -8546,8 +8577,8 @@ store-ssl-client-cert-pp-plaintext = yes
         
             <item>
                 <title>win-jenkins安装</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/win-jenkins%E5%AE%89%E8%A3%85/</guid>
                 <pubDate>Wed, 01 Apr 2020 16:59:28 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -8668,8 +8699,8 @@ Environment variables
         
             <item>
                 <title>idea创建maven模板archetype</title>
-                <link>https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</guid>
+                <link>http://sloera.gitee.io/sloera/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/dev/idea%E5%88%9B%E5%BB%BAmaven%E6%A8%A1%E6%9D%BFarchetype/</guid>
                 <pubDate>Wed, 18 Mar 2020 22:31:34 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -8893,19 +8924,19 @@ archetypeVersion	RELEASE
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E8%BD%AF%E4%BB%B6/">软件</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E8%BD%AF%E4%BB%B6/">软件</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/idea/">idea</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/idea/">idea</category>
                                 
                             
                         
@@ -8915,19 +8946,19 @@ archetypeVersion	RELEASE
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/idea/">idea</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/idea/">idea</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/maven/">maven</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/maven/">maven</category>
                                 
                             
                         
@@ -8937,8 +8968,8 @@ archetypeVersion	RELEASE
         
             <item>
                 <title>win环境部署</title>
-                <link>https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/win%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
                 <pubDate>Fri, 13 Mar 2020 22:56:46 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -9209,13 +9240,13 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                         
@@ -9225,13 +9256,13 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                         
@@ -9241,8 +9272,8 @@ github树形展示&lt;/p&gt;
         
             <item>
                 <title>前端json对象升/降阶处理</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/%E5%89%8D%E7%AB%AFjson%E5%AF%B9%E8%B1%A1%E5%8D%87-%E9%99%8D%E9%98%B6%E5%A4%84%E7%90%86/</guid>
                 <pubDate>Mon, 09 Mar 2020 23:29:04 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -9631,13 +9662,13 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E6%8A%80%E6%9C%AF/">技术</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
                         
@@ -9647,19 +9678,19 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%89%8D%E7%AB%AF/">前端</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/json/">json</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/json/">json</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E6%96%B9%E6%B3%95/">方法</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E6%96%B9%E6%B3%95/">方法</category>
                                 
                             
                         
@@ -9669,8 +9700,8 @@ github树形展示&lt;/p&gt;
         
             <item>
                 <title>chrome离线安装扩展插件</title>
-                <link>https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/chrome%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6/</guid>
                 <pubDate>Sun, 08 Mar 2020 08:52:48 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -9710,19 +9741,19 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/chrome/">chrome</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/chrome/">chrome</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/tool/">tool</category>
                                 
                             
                         
@@ -9732,19 +9763,19 @@ github树形展示&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/chrome/">chrome</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/chrome/">chrome</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E6%8F%92%E4%BB%B6/">插件</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E6%8F%92%E4%BB%B6/">插件</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/tool/">tool</category>
                                 
                             
                         
@@ -9754,8 +9785,8 @@ github树形展示&lt;/p&gt;
         
             <item>
                 <title>linux安装docker</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/linux%E5%AE%89%E8%A3%85docker/</guid>
                 <pubDate>Fri, 06 Mar 2020 21:58:19 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -10529,13 +10560,13 @@ aaa
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/linux/">linux</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/linux/">linux</category>
                                 
                             
                         
@@ -10545,25 +10576,25 @@ aaa
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/linux/">linux</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/linux/">linux</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/docker/">docker</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/docker/">docker</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/centos8/">centos8</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/centos8/">centos8</category>
                                 
                             
                         
@@ -10573,8 +10604,8 @@ aaa
         
             <item>
                 <title>nodejs中间层解决cors跨域</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/nodejs%E4%B8%AD%E9%97%B4%E5%B1%82%E8%A7%A3%E5%86%B3cors%E8%B7%A8%E5%9F%9F/</guid>
                 <pubDate>Tue, 03 Mar 2020 21:28:22 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -10862,19 +10893,19 @@ node_modules/
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E6%8A%80%E6%9C%AF/">技术</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/nodejs/">nodejs</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/nodejs/">nodejs</category>
                                 
                             
                         
@@ -10884,19 +10915,19 @@ node_modules/
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/nodejs/">nodejs</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/nodejs/">nodejs</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/">中间层</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E4%B8%AD%E9%97%B4%E5%B1%82/">中间层</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E6%96%B9%E6%B3%95/">方法</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E6%96%B9%E6%B3%95/">方法</category>
                                 
                             
                         
@@ -10906,8 +10937,8 @@ node_modules/
         
             <item>
                 <title>wsl安装nodejs</title>
-                <link>https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</guid>
+                <link>http://sloera.gitee.io/sloera/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/linux/middleware/wsl%E5%AE%89%E8%A3%85nodejs/</guid>
                 <pubDate>Mon, 02 Mar 2020 23:15:46 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -11126,13 +11157,13 @@ cnpm install  --save http-proxy-middleware@0.21.0
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/wsl/">wsl</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/wsl/">wsl</category>
                                 
                             
                         
@@ -11142,19 +11173,19 @@ cnpm install  --save http-proxy-middleware@0.21.0
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/wsl/">wsl</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/wsl/">wsl</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/nodejs/">nodejs</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/nodejs/">nodejs</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                         
@@ -11164,8 +11195,8 @@ cnpm install  --save http-proxy-middleware@0.21.0
         
             <item>
                 <title>win系统安装-u盘方式</title>
-                <link>https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/win%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85-u%E7%9B%98%E6%96%B9%E5%BC%8F/</guid>
                 <pubDate>Sat, 29 Feb 2020 23:51:27 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -11271,13 +11302,13 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/win/">win</category>
                                 
                             
                         
@@ -11287,19 +11318,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E7%B3%BB%E7%BB%9F/">系统</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E7%B3%BB%E7%BB%9F/">系统</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%AE%89%E8%A3%85/">安装</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%AE%89%E8%A3%85/">安装</category>
                                 
                             
                         
@@ -11309,8 +11340,8 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
         
             <item>
                 <title>outlook邮件设置</title>
-                <link>https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/outlook%E9%82%AE%E4%BB%B6%E8%AE%BE%E7%BD%AE/</guid>
                 <pubDate>Sat, 29 Feb 2020 11:23:03 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -11405,25 +11436,25 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/tool/">tool</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/office/">office</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/office/">office</category>
                                 
                             
                         
@@ -11433,25 +11464,25 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/tool/">tool</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/win/">win</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/win/">win</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/office/">office</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/office/">office</category>
                                 
                             
                         
@@ -11461,8 +11492,8 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
         
             <item>
                 <title>浏览器书签同步floccus</title>
-                <link>https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%A6%E7%AD%BE%E5%90%8C%E6%AD%A5floccus/</guid>
                 <pubDate>Fri, 28 Feb 2020 22:18:45 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -11523,19 +11554,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/chrome/">chrome</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/chrome/">chrome</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E6%8F%92%E4%BB%B6/">插件</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E6%8F%92%E4%BB%B6/">插件</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/tool/">tool</category>
                                 
                             
                         
@@ -11545,19 +11576,19 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/chrome/">chrome</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/chrome/">chrome</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E6%8F%92%E4%BB%B6/">插件</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E6%8F%92%E4%BB%B6/">插件</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/tool/">tool</category>
                                 
                             
                         
@@ -11567,8 +11598,8 @@ win系统安装关键是磁盘分区。&lt;/p&gt;
         
             <item>
                 <title>hexo简单设置</title>
-                <link>https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/hexo%E7%AE%80%E5%8D%95%E8%AE%BE%E7%BD%AE/</guid>
                 <pubDate>Thu, 27 Feb 2020 21:40:14 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -11727,19 +11758,19 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/">服务</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/">服务</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/hexo/">hexo</category>
                                 
                             
                         
@@ -11749,19 +11780,19 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/hexo/">hexo</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                         
@@ -11771,8 +11802,8 @@ render_drafts: &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
         
             <item>
                 <title>hexo之next主题</title>
-                <link>https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/hexo%E4%B9%8Bnext%E4%B8%BB%E9%A2%98/</guid>
                 <pubDate>Tue, 25 Feb 2020 23:03:38 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -12231,19 +12262,19 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/%E6%9C%8D%E5%8A%A1/">服务</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/%E6%9C%8D%E5%8A%A1/">服务</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/hexo/">hexo</category>
                                 
                             
                         
@@ -12253,25 +12284,25 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/hexo/">hexo</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/next/">next</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/next/">next</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E5%B7%A5%E5%85%B7/">工具</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E5%B7%A5%E5%85%B7/">工具</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/%E9%85%8D%E7%BD%AE/">配置</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/%E9%85%8D%E7%BD%AE/">配置</category>
                                 
                             
                         
@@ -12281,8 +12312,8 @@ git clone theme-next/theme-next-fancybox3 source/lib/fancybox
         
             <item>
                 <title>gitee-hexo搭建个人博客</title>
-                <link>https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/gitee-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
                 <pubDate>Tue, 25 Feb 2020 18:17:34 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
@@ -12571,25 +12602,25 @@ git push
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/tool/">tool</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/tool/">tool</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/service/">service</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/service/">service</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/hexo/">hexo</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/categories/site/">site</category>
+                                    <category domain="http://sloera.gitee.io/sloera/categories/site/">site</category>
                                 
                             
                         
@@ -12599,25 +12630,25 @@ git push
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/hexo/">hexo</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/hexo/">hexo</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/gitee/">gitee</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/gitee/">gitee</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/site/">site</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/site/">site</category>
                                 
                             
                                 
                                 
                                 
-                                    <category domain="https://sloera.gitee.io/tags/config/">config</category>
+                                    <category domain="http://sloera.gitee.io/sloera/tags/config/">config</category>
                                 
                             
                         
@@ -12627,8 +12658,8 @@ git push
         
             <item>
                 <title>Hello World</title>
-                <link>https://sloera.gitee.io/post/skill/hello-world/</link>
-                <guid isPermaLink="true">https://sloera.gitee.io/post/skill/hello-world/</guid>
+                <link>http://sloera.gitee.io/sloera/post/skill/hello-world/</link>
+                <guid isPermaLink="true">http://sloera.gitee.io/sloera/post/skill/hello-world/</guid>
                 <pubDate>Mon, 24 Feb 2020 22:10:24 &#43;0000</pubDate>
                 
                     <author>sloera@163.com (sloera)</author>
