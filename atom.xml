@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-20T18:13:13&#43;08:00</updated>
+    <updated>2022-03-20T18:17:29&#43;08:00</updated>
     <id>https://sloera.gitee.io/</id>
     <link rel="alternate" type="text/html" href="https://sloera.gitee.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://sloera.gitee.io/atom.xml" />
@@ -17,10 +17,10 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.94.2">Hugo</generator>
         <entry>
-            <title type="text">广度优先搜索</title>
-            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/algorithm/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" />
-            <id>https://sloera.gitee.io/post/learn/algorithm/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</id>
-            <updated>2022-03-20T18:12:48&#43;08:00</updated>
+            <title type="text">Graph</title>
+            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/algorithm/graph/" />
+            <id>https://sloera.gitee.io/post/learn/algorithm/graph/</id>
+            <updated>2022-03-20T18:17:17&#43;08:00</updated>
             <published>2022-03-20T10:57:16&#43;08:00</published>
             <author>
                     <name>sloera</name>
