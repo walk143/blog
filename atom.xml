@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Hugo 主题 MemE</title>
     <subtitle type="html">blog by sloera</subtitle>
-    <updated>2022-03-20T10:58:36&#43;08:00</updated>
+    <updated>2022-03-20T18:13:13&#43;08:00</updated>
     <id>https://sloera.gitee.io/</id>
     <link rel="alternate" type="text/html" href="https://sloera.gitee.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://sloera.gitee.io/atom.xml" />
@@ -16,6 +16,120 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.94.2">Hugo</generator>
+        <entry>
+            <title type="text">广度优先搜索</title>
+            <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/algorithm/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" />
+            <id>https://sloera.gitee.io/post/learn/algorithm/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</id>
+            <updated>2022-03-20T18:12:48&#43;08:00</updated>
+            <published>2022-03-20T10:57:16&#43;08:00</published>
+            <author>
+                    <name>sloera</name>
+                    <uri>https://sloera.gitee.io/</uri>
+                    <email>sloera@163.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">https://stackabuse.com/graph-theory-and-graph-related-algorithms-theory-and-implementation/ Graph Introduction Graphs are a convenient way to store certain types of data. The concept was &amp;quot;stolen&amp;quot; from mathematics and appropriated for the needs of computer science. There are several ways in which we can describe what graphs are. We will……</summary>
+            
+                <content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackabuse.com/graph-theory-and-graph-related-algorithms-theory-and-implementation/&#34;&gt;https://stackabuse.com/graph-theory-and-graph-related-algorithms-theory-and-implementation/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;graph&#34;&gt;Graph&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Graphs are a convenient way to store certain types of data. The concept was &amp;quot;stolen&amp;quot; from mathematics and appropriated for the needs of computer science.&lt;/p&gt;
+&lt;p&gt;There are several ways in which we can describe what graphs are. We will approach graphs first in a highly simplified way, then through trees if the reader is familiar with the concept from earlier experience, and finally as a &lt;strong&gt;mathematical&lt;/strong&gt; term.&lt;/p&gt;
+&lt;h2 id=&#34;graphs-simplified&#34;&gt;Graphs Simplified&lt;/h2&gt;
+&lt;p&gt;Each graph is consisted of nodes(also called vertices) and &lt;em&gt;edges&lt;/em&gt;. We can look at nodes as &amp;quot;chunks of data&amp;quot; and edges as &amp;quot;relations between those chunks of data&amp;quot;.&lt;/p&gt;
+&lt;p&gt;If we want to point out that two chunks of data are related to each other in some way - we&#39;d connect them with an edge. Nodes are usually represented as circles with an identifying mark on them, so that we can distinguish between nodes, and edges are represented via line(or arrows, as we&#39;ll see later) that connect two nodes.&lt;/p&gt;
+&lt;p&gt;A form of the graph structure is often used when making maps for a city&#39;s bus lines. You&#39;d see a simplified map that shows which stations(nodes) the bus stops at, and the route connecting different stops is what we call an edge:
+&lt;img src=&#34;img/bus-line.png&#34; alt=&#34;bus-line&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This graph shows what different bus stops we have and how they are connected. For example, we can see that,using this bus line, to get from &lt;em&gt;Bus Stop A&lt;/em&gt; to &lt;em&gt;Bus Stop C&lt;/em&gt; we&#39;d have to go through &lt;em&gt;Bus Stop B&lt;/em&gt; - we can&#39;t get there any other way.&lt;/p&gt;
+&lt;h2 id=&#34;weighted-graphs&#34;&gt;Weighted Graphs&lt;/h2&gt;
+&lt;p&gt;Graphs are very versatile, and that&#39;s one of the reasons why they are so popular. Let&#39;s say we wanted to add information regarding how long it took on average(in minutes) to get from one bus stop to another. We&#39;d add &amp;quot;&amp;quot;weights  to our edges:
+&lt;img src=&#34;img/bus-line-weighted.png&#34; alt=&#34;bus-line-weighted&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now our graph shows even more information than before, we see how long it takes to get from one stop to another. We can deduce that getting from *Bus Stop A * to &lt;em&gt;Bus Stop C&lt;/em&gt; would take 23 minutes since we&#39;d need to &amp;quot;traverse&amp;quot; the edge connecting &lt;em&gt;Bus Stop A&lt;/em&gt; and &lt;em&gt;Bus Stop B&lt;/em&gt; that has a weight of 15 and the (&lt;em&gt;Bus Stop B&lt;/em&gt; -&amp;gt; &lt;em&gt;Bus Stop C&lt;/em&gt;) edge, which has a weight of 8.&lt;/p&gt;
+&lt;p&gt;The previous example introduced the concept of &lt;strong&gt;weighted graphs&lt;/strong&gt;, i.e. that edges can have values attached to them if we so require.&lt;/p&gt;
+&lt;h2 id=&#34;directed-and-undirected-graphs&#34;&gt;Directed and Undirected Graphs&lt;/h2&gt;
+&lt;p&gt;Now we&#39;ll look at another graph concept - &lt;strong&gt;directed and undirected&lt;/strong&gt; graphs. Let&#39;s say that our bus line didn&#39;t have the same stops in both directions.&lt;/p&gt;
+&lt;p&gt;More precisely, when our bus starts from &lt;em&gt;Bus Stop A&lt;/em&gt; it goes through B, C, and ends at D; however, in the other direction it doesn&#39;t go through C but an altogether different bus stop E, before then going through B. We might make something like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/bus-line-different-in-both-directions.png&#34; alt=&#34;bus-line-different-in-both-directions&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As the spoiler in the picture suggess - this approach isn&#39;t correct. Just looking at this graph we can&#39;t understand which bus stops the bus goes through in which direction, since nothing&#39;s stopping us from getting from B to E even though we should only be able to get from E to B.&lt;/p&gt;
+&lt;p&gt;This is where directed graphs come into play. The edges in directed graphs are represented via arrows instead of lines, an arrow pointing from A to B means &amp;quot;we can get from A to B but not vice versa&amp;quot;. If we wanted to say we can get both from A to B and from B to A, we&#39;d use a double-sided arrow.&lt;/p&gt;
+&lt;p&gt;Now, the cycle is no longer ambiguous:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/bus-line-different-in-both-directions-correct.png&#34; alt=&#34;bus-line-different-in-both-directions-correct&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now it&#39;s clear that we can&#39;t go from B to E or from D to C, etc. It&#39;s clear that we can make graphs as simple or as complex as we want to. We could go one-step further in our examples, if for some reason it took a different amount of time to travel between some bus stops depending on the direction we&#39;re going.
+&lt;img src=&#34;img/bus-line-different-time-on-the-direction.png&#34; alt=&#34;bus-line-different-time-on-the-direction&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;applications-of-graphs&#34;&gt;Applications of Graphs&lt;/h2&gt;
+&lt;p&gt;Here are a few examples of data that can be conveniently stored/represented using graphs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A set of people and their affiliations:&lt;/strong&gt; This can be done using an undirected graph, since we&#39;re assuming that if person A knows person B, the same is true vice versa. The different people would be represented by nodes,and if person A knows person B there will be an edge connecting the two nodes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The structure of a website:&lt;/strong&gt; Different pages on that website are nodes, and there is a directed edge between page A and page B if a link to page B exists on page A. For example the home page often has links to an About Us and Contact page.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mutually dependent tasks:&lt;/strong&gt; We can represent that tasks need to be completed before task A and what tasks cannot be completed before A has been completed in the following way - if there is a directed edge from B to A, then A cannot be completed before B is completed; if there is a directed edge from A to C, then C cannot be completed before A is completed:
+&lt;img src=&#34;img/mutually-dependent-tasks.png&#34; alt=&#34;mutually-dependent-tasks&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here we can see that we can put on glasses, socks, pants and a t shirt regardless of other clothes. But we can&#39;t put on shoes before putting on pants and socks. And we can&#39;t go out before doing everything else, except putting on glasses, since they might not be necessary. These types of graphs are easily sorted and we can see a feasible order of task execution using &lt;strong&gt;Topological Sorting&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;A graph can also be connected and disconnected. A graph is connected if there is a path(which consists of one or more edges) between each pair of nodes. On the other hand, a graphs is disconnected if there is a pair of nodes which can&#39;t aren&#39;t connected by a path of edges.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/connected-graphs.png&#34; alt=&#34;connected-graphs&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A frequent misconception is that graphs need to be connected, or at least that every node needs to be connected to another in some way. This isn&#39;t true, and we&#39;ve demonstrated that in the previous example. A graph can just as easily be consisted of any number of nodes without a single edge between them. However, many traversal(遍历) algorithms require graphs to be conectedto work properly.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;graphs-compared-to-trees&#34;&gt;Graphs Compared to Trees&lt;/h2&gt;
+&lt;p&gt;If you are familiar with trees, graphs are easy to understand - trees are a special kind of graph, i.e. graphs with certain restrictions. Every tree is a graph, but not every graph is a tree.&lt;/p&gt;
+&lt;p&gt;By definition, trees are undirected graphs that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Are acyclic(非循环的), i.e. we can&#39;t traverse back to any starting node we choose without backtracking(回溯)&lt;/li&gt;
+&lt;li&gt;A cycle is created by adding any edge into the existing tree&lt;/li&gt;
+&lt;li&gt;The path between any two ndoes is unique&lt;/li&gt;
+&lt;li&gt;There is a distinct root node&lt;/li&gt;
+&lt;li&gt;The graph is connected(there&#39;s a path between every two nodes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Or in very simplified terms - tree are connected graphs without cycles. For graphs, we just get rid of all these restrictions and keep the nodes and edges concept.&lt;/p&gt;
+&lt;h2 id=&#34;graphs-as-a-mathematical-term&#34;&gt;Graphs as a Mathematical Term&lt;/h2&gt;
+&lt;p&gt;All of the above originated(源于) from the mathematical term of a graph. A graph is an ordered pair $G = (V, E)$, where $V$ is a set of vertices(顶点) and $E$ is the set of edges.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Undirected Graphs:&lt;/strong&gt; In the case of undirected graph, $E$ has the following definition $E \subseteq {{x, y} | (x, y) \in V^2}$. Sometimes an extra condition is added if we want to avoid edges that have the same start and end point(i.e. $x \ne y$).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Directed Graphs:&lt;/strong&gt; $E \subseteq {(x, y) | (x, y) \in V^2 }$, here as well we can add the condition that $x \ne y$ if we want to avoid edges that start and end in the same node/vertex.&lt;/p&gt;
+&lt;p&gt;As we can see in the previous definitions of the set of edges $E$, the only difference is that in the case of directed graphs $(x, y)$ is an ordered pair, while in undirected graphs the pair ${x, y}$ is unordered. This means that in an undirected graph, what matters is that $x$ and $y$ are connected, not in &amp;quot;what order&amp;quot;. So we could have written ${y, x}$ instead of ${x, y}$ while we could not have written $(y, x)$ instead of $(x, y)$ for a directed graph.&lt;/p&gt;
+&lt;p&gt;This all leads us to several important topics when it comes to graph traversal in Java - Representing Graphs in Codes, Breadth-First Search, Depth-First Search, and Dijkstra&#39;s Algorithm.&lt;/p&gt;
+&lt;h2 id=&#34;representing-graphs-in-code&#34;&gt;Representing Graphs in Code&lt;/h2&gt;
+&lt;p&gt;Knowing what graphs are, we need a way to represent them in code. This is usually done via &lt;em&gt;Adjacency Lists&lt;/em&gt; and &lt;em&gt;Adjacency Matrices(矩阵)&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackabuse.com/graphs-in-java-representing-graphs-in-code/&#34;&gt;Graphs in Java: Representing Graphs in Code&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;depth-first-searchdfs&#34;&gt;Depth-First Search(DFS)&lt;/h2&gt;
+&lt;p&gt;Depth-First Search(DFS) searches as far as possible along a branch and then backtracksto search as far as possible in the next branch. This means that in the proceeding(前面) Graph, it starts off with the first neighbor, and continues down the line as far as possible.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackabuse.com/graphs-in-java-depth-first-search-dfs/&#34;&gt;Graphs in Java: Depth-First Search (DFS)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;breadth-first-searchbfs&#34;&gt;Breadth-First Search(BFS)&lt;/h2&gt;
+&lt;p&gt;Breadth-First Search(BFS) is a graph-traversal algorithm, often used for finding the shorted path from a starting node to a goal node.&lt;/p&gt;
+&lt;p&gt;BFS visits &amp;quot;layer-by-layer&amp;quot;. This means that is first visits all the children of the starting(root) node. These children are considered as the &amp;quot;second layer&amp;quot;, after which their children are visited in the same manner.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://stackabuse.com/graphs-in-java-breadth-first-search-bfs/&#34;&gt;Graphs in Java: Breadth-First Search (BFS)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;dijkstras-algorithm&#34;&gt;Dijkstra&#39;s Algorithm&lt;/h2&gt;
+&lt;h2 id=&#34;dfs-vs-bfs&#34;&gt;DFS VS BFS&lt;/h2&gt;
+&lt;p&gt;A question that most likely came to mind when you we&#39;re reading about DFS and BFS was:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;What&#39;s the practical difference?&amp;quot;
+The theory is clear; BFS first visits the nodes closest to our starting node while DFS goes as deep into the graph(as far away from our starting node) as possible before continuing with other nodes close to our starting node.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&#39;s go through some examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If all you want to do is check whether two nodes are connected at all in a graph that doesn&#39;t give you a clear reason to prefer one or the other of the graph traversal algorithms - &lt;strong&gt;either one&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;If you &amp;quot;know&amp;quot; that your two nodes are close to each other if they&#39;re connected at all - for example looking for family members in an acquaintance(相识的人) graph - use BFS&lt;/li&gt;
+&lt;li&gt;If you want to count all the possible ways to get from one node to another - &lt;strong&gt;DFS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;If you want the shorted path(the path that goes through the fewest number of nodes) from one node to another - &lt;strong&gt;BFS&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DFS&lt;/strong&gt; can also be used for some slightly advanced things, like detecting a cycle in a graph,or for checking for &lt;strong&gt;strongly connected components&lt;/strong&gt;(a mathematical term that means &amp;quot;that every node is reachable from every other node&amp;quot;) which can later be used for solving 2-satisfiability(可满足性) problems(2-SAT)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Graphs are a convenient way to store certain types of data. Each graphs is consisted of nodes(also called vertices) and edges. We can look at nodes as &amp;quot;chunks of data&amp;quot; and edges as &amp;quot;relations between those chunks of data&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Graph traversal algorithmssuch as BFS, DFS, Dijkstra&#39;s Algorithm and A* are very commonly used in many branches of data science and machine learning.&lt;/p&gt;
+</content>
+            
+            
+            
+            
+            
+                
+                    
+                
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">背包问题</title>
             <link rel="alternate" type="text/html" href="https://sloera.gitee.io/post/learn/algorithm/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" />
