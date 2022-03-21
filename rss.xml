@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 21 Mar 2022 22:02:51 &#43;0800</lastBuildDate>
+        <lastBuildDate>Mon, 21 Mar 2022 22:17:02 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
         
@@ -2535,6 +2535,12 @@ return earliestSecond;
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
                                 
                             
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
+                                
+                            
                         
                     
                         
@@ -2844,6 +2850,12 @@ return earliestSecond;
                                 
                                 
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
                                 
                             
                         
@@ -3176,6 +3188,12 @@ return earliestSecond;
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
                                 
                             
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
+                                
+                            
                         
                     
                         
@@ -3376,6 +3394,12 @@ return earliestSecond;
                                 
                                 
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
                                 
                             
                         
@@ -3625,6 +3649,12 @@ return earliestSecond;
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
                                 
                             
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
+                                
+                            
                         
                     
                         
@@ -3751,6 +3781,12 @@ return earliestSecond;
                                 
                                 
                                     <category domain="https://sloera.gitee.io/categories/%E9%A2%98%E8%A7%A3/">题解</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://sloera.gitee.io/categories/hard/">hard</category>
                                 
                             
                         
