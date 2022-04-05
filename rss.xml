@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 04 Apr 2022 23:36:26 &#43;0800</lastBuildDate>
+        <lastBuildDate>Tue, 05 Apr 2022 21:24:12 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://sloera.gitee.io/rss.xml" />
         
@@ -41,6 +41,7 @@
                     <description>&lt;blockquote&gt;
 &lt;p&gt;摘录自：https://www.pdai.tech/md/db/nosql-redis/db-redis-data-types.html&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;[toc]&lt;/p&gt;
 &lt;h1 id=&#34;redis概念和基础&#34;&gt;Redis概念和基础&lt;/h1&gt;
 &lt;p&gt;Redis是一种支持key-value等多种数据结构的存储系统。可用于缓存、事件发布或订阅，高速队列等场景&lt;/p&gt;
 &lt;h2 id=&#34;为什么要使用redis&#34;&gt;为什么要使用redis&lt;/h2&gt;
@@ -370,6 +371,296 @@
 &lt;li&gt;消息的持久化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;img/message-queue.png&#34; alt=&#34;message-queue&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;数据结构对象机制详解&#34;&gt;数据结构：对象机制详解&lt;/h1&gt;
+&lt;p&gt;Redis的每种对象都是&lt;strong&gt;对象结构(redisObject)&lt;strong&gt;与&lt;/strong&gt;对应编码的数据结构&lt;/strong&gt;组成&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/redis-object.png&#34; alt=&#34;redis-object&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;redisobject设计原因&#34;&gt;redisObject设计原因&lt;/h2&gt;
+&lt;p&gt;Redis的命令中，对于键所保存的值的类型，键能执行的命令各不相同。所以需要让每个键都带有类型信息，使得程序可以检查键的类型，并为它选择合适的处理方式&lt;/p&gt;
+&lt;h2 id=&#34;redisobject数据结构&#34;&gt;redisObject数据结构&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; * Redis 对象
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;redisObject&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 类型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 编码方式
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;encoding&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// LRU - 24位, 记录最末一次访问时间（相对于lru_clock）; 或者 LFU（最少使用的数据：8位频率，16位访问时间）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;nl&#34;&gt;lru&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LRU_BITS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// LRU_BITS: 24
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 引用计数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;refcount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;// 指向底层数据结构实例
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;robj&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;img/redisObject.png&#34; alt=&#34;redisObject&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;type&#34;&gt;type&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* 对象类型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_STRING 0 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 字符串
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_LIST 1 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 列表
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_SET 2 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 集合
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ZSET 3 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 有序集
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_HASH 4 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 哈希表
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;encoding&#34;&gt;encoding&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;/*
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;* 对象编码
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_RAW 0     &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Raw representation */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_INT 1     &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as integer */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_HT 2      &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as hash table */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_ZIPMAP 3  &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* 注意：版本2.6后不再使用. */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_LINKEDLIST 4 &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* 注意：不再使用了，旧版本2.x中String的底层之一. */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_ZIPLIST 5 &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as ziplist */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_INTSET 6  &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as intset */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_SKIPLIST 7  &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as skiplist */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_EMBSTR 8  &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Embedded sds string encoding */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_QUICKLIST 9 &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as linked list of ziplists */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#define OBJ_ENCODING_STREAM 10 &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* Encoded as a radix tree of listpacks */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;ptr&#34;&gt;ptr&lt;/h3&gt;
+&lt;p&gt;是一个指针，指向实际保存值的数据结构，数据结构由type和encoding属性决定&lt;/p&gt;
+&lt;h3 id=&#34;lru属性&#34;&gt;lru属性&lt;/h3&gt;
+&lt;p&gt;记录了对象最后一次被命令程序访问的时间&lt;/p&gt;
+&lt;p&gt;空转时长：当前时间减去键的值的对象的lru时间，就是该键的空转时长。&lt;/p&gt;
+&lt;p&gt;如果服务器打开了maxmemory选项，并且服务器用于回收内存的算法为&lt;code&gt;volatile-lru&lt;/code&gt;或者&lt;code&gt;allkeys-lru&lt;/code&gt;，那么当服务器占用的内存数超过了&lt;code&gt;maxmemory&lt;/code&gt;选项所设置的上限值时，空置时长较高的键会优先被服务器释放，从而回收内存&lt;/p&gt;
+&lt;p&gt;##类型检查和多态&lt;/p&gt;
+&lt;p&gt;执行一个处理数据类型命令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;根据给定的key，在数据库字典中查找和他对应的redisObject，如果没找到，返回&lt;code&gt;NULL&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;检查redisObject的type属性和执行命令所需的类型是否相符，不相符返回类型错误&lt;/li&gt;
+&lt;li&gt;根据redisObject的encoding属性所指定的编码，选择合适的操作函数来处理底层的操作函数来处理底层的数据结构&lt;/li&gt;
+&lt;li&gt;返回数据结构的操作结果作为命令的返回值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/execute-example.png&#34; alt=&#34;execute-example&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;对象共享&#34;&gt;对象共享&lt;/h2&gt;
+&lt;p&gt;一些常见的值会放在一个共享对象中&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;各种命令的返回值。比如成功时返回的OK&lt;/li&gt;
+&lt;li&gt;小于&lt;code&gt;REDIS_SHARED_INTEGERS&lt;/code&gt;(默认值是$10000$)的所有整数，包括$0$在内&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;引用计数及对象的销毁&#34;&gt;引用计数及对象的销毁&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;每个redisObject结构都有一个refcount属性，指示这个对象被引用了多少次&lt;/li&gt;
+&lt;li&gt;新创建一个对象的refcount设置为1&lt;/li&gt;
+&lt;li&gt;当一个对象进行共享时，对应的refcount加1&lt;/li&gt;
+&lt;li&gt;当使用完一个对象后，或者消除对一个对象的引用之后，对应的refcount减1&lt;/li&gt;
+&lt;li&gt;当对象的refcount降至0时，这个redisObject及它引用的数据结构的内存都会被释放&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;持久化-rdbaof&#34;&gt;持久化 RDB/AOF&lt;/h1&gt;
+&lt;p&gt;数据库性能有瓶颈，如果是大数据量的恢复，会对数据库带来巨大的压力&lt;/p&gt;
+&lt;h2 id=&#34;rdb持久化&#34;&gt;RDB持久化&lt;/h2&gt;
+&lt;p&gt;Redis DataBase，快照/内存快照。将当前进程数据生成快照保存到磁盘上的过程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;手动触发：&lt;code&gt;save&lt;/code&gt;或&lt;code&gt;bgsave&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;save: 阻塞当前Redis服务器&lt;/li&gt;
+&lt;li&gt;bgsave：执行fork操作创建子进程，阻塞只发生在form阶段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;自动触发：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;redis.conf&lt;/code&gt;中配置&lt;code&gt;save m n&lt;/code&gt;，即在&lt;code&gt;m&lt;/code&gt;秒内有&lt;code&gt;n&lt;/code&gt;次修改时，自动触发&lt;code&gt;bgsave&lt;/code&gt;生成&lt;code&gt;rdb&lt;/code&gt;文件&lt;/li&gt;
+&lt;li&gt;主从复制时，从节点要从主节点进行全量复制时&lt;/li&gt;
+&lt;li&gt;执行&lt;code&gt;debug reload&lt;/code&gt;命令重新加载Redis时&lt;/li&gt;
+&lt;li&gt;默认情况，执行&lt;code&gt;shutdown&lt;/code&gt;命令时，如果未开启&lt;code&gt;aof&lt;/code&gt;持久化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/cache-rdf-bgsave.png&#34; alt=&#34;cache-rdf-bgsave&#34;&gt;
+&lt;img src=&#34;img/cache-rdf-copy-on-write.png&#34; alt=&#34;cache-rdf-copy-on-write&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点
+&lt;ul&gt;
+&lt;li&gt;某个时间节点的快照，默认使用&lt;code&gt;LZF&lt;/code&gt;算法进行压缩，压缩后的文件体积远远濒于内存大小，适用于备份、全量复制等场景&lt;/li&gt;
+&lt;li&gt;Redis加载&lt;code&gt;RDB&lt;/code&gt;文件恢复数据要远远快于&lt;code&gt;AOF&lt;/code&gt;方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缺点
+&lt;ul&gt;
+&lt;li&gt;实时性不够，无法做到秒级的持久化&lt;/li&gt;
+&lt;li&gt;fork子进程属于重量级操作，频繁执行成本较高&lt;/li&gt;
+&lt;li&gt;文件格式是二进制的，没有可读性&lt;/li&gt;
+&lt;li&gt;版本兼容&lt;code&gt;RDB&lt;/code&gt;文件问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aof&#34;&gt;AOF&lt;/h2&gt;
+&lt;p&gt;写后日志：先执行命令，把数据写入内存，然后才记录日志。日志里记录的是收到的每一条命令，以文本形式保存&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;避免额外的检查开销：执行后再记录，不用检查语法&lt;/li&gt;
+&lt;li&gt;不会阻塞当前的写操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实现&#34;&gt;实现&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;命令追加：执行完一个写命令之后，会以协议格式将被执行的写命令追加到服务器的&lt;code&gt;aof_buf&lt;/code&gt;缓冲区&lt;/li&gt;
+&lt;li&gt;文件写入和同步：将&lt;code&gt;aof_buf&lt;/code&gt;写入&lt;code&gt;AOF&lt;/code&gt;文件，有三种写回策略
+&lt;ul&gt;
+&lt;li&gt;Always：同步写回。每个写命令执行完，立马同步将日志写回磁盘&lt;/li&gt;
+&lt;li&gt;Everysec：每隔一秒把缓冲区的内容写入磁盘&lt;/li&gt;
+&lt;li&gt;No：操作系统控制的写回，由操作系统决定何时将缓冲区内容写回磁盘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/aof-bgrewrite.png&#34; alt=&#34;aof-bgrewrite&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;缓存问题&#34;&gt;缓存问题&lt;/h1&gt;
+&lt;h2 id=&#34;缓存穿透&#34;&gt;缓存穿透&lt;/h2&gt;
+&lt;p&gt;指缓存和数据库中都没有的数据，用户不断发起请求。导致不存在的数据每次请求都要到存储层去查询，失去了缓存的意义&lt;/p&gt;
+&lt;h3 id=&#34;解决方案&#34;&gt;解决方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;接口层增加校验&lt;/li&gt;
+&lt;li&gt;从缓存取不到的数据，在数据库中也没有取到，可以将key-value写为key-null，缓存有效时间设置短点，如30s&lt;/li&gt;
+&lt;li&gt;布隆过滤器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;缓存击穿&#34;&gt;缓存击穿&lt;/h2&gt;
+&lt;p&gt;缓存中没有但数据库中有的数据（一般是缓存到期），由于并发用户特别多，同时读缓存没读到数据，又同时去数据库取数据，引起数据库压力瞬间增大，造成过大压力&lt;/p&gt;
+&lt;h3 id=&#34;解决方案-1&#34;&gt;解决方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;设置热点数据永远不过期&lt;/li&gt;
+&lt;li&gt;接口限流与熔断、降级。&lt;/li&gt;
+&lt;li&gt;加互斥锁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;缓存雪崩&#34;&gt;缓存雪崩&lt;/h2&gt;
+&lt;p&gt;缓存中数据大批量到过期时间，而查询数据量巨大，引起数据库压力过大甚至down机。&lt;/p&gt;
+&lt;p&gt;缓存击穿指并发查同一条数据，缓存雪崩是不同数据&lt;/p&gt;
+&lt;h3 id=&#34;解决方案-2&#34;&gt;解决方案&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;缓存数据的过期时间设置随机&lt;/li&gt;
+&lt;li&gt;如果缓存数据库是分布式部署，将热点数据均匀分布在不同的缓存数据库中&lt;/li&gt;
+&lt;li&gt;设置热点数据永远不过期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;缓存污染或满&#34;&gt;缓存污染（或满）&lt;/h2&gt;
+&lt;p&gt;缓存中一些只会被访问一次或者几次的数据，被访问完后依然留存在缓存中&lt;/p&gt;
+&lt;p&gt;一般把缓存容量设置为总数据量的$15% ～ 30%$&lt;/p&gt;
+&lt;h3 id=&#34;缓存淘汰策略&#34;&gt;缓存淘汰策略&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;不淘汰
+&lt;ul&gt;
+&lt;li&gt;noeviction (v4.0后默认)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;对设置了过期时间的数据进行淘汰
+&lt;ul&gt;
+&lt;li&gt;随机：volatile-random&lt;/li&gt;
+&lt;li&gt;ttl: volatile-ttl。过期时间排序，越早过期的数据越优先被选择&lt;/li&gt;
+&lt;li&gt;lru: volatile-lru。Least Recently Used，最近最少使用
+&lt;ul&gt;
+&lt;li&gt;Redis为每一个数据记录最近一次被访问的时间戳。第一次随机选出$N$个数据，然后比较这些数据的&lt;code&gt;lru&lt;/code&gt;字段，字段值最小的被淘汰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lfu: volatile-lfu。首先根据数据的访问次数进行筛选，把访问次数最低的数据淘汰出缓存，如果两个数据的访问次数相同，再比较访问时效性，将距离上一次访问时间更久的数据淘汰出缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;全部数据进行淘汰
+&lt;ul&gt;
+&lt;li&gt;随机: allkeys-random&lt;/li&gt;
+&lt;li&gt;lru: allkeys-lru&lt;/li&gt;
+&lt;li&gt;lfu: allkeys-lfu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据库和缓存一致性&#34;&gt;数据库和缓存一致性&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;可阅读：https://coolshell.cn/articles/17416.html&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;img/cache-query.png&#34; alt=&#34;cache-query&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如果涉及到数据更新：数据库和缓存更新，就容易出现缓存和数据库间的数据一致性问题&lt;/p&gt;
+&lt;h3 id=&#34;cache-aside-pattern&#34;&gt;Cache Aside Pattern&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;失效：应用程序先从cache取数据，没有得到，则从数据库中取数据，成功后放到缓存中&lt;/li&gt;
+&lt;li&gt;命中：应用程序从cache中取数据，取到后返回&lt;/li&gt;
+&lt;li&gt;更新：先把数据存到数据库中，成功后，再让缓存失效&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;img/cache-aside-query.png&#34; alt=&#34;cache-aside-query&#34;&gt;
+&lt;img src=&#34;img/cache-aside-update.png&#34; alt=&#34;cache-aside-update&#34;&gt;&lt;/p&gt;
+&lt;p&gt;没有了删除cache数据的操作，并发的查询操作拿的是没有更新的数据，但是更新数据库结束后让缓存的失效，后续的查询操作会把数据从数据库中重新拉出来&lt;/p&gt;
+&lt;p&gt;不使用删除是为了避免两个并发的写操作导致脏数据&lt;/p&gt;
+&lt;p&gt;脏数据：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程1读，未命中缓存，从数据库取数据1&lt;/li&gt;
+&lt;li&gt;线程2写操作，写完数据库写入缓存2&lt;/li&gt;
+&lt;li&gt;线程1写缓存1覆盖缓存2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但，这个case理论上会出现，不过，实际上出现的概率可能非常低，因为这个条件需要发生在读缓存时缓存失效，而且并发着有一个写操作。而实际上数据库的写操作会比读操作慢得多，而且还要锁表，而读操作必需在写操作前进入数据库操作，而又要晚于写操作更新缓存，所有的这些条件都具备的概率基本并不大。&lt;/p&gt;
+&lt;h3 id=&#34;readwrite-through-pattern&#34;&gt;Read/Write Through Pattern&lt;/h3&gt;
+&lt;p&gt;把更新数据库(Repository)的操作由缓存自己代理了&lt;/p&gt;
+&lt;h4 id=&#34;read-through&#34;&gt;Read Through&lt;/h4&gt;
+&lt;p&gt;在查询操作中更新缓存。当缓存失效时，Cache Aside 是由调用方负责把数据加载入缓存，Read Through用缓存服务自己加载，从而对应用方是透明的&lt;/p&gt;
+&lt;h4 id=&#34;write-through&#34;&gt;Write Through&lt;/h4&gt;
+&lt;p&gt;当有数据更新的时候，如果没有命中缓存，直接更新数据库，然后返回。&lt;/p&gt;
+&lt;p&gt;如果命中了缓存，则更新缓存，然后再由Cache自己更新数据库&lt;/p&gt;
+&lt;p&gt;memory 为数据库
+&lt;img src=&#34;img/cache-through.png&#34; alt=&#34;cache-through&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;write-behind-caching-pattern&#34;&gt;Write Behind Caching Pattern&lt;/h3&gt;
+&lt;p&gt;又叫&lt;code&gt;Write Back&lt;/code&gt;。在更新数据的时候，只更新缓存，不更新数据库，缓存异步地批量更新数据库。&lt;/p&gt;
+&lt;p&gt;数据不是强一致性的，可能会丢失&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/cache-write-back.png&#34; alt=&#34;cache-write-back&#34;&gt;&lt;/p&gt;
 </description>
                 
                 
